@@ -11,7 +11,7 @@ Window {
 
     Column {
         MenuBar {
-            width: windowsId.width; height: 7*windowsId.height/20
+            width: windowsId.width; height: 3*windowsId.height/20
         }
     }
 }

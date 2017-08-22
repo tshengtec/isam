@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     Themes* themes = new Themes();
-    themes->setBackgroundColor(QString("lightblue"));
+    themes->setBackgroundColor(BACKGROUNDCOLOR);
     engine.rootContext()->setContextProperty("themesModel", themes);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/MainWin/MainWin.qml")));
