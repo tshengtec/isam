@@ -3,12 +3,15 @@ import QtQuick.Window 2.2
 import "./content/MenuBar"
 
 Window {
+    id: windowsId
     visible: true
     width: 1024
     height: 600
     title: qsTr("")
 
     Column {
-        MenuBar {}
+        MenuBar {
+            width: windowsId.width; height: 7*windowsId.height/20
+        }
     }
 }

@@ -4,11 +4,15 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    Infrastructure/domain/DomainObject.cpp \
-    Infrastructure/domain/BaseListModel.cpp \
-    Infrastructure/domain/BaseItemModel.cpp
+    infrastructure/domain/DomainObject.cpp \
+    infrastructure/domain/BaseListModel.cpp \
+    infrastructure/domain/BaseItemModel.cpp \
+    infrastructure/utils/Themes.cpp
 
 RESOURCES += qml.qrc
+
+INCLUDEPATH += infrastructure/domain \
+               infrastructure/utils
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -17,10 +21,11 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    Infrastructure/domain/ObjectListModelImpl.h \
-    Infrastructure/domain/ObjectListModel.h \
-    Infrastructure/domain/JsonListConvertorImpl.h \
-    Infrastructure/domain/JsonListConvertor.h \
-    Infrastructure/domain/DomainObject.h \
-    Infrastructure/domain/BaseListModel.h \
-    Infrastructure/domain/BaseItemModel.h
+    infrastructure/domain/ObjectListModelImpl.h \
+    infrastructure/domain/ObjectListModel.h \
+    infrastructure/domain/JsonListConvertorImpl.h \
+    infrastructure/domain/JsonListConvertor.h \
+    infrastructure/domain/DomainObject.h \
+    infrastructure/domain/BaseListModel.h \
+    infrastructure/domain/BaseItemModel.h \
+    infrastructure/utils/Themes.h
