@@ -7,10 +7,4 @@ Window {
     height: 480
     title: qsTr("Hello World")
 
-    MainForm {
-        anchors.fill: parent
-        mouseArea.onClicked: {
-            Qt.quit();
-        }
-    }
 }
