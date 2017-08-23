@@ -7,29 +7,33 @@ Rectangle {
     color: themesModel.backgroundColor
 
     Row {
+        anchors.fill: parent
         spacing: 20
-        BaseButton {
-            width: rootId.width/10; height: rootId.height
-            color: "red"
-            btnText: "xxx"
+
+        Item { width: 50; height: 1 }
+
+        MenuButton {
+            anchors.verticalCenter: parent.verticalCenter
+            width: rootId.width/15; height: rootId.height/1.2
+            btnText: "退货"
         }
 
-        BaseButton {
-            width: rootId.width/10; height: rootId.height
-            color: "red"
-            btnText: "xxx"
+        MenuButton {
+            anchors.verticalCenter: parent.verticalCenter
+            width: rootId.width/15; height: rootId.height/1.2
+            btnText: "挂单"
         }
 
-        BaseButton {
-            width: rootId.width/10; height: rootId.height
-            color: "red"
-            btnText: "xxx"
+        MenuButton {
+            anchors.verticalCenter: parent.verticalCenter
+            width: rootId.width/15; height: rootId.height/1.2
+            btnText: "取单"
         }
 
-        BaseButton {
-            width: rootId.width/10; height: rootId.height
-            color: "red"
-            btnText: "xxx"
+        MenuButton {
+            anchors.verticalCenter: parent.verticalCenter
+            width: rootId.width/15; height: rootId.height/1.2
+            btnText: "交班"
         }
     }
 }

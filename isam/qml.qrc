@@ -4,5 +4,6 @@
         <file>qml/Common/Button/BaseButton.qml</file>
         <file>qml/MainWin/content/MenuBar/MenuBar.qml</file>
         <file>qml/MainWin/content/TopBar/TopBar.qml</file>
+        <file>qml/Common/Button/MenuButton.qml</file>
     </qresource>
 </RCC>
