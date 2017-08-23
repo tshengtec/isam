@@ -26,7 +26,7 @@ Window {
         }
 
         BottomBar {
-            width: windowsId.width; height: 5*windowsId.height/20
+            width: windowsId.width; height: 4*windowsId.height/20
         }
     }
 }
