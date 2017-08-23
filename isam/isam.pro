@@ -7,12 +7,16 @@ SOURCES += main.cpp \
     infrastructure/domain/DomainObject.cpp \
     infrastructure/domain/BaseListModel.cpp \
     infrastructure/domain/BaseItemModel.cpp \
-    infrastructure/utils/Themes.cpp
+    infrastructure/utils/Themes.cpp \
+    infrastructure/repertory/CommodityRepertory.cpp \
+    domain/Commodity.cpp
 
 RESOURCES += qml.qrc
 
 INCLUDEPATH += infrastructure/domain \
-               infrastructure/utils
+               infrastructure/utils \
+               infrastructure/repertory
+INCLUDEPATH += domain
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -28,4 +32,6 @@ HEADERS += \
     infrastructure/domain/DomainObject.h \
     infrastructure/domain/BaseListModel.h \
     infrastructure/domain/BaseItemModel.h \
-    infrastructure/utils/Themes.h
+    infrastructure/utils/Themes.h \
+    infrastructure/repertory/CommodityRepertory.h \
+    domain/Commodity.h
