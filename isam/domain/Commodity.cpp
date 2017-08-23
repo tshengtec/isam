@@ -5,8 +5,8 @@ Commodity::Commodity()
 {
     m_id = "";
     m_name = QString::fromUtf8("Undefined");
-    m_pathName = "/";
-    m_musicName = QString::fromUtf8("Undefined");
+    m_count = 0;
+    m_retailPrice = 0;
 }
 
 Commodity::~Commodity()
@@ -18,8 +18,8 @@ void Commodity::fromJson(const QJsonObject data)
 {
     m_id = data.value("id").toString();
     m_name = data.value("name").toString();
-    m_musicName = data.value("musicName").toString();
-    m_pathName = data.value("pathName").toString();
+    m_count = data.value("count").toInt();
+    m_retailPrice = data.value("retailPrice").toInt();
 }
 
 QJsonObject Commodity::toJson()
@@ -27,8 +27,8 @@ QJsonObject Commodity::toJson()
     QJsonObject data;
     data.insert("id", getId());
     data.insert("name", getName());
-    data.insert("musicName", getMusicName());
-    data.insert("pathName", getPathName());
+    data.insert("count", getRetailPrice());
+    data.insert("retailPrice", getCount());
 
     return data;
 }
@@ -53,22 +53,22 @@ void Commodity::setName(QString name)
     m_name = name;
 }
 
-QString Commodity::getMusicName()
+int Commodity::getRetailPrice()
 {
-    return m_musicName;
+    return m_retailPrice;
 }
 
-void Commodity::setMusicName(QString musicName)
+void Commodity::setRetailPrice(int retaliPrice)
 {
-    m_musicName = musicName;
+    m_retailPrice = retaliPrice;
 }
 
-QString Commodity::getPathName()
+int Commodity::getCount()
 {
-    return m_pathName;
+    return m_count;
 }
 
-void Commodity::setPathName(QString pathName)
+void Commodity::setCount(int count)
 {
-    m_pathName = pathName;
+    m_count = count;
 }

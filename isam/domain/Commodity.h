@@ -18,24 +18,20 @@ public:
     QString getId();
     void setId(QString id);
 
-    /*"/Music/I miss.mp3"*/
-
-    QString getName();      /*I miss.mp3*/
+    QString getName();
     void setName(QString name);
 
-    QString getMusicName(); /*I miss*/
-    void setMusicName(QString musicName);
+    int getCount();
+    void setCount(int count);
 
-    QString getPathName();  /*/Music/I miss.mp3*/
-    void setPathName(QString pathName);
-
-
+    int getRetailPrice();
+    void setRetailPrice(int retailprice);
 
 private:
-    QString m_id;
-    QString m_name;
-    QString m_pathName;
-    QString m_musicName;
+    QString m_id; /*条形码ID*/
+    QString m_name; /**/
+    int m_count;
+    int m_retailPrice;
 };
 
 #endif // Commodity_H

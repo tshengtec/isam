@@ -13,17 +13,17 @@ public:
 
     Commodity *get(QString id);
 
-    void add(Commodity *musicBase);
+    void add(Commodity *commodity);
     void remove(QString id);
-    void update(Commodity *musicBase);
+    void update(Commodity *commodity);
 
 private:
     CommodityRepertory();
 
 private:
-    void save();
+    void save();//Todo
     void reload();
-    QString generateRandomId();
+    QString generateRandomId(); //Todo
 
 private:
     static CommodityRepertory* _instance;

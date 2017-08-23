@@ -30,13 +30,13 @@ Commodity *CommodityRepertory::get(QString id)
     return NULL;
 }
 
-void CommodityRepertory::add(Commodity *musicBase)
+void CommodityRepertory::add(Commodity *commodity)
 {
-    if (musicBase == NULL)
+    if (commodity == NULL)
         return;
 
-    musicBase->setId(generateRandomId());
-    m_commodity.append(musicBase);
+    commodity->setId(generateRandomId());
+    m_commodity.append(commodity);
     this->save();
 }
 
@@ -52,17 +52,17 @@ void CommodityRepertory::remove(QString id)
     this->save();
 }
 
-void CommodityRepertory::update(Commodity *musicBase)
+void CommodityRepertory::update(Commodity *commodity)
 {
-    if (musicBase == NULL)
+    if (commodity == NULL)
         return;
 
     for (int i = 0; i < m_commodity.count(); i++) {
-        Commodity * oldMusicBase = m_commodity.at(i);
-        if (oldMusicBase->getId() == musicBase->getId()) {
-            delete oldMusicBase;
+        Commodity * oldCommodity = m_commodity.at(i);
+        if (oldCommodity->getId() == commodity->getId()) {
+            delete oldCommodity;
 
-            m_commodity.replace(i, musicBase);
+            m_commodity.replace(i, commodity);
             break;
         }
     }
@@ -84,7 +84,7 @@ void CommodityRepertory::save()
     saveFile.open(QIODevice::WriteOnly);
 
     QJsonObject jsonObj;
-    jsonObj.insert("musicInfoArray", jsonValue.toArray());
+    jsonObj.insert("commodityInfoArray", jsonValue.toArray());
 
     QJsonDocument saveDoc(jsonObj);
     saveFile.write(saveDoc.toJson());
@@ -98,7 +98,7 @@ void CommodityRepertory::reload()
 
     QJsonDocument saveDoc(QJsonDocument::fromJson(saveData));
 
-    QJsonArray jsonList = saveDoc.object().value("musicInfoArray").toArray();
+    QJsonArray jsonList = saveDoc.object().value("commodityInfoArray").toArray();
     JsonListConvertor<Commodity> convertor;
     m_commodity = convertor.toList(jsonList);
 }
