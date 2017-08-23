@@ -7,5 +7,6 @@
         <file>qml/Common/Button/MenuButton.qml</file>
         <file>qml/MainWin/content/CommodityInfoListView/CommodityInfoListView.qml</file>
         <file>qml/MainWin/content/CommodityInfoOperation/CommodityInfoOperation.qml</file>
+        <file>qml/MainWin/content/BottomBar/BottomBar.qml</file>
     </qresource>
 </RCC>
