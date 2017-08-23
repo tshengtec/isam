@@ -3,7 +3,7 @@
 #include <QtQml>
 #include "Themes.h"
 
-#define BACKGROUNDCOLOR "lightblue"
+#define BACKGROUNDCOLOR "#1f29f9"
 
 int main(int argc, char *argv[])
 {
