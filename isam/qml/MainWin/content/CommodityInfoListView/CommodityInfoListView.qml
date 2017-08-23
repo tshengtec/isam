@@ -5,8 +5,6 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "lightblue"
 
-
-
     ListView {
         id: listViewId
         anchors.fill: parent
