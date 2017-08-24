@@ -20,6 +20,7 @@ Rectangle {
 
             ISAMTextInput {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
+
             }
 
             ISAMTextInput {

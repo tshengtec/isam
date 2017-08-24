@@ -9,13 +9,24 @@ SOURCES += main.cpp \
     infrastructure/domain/BaseItemModel.cpp \
     infrastructure/utils/Themes.cpp \
     infrastructure/repertory/CommodityRepertory.cpp \
-    domain/Commodity.cpp
+    domain/Commodity.cpp \
+    model/CommodityModel.cpp \
+    model/CommodityListModel.cpp \
+    service/CommodityService.cpp \
+    model/SalesCommodity/SalesCommodityModel.cpp \
+    model/SalesCommodity/SalesCommodityListModel.cpp \
+    service/SalesCommodity/SalesCommodityService.cpp
 
 RESOURCES += qml.qrc
 
 INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
                infrastructure/repertory
+INCLUDEPATH += model \
+               model/SalesCommodity
+
+INCLUDEPATH += service
+
 INCLUDEPATH += domain
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -34,4 +45,10 @@ HEADERS += \
     infrastructure/domain/BaseItemModel.h \
     infrastructure/utils/Themes.h \
     infrastructure/repertory/CommodityRepertory.h \
-    domain/Commodity.h
+    domain/Commodity.h \
+    model/CommodityModel.h \
+    model/CommodityListModel.h \
+    service/CommodityService.h \
+    model/SalesCommodity/SalesCommodityModel.h \
+    model/SalesCommodity/SalesCommodityListModel.h \
+    service/SalesCommodity/SalesCommodityService.h

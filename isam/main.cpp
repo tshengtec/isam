@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include "Themes.h"
+#include "CommodityRepertory.h"
 
 #define BACKGROUNDCOLOR "#1f29f9"
 
@@ -9,6 +10,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
+    CommodityRepertory::instance();
 
     QQmlApplicationEngine engine;
 
