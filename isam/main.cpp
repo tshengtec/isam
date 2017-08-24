@@ -4,13 +4,19 @@
 #include "Themes.h"
 #include "CommodityRepertory.h"
 
+#include "SalesCommodityEditModel.h"
+#include "SalesCommodityModel.h"
+#include "SalesCommodityListModel.h"
+
 #define BACKGROUNDCOLOR "#1f29f9"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    CommodityRepertory::instance();
+    qmlRegisterType<SalesCommodityEditModel>("MyModels", 1, 0, "SalesCommodityEditModel");
+    qmlRegisterType<SalesCommodityModel>("MyModels", 1, 0, "SalesCommodityModel");
+    qmlRegisterType<SalesCommodityListModel>("MyModels", 1, 0, "SalesCommodityListModel");
 
     QQmlApplicationEngine engine;
 

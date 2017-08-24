@@ -9,6 +9,15 @@ Commodity::Commodity()
     m_retailPrice = 0;
 }
 
+Commodity::Commodity(Commodity *commodity)
+{
+    if (commodity == NULL) return;
+    this->m_id = commodity->m_id;
+    this->m_name = commodity->m_name;
+    this->m_count = commodity->m_count;
+    this->m_retailPrice = commodity->m_retailPrice;
+}
+
 Commodity::~Commodity()
 {
 

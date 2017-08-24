@@ -16,6 +16,9 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: rootId.width/15; height: rootId.height/1.2
             btnText: "销售"
+            onIsClicked: {
+                salesCommodityEditModel.add("846930886");
+            }
         }
 
         MenuButton {

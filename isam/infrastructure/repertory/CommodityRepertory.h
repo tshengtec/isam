@@ -27,7 +27,7 @@ private:
 
 private:
     static CommodityRepertory* _instance;
-    QList<Commodity* > m_commodity;
+    QList<Commodity* > m_commodityList;
 };
 
 #endif // CommodityRepertory_H

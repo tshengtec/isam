@@ -1,4 +1,6 @@
 import QtQuick 2.5
+import MyModels 1.0
+import "./content"
 
 Rectangle {
     property variant spacingWidth: [1*width/20, 3*width/20, 4*width/20, 1*width/20, 1.5*width/20,
@@ -6,64 +8,40 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "lightblue"
 
+
+
+    //backGround
     ListView {
-        id: listViewId
-        anchors.fill: parent
+        id: listViewBackGroundId
+        width: parent.width; height: parent.height
         model: 10
         clip: true
         interactive: false
         headerPositioning: ListView.OverlayHeader
-        header:
-        Rectangle {
-            id: headerItemId
+        header: HeaderDelegate {
             z: 1.5
-            width: listViewId.width; height: listViewId.height/11
-            color: "#f0f0f0"
-            Row {
-                Repeater {
-                    model: ["序号", "条形码", "商品名称", "数量", "单价(元)", "折扣(%)", "折后单价(元)", "小计", "备注"]//listViewId.count
-                    Item {
-                        width: spacingWidth[index]; height: headerItemId.height
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: modelData
-                            font.pixelSize: parent.height/2.5
-                        }
-
-                        Rectangle {
-                            anchors.right: parent.right
-                            width: 1; height: parent.height
-                            color: "#d7d7d7"
-                        }
-                    }
-                }
-            }
+            width: listViewBackGroundId.width; height: listViewBackGroundId.height/11
         }
-        delegate:
-        Rectangle {
-            id: delegeRectId
+
+        delegate: ListViewDelegate {
+            width: listViewBackGroundId.width; height: listViewBackGroundId.height/11
+        }
+    }
+
+    ListView {
+        id: listViewId
+        z: listViewBackGroundId*2
+        width: parent.width; height: parent.height
+        model: salesCommodityListModel
+        clip: true
+        interactive: false
+        headerPositioning: ListView.OverlayHeader
+        header: Item {
+            clip: true
+            width: listViewBackGroundId.width; height: listViewBackGroundId.height/11
+        }
+        delegate: SalesCommodityDelegete {
             width: listViewId.width; height: listViewId.height/11
-            color: index%2 === 0 ? "white" : "#eeeeee"
-
-            Rectangle {
-                width: parent.width; height: 1
-                color: "#d7d7d7"
-            }
-
-            Row {
-                Repeater {
-                    model: listViewId.count
-                    Item {
-                        width: spacingWidth[index]; height: delegeRectId.height
-                        Rectangle {
-                            anchors.right: parent.right
-                            width: 1; height: parent.height
-                            color: "#d7d7d7"
-                        }
-                    }
-                }
-            }
         }
     }
 }

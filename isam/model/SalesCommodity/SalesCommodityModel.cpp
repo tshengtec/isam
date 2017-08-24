@@ -7,6 +7,14 @@ SalesCommodityModel::SalesCommodityModel(QObject *parent) :
     m_name = "";
 }
 
+SalesCommodityModel::SalesCommodityModel(Commodity *commodity, QObject *parent) :
+    BaseItemModel(parent)
+
+{
+    this->m_id = commodity->getId();
+    this->m_name = commodity->getName();
+}
+
 QString SalesCommodityModel::getId()
 {
     return m_id;

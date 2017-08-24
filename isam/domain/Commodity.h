@@ -10,6 +10,7 @@ class Commodity : public QObject, public DomainObject
     Q_OBJECT
 public:
     Commodity();
+    Commodity(Commodity* commodity);
     virtual ~Commodity();
 
     void fromJson(const QJsonObject data);

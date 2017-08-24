@@ -9,5 +9,8 @@
         <file>qml/MainWin/content/CommodityInfoOperation/CommodityInfoOperation.qml</file>
         <file>qml/MainWin/content/BottomBar/BottomBar.qml</file>
         <file>qml/Common/Text/ISAMTextInput.qml</file>
+        <file>qml/MainWin/content/CommodityInfoListView/content/HeaderDelegate.qml</file>
+        <file>qml/MainWin/content/CommodityInfoListView/content/ListViewDelegate.qml</file>
+        <file>qml/MainWin/content/CommodityInfoListView/content/SalesCommodityDelegete.qml</file>
     </qresource>
 </RCC>

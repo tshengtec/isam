@@ -1,5 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
+import MyModels 1.0
 import "./content/MenuBar"
 import "./content/CommodityInfoListView"
 import "./content/CommodityInfoOperation"
@@ -28,5 +29,18 @@ Window {
         BottomBar {
             width: windowsId.width; height: 4*windowsId.height/20
         }
+    }
+
+    //data
+    SalesCommodityEditModel {
+        id: salesCommodityEditModel
+    }
+
+    SalesCommodityModel {
+        id: salesCommodityModel
+    }
+
+    SalesCommodityListModel {
+        id: salesCommodityListModel
     }
 }
