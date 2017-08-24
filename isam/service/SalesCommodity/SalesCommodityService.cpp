@@ -81,26 +81,25 @@ bool SalesCommodityService::update(Commodity *commodity)
     return false;
 }
 
-bool SalesCommodityService::isPendingOperation()
+void SalesCommodityService::isPendingOperation()
 {
-    if (m_commodityList.count() == 0) {
-        return false;
-    }
-    else {
-        m_CommodityPendingList = m_commodityList;
-        setList(QList<Commodity* >());
-        return true;
-    }
+    if (m_commodityList.count() == 0)
+        return;
+
+    m_CommodityPendingList = m_commodityList;
+    setList(QList<Commodity* >());
 }
 
-bool SalesCommodityService::isGettingOperation()
+void SalesCommodityService::isGettingOperation()
 {
-    if (m_CommodityPendingList.count() == 0) {
+    setList(m_CommodityPendingList);
+    m_CommodityPendingList.clear();
+}
+
+bool SalesCommodityService::getIsPendingStatus()
+{
+    if (m_CommodityPendingList.count() == 0)
         return false;
-    }
-    else {
-        setList(m_CommodityPendingList);
-        m_CommodityPendingList.clear();
+    else
         return true;
-    }
 }

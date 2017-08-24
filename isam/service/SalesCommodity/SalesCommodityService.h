@@ -17,8 +17,10 @@ public:
     bool add(QString id);
     bool remove(QString id);
     bool update(Commodity *commodity);
-    bool isPendingOperation();
-    bool isGettingOperation();
+
+    void isPendingOperation();
+    void isGettingOperation();
+    bool getIsPendingStatus();
 
 private:
     void setList(QList<Commodity *> list);

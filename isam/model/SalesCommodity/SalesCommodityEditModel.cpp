@@ -20,18 +20,20 @@ bool SalesCommodityEditModel::update(Commodity *commodity)
     return SalesCommodityService::instance()->update(commodity);
 }
 
-bool SalesCommodityEditModel::isPendingOperation()
+void SalesCommodityEditModel::isPendingOperation()
 {
-    bool status = (SalesCommodityService::instance()->isPendingOperation());
-    setIsPending(status);
-    return status;
+    if (!getIsPending()) {
+        SalesCommodityService::instance()->isPendingOperation();
+        setIsPending(SalesCommodityService::instance()->getIsPendingStatus());
+    }
 }
 
-bool SalesCommodityEditModel::isGettingOperation()
+void SalesCommodityEditModel::isGettingOperation()
 {
-    bool status = SalesCommodityService::instance()->isGettingOperation();
-    setIsPending(false);
-    return status;
+    if (getIsPending()) {
+        SalesCommodityService::instance()->isGettingOperation();
+        setIsPending(SalesCommodityService::instance()->getIsPendingStatus());
+    }
 }
 
 bool SalesCommodityEditModel::getIsPending()
