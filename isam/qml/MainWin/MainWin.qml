@@ -8,17 +8,17 @@ import "./content/BottomBar"
 Window {
     id: windowsId
     visible: true
-    width: 1024
-    height: 600
+    width: 1280
+    height: 768
     title: qsTr("")
 
     Column {
         MenuBar {
-            width: windowsId.width; height: 2*windowsId.height/20
+            width: windowsId.width; height: 2.5*windowsId.height/20
         }
 
         CommodityInfoListView {
-            width: windowsId.width; height: 13*windowsId.height/20
+            width: windowsId.width; height: 12.5*windowsId.height/20
         }
 
         CommodityInfoOperation {

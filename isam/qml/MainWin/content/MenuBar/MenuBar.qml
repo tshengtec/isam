@@ -4,7 +4,7 @@ import "../../../Common/Button"
 Rectangle {
     id: rootId
     width: parent.width; height: parent.height
-    color: themesModel.backgroundColor
+    color: "#337cc9"//themesModel.backgroundColor
 
     Row {
         anchors.fill: parent

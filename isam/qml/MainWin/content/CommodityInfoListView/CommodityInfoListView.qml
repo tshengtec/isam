@@ -1,7 +1,8 @@
 import QtQuick 2.5
 
 Rectangle {
-    property variant spacingWidth: [70, 130, 215, 70, 90, 90, 90, 100, 170]
+    property variant spacingWidth: [1*width/20, 3*width/20, 4*width/20, 1*width/20, 1.5*width/20,
+                                    1.5*width/20, 2*width/20, 1.5*width/20, 4.5*width/20]
     width: parent.width; height: parent.height
     color: "lightblue"
 
@@ -17,7 +18,7 @@ Rectangle {
             id: headerItemId
             z: 1.5
             width: listViewId.width; height: listViewId.height/11
-            color: "#d5d5d5"
+            color: "#f0f0f0"
             Row {
                 Repeater {
                     model: ["序号", "条形码", "商品名称", "数量", "单价(元)", "折扣(%)", "折后单价(元)", "小计", "备注"]//listViewId.count
@@ -43,7 +44,7 @@ Rectangle {
         Rectangle {
             id: delegeRectId
             width: listViewId.width; height: listViewId.height/11
-            color: index%2 === 0 ? "white" : "#d5d5d5"
+            color: index%2 === 0 ? "white" : "#eeeeee"
 
             Rectangle {
                 width: parent.width; height: 1
