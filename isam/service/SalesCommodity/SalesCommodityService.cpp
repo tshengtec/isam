@@ -22,6 +22,12 @@ QList<Commodity *> SalesCommodityService::getList()
     return m_commodityList;
 }
 
+void SalesCommodityService::setList(QList<Commodity *> list)
+{
+    m_commodityList = list;
+    emit listChanged();
+}
+
 Commodity *SalesCommodityService::get(QString id)
 {
     for (int i = 0; i < m_commodityList.count(); i++) {
@@ -73,4 +79,28 @@ bool SalesCommodityService::update(Commodity *commodity)
     }
 
     return false;
+}
+
+bool SalesCommodityService::isPendingOperation()
+{
+    if (m_commodityList.count() == 0) {
+        return false;
+    }
+    else {
+        m_CommodityPendingList = m_commodityList;
+        setList(QList<Commodity* >());
+        return true;
+    }
+}
+
+bool SalesCommodityService::isGettingOperation()
+{
+    if (m_CommodityPendingList.count() == 0) {
+        return false;
+    }
+    else {
+        setList(m_CommodityPendingList);
+        m_CommodityPendingList.clear();
+        return true;
+    }
 }

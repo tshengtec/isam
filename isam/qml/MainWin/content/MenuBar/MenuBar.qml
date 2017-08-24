@@ -25,12 +25,15 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: rootId.width/15; height: rootId.height/1.2
             btnText: "挂单"
+            onIsClicked: salesCommodityEditModel.isPendingOperation()
         }
 
         MenuButton {
             anchors.verticalCenter: parent.verticalCenter
             width: rootId.width/15; height: rootId.height/1.2
             btnText: "取单"
+            onIsClicked: salesCommodityEditModel.isGettingOperation()
+            statusModel: salesCommodityEditModel.isPending
         }
 
         MenuButton {
