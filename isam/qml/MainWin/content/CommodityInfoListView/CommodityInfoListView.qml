@@ -34,7 +34,7 @@ Rectangle {
                         Rectangle {
                             anchors.right: parent.right
                             width: 1; height: parent.height
-                            color: "gray"
+                            color: "#d7d7d7"
                         }
                     }
                 }
@@ -48,7 +48,7 @@ Rectangle {
 
             Rectangle {
                 width: parent.width; height: 1
-                color: "gray"
+                color: "#d7d7d7"
             }
 
             Row {
@@ -59,7 +59,7 @@ Rectangle {
                         Rectangle {
                             anchors.right: parent.right
                             width: 1; height: parent.height
-                            color: "gray"
+                            color: "#d7d7d7"
                         }
                     }
                 }
