@@ -6,6 +6,7 @@
 
 #include "SalesCommodityEditModel.h"
 #include "SalesCommodityListModel.h"
+#include "SalesQueryListModel.h"
 
 #define BACKGROUNDCOLOR "#1f29f9"
 
@@ -15,6 +16,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<SalesCommodityEditModel>("MyModels", 1, 0, "SalesCommodityEditModel");
     qmlRegisterType<SalesCommodityListModel>("MyModels", 1, 0, "SalesCommodityListModel");
+    qmlRegisterType<SalesQueryListModel>("MyModels", 1, 0, "SalesQueryListModel");
+
 
     QQmlApplicationEngine engine;
 

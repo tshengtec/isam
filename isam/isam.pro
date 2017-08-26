@@ -20,18 +20,21 @@ SOURCES += main.cpp \
     model/BaseCommodity/BaseCommodityModel.cpp \
     service/SalesQuery/SalesQueryService.cpp \
     service/SalesQuery/QueryCommodityCondition.cpp \
-    infrastructure/utils/FuzzySearchTool.cpp
+    infrastructure/utils/FuzzySearchTool.cpp \
+    model/SalesQuery/SalesQueryListModel.cpp
 
 RESOURCES += qml.qrc
 
 INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
-               infrastructure/repertory
+               infrastructure/repertory \
+               infrastructure/enum
 
 INCLUDEPATH += model \
                model/BaseCommodity \
                model/SalesCommodity \
-               model/GettingCommodity
+               model/GettingCommodity \
+               model/SalesQuery
 
 INCLUDEPATH += service \
                service/SalesCommodity \
@@ -66,4 +69,6 @@ HEADERS += \
     model/BaseCommodity/BaseCommodityModel.h \
     service/SalesQuery/SalesQueryService.h \
     service/SalesQuery/QueryCommodityCondition.h \
-    infrastructure/utils/FuzzySearchTool.h
+    infrastructure/utils/FuzzySearchTool.h \
+    model/SalesQuery/SalesQueryListModel.h \
+    infrastructure/enum/EnumComplete.h
