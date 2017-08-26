@@ -21,6 +21,11 @@ QList<Commodity *> SalesQueryService::getList()
     return CommodityRepertory::instance()->getList();
 }
 
+QList<Commodity *> SalesQueryService::getList(QueryCommodityCondition condition)
+{
+
+}
+
 Commodity *SalesQueryService::get(QString id)
 {
     return CommodityRepertory::instance()->get(id);

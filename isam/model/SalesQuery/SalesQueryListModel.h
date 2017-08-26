@@ -19,7 +19,7 @@ signals:
     void statusChanged();
 
 private slots:
-    void reload();
+    Q_INVOKABLE void reload();
 
 private:
     EC::CommodityClassification aa;

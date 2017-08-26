@@ -39,4 +39,8 @@ Window {
     SalesCommodityListModel {
         id: salesCommodityListModel
     }
+
+    SalesQueryListModel {
+        id: salesQueryListModel
+    }
 }

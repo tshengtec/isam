@@ -38,7 +38,7 @@ INCLUDEPATH += model \
 
 INCLUDEPATH += service \
                service/SalesCommodity \
-               service/salesQuery
+               service/SalesQuery
 
 INCLUDEPATH += domain
 

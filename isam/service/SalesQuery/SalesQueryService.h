@@ -15,6 +15,8 @@ public:
     static SalesQueryService* instance();
 
     QList<Commodity *> getList();
+    QList<Commodity *> getList(QueryCommodityCondition condition);
+
     Commodity *get(QString id);
     Commodity *getFuzzy(QString target); //Fuzzy Search
 
