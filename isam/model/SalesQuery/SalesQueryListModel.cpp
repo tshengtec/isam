@@ -4,6 +4,7 @@
 SalesQueryListModel::SalesQueryListModel()
 {
     reload();
+    SalesQueryService::instance()->getList(QueryCommodityCondition());
 }
 
 int SalesQueryListModel::getCommodityClass()

@@ -4,7 +4,7 @@
 class EC { //EnumComplete
 public:
     enum CommodityClassification {
-        ALL
+        ALL = 0
     };
 
 };

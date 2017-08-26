@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "Commodity.h"
+#include "QueryCommodityCondition.h"
 
 class CommodityRepertory : public QObject
 {
