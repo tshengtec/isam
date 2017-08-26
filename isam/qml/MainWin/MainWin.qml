@@ -43,7 +43,7 @@ Window {
 
         BottomBar {
             width: windowsId.width; height: 4*windowsId.height/20
-            onSearched: dd
+            onSearched: selectedCommodityWin.visible = true
         }
     }
 
@@ -66,5 +66,6 @@ Window {
 
     SelectedCommodityWin {
         id: selectedCommodityWin
+        visible: false
     }
 }

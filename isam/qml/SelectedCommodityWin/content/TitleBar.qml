@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../Common/Button"
 
 Rectangle {
+    signal exited()
     width: parent.width; height: parent.height
     color: "#337cc9"
 
@@ -20,6 +21,7 @@ Rectangle {
         width: parent.height/1.2; height: width
         btnText: "X"
         onIsClicked: {
+            exited();
         }
     }
 }

@@ -17,6 +17,7 @@ Rectangle {
         Column {
            TitleBar {
                width: backGroundId.width; height: 1.5*rootId.height/20
+               onExited: rootId.visible = false
            }
         }
     }

@@ -14,5 +14,9 @@
         <file>qml/MainWin/content/CommodityInfoListView/content/SalesCommodityDelegete.qml</file>
         <file>qml/SelectedCommodityWin/SelectedCommodityWin.qml</file>
         <file>qml/SelectedCommodityWin/content/TitleBar.qml</file>
+        <file>qml/Common/ListView/ListViewMore.qml</file>
+        <file>qml/Common/ListView/content/HeaderDelegate.qml</file>
+        <file>qml/Common/ListView/content/ListViewDelegate.qml</file>
+        <file>qml/Common/ListView/content/ListViewBackGroupDelegate.qml</file>
     </qresource>
 </RCC>
