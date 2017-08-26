@@ -90,7 +90,7 @@ CommodityRepertory::CommodityRepertory()
     Commodity* commdity3 = new Commodity();
     commdity3->setId("1234678867");
     commdity3->setName("笔记本");
-    commdity2->setCommodityType("all");
+    commdity3->setCommodityType("all");
     add(commdity3);
 }
 

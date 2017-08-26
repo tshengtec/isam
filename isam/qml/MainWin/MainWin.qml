@@ -5,13 +5,28 @@ import "./content/MenuBar"
 import "./content/CommodityInfoListView"
 import "./content/CommodityInfoOperation"
 import "./content/BottomBar"
+import "../SelectedCommodityWin"
 
 Window {
     id: windowsId
     visible: true
-    width: 1280
-    height: 768
+    width: 1280/1.5
+    height: 768/1.5
+//    width: 1280
+//    height: 768
     title: qsTr("")
+
+    Item {
+        width: parent.width; height: parent.height
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: true
+            onClicked: {
+                console.log(">>>>")
+                focus = true
+            }
+        }
+    }
 
     Column {
         MenuBar {
@@ -28,6 +43,7 @@ Window {
 
         BottomBar {
             width: windowsId.width; height: 4*windowsId.height/20
+            onSearched: dd
         }
     }
 
@@ -43,6 +59,12 @@ Window {
     SalesQueryListModel {
         id: salesQueryListModel
         commodityType: "all"
-        searchText: "289"
+        searchText: "1"
+    }
+
+    //win-----------------------------
+
+    SelectedCommodityWin {
+        id: selectedCommodityWin
     }
 }

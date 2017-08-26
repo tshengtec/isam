@@ -3,6 +3,7 @@ import "../../../Common/Text"
 
 Rectangle {
     id: rootRectId
+    signal searched()
     width: parent.width; height: parent.height
     color: "lightblue"
 
@@ -20,7 +21,7 @@ Rectangle {
 
             ISAMTextInput {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
-
+                onIsReturnPressed: searched()
             }
 
             ISAMTextInput {
