@@ -7,6 +7,7 @@ Commodity::Commodity()
     m_name = QString::fromUtf8("Undefined");
     m_count = 0;
     m_retailPrice = 0;
+    m_commodityType = "";
 }
 
 Commodity::Commodity(Commodity *commodity)
@@ -75,6 +76,16 @@ int Commodity::getRetailPrice()
 void Commodity::setRetailPrice(int retaliPrice)
 {
     m_retailPrice = retaliPrice;
+}
+
+QString Commodity::getCommodityType()
+{
+    return m_commodityType;
+}
+
+void Commodity::setCommodityType(QString typeStr)
+{
+    m_commodityType = typeStr;
 }
 
 int Commodity::getCount()

@@ -5,12 +5,22 @@ QueryCommodityCondition::QueryCommodityCondition()
     m_commodityType = EC::ALL;
 }
 
-EC::CommodityClassification QueryCommodityCondition::getCommodityType()
+QString QueryCommodityCondition::getCommodityType()
 {
     return m_commodityType;
 }
 
-void QueryCommodityCondition::setCommodityType(EC::CommodityClassification type)
+void QueryCommodityCondition::setCommodityType(QString typeStr)
 {
-    m_commodityType = type;
+    m_commodityType = typeStr;
+}
+
+QString QueryCommodityCondition::getFuzzyStr()
+{
+    return m_fuzzyStr;
+}
+
+void QueryCommodityCondition::setFuzzyStr(QString fuzzyStr)
+{
+    m_fuzzyStr = fuzzyStr;
 }

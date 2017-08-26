@@ -2,7 +2,7 @@
 #define SALESQUERYSERVICE_H
 #include "CommodityRepertory.h"
 #include "QueryCommodityCondition.h"
-
+#include "FuzzySearchTool.h"
 /*
  * This class is used for all commodity query functions.
 */
@@ -22,6 +22,7 @@ public:
 
 private:
     static SalesQueryService* _instance;
+    FuzzySearchTool m_fuzzySearchTool;
 };
 
 #endif // SALESQUERYSERVICE_H

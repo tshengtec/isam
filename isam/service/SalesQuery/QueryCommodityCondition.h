@@ -2,17 +2,22 @@
 #define QUERYCOMMODITYCONDITION_H
 
 #include "EnumComplete.h"
+#include <QString>
 
 class QueryCommodityCondition
 {
 public:
     QueryCommodityCondition();
 
-    EC::CommodityClassification getCommodityType();
-    void setCommodityType(EC::CommodityClassification);
+    QString getCommodityType();
+    void setCommodityType(QString strType);
+
+    QString getFuzzyStr();
+    void setFuzzyStr(QString fuzzyStr);
 
 private:
-    EC::CommodityClassification m_commodityType;
+    QString m_commodityType;
+    QString m_fuzzyStr;
 };
 
 #endif // QUERYCOMMODITYCONDITION_H

@@ -29,11 +29,15 @@ public:
     int getRetailPrice();
     void setRetailPrice(int retailprice);
 
+    QString getCommodityType();
+    void setCommodityType(QString typeStr);
+
 private:
     QString m_id; /*条形码ID*/
     QString m_name; /**/
     int m_count;
     int m_retailPrice;
+    QString m_commodityType;
 };
 
 #endif // Commodity_H

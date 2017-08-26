@@ -26,19 +26,22 @@ QList<Commodity *> SalesQueryService::getList()
 QList<Commodity *> SalesQueryService::getList(QueryCommodityCondition condition)
 {
     QList<Commodity *> list = this->getList();
-    QString str;
-    str.append("^(.*");
-    str.append("12346");
-    str.append(".*)$");
-    QRegExp reg(str);
+    QList<Commodity *> newlist = QList<Commodity *>();
+
+    m_fuzzySearchTool.setFuzzyStr(condition.getFuzzyStr());
 
     for (int i = 0; i < list.count(); i++) {
-        int index = reg.indexIn(list.at(i)->getId());
-        qDebug()<<list.at(i)->getId();
-        if (index != -1) {
-            qDebug()<<11<<list.at(i)->getId();
+        Commodity* commodity = list.at(i);
+
+        if (condition.getCommodityType() == commodity->getCommodityType()) {
+            if (m_fuzzySearchTool.indexIn(commodity->getId())   != -1 ||
+                m_fuzzySearchTool.indexIn(commodity->getName()) != -1) {
+                newlist.append(commodity);
+            }
         }
     }
+
+    return newlist;
 }
 
 Commodity *SalesQueryService::get(QString id)
