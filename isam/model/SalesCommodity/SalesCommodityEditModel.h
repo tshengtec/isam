@@ -12,6 +12,7 @@ public:
 
     Q_INVOKABLE bool add(QString id);
     Q_INVOKABLE bool remove(QString id);
+    Q_INVOKABLE bool removeAll();
     Q_INVOKABLE bool update(Commodity *commodity);
     Q_INVOKABLE void onPendingOperation();
     Q_INVOKABLE void onGettingOperation();

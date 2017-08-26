@@ -22,7 +22,6 @@ Window {
             anchors.fill: parent
             propagateComposedEvents: true
             onClicked: {
-                console.log(">>>>")
                 focus = true
             }
         }
@@ -41,6 +40,7 @@ Window {
 
         CommodityInfoOperation {
             width: windowsId.width; height: 1*windowsId.height/20
+            onRemoveAll: salesCommodityEditModel.removeAll()
         }
 
         BottomBar {

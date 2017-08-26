@@ -15,6 +15,11 @@ bool SalesCommodityEditModel::remove(QString id)
     return SalesCommodityService::instance()->remove(id);
 }
 
+bool SalesCommodityEditModel::removeAll()
+{
+    return SalesCommodityService::instance()->removeAll();
+}
+
 bool SalesCommodityEditModel::update(Commodity *commodity)
 {
     return SalesCommodityService::instance()->update(commodity);

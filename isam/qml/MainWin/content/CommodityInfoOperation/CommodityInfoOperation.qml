@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../../Common/Button"
 
 Rectangle {
+    signal removeAll()
     id: rootRectId
     width: parent.width; height: parent.height
     color: "#00000000"
@@ -32,6 +33,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: rootRectId.width/10; height: rootRectId.height/1.2
             btnText: "移除商品"
+            onIsClicked: removeAll()
         }
     }
 }
