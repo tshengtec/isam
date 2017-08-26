@@ -36,10 +36,6 @@ Window {
         id: salesCommodityEditModel
     }
 
-    SalesCommodityModel {
-        id: salesCommodityModel
-    }
-
     SalesCommodityListModel {
         id: salesCommodityListModel
     }

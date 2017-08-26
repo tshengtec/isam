@@ -18,6 +18,11 @@ Commodity::Commodity(Commodity *commodity)
     this->m_retailPrice = commodity->m_retailPrice;
 }
 
+Commodity::Commodity(Commodity& commodity)
+{
+
+}
+
 Commodity::~Commodity()
 {
 

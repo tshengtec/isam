@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<SalesCommodityEditModel>("MyModels", 1, 0, "SalesCommodityEditModel");
-    qmlRegisterType<SalesCommodityModel>("MyModels", 1, 0, "SalesCommodityModel");
     qmlRegisterType<SalesCommodityListModel>("MyModels", 1, 0, "SalesCommodityListModel");
 
     QQmlApplicationEngine engine;

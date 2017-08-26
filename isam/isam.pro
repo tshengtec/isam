@@ -16,7 +16,9 @@ SOURCES += main.cpp \
     model/SalesCommodity/SalesCommodityModel.cpp \
     model/SalesCommodity/SalesCommodityListModel.cpp \
     service/SalesCommodity/SalesCommodityService.cpp \
-    model/SalesCommodity/SalesCommodityEditModel.cpp
+    model/SalesCommodity/SalesCommodityEditModel.cpp \
+    model/GettingCommodity/GettingCommodityListModel.cpp \
+    model/BaseCommodity/BaseCommodityModel.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,10 +26,13 @@ INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
                infrastructure/repertory
 INCLUDEPATH += model \
-               model/SalesCommodity
+               model/BaseCommoidty \
+               model/SalesCommodity \
+               model/GettingCommodity
 
 INCLUDEPATH += service \
                service/SalesCommodity
+
 
 INCLUDEPATH += domain
 
@@ -54,4 +59,6 @@ HEADERS += \
     model/SalesCommodity/SalesCommodityModel.h \
     model/SalesCommodity/SalesCommodityListModel.h \
     service/SalesCommodity/SalesCommodityService.h \
-    model/SalesCommodity/SalesCommodityEditModel.h
+    model/SalesCommodity/SalesCommodityEditModel.h \
+    model/GettingCommodity/GettingCommodityListModel.h \
+    model/BaseCommodity/BaseCommodityModel.h
