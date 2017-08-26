@@ -17,21 +17,25 @@ SOURCES += main.cpp \
     service/SalesCommodity/SalesCommodityService.cpp \
     model/SalesCommodity/SalesCommodityEditModel.cpp \
     model/GettingCommodity/GettingCommodityListModel.cpp \
-    model/BaseCommodity/BaseCommodityModel.cpp
+    model/BaseCommodity/BaseCommodityModel.cpp \
+    service/SalesQuery/SalesQueryService.cpp \
+    service/SalesQuery/QueryCommodityCondition.cpp \
+    infrastructure/utils/FuzzySearchTool.cpp
 
 RESOURCES += qml.qrc
 
 INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
                infrastructure/repertory
+
 INCLUDEPATH += model \
                model/BaseCommodity \
                model/SalesCommodity \
                model/GettingCommodity
 
 INCLUDEPATH += service \
-               service/SalesCommodity
-
+               service/SalesCommodity \
+               service/salesQuery
 
 INCLUDEPATH += domain
 
@@ -59,4 +63,7 @@ HEADERS += \
     service/SalesCommodity/SalesCommodityService.h \
     model/SalesCommodity/SalesCommodityEditModel.h \
     model/GettingCommodity/GettingCommodityListModel.h \
-    model/BaseCommodity/BaseCommodityModel.h
+    model/BaseCommodity/BaseCommodityModel.h \
+    service/SalesQuery/SalesQueryService.h \
+    service/SalesQuery/QueryCommodityCondition.h \
+    infrastructure/utils/FuzzySearchTool.h

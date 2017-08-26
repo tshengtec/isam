@@ -3,6 +3,10 @@
 
 #include "Commodity.h"
 
+/*
+ * This class is used for the current sales of goods,
+ * including the services provided by the register and the receipt.
+*/
 class SalesCommodityService : public QObject
 {
     Q_OBJECT
