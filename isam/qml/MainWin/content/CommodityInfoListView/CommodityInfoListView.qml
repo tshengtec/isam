@@ -1,47 +1,55 @@
 import QtQuick 2.5
 import MyModels 1.0
-import "./content"
+import "../../../Common/ListView"
+import "../../../Common/Button"
 
-Rectangle {
-    property variant spacingWidth: [1*width/20, 3*width/20, 4*width/20, 1*width/20, 1.5*width/20,
-                                    1.5*width/20, 2*width/20, 1.5*width/20, 4.5*width/20]
+Item {
+    id: rootItemId
+    signal delCommodity(int index)
+    property variant model: []
     width: parent.width; height: parent.height
-    color: "lightblue"
 
-
-
-    //backGround
-    ListView {
-        id: listViewBackGroundId
+    ListViewMore {
+        id: listViewMoreId
+        anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width; height: parent.height
-        model: 10
-        clip: true
-        interactive: false
-        headerPositioning: ListView.OverlayHeader
-        header: HeaderDelegate {
-            z: 1.5
-            width: listViewBackGroundId.width; height: listViewBackGroundId.height/11
-        }
-
-        delegate: ListViewDelegate {
-            width: listViewBackGroundId.width; height: listViewBackGroundId.height/11
-        }
+        spacingWidth: [1*width/20, 3*width/20, 4*width/20, 1*width/20, 1.5*width/20,
+                       1.5*width/20, 2*width/20, 1.5*width/20, 3*width/20, 1.5*width/20]
+        headerContentList: ["序号", "条形码", "商品名称", "数量", "单价(元)", "折扣(%)", "折后单价(元)", "小计", "备注", "删除"]
+        displayLine: 10
+        modelList: model
     }
 
     ListView {
-        id: listViewId
-        z: listViewBackGroundId*2
+        anchors.horizontalCenter: parent.horizontalCenter
+        id: listViewBackGroundId
         width: parent.width; height: parent.height
-        model: salesCommodityListModel
+        model: rootItemId.model
         clip: true
         interactive: false
         headerPositioning: ListView.OverlayHeader
-        header: Item {
-            clip: true
-            width: listViewBackGroundId.width; height: listViewBackGroundId.height/11
+        header: Item { width: 1; height: listViewBackGroundId.height/listViewMoreId.displayLine }
+        delegate:
+
+        Item {
+            x: xCount()
+            width: listViewMoreId.spacingWidth[listViewMoreId.spacingWidth.length-1];
+            height: listViewBackGroundId.height/listViewMoreId.displayLine
+
+            MenuButton {
+                anchors.centerIn: parent
+                width: parent.width/1.5; height: parent.height/1.5
+                btnText: "删除"
+                onIsClicked: delCommodity(index) //note
+            }
         }
-        delegate: SalesCommodityDelegete {
-            width: listViewId.width; height: listViewId.height/11
+    }
+
+    function xCount() {
+        var xValue = 0
+        for (var i = 0; i < listViewMoreId.spacingWidth.length - 1; i++) {
+            xValue += listViewMoreId.spacingWidth[i];
         }
+        return xValue;
     }
 }

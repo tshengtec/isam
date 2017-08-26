@@ -68,10 +68,13 @@ bool SalesCommodityService::add(QString id)
 bool SalesCommodityService::remove(QString id)
 {
     for (int i = 0; i < m_commodityList.count(); i++) {
-        QString commodityId = m_commodityList.at(i)->getId();
-        if (commodityId == id) {
+        Commodity* commodity = m_commodityList.at(i);
+        if (commodity == NULL)
+            return false;
+
+        if (commodity->getId() == id) {
             m_commodityList.removeAt(i);
-            delete m_commodityList.at(i);
+            delete commodity;
             emit listChanged();
             return true;
         }

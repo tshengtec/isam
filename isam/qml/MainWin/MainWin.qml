@@ -35,6 +35,8 @@ Window {
 
         CommodityInfoListView {
             width: windowsId.width; height: 12.5*windowsId.height/20
+            model: salesCommodityListModel
+            onDelCommodity: salesCommodityEditModel.remove(salesCommodityListModel.at(index).id)
         }
 
         CommodityInfoOperation {
@@ -67,6 +69,6 @@ Window {
     SelectedCommodityWin {
         id: selectedCommodityWin
         displayListModel: salesQueryListModel
-        visible: true
+        visible: false
     }
 }

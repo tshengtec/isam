@@ -32,7 +32,7 @@ Item {
         if (modelData === undefined)
             return ""
         if (index === 0)
-            return indexValue;
+            return indexValue + 1;
 
         return String(modelData[contentStrList[index]] !== undefined ?
                modelData[contentStrList[index]] : "")
