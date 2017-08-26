@@ -32,7 +32,7 @@ Rectangle {
         id: listViewId
         z: listViewBackGroundId*2
         width: parent.width; height: parent.height
-        model: salesQueryListModel//salesCommodityListModel
+        model: salesCommodityListModel
         clip: true
         interactive: false
         headerPositioning: ListView.OverlayHeader

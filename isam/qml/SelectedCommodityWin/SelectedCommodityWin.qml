@@ -37,8 +37,15 @@ Rectangle {
             SearchCommodityList {
                 width: parent.width; height: 12*parent.height/20
                 model: displayListModel
-//                onAddCommodity: aa
+                onAddCommodity: salesCommodityEditModel.add(getCommodityId(index))
             }
         }
+    }
+
+    function getCommodityId(index) {
+        if (displayListModel !== undefined && index < (displayListModel.size()) && index >= 0)
+            return displayListModel.at(index).id
+        else
+            return "";
     }
 }

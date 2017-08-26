@@ -3,6 +3,7 @@ import "../../Common/ListView"
 import "../../Common/Button"
 
 Item {
+    id: rootItemId
     signal addCommodity(int index)
     property variant model: []
     width: parent.width; height: parent.height
@@ -21,14 +22,15 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         id: listViewBackGroundId
         width: parent.width - 10; height: parent.height
-        model: listViewMoreId.displayLine
+        model: rootItemId.model
         clip: true
         interactive: false
         headerPositioning: ListView.OverlayHeader
+        header: Item { width: 1; height: listViewBackGroundId.height/listViewMoreId.displayLine }
         delegate:
 
         Item {
-            visible: index !== 0
+//            visible: index !== 0
             x: xCount()
             width: listViewMoreId.spacingWidth[listViewMoreId.spacingWidth.length-1];
             height: listViewBackGroundId.height/listViewMoreId.displayLine
@@ -37,7 +39,7 @@ Item {
                 anchors.centerIn: parent
                 width: parent.width/1.5; height: parent.height/1.5
                 btnText: "增加"
-                onIsClicked: addCommodity(index)
+                onIsClicked: addCommodity(index) //note
             }
         }
     }
