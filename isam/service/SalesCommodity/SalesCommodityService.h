@@ -19,11 +19,12 @@ public:
     bool update(Commodity *commodity);
     bool removeAll(); //removeAll m_commodityList
 
-    void onPendingOperation();
-    void onGettingOperation();
+    QString onPendingOperation(); //Press the functionality, return Pending operating state.
+    QString onGettingOperation(); //Press the functionality, return Getting operating state.
 
 private:
-    void setList(QList<Commodity *> list);
+    QList<Commodity* > copyList(QList<Commodity* > list);
+    void removeList(QList<Commodity* > removeList); // removeAll List
 
 signals:
     void listChanged();

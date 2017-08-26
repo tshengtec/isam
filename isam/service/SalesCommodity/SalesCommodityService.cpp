@@ -22,10 +22,23 @@ QList<Commodity *> SalesCommodityService::getList()
     return m_commodityList;
 }
 
-void SalesCommodityService::setList(QList<Commodity *> list)
+QList<Commodity *> SalesCommodityService::copyList(QList<Commodity *> list)
 {
-    m_commodityList = list;
-    emit listChanged();
+    QList<Commodity *> newList = QList<Commodity *>();
+    for (int i = 0; i < list.count(); i++) {
+        newList.append(new Commodity(list.at(i)));
+    }
+
+    return newList;
+}
+
+void SalesCommodityService::removeList(QList<Commodity *> removeList)
+{
+    while (removeList.count()) {
+        Commodity * oldCommodity = removeList.last();
+        removeList.removeLast();
+        delete oldCommodity;
+    }
 }
 
 Commodity *SalesCommodityService::get(QString id)
@@ -53,13 +66,7 @@ bool SalesCommodityService::add(QString id)
 
 bool SalesCommodityService::remove(QString id)
 {
-    for (int i = 0; i < m_commodityList.count(); i++) {
-        if (m_commodityList.at(i)->getId() == id) {
-            m_commodityList.removeAt(i);
-            emit listChanged();
-            return true;
-        }
-    }
+
     return false;
 }
 
@@ -83,30 +90,31 @@ bool SalesCommodityService::update(Commodity *commodity)
 
 bool SalesCommodityService::removeAll()
 {
-    while (this->m_commodityList.count()) {
-        Commodity * oldCommodity = m_commodityList.last();
-        m_commodityList.removeLast();
-        delete oldCommodity;
-    }
-
+    this->removeList(this->m_commodityList);
     emit listChanged();
     return true;
 }
 
-void SalesCommodityService::onPendingOperation()
+QString SalesCommodityService::onPendingOperation()
 {
     if (m_commodityList.count() == 0)
-        return;
+        return "挂单失败，不能为空！";
     if (m_CommodityPendingList.count() != 0)
-        return;
+        return "挂单失败，<取单>未取走";
 
-    m_CommodityPendingList = m_commodityList;
-    this->removeAll();
-    m_commodityList = m_CommodityPendingList;
+    m_CommodityPendingList = copyList(m_commodityList);
+    this->removeList(m_commodityList);
+    emit listChanged();
 }
 
-void SalesCommodityService::onGettingOperation()
+QString SalesCommodityService::onGettingOperation()
 {
-    setList(m_CommodityPendingList);
-    m_CommodityPendingList.clear();
+    if (m_CommodityPendingList.count() == 0)
+        return "取单失败，<取单>没有商品！";
+    if (m_commodityList.count() != 0)
+        return "取单失败，请先结算当前商品！";
+
+    m_commodityList = copyList(m_CommodityPendingList);
+    this->removeList(m_CommodityPendingList);
+    emit listChanged();
 }
