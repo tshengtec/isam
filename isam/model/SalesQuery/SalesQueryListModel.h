@@ -10,10 +10,14 @@ class SalesQueryListModel : public ObjectListModel<BaseCommodityModel>
 public:
     Q_ENUMS(aa)
     SalesQueryListModel();
-    Q_PROPERTY(int commodityClass READ getCommodityClass WRITE setCommodityClass NOTIFY statusChanged)
+    Q_PROPERTY(QString commodityType READ getCommodityType WRITE setCommodityType NOTIFY statusChanged)
+    Q_PROPERTY(QString searchText READ getSearchText WRITE setSearchText NOTIFY statusChanged)
 
-    int getCommodityClass();
-    void setCommodityClass(int comClass);
+    QString getCommodityType();
+    void setCommodityType(QString typeStr);
+
+    QString getSearchText();
+    void setSearchText(QString text);
 
 signals:
     void statusChanged();
@@ -22,7 +26,8 @@ private slots:
     Q_INVOKABLE void reload();
 
 private:
-    EC::CommodityClassification aa;
+    QString m_commodityType;
+    QString m_searchText;
 };
 
 #endif // SALESQUERYLISTMODEL_H

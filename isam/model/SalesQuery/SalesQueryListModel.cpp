@@ -3,23 +3,42 @@
 
 SalesQueryListModel::SalesQueryListModel()
 {
+    m_searchText = "";
+    m_commodityType = "all";
     reload();
-    SalesQueryService::instance()->getList(QueryCommodityCondition());
-}
-
-int SalesQueryListModel::getCommodityClass()
-{
+    connect(this, SIGNAL(statusChanged()), this, SLOT(reload()));
 
 }
 
-void SalesQueryListModel::setCommodityClass(int comClass)
+QString SalesQueryListModel::getSearchText()
 {
+    return m_searchText;
+}
 
+void SalesQueryListModel::setSearchText(QString text)
+{
+    m_searchText = text;
+    emit statusChanged();
+}
+
+QString SalesQueryListModel::getCommodityType()
+{
+    return m_commodityType;
+}
+
+void SalesQueryListModel::setCommodityType(QString typeStr)
+{
+    m_commodityType = typeStr;
+    emit statusChanged();
 }
 
 void SalesQueryListModel::reload()
 {
-    QList<Commodity *> commodityList = SalesQueryService::instance()->getList();
+    QueryCommodityCondition condition;
+    condition.setCommodityType(this->getCommodityType());
+    condition.setFuzzyStr(this->getSearchText());
+
+    QList<Commodity *> commodityList = SalesQueryService::instance()->getList(condition);
     QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
     Commodity* commodity = NULL;
 

@@ -42,5 +42,7 @@ Window {
 
     SalesQueryListModel {
         id: salesQueryListModel
+        commodityType: "all"
+        searchText: "289"
     }
 }
