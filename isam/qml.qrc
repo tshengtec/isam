@@ -19,5 +19,6 @@
         <file>qml/Common/ListView/content/ListViewDelegate.qml</file>
         <file>qml/Common/ListView/content/ListViewBackGroupDelegate.qml</file>
         <file>qml/SelectedCommodityWin/content/SearchBar.qml</file>
+        <file>qml/SelectedCommodityWin/content/SearchCommodityList.qml</file>
     </qresource>
 </RCC>

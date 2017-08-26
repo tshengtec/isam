@@ -34,7 +34,8 @@ Item {
         if (index === 0)
             return indexValue;
 
-        return modelData[contentStrList[index]]
+        return String(modelData[contentStrList[index]] !== undefined ?
+               modelData[contentStrList[index]] : "")
     }
 
 }
