@@ -17,7 +17,7 @@ Item {
                     text: String(getCommodityInfo(index))
                     color: "black"
                     anchors.centerIn: parent
-                    font.pixelSize: parent.height/3.5
+                    font.pixelSize: parent.height/3
                 }
                 Rectangle {
                     anchors.right: parent.right

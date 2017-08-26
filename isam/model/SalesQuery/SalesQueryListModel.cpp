@@ -34,12 +34,17 @@ void SalesQueryListModel::setCommodityType(QString typeStr)
 
 void SalesQueryListModel::reload()
 {
+    QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
+    if (this->getSearchText() == "") {
+        notifyResetList(modelList);
+        return;
+    }
+
     QueryCommodityCondition condition;
     condition.setCommodityType(this->getCommodityType());
     condition.setFuzzyStr(this->getSearchText());
 
     QList<Commodity *> commodityList = SalesQueryService::instance()->getList(condition);
-    QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
     Commodity* commodity = NULL;
 
     for (int i = 0; i < commodityList.count(); i++) {

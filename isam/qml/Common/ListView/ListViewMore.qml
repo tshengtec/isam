@@ -11,13 +11,11 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "#00000000"
 
-
-
     //backGround
     ListView {
         id: listViewBackGroundId
         width: parent.width; height: parent.height
-        model: spacingWidth.length
+        model: displayLine
         clip: true
         interactive: false
         headerPositioning: ListView.OverlayHeader
@@ -51,5 +49,12 @@ Rectangle {
             contentSpacingWidth: spacingWidth
             contentStrList: modelStrList
         }
+    }
+
+    Rectangle {
+        width: parent.width; height: parent.height
+        border.color: "#cccccc"
+        border.width: 1
+        color: "#00000000"
     }
 }

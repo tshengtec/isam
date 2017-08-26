@@ -15,7 +15,7 @@ Rectangle {
                 Text {
                     anchors.centerIn: parent
                     text: modelData
-                    font.pixelSize: parent.height/3.5
+                    font.pixelSize: parent.height/3
                 }
 
                 Rectangle {
@@ -25,5 +25,11 @@ Rectangle {
                 }
             }
         }
+    }
+
+    Rectangle {
+        anchors.bottom: parent.bottom
+        width: parent.width; height: 1
+        color: "#d7d7d7"
     }
 }

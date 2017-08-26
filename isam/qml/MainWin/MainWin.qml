@@ -59,13 +59,14 @@ Window {
     SalesQueryListModel {
         id: salesQueryListModel
         commodityType: "all"
-        searchText: "1"
+//        searchText: "1"
     }
 
     //win-----------------------------
 
     SelectedCommodityWin {
         id: selectedCommodityWin
-        visible: false
+        displayListModel: salesQueryListModel
+        visible: true
     }
 }
