@@ -26,13 +26,14 @@ QList<Commodity *> SalesCommodityService::copyList(QList<Commodity *> list)
 {
     QList<Commodity *> newList = QList<Commodity *>();
     for (int i = 0; i < list.count(); i++) {
-        newList.append(new Commodity(list.at(i)));
+        Commodity *newCommodity = new Commodity(list.at(i));
+        newList.append(newCommodity);
     }
 
     return newList;
 }
 
-void SalesCommodityService::removeList(QList<Commodity *> removeList)
+void SalesCommodityService::removeList(QList<Commodity *>& removeList)
 {
     while (removeList.count()) {
         Commodity * oldCommodity = removeList.last();
@@ -66,7 +67,16 @@ bool SalesCommodityService::add(QString id)
 
 bool SalesCommodityService::remove(QString id)
 {
+    for (int i = 0; i < m_commodityList.count(); i++) {
+        QString commodityId = m_commodityList.at(i)->getId();
+        if (commodityId == id) {
+            m_commodityList.removeAt(i);
+            delete m_commodityList.at(i);
+            emit listChanged();
+            return true;
+        }
 
+    }
     return false;
 }
 
@@ -98,13 +108,14 @@ bool SalesCommodityService::removeAll()
 QString SalesCommodityService::onPendingOperation()
 {
     if (m_commodityList.count() == 0)
-        return "挂单失败，不能为空！";
+        return "挂单失败，没有商品！";
     if (m_CommodityPendingList.count() != 0)
         return "挂单失败，<取单>未取走";
 
     m_CommodityPendingList = copyList(m_commodityList);
     this->removeList(m_commodityList);
     emit listChanged();
+    return "";
 }
 
 QString SalesCommodityService::onGettingOperation()
@@ -117,4 +128,5 @@ QString SalesCommodityService::onGettingOperation()
     m_commodityList = copyList(m_CommodityPendingList);
     this->removeList(m_CommodityPendingList);
     emit listChanged();
+    return "";
 }

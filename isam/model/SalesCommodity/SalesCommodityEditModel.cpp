@@ -22,18 +22,12 @@ bool SalesCommodityEditModel::update(Commodity *commodity)
 
 void SalesCommodityEditModel::onPendingOperation()
 {
-//    if (!getIsPending()) {
-        SalesCommodityService::instance()->onPendingOperation();
-//        setIsPending(SalesCommodityService::instance()->getIsPendingStatus());
-//    }
+    SalesCommodityService::instance()->onPendingOperation();
 }
 
 void SalesCommodityEditModel::onGettingOperation()
 {
-//    if (getIsPending()) {
-//        SalesCommodityService::instance()->onGettingOperation();
-//        setIsPending(SalesCommodityService::instance()->getIsPendingStatus());
-//    }
+    SalesCommodityService::instance()->onGettingOperation();
 }
 
 bool SalesCommodityEditModel::getIsPending()

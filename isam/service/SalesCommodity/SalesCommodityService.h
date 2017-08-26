@@ -24,7 +24,7 @@ public:
 
 private:
     QList<Commodity* > copyList(QList<Commodity* > list);
-    void removeList(QList<Commodity* > removeList); // removeAll List
+    void removeList(QList<Commodity* >& removeList); // removeAll List
 
 signals:
     void listChanged();
