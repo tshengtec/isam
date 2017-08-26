@@ -2,20 +2,22 @@ import QtQuick 2.0
 
 Item {
     property variant indexValue: index
+    property variant contentSpacingWidth: []
+    property variant contentStrList: []
     id: delegeRectId
     width: parent.width; height: parent.height
 
     Row {
         Repeater {
-            model: listViewBackGroundId.count
+            model: contentSpacingWidth.length
             Item {
-                width: spacingWidth[index]; height: delegeRectId.height
+                width: contentSpacingWidth[index]; height: delegeRectId.height
                 clip: true
                 Text {
                     text: String(getCommodityInfo(index))
                     color: "black"
                     anchors.centerIn: parent
-                    font.pixelSize: parent.height/2.5
+                    font.pixelSize: parent.height/3.5
                 }
                 Rectangle {
                     anchors.right: parent.right
@@ -29,12 +31,10 @@ Item {
     function getCommodityInfo(index) {
         if (modelData === undefined)
             return ""
-        switch(index) {
-        case 0: return indexValue
-        case 1: return modelData.id
-        case 2: return modelData.name
-        default: return ""
-        }
+        if (index === 0)
+            return indexValue;
+
+        return modelData[contentStrList[index]]
     }
 
 }

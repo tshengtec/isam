@@ -15,7 +15,7 @@ Rectangle {
                 Text {
                     anchors.centerIn: parent
                     text: modelData
-                    font.pixelSize: parent.height/2.5
+                    font.pixelSize: parent.height/3.5
                 }
 
                 Rectangle {
