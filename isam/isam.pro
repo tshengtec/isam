@@ -13,7 +13,6 @@ SOURCES += main.cpp \
     model/CommodityModel.cpp \
     model/CommodityListModel.cpp \
     service/CommodityService.cpp \
-    model/SalesCommodity/SalesCommodityModel.cpp \
     model/SalesCommodity/SalesCommodityListModel.cpp \
     service/SalesCommodity/SalesCommodityService.cpp \
     model/SalesCommodity/SalesCommodityEditModel.cpp \
@@ -26,7 +25,7 @@ INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
                infrastructure/repertory
 INCLUDEPATH += model \
-               model/BaseCommoidty \
+               model/BaseCommodity \
                model/SalesCommodity \
                model/GettingCommodity
 
@@ -56,7 +55,6 @@ HEADERS += \
     model/CommodityModel.h \
     model/CommodityListModel.h \
     service/CommodityService.h \
-    model/SalesCommodity/SalesCommodityModel.h \
     model/SalesCommodity/SalesCommodityListModel.h \
     service/SalesCommodity/SalesCommodityService.h \
     model/SalesCommodity/SalesCommodityEditModel.h \

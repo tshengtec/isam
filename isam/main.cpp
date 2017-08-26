@@ -5,7 +5,6 @@
 #include "CommodityRepertory.h"
 
 #include "SalesCommodityEditModel.h"
-#include "SalesCommodityModel.h"
 #include "SalesCommodityListModel.h"
 
 #define BACKGROUNDCOLOR "#1f29f9"

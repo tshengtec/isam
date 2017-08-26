@@ -1,10 +1,10 @@
 #ifndef SALESCOMMODITYEDITMODEL_H
 #define SALESCOMMODITYEDITMODEL_H
 
-#include "SalesCommodityModel.h"
+#include "BaseCommodityModel.h"
 #include "SalesCommodityService.h"
 
-class SalesCommodityEditModel : public SalesCommodityModel
+class SalesCommodityEditModel : public BaseCommodityModel
 {
     Q_OBJECT
 public:
@@ -13,8 +13,8 @@ public:
     Q_INVOKABLE bool add(QString id);
     Q_INVOKABLE bool remove(QString id);
     Q_INVOKABLE bool update(Commodity *commodity);
-    Q_INVOKABLE void isPendingOperation();
-    Q_INVOKABLE void isGettingOperation();
+    Q_INVOKABLE void onPendingOperation();
+    Q_INVOKABLE void onGettingOperation();
 
     Q_PROPERTY(bool isPending READ getIsPending WRITE setIsPending NOTIFY statusChanged)
 

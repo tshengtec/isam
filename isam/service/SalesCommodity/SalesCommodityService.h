@@ -17,10 +17,10 @@ public:
     bool add(QString id);
     bool remove(QString id);
     bool update(Commodity *commodity);
+    bool removeAll(); //removeAll m_commodityList
 
-    void isPendingOperation();
-    void isGettingOperation();
-    bool getIsPendingStatus();
+    void onPendingOperation();
+    void onGettingOperation();
 
 private:
     void setList(QList<Commodity *> list);

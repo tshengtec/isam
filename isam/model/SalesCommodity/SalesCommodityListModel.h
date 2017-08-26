@@ -1,9 +1,9 @@
 #ifndef SALESCOMMODITYLISTMODEL_H
 #define SALESCOMMODITYLISTMODEL_H
 #include "ObjectListModel.h"
-#include "SalesCommodityModel.h"
+#include "BaseCommodityModel.h"
 
-class SalesCommodityListModel : public ObjectListModel<SalesCommodityModel>
+class SalesCommodityListModel : public ObjectListModel<BaseCommodityModel>
 {
     Q_OBJECT
 public:

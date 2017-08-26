@@ -81,25 +81,32 @@ bool SalesCommodityService::update(Commodity *commodity)
     return false;
 }
 
-void SalesCommodityService::isPendingOperation()
+bool SalesCommodityService::removeAll()
+{
+    while (this->m_commodityList.count()) {
+        Commodity * oldCommodity = m_commodityList.last();
+        m_commodityList.removeLast();
+        delete oldCommodity;
+    }
+
+    emit listChanged();
+    return true;
+}
+
+void SalesCommodityService::onPendingOperation()
 {
     if (m_commodityList.count() == 0)
         return;
+    if (m_CommodityPendingList.count() != 0)
+        return;
 
     m_CommodityPendingList = m_commodityList;
-    setList(QList<Commodity* >());
+    this->removeAll();
+    m_commodityList = m_CommodityPendingList;
 }
 
-void SalesCommodityService::isGettingOperation()
+void SalesCommodityService::onGettingOperation()
 {
     setList(m_CommodityPendingList);
     m_CommodityPendingList.clear();
-}
-
-bool SalesCommodityService::getIsPendingStatus()
-{
-    if (m_CommodityPendingList.count() == 0)
-        return false;
-    else
-        return true;
 }

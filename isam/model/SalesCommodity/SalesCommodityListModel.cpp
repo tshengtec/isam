@@ -10,13 +10,13 @@ SalesCommodityListModel::SalesCommodityListModel()
 void SalesCommodityListModel::reload()
 {
     QList<Commodity *> commodityList = SalesCommodityService::instance()->getList();
-    QList<SalesCommodityModel *> modelList = QList<SalesCommodityModel *>();
+    QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
     Commodity* commodity = NULL;
 
     for (int i = 0; i < commodityList.count(); i++) {
         commodity = commodityList.at(i);
         if (commodity != NULL) {
-            SalesCommodityModel* newModel = new SalesCommodityModel(commodity, this);
+            BaseCommodityModel* newModel = new BaseCommodityModel(commodity, this);
             modelList.append(newModel);
         }
     }
