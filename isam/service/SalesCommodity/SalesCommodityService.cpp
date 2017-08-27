@@ -22,6 +22,11 @@ QList<Commodity *> SalesCommodityService::getList()
     return m_commodityList;
 }
 
+QList<SalesNote *> SalesCommodityService::getSalesList()
+{
+    return m_SalesList;
+}
+
 QList<Commodity *> SalesCommodityService::copyList(QList<Commodity *> list)
 {
     QList<Commodity *> newList = QList<Commodity *>();
@@ -105,6 +110,17 @@ bool SalesCommodityService::removeAll()
 {
     this->removeList(this->m_commodityList);
     emit listChanged();
+    return true;
+}
+
+bool SalesCommodityService::settleMent()
+{
+    SalesNote* salesNote = new SalesNote();
+    salesNote->setOwner("piter");
+    salesNote->setDateTime(QDateTime::currentDateTime());
+    salesNote->setList(this->copyList(m_commodityList));
+    m_SalesList.append(salesNote);
+    this->removeAll();
     return true;
 }
 

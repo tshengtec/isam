@@ -25,6 +25,14 @@ bool SalesCommodityEditModel::update(Commodity *commodity)
     return SalesCommodityService::instance()->update(commodity);
 }
 
+bool SalesCommodityEditModel::settleMent()
+{
+    if (SalesCommodityService::instance()->getList().count() > 0)
+        return SalesCommodityService::instance()->settleMent();
+    else
+        return false;
+}
+
 void SalesCommodityEditModel::onPendingOperation()
 {
     SalesCommodityService::instance()->onPendingOperation();
