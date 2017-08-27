@@ -1,27 +1,27 @@
 #ifndef COMMIDITYQUERYSERVICE_H
 #define COMMIDITYQUERYSERVICE_H
 #include "CommodityRepertory.h"
-#include "QueryCommodityCondition.h"
+#include "CommodityQueryCondition.h"
 #include "FuzzySearchTool.h"
 /*
  * This class is used for all commodity query functions.
 */
-class CommidityQueryService : public QObject
+class CommodityQueryService : public QObject
 {
     Q_OBJECT
 public:
-    CommidityQueryService();
+    CommodityQueryService();
 
-    static CommidityQueryService* instance();
+    static CommodityQueryService* instance();
 
     QList<Commodity *> getList();
-    QList<Commodity *> getList(QueryCommodityCondition condition);
+    QList<Commodity *> getList(CommodityQueryCondition condition);
 
     Commodity *get(QString id);
     Commodity *getFuzzy(QString target); //Fuzzy Search
 
 private:
-    static CommidityQueryService* _instance;
+    static CommodityQueryService* _instance;
     FuzzySearchTool m_fuzzySearchTool;
 };
 

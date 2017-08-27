@@ -19,11 +19,11 @@ SOURCES += main.cpp \
     model/GettingCommodity/GettingCommodityListModel.cpp \
     model/BaseCommodity/BaseCommodityModel.cpp \
     service/SalesQuery/SalesQueryService.cpp \
-    service/SalesQuery/QueryCommodityCondition.cpp \
     infrastructure/utils/FuzzySearchTool.cpp \
     model/SalesQuery/SalesQueryListModel.cpp \
-    service/CommidityQuery/CommidityQueryService.cpp \
-    service/CommidityQuery/CommidityQueryCondition.cpp
+    service/CommodityQuery/CommodityQueryService.cpp \
+    service/CommodityQuery/CommodityQueryCondition.cpp \
+    model/CommodityQuery/CommodityQueryListModel.cpp
 
 RESOURCES += qml.qrc
 
@@ -36,11 +36,13 @@ INCLUDEPATH += model \
                model/BaseCommodity \
                model/SalesCommodity \
                model/GettingCommodity \
-               model/SalesQuery
+               model/SalesQuery \
+               model/CommodityQuery
 
 INCLUDEPATH += service \
                service/SalesCommodity \
-               service/SalesQuery
+               service/SalesQuery \
+               service/CommodityQuery
 
 INCLUDEPATH += domain
 
@@ -70,9 +72,9 @@ HEADERS += \
     model/GettingCommodity/GettingCommodityListModel.h \
     model/BaseCommodity/BaseCommodityModel.h \
     service/SalesQuery/SalesQueryService.h \
-    service/SalesQuery/QueryCommodityCondition.h \
     infrastructure/utils/FuzzySearchTool.h \
     model/SalesQuery/SalesQueryListModel.h \
     infrastructure/enum/EnumComplete.h \
-    service/CommidityQuery/CommidityQueryService.h \
-    service/CommidityQuery/CommidityQueryCondition.h
+    service/CommodityQuery/CommodityQueryService.h \
+    service/CommodityQuery/CommodityQueryCondition.h \
+    model/CommodityQuery/CommodityQueryListModel.h

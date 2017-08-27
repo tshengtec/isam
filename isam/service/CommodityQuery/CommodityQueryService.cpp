@@ -1,29 +1,29 @@
-#include "CommidityQueryService.h"
+#include "CommodityQueryService.h"
 #include <QRegExp>
 #include <QDebug>
 #include <QString>
 
-CommidityQueryService * CommidityQueryService::_instance = NULL;
+CommodityQueryService * CommodityQueryService::_instance = NULL;
 
 
-CommidityQueryService::CommidityQueryService()
+CommodityQueryService::CommodityQueryService()
 {
 }
 
-CommidityQueryService *CommidityQueryService::instance()
+CommodityQueryService *CommodityQueryService::instance()
 {
     if (_instance == NULL) {
-        _instance = new CommidityQueryService();
+        _instance = new CommodityQueryService();
     }
     return _instance;
 }
 
-QList<Commodity *> CommidityQueryService::getList()
+QList<Commodity *> CommodityQueryService::getList()
 {
     return CommodityRepertory::instance()->getList();
 }
 
-QList<Commodity *> CommidityQueryService::getList(QueryCommodityCondition condition)
+QList<Commodity *> CommodityQueryService::getList(CommodityQueryCondition condition)
 {
     QList<Commodity *> list = this->getList();
     QList<Commodity *> newlist = QList<Commodity *>();
@@ -44,12 +44,12 @@ QList<Commodity *> CommidityQueryService::getList(QueryCommodityCondition condit
     return newlist;
 }
 
-Commodity *CommidityQueryService::get(QString id)
+Commodity *CommodityQueryService::get(QString id)
 {
     return CommodityRepertory::instance()->get(id);
 }
 
-Commodity *CommidityQueryService::getFuzzy(QString target)
+Commodity *CommodityQueryService::getFuzzy(QString target)
 {
     QList<Commodity *> list = this->getList();
 

@@ -34,26 +34,26 @@ void SalesQueryListModel::setCommodityType(QString typeStr)
 
 void SalesQueryListModel::reload()
 {
-    QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
-    if (this->getSearchText() == "") {
-        notifyResetList(modelList);
-        return;
-    }
+//    QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
+//    if (this->getSearchText() == "") {
+//        notifyResetList(modelList);
+//        return;
+//    }
 
-    QueryCommodityCondition condition;
-    condition.setCommodityType(this->getCommodityType());
-    condition.setFuzzyStr(this->getSearchText());
+//    QueryCommodityCondition condition;
+//    condition.setCommodityType(this->getCommodityType());
+//    condition.setFuzzyStr(this->getSearchText());
 
-    QList<Commodity *> commodityList = SalesQueryService::instance()->getList(condition);
-    Commodity* commodity = NULL;
+//    QList<Commodity *> commodityList = SalesQueryService::instance()->getList(condition);
+//    Commodity* commodity = NULL;
 
-    for (int i = 0; i < commodityList.count(); i++) {
-        commodity = commodityList.at(i);
-        if (commodity != NULL) {
-            BaseCommodityModel* newModel = new BaseCommodityModel(commodity, this);
-            modelList.append(newModel);
-        }
-    }
+//    for (int i = 0; i < commodityList.count(); i++) {
+//        commodity = commodityList.at(i);
+//        if (commodity != NULL) {
+//            BaseCommodityModel* newModel = new BaseCommodityModel(commodity, this);
+//            modelList.append(newModel);
+//        }
+//    }
 
-    notifyResetList(modelList);
+//    notifyResetList(modelList);
 }

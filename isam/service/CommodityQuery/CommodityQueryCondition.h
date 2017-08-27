@@ -3,10 +3,10 @@
 #include "EnumComplete.h"
 #include <QString>
 
-class CommidityQueryCondition
+class CommodityQueryCondition
 {
 public:
-    CommidityQueryCondition();
+    CommodityQueryCondition();
 
     QString getCommodityType();
     void setCommodityType(QString strType);

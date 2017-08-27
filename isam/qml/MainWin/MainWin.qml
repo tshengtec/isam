@@ -60,17 +60,20 @@ Window {
         id: salesCommodityListModel
     }
 
+    CommodityQueryListModel {
+        id: commodityQueryListModel
+        commodityType: "all"
+    }
+
     SalesQueryListModel {
         id: salesQueryListModel
-        commodityType: "all"
-//        searchText: "1"
     }
 
     //win-----------------------------
 
     SelectedCommodityWin {
         id: selectedCommodityWin
-        displayListModel: salesQueryListModel
+        displayListModel: commodityQueryListModel
         visible: false
     }
 
