@@ -21,7 +21,9 @@ SOURCES += main.cpp \
     service/SalesQuery/SalesQueryService.cpp \
     service/SalesQuery/QueryCommodityCondition.cpp \
     infrastructure/utils/FuzzySearchTool.cpp \
-    model/SalesQuery/SalesQueryListModel.cpp
+    model/SalesQuery/SalesQueryListModel.cpp \
+    service/CommidityQuery/CommidityQueryService.cpp \
+    service/CommidityQuery/CommidityQueryCondition.cpp
 
 RESOURCES += qml.qrc
 
@@ -71,4 +73,6 @@ HEADERS += \
     service/SalesQuery/QueryCommodityCondition.h \
     infrastructure/utils/FuzzySearchTool.h \
     model/SalesQuery/SalesQueryListModel.h \
-    infrastructure/enum/EnumComplete.h
+    infrastructure/enum/EnumComplete.h \
+    service/CommidityQuery/CommidityQueryService.h \
+    service/CommidityQuery/CommidityQueryCondition.h

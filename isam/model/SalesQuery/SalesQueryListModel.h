@@ -8,7 +8,6 @@ class SalesQueryListModel : public ObjectListModel<BaseCommodityModel>
 {
     Q_OBJECT
 public:
-    Q_ENUMS(aa)
     SalesQueryListModel();
     Q_PROPERTY(QString commodityType READ getCommodityType WRITE setCommodityType NOTIFY statusChanged)
     Q_PROPERTY(QString searchText READ getSearchText WRITE setSearchText NOTIFY statusChanged)
