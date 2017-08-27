@@ -85,6 +85,6 @@ Window {
 
     SalesQueryWin {
         id: salesQueryWin
-
+//        visible: false
     }
 }
