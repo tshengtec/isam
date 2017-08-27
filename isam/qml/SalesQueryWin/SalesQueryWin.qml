@@ -3,6 +3,7 @@ import "../ProjectCommon/Bar"
 import "./content/LeftPart"
 
 Rectangle {
+    property variant allSalseListModelToLeftPart: []
     id: rootId
     width: parent.width; height: parent.height
 
@@ -19,6 +20,7 @@ Rectangle {
 
             LeftPart {
                 width: 6*parent.width/20; height: parent.height
+                allSalseListModel: allSalseListModelToLeftPart
             }
 
         }

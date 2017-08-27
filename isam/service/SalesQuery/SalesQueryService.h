@@ -1,7 +1,8 @@
 #ifndef SALESQUERYSERVICE_H
 #define SALESQUERYSERVICE_H
-#include "CommodityRepertory.h"
-#include "FuzzySearchTool.h"
+
+#include "SalesNote.h"
+#include "SalesQueryCondition.h"
 /*
  * This class is used for all commodity query functions.
 */
@@ -12,7 +13,7 @@ public:
     SalesQueryService();
 
     static SalesQueryService* instance();
-
+    QList<SalesNote *> getList(SalesQueryCondition condition);
 
 private:
     static SalesQueryService* _instance;

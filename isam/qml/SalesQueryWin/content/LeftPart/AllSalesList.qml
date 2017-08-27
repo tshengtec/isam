@@ -37,7 +37,7 @@ Item {
             id: listViewId
             width: parent.width; height: 17.2*parent.height/20
             clip: true
-            model: 1//salseListModel
+            model: salseListModel
             delegate:
             Rectangle {
                 width: listViewId.width; height: listViewId.height/7

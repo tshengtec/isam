@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../../Common/Button"
 
 Rectangle {
+    signal salsed()
     id: rootId
     width: parent.width; height: parent.height
     color: "#337cc9"//themesModel.backgroundColor
@@ -17,9 +18,7 @@ Rectangle {
             width: rootId.width/15; height: rootId.height/1.2
             btnText: "销售"
             onIsClicked: {
-                console.log(">JKJKJ")
-                focus = true
-                salesCommodityEditModel.add("2893849123");
+                salsed()
             }
         }
 

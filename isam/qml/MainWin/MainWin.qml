@@ -32,6 +32,7 @@ Window {
     Column {
         MenuBar {
             width: windowsId.width; height: 2.5*windowsId.height/20
+            onSalsed: salesQueryWin.visible = true
         }
 
         CommodityInfoListView {
@@ -85,6 +86,6 @@ Window {
 
     SalesQueryWin {
         id: salesQueryWin
-//        visible: false
+        visible: false
     }
 }

@@ -1,5 +1,5 @@
 #include "SalesQueryService.h"
-#include <QRegExp>
+#include "SalesCommodityService.h"
 #include <QDebug>
 #include <QString>
 
@@ -16,4 +16,10 @@ SalesQueryService *SalesQueryService::instance()
         _instance = new SalesQueryService();
     }
     return _instance;
+}
+
+QList<SalesNote *> SalesQueryService::getList(SalesQueryCondition condition)
+{
+    QList<SalesNote *> allSalesList = SalesCommodityService::instance()->getSalesList();
+    return allSalesList;
 }

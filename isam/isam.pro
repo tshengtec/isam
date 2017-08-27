@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     service/CommodityQuery/CommodityQueryService.cpp \
     service/CommodityQuery/CommodityQueryCondition.cpp \
     model/CommodityQuery/CommodityQueryListModel.cpp \
-    service/SalesCommodity/SalesNote.cpp
+    service/SalesCommodity/SalesNote.cpp \
+    service/SalesQuery/SalesQueryCondition.cpp
 
 RESOURCES += qml.qrc
 
@@ -79,4 +80,5 @@ HEADERS += \
     service/CommodityQuery/CommodityQueryService.h \
     service/CommodityQuery/CommodityQueryCondition.h \
     model/CommodityQuery/CommodityQueryListModel.h \
-    service/SalesCommodity/SalesNote.h
+    service/SalesCommodity/SalesNote.h \
+    service/SalesQuery/SalesQueryCondition.h

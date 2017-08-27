@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../../Common/Button"
 
 Rectangle {
+    property variant allSalseListModel: []
     width: parent.width; height: parent.height
     color: "#d5d5d5"
 
@@ -37,6 +38,7 @@ Rectangle {
 
         AllSalesList {
             width: parent.width; height: 15.5*parent.height/20
+            salseListModel: allSalseListModel
         }
 
         Rectangle {
