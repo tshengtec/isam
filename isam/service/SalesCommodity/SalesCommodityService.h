@@ -37,6 +37,7 @@ private:
     static SalesCommodityService* _instance;
     QList<Commodity* > m_commodityList;
     QList<Commodity* > m_CommodityPendingList;
+    QList<QList<Commodity *>> m_SalesCommodityServiceList;
 };
 
 #endif // SALESCOMMODITYSERVICE_H
