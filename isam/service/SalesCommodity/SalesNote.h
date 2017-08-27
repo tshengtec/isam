@@ -10,6 +10,9 @@ public:
     QList<Commodity *> getList();
     void setList(QList<Commodity *> list);
 
+    QString getId();
+    void setId(QString id);
+
     QString getOwner();
     void setOwner(QString owner);
 
@@ -21,6 +24,7 @@ private:
 
 private:
     QList<Commodity* > m_salesBaseNote;
+    QString m_id;
     QString m_owner;
     QDateTime m_dateTime; //Time for selling
 };

@@ -13,6 +13,7 @@ public:
 
     static SalesQueryService* instance();
 
+
 private:
     static SalesQueryService* _instance;
 };

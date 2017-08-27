@@ -2,6 +2,11 @@
 
 SalesNote::SalesNote()
 {
+    QTime time = QTime::currentTime();
+    QDate date = QDate::currentDate();
+    m_id = QString::number(date.year()) + QString::number(date.month()) + QString::number(date.day()) +
+           QString::number(time.hour()) + QString::number(time.minute())+ QString::number(time.second()) +
+           QString::number(time.msec());
     m_owner = "";
     m_dateTime = QDateTime::currentDateTime();
 }
@@ -15,6 +20,16 @@ void SalesNote::setList(QList<Commodity *> list)
 {
     this->removeList(m_salesBaseNote);
     m_salesBaseNote = list;
+}
+
+QString SalesNote::getId()
+{
+    return m_id;
+}
+
+void SalesNote::setId(QString id)
+{
+    m_id = id;
 }
 
 QString SalesNote::getOwner()
