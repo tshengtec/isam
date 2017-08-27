@@ -20,5 +20,8 @@
         <file>qml/Common/ListView/content/ListViewBackGroupDelegate.qml</file>
         <file>qml/SelectedCommodityWin/content/SearchBar.qml</file>
         <file>qml/SelectedCommodityWin/content/SearchCommodityList.qml</file>
+        <file>qml/SettleMentWin/SettleMentWin.qml</file>
+        <file>qml/SalesQueryWin/SalesQueryWin.qml</file>
+        <file>qml/ProjectCommon/Bar/TopTitleBar.qml</file>
     </qresource>
 </RCC>

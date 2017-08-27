@@ -6,6 +6,8 @@ import "./content/CommodityInfoListView"
 import "./content/CommodityInfoOperation"
 import "./content/BottomBar"
 import "../SelectedCommodityWin"
+import "../SettleMentWin"
+import "../SalesQueryWin"
 
 Window {
     id: windowsId
@@ -70,5 +72,15 @@ Window {
         id: selectedCommodityWin
         displayListModel: salesQueryListModel
         visible: false
+    }
+
+    SettleMentWin {
+        id: settleMentWin
+        visible: false
+    }
+
+    SalesQueryWin {
+        id: salesQueryWin
+
     }
 }

@@ -5,6 +5,7 @@ import "../../../Common/Button"
 Rectangle {
     id: rootRectId
     signal searched()
+    signal settleMented()
     width: parent.width; height: parent.height
     color: "lightblue"
 
@@ -43,6 +44,7 @@ Rectangle {
             btnPressColor: "#5cb85c"
             btnText: "结算"
             radius: 5
+            onIsClicked: settleMented();
         }
     }
 }
