@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../../../Common/Text"
+import "../../../Common/Button"
 
 Rectangle {
     id: rootRectId
@@ -35,10 +36,12 @@ Rectangle {
 
         Item { width: 3*rootRectId.width/20; height: 1 }
 
-        Rectangle {
+        MenuButton {
             anchors.verticalCenter: parent.verticalCenter
             width: 10*rootRectId.width/20; height: 9*rootRectId.height/10
-            color: "red"
+            btnColor: "red"
+            btnPressColor: "#5cb85c"
+            btnText: "结算"
             radius: 5
         }
     }

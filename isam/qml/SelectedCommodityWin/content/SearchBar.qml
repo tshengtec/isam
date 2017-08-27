@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Item {
     signal searched(string text)
+    property alias textInputFocus: textInputId.focus
     width: parent.width; height: parent.height
 
     Rectangle {
@@ -11,6 +12,7 @@ Item {
         border.color: "#00787d"
 
         TextInput {
+            id: textInputId
             x: 2
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width - 2*x; height: parent.height/1.5

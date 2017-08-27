@@ -2,16 +2,18 @@ import QtQuick 2.0
 
 BaseButton {
     property bool statusModel: false
+    property string btnColor: "#6ef2a0"
+    property string btnPressColor: "white"
     id: baseButton
     radius: 8
-    color: "#6ef2a0"
+    color: btnColor
 
     onIsPressed: {
-        baseButton.color = "white"
+        baseButton.color = btnPressColor
         textObj.color = "black"
     }
     onIsReleased: {
-        baseButton.color = "#6ef2a0"
+        baseButton.color = btnColor
         textObj.color = "white"
     }
 

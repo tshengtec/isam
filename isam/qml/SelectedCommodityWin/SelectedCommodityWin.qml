@@ -7,7 +7,14 @@ Rectangle {
     id: rootId
     width: parent.width; height: parent.height
     color: "#60000000"
-    onVisibleChanged: focus = true
+    onVisibleChanged: {
+        if (visible) {
+            searchBarId.textInputFocus = true
+        }
+        else {
+            searchBarId.textInputFocus = false
+        }
+    }
 
     MouseArea { anchors.fill: parent }
 
@@ -28,6 +35,7 @@ Rectangle {
             Item { width: 1; height: 0.5*parent.height/20 }
 
             SearchBar {
+                id: searchBarId
                 width: parent.width; height: 2.5*parent.height/20
                 onSearched: displayListModel.searchText = text
             }
