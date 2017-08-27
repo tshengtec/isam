@@ -7,6 +7,12 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "#eeeeee"
 
+    Rectangle {
+        anchors.bottom: parent.bottom
+        width: parent.width; height: 1
+        color: "#d5d5d5"
+    }
+
     Row {
         anchors.fill: parent
         Text {

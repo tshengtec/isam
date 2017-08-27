@@ -25,5 +25,6 @@
         <file>qml/ProjectCommon/Bar/TopTitleBar.qml</file>
         <file>qml/SalesQueryWin/content/LeftPart/LeftPart.qml</file>
         <file>qml/SalesQueryWin/content/LeftPart/SalesTopBar.qml</file>
+        <file>qml/SalesQueryWin/content/LeftPart/AllSalesList.qml</file>
     </qresource>
 </RCC>
