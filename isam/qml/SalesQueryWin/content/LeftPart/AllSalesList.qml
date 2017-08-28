@@ -26,7 +26,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: 2*parent.width/20; height: width
                 radius: width/2
-                btnText: "0"
+                btnText: listViewId.count
                 color: "#33a4e2"
             }
 
@@ -41,8 +41,15 @@ Item {
             delegate:
             Rectangle {
                 width: listViewId.width; height: listViewId.height/7
-                color: "#00000000"
+                color: listViewId.currentIndex === index ? "lightblue" : "#00000000"
 
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        listViewId.currentIndex = index
+                        salesQueryListModel.reload(modelData.id)
+                    }
+                }
 
                 Column {
                     width: 12*parent.width/20; height: parent.height
@@ -51,7 +58,7 @@ Item {
                         x: 5
                         width: parent.width; height: parent.height/2
                         verticalAlignment: Text.AlignVCenter
-                        text: "订单号:  20172834847843734"
+                        text: "订单号:  " + modelData.id
                         font.pixelSize: parent.height/4
                         color: "#434350"
                     }
@@ -60,7 +67,7 @@ Item {
                         x: 5
                         width: parent.width; height: parent.height/2
                         verticalAlignment: Text.AlignVCenter
-                        text: "金    额:  100(元)"
+                        text: "金    额:  "+ modelData.amountMoney +"(元)"
                         font.pixelSize: parent.height/4
                         color: "#434350"
                     }
@@ -70,7 +77,7 @@ Item {
                 Text {
                     anchors.right: parent.right
                     anchors.rightMargin: 10
-                    text: "12:00"
+                    text: Qt.formatTime(modelData.time, "hh:mm AP")
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: parent.height/4
                     color: "#434350"

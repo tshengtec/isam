@@ -95,5 +95,6 @@ Window {
         id: salesQueryWin
         visible: false
         allSalseListModelToLeftPart: salesDocumentsListModel
+        commoditySalseListModelToRightPart: salesQueryListModel
     }
 }

@@ -10,7 +10,7 @@ class SalesQueryListModel : public ObjectListModel<BaseCommodityModel>
 public:
     SalesQueryListModel();
 
-private slots:
+public slots:
     Q_INVOKABLE void reload(QString id); //salseDocmentList id
 };
 

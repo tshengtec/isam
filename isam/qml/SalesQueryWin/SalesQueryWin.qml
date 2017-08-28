@@ -1,9 +1,11 @@
 import QtQuick 2.0
 import "../ProjectCommon/Bar"
 import "./content/LeftPart"
+import "./content/RightPart"
 
 Rectangle {
     property variant allSalseListModelToLeftPart: []
+    property variant commoditySalseListModelToRightPart: [] //
     id: rootId
     width: parent.width; height: parent.height
 
@@ -23,6 +25,10 @@ Rectangle {
                 allSalseListModel: allSalseListModelToLeftPart
             }
 
+            RightPart {
+                width: 14*parent.width/20; height: parent.height
+                commoditySalseListModel: commoditySalseListModelToRightPart
+            }
         }
 
     }
