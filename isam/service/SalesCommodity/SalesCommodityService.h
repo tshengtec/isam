@@ -16,6 +16,7 @@ public:
     static SalesCommodityService* instance();
 
     QList<Commodity *> getList();
+    QList<Commodity *> getPendingList();
     QList<SalesNote *> getSalesList();
 
     Commodity *get(QString id);

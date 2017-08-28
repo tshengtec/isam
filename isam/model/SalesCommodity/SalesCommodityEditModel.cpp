@@ -2,7 +2,7 @@
 
 SalesCommodityEditModel::SalesCommodityEditModel()
 {
-    m_isPending = false;
+    m_errorStr = "";
 }
 
 bool SalesCommodityEditModel::add(QString id)
@@ -35,21 +35,32 @@ bool SalesCommodityEditModel::settleMent()
 
 void SalesCommodityEditModel::onPendingOperation()
 {
-    SalesCommodityService::instance()->onPendingOperation();
+    QString errorStr = SalesCommodityService::instance()->onPendingOperation();
+    m_errorStr = errorStr;
+    emit statusChanged();
 }
 
 void SalesCommodityEditModel::onGettingOperation()
 {
-    SalesCommodityService::instance()->onGettingOperation();
-}
-
-bool SalesCommodityEditModel::getIsPending()
-{
-    return m_isPending;
-}
-
-void SalesCommodityEditModel::setIsPending(bool status)
-{
-    m_isPending = status;
+    QString errorStr = SalesCommodityService::instance()->onGettingOperation();
+    m_errorStr = errorStr;
     emit statusChanged();
 }
+
+QString SalesCommodityEditModel::getErrorStr()
+{
+    return m_errorStr;
+}
+
+void SalesCommodityEditModel::setErrorStr(QString errorStr)
+{
+    m_errorStr = errorStr;
+    emit statusChanged();
+}
+
+bool SalesCommodityEditModel::getIsPendingStatus()
+{
+    return (SalesCommodityService::instance()->getPendingList().count() == 0 ? false : true);
+}
+
+

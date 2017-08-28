@@ -18,16 +18,20 @@ public:
     Q_INVOKABLE void onPendingOperation();
     Q_INVOKABLE void onGettingOperation();
 
-    Q_PROPERTY(bool isPending READ getIsPending WRITE setIsPending NOTIFY statusChanged)
+    Q_PROPERTY(QString errorStr READ getErrorStr WRITE setErrorStr NOTIFY statusChanged)
+    Q_PROPERTY(bool isPendingStatus READ getIsPendingStatus NOTIFY statusChanged)
 
-    bool getIsPending();
-    void setIsPending(bool status);
+    QString getErrorStr();
+    void setErrorStr(QString errorStr);
+
+    bool getIsPendingStatus();
 
 signals:
     void statusChanged();
 
 private:
-    bool m_isPending;
+    QString m_errorStr;
+    bool m_isPendingStatus;
 };
 
 #endif // SALESCOMMODITYEDITMODEL_H

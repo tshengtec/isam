@@ -36,7 +36,7 @@ Rectangle {
             width: rootId.width/15; height: rootId.height/1.2
             btnText: "取单"
             onIsClicked: salesCommodityEditModel.onGettingOperation()
-            statusModel: salesCommodityEditModel.isPending
+            statusModel: salesCommodityEditModel.isPendingStatus
         }
 
         MenuButton {
@@ -57,6 +57,24 @@ Rectangle {
             color: "white"
             text: "xxx公司"
             font.pixelSize: parent.height/2.5
+        }
+    }
+
+    BaseButton {
+        id: tipsLabelId
+        visible: salesCommodityEditModel.errorStr !== ""
+        anchors.centerIn: parent
+        width: 4*parent.width/20; height: 9*parent.height/20
+        radius: 5
+        color: "#ff8400"
+        btnText: salesCommodityEditModel.errorStr
+    }
+
+    Timer {
+        interval: 2000; running: salesCommodityEditModel.errorStr !== ""; repeat: true
+        onTriggered: {
+            salesCommodityEditModel.errorStr = ""
+            stop()
         }
     }
 }

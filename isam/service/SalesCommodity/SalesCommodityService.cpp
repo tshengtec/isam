@@ -22,6 +22,11 @@ QList<Commodity *> SalesCommodityService::getList()
     return m_commodityList;
 }
 
+QList<Commodity *> SalesCommodityService::getPendingList()
+{
+    return m_CommodityPendingList;
+}
+
 QList<SalesNote *> SalesCommodityService::getSalesList()
 {
     return m_SalesList;
@@ -134,7 +139,7 @@ QString SalesCommodityService::onPendingOperation()
     m_CommodityPendingList = copyList(m_commodityList);
     this->removeList(m_commodityList);
     emit listChanged();
-    return "";
+    return "挂单成功";
 }
 
 QString SalesCommodityService::onGettingOperation()
@@ -147,5 +152,5 @@ QString SalesCommodityService::onGettingOperation()
     m_commodityList = copyList(m_CommodityPendingList);
     this->removeList(m_CommodityPendingList);
     emit listChanged();
-    return "";
+    return "取单成功";
 }
