@@ -32,7 +32,7 @@ Rectangle {
         MenuButton {
             anchors.verticalCenter: parent.verticalCenter
             width: rootRectId.width/10; height: rootRectId.height/1.2
-            btnText: "移除商品"
+            btnText: "移除全部商品"
             onIsClicked: removeAll()
         }
     }

@@ -36,14 +36,14 @@ Rectangle {
 
             SearchBar {
                 id: searchBarId
-                width: parent.width; height: 2.5*parent.height/20
+                width: parent.width; height: 2*parent.height/20
                 onSearched: displayListModel.searchText = text
             }
 
             Item { width: 1; height: 0.5*parent.height/20 }
 
             SearchCommodityList {
-                width: parent.width; height: 12*parent.height/20
+                width: parent.width; height: 12.5*parent.height/20
                 model: displayListModel
                 onAddCommodity: salesCommodityEditModel.add(getCommodityId(index))
             }

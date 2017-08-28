@@ -23,15 +23,18 @@ Rectangle {
 
             ISAMTextInput {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
+                defaultText: "扫描条形码"
                 onIsReturnPressed: searched()
             }
 
             ISAMTextInput {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
+                defaultText: "输入价格无码收银(未完成)"
             }
 
             ISAMTextInput {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
+                defaultText: "整单优惠(未完成)"
             }
         }
 
