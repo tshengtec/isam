@@ -26,4 +26,10 @@ Rectangle {
         }
 
     }
+
+    onVisibleChanged: {
+        if (visible) {
+            allSalseListModelToLeftPart.reload()
+        }
+    }
 }

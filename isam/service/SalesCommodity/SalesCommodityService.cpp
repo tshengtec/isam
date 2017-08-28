@@ -121,7 +121,7 @@ bool SalesCommodityService::removeAll()
 bool SalesCommodityService::settleMent()
 {
     SalesNote* salesNote = new SalesNote();
-    salesNote->setOwner("piter");
+    salesNote->setOwner("admin");
     salesNote->setDateTime(QDateTime::currentDateTime());
     salesNote->setList(this->copyList(m_commodityList));
     m_SalesList.append(salesNote);

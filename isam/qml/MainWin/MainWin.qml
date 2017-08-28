@@ -74,6 +74,10 @@ Window {
         id: salesQueryListModel
     }
 
+    SalesDocumentsListModel {
+        id: salesDocumentsListModel
+    }
+
     //win-----------------------------
 
     SelectedCommodityWin {
@@ -90,5 +94,6 @@ Window {
     SalesQueryWin {
         id: salesQueryWin
         visible: false
+        allSalseListModelToLeftPart: salesDocumentsListModel
     }
 }
