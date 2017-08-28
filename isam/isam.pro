@@ -2,7 +2,8 @@ TEMPLATE = app
 
 QT += qml quick
 CONFIG += c++11
-RC_ICONS += app.ico
+
+win32: RC_ICONS += app.ico
 
 SOURCES += main.cpp \
     infrastructure/domain/DomainObject.cpp \
