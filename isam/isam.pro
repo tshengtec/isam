@@ -2,6 +2,7 @@ TEMPLATE = app
 
 QT += qml quick
 CONFIG += c++11
+RC_ICONS += app.ico
 
 SOURCES += main.cpp \
     infrastructure/domain/DomainObject.cpp \
@@ -29,7 +30,8 @@ SOURCES += main.cpp \
     model/SalesQuery/SalesDocumentsListModel.cpp \
     model/SalesQuery/SalesDocumentsModel.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    resources.qrc
 
 INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
