@@ -3,6 +3,7 @@ import QtQuick 2.0
 Item {
     signal searched(string text)
     property alias textInputFocus: textInputId.focus
+    property alias text: textInputId.text
     width: parent.width; height: parent.height
 
     Rectangle {

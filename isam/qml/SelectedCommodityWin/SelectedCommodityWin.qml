@@ -37,6 +37,7 @@ Rectangle {
             SearchBar {
                 id: searchBarId
                 width: parent.width; height: 2*parent.height/20
+                text: displayListModel.searchText
                 onSearched: displayListModel.searchText = text
             }
 

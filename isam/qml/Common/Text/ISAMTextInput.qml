@@ -1,7 +1,7 @@
 import QtQuick 2.5
 
 Rectangle {
-    signal isReturnPressed()
+    signal isReturnPressed(string barCodeText)
     property alias text: textInputId.text
     property string defaultText: ""
     width: parent.width; height: parent.height
@@ -17,7 +17,7 @@ Rectangle {
         clip: true
         width: parent.width - 2*x; height: parent.height/1.5
         font.pixelSize: height
-        Keys.onReturnPressed: isReturnPressed()
+        Keys.onReturnPressed: isReturnPressed(text)
     }
 
     Text {

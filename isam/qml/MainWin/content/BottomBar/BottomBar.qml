@@ -4,7 +4,7 @@ import "../../../Common/Button"
 
 Rectangle {
     id: rootRectId
-    signal searched()
+    signal searched(string barCodeText)
     signal settleMented()
     width: parent.width; height: parent.height
     color: "lightblue"
@@ -24,7 +24,7 @@ Rectangle {
             ISAMTextInput {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
                 defaultText: "扫描条形码"
-                onIsReturnPressed: searched()
+                onIsReturnPressed: searched(barCodeText)
             }
 
             ISAMTextInput {

@@ -48,7 +48,10 @@ Window {
 
         BottomBar {
             width: windowsId.width; height: 4*windowsId.height/20
-            onSearched: selectedCommodityWin.visible = true
+            onSearched: {
+                commodityQueryListModel.searchText = barCodeText
+                selectedCommodityWin.visible = true
+            }
             onSettleMented: salesCommodityEditModel.settleMent()
         }
     }
