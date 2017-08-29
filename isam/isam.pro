@@ -29,7 +29,9 @@ SOURCES += main.cpp \
     service/SalesCommodity/SalesNote.cpp \
     service/SalesQuery/SalesQueryCondition.cpp \
     model/SalesQuery/SalesDocumentsListModel.cpp \
-    model/SalesQuery/SalesDocumentsModel.cpp
+    model/SalesQuery/SalesDocumentsModel.cpp \
+    service/AccountService/AccountService.cpp \
+    model/AccountModel/AccountModel.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -44,12 +46,14 @@ INCLUDEPATH += model \
                model/SalesCommodity \
                model/GettingCommodity \
                model/SalesQuery \
-               model/CommodityQuery
+               model/CommodityQuery \
+               model/AccountModel
 
 INCLUDEPATH += service \
                service/SalesCommodity \
                service/SalesQuery \
-               service/CommodityQuery
+               service/CommodityQuery \
+               service/AccountService
 
 INCLUDEPATH += domain
 
@@ -88,4 +92,6 @@ HEADERS += \
     service/SalesCommodity/SalesNote.h \
     service/SalesQuery/SalesQueryCondition.h \
     model/SalesQuery/SalesDocumentsListModel.h \
-    model/SalesQuery/SalesDocumentsModel.h
+    model/SalesQuery/SalesDocumentsModel.h \
+    service/AccountService/AccountService.h \
+    model/AccountModel/AccountModel.h

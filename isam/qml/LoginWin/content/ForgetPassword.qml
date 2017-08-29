@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Item {
+    signal forgetPassworded()
     id: itemId
     width: parent.width; height: parent.height
 
@@ -25,6 +26,7 @@ Item {
 
                 MouseArea {
                     anchors.fill: parent
+                    onClicked: forgetPassworded()
                     hoverEnabled: true
                     onEntered: parent.color = "black"
                     onExited: parent.color = "#337cc9"
