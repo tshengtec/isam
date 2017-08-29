@@ -42,6 +42,17 @@ void AccountModel::setPassword(QString password)
     emit statusChanged();
 }
 
+QString AccountModel::getType()
+{
+    return m_type;
+}
+
+void AccountModel::setType(QString type)
+{
+    m_type = type;
+    emit statusChanged();
+}
+
 void AccountModel::operator =(const AccountModel& model)
 {
     this->m_id = model.m_id;

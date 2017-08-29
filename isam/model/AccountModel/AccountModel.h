@@ -9,7 +9,7 @@ public:
     AccountModel(QObject* parent = NULL);
     Q_PROPERTY(QString id READ getId NOTIFY statusChanged)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY statusChanged)
-    Q_PROPERTY(QString password READ getPassword WRITE setPassWord NOTIFY statusChanged)
+    Q_PROPERTY(QString password READ getPassword WRITE setPassword NOTIFY statusChanged)
     Q_PROPERTY(QString type READ getType WRITE setType NOTIFY statusChanged)
 
     QString getId();
