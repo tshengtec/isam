@@ -28,5 +28,7 @@
         <file>qml/SalesQueryWin/content/LeftPart/AllSalesList.qml</file>
         <file>qml/SalesQueryWin/content/RightPart/RightPart.qml</file>
         <file>qml/LoginWin/LoginWin.qml</file>
+        <file>qml/LoginWin/content/LoginTextInput.qml</file>
+        <file>qml/LoginWin/content/ForgetPassword.qml</file>
     </qresource>
 </RCC>
