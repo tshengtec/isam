@@ -2,7 +2,7 @@ import QtQuick 2.0
 import "../../../Common/Button"
 
 Rectangle {
-    signal salsed()
+    signal salseSearch()
     id: rootId
     width: parent.width; height: parent.height
     color: "#337cc9"//themesModel.backgroundColor
@@ -15,13 +15,20 @@ Rectangle {
 
         MenuButton {
             anchors.verticalCenter: parent.verticalCenter
-            width: rootId.width/15; height: rootId.height/1.2
-            btnText: "销售"
+            width: 2*rootId.width/15; height: rootId.height/1.2
+            btnText: "销售查询"
             onIsClicked: {
-                salsed()
+                salseSearch()
             }
         }
-
+        MenuButton {
+            anchors.verticalCenter: parent.verticalCenter
+            width: 2*rootId.width/15; height: rootId.height/1.2
+            btnText: "商品查询"
+            onIsClicked: {
+                salseSearch()
+            }
+        }
         MenuButton {
             anchors.verticalCenter: parent.verticalCenter
             width: rootId.width/15; height: rootId.height/1.2

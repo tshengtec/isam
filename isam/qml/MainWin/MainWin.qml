@@ -8,6 +8,7 @@ import "./content/BottomBar"
 import "../SelectedCommodityWin"
 import "../SettleMentWin"
 import "../SalesQueryWin"
+import "../LoginWin"
 
 Window {
     id: windowsId
@@ -32,7 +33,7 @@ Window {
     Column {
         MenuBar {
             width: windowsId.width; height: 2.5*windowsId.height/20
-            onSalsed: salesQueryWin.visible = true
+            onSalseSearch: salesQueryWin.visible = true
         }
 
         CommodityInfoListView {
@@ -97,4 +98,10 @@ Window {
         allSalseListModelToLeftPart: salesDocumentsListModel
         commoditySalseListModelToRightPart: salesQueryListModel
     }
+
+    LoginWin {
+        id: loginWin
+
+    }
+
 }

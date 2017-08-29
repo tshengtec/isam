@@ -27,5 +27,6 @@
         <file>qml/SalesQueryWin/content/LeftPart/SalesTopBar.qml</file>
         <file>qml/SalesQueryWin/content/LeftPart/AllSalesList.qml</file>
         <file>qml/SalesQueryWin/content/RightPart/RightPart.qml</file>
+        <file>qml/LoginWin/LoginWin.qml</file>
     </qresource>
 </RCC>
