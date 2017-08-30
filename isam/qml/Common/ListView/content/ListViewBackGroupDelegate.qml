@@ -6,7 +6,7 @@ Rectangle {
     id: delegeRectId
     width: parent.width; height: parent.height
     color: index%2 === 0 ? "white" : "#eeeeee"
-    clip: true
+//    clip: true
 
 //    Rectangle {
 //        width: parent.width; height: 1
@@ -14,10 +14,14 @@ Rectangle {
 //    }
 
     Row {
+        anchors.fill: parent
+
         Repeater {
+            anchors.fill: parent
             model: contentSpacingWidth.length
+
             Item {
-                width: contentSpacingWidth[index]; height: delegeRectId.height
+                width: contentSpacingWidth[index]; height: parent.height
 //                clip: true
                 Rectangle {
                     anchors.right: parent.right

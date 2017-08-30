@@ -18,28 +18,36 @@ Item {
         modelList: model
     }
 
-    ListView {
-        anchors.horizontalCenter: parent.horizontalCenter
-        id: listViewBackGroundId
-        width: parent.width - 10; height: parent.height
-        model: rootItemId.model
-        clip: true
-        interactive: false
-        headerPositioning: ListView.OverlayHeader
-        header: Item { width: 1; height: listViewBackGroundId.height/listViewMoreId.displayLine }
-        delegate:
+    Column {
+        anchors.fill: parent
 
         Item {
-//            visible: index !== 0
-            x: xCount()
-            width: listViewMoreId.spacingWidth[listViewMoreId.spacingWidth.length-1];
-            height: listViewBackGroundId.height/listViewMoreId.displayLine
+            clip: true
+            width: parent.width; height: parent.height/(listViewMoreId.displayLine+1)
+        }
 
-            MenuButton {
-                anchors.centerIn: parent
-                width: parent.width/1.5; height: parent.height/1.5
-                btnText: "增加"
-                onIsClicked: addCommodity(index) //note
+        ListView {
+            anchors.horizontalCenter: parent.horizontalCenter
+            id: listViewBackGroundId
+            width: parent.width - 10; height: listViewMoreId.displayLine*parent.height/(listViewMoreId.displayLine+1)
+            model: rootItemId.model
+            clip: true
+            interactive: false
+            headerPositioning: ListView.OverlayHeader
+            delegate:
+
+                Item {
+                //            visible: index !== 0
+                x: xCount()
+                width: listViewMoreId.spacingWidth[listViewMoreId.spacingWidth.length-1];
+                height: listViewBackGroundId.height/listViewMoreId.displayLine
+
+                MenuButton {
+                    anchors.centerIn: parent
+                    width: parent.width/1.5; height: parent.height/1.5
+                    btnText: "增加"
+                    onIsClicked: addCommodity(index) //note
+                }
             }
         }
     }

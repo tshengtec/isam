@@ -11,43 +11,50 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "#00000000"
 
-    //backGround
-    ListView {
-        id: listViewBackGroundId
-        width: parent.width; height: parent.height
-        model: displayLine
-        clip: true
-        interactive: false
-        headerPositioning: ListView.OverlayHeader
-        header: HeaderDelegate {
+//    backGround
+    Column {
+        anchors.fill: parent
+        HeaderDelegate {
             z: 1.5
-            width: listViewBackGroundId.width; height: listViewBackGroundId.height/displayLine
+            width: parent.width; height: parent.height/(displayLine+1)
             headerModel: headerContentList
             headerSpacingWidth: spacingWidth
         }
 
-        delegate: ListViewBackGroupDelegate {
-            width: listViewBackGroundId.width; height: listViewBackGroundId.height/displayLine
-            contentSpacingWidth: spacingWidth
+        ListView {
+            id: listViewBackGroundId
+            width: parent.width; height: displayLine*parent.height/(displayLine+1)
+            model: displayLine
+            clip: true
+            interactive: false
+            headerPositioning: ListView.OverlayHeader
+            delegate: ListViewBackGroupDelegate {
+                width: listViewBackGroundId.width; height: listViewBackGroundId.height/displayLine
+                contentSpacingWidth: spacingWidth
+            }
         }
     }
 
-    ListView {
-        id: listViewId
-        z: listViewBackGroundId*2
-        width: parent.width; height: parent.height
-        model: modelList
-        clip: true
-        interactive: false
-        headerPositioning: ListView.OverlayHeader
-        header: Item {
+    Column {
+        anchors.fill: parent
+        Item {
             clip: true
-            width: listViewBackGroundId.width; height: listViewBackGroundId.height/displayLine
+            width: parent.width; height: parent.height/(displayLine+1)
         }
-        delegate: ListViewDelegate {
-            width: listViewId.width; height: listViewId.height/displayLine
-            contentSpacingWidth: spacingWidth
-            contentStrList: modelStrList
+
+        ListView {
+            id: listViewId
+            z: listViewBackGroundId*2
+            width: parent.width; height: displayLine*parent.height/(displayLine+1)
+            model: modelList
+            clip: true
+            interactive: false
+            headerPositioning: ListView.OverlayHeader
+            delegate: ListViewDelegate {
+                width: listViewId.width; height: listViewId.height/displayLine
+                contentSpacingWidth: spacingWidth
+                contentStrList: modelStrList
+            }
         }
     }
 
