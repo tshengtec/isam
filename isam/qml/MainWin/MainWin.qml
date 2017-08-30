@@ -13,10 +13,10 @@ import "../LoginWin"
 Window {
     id: windowsId
     visible: true
-    width: 1280/1.5
-    height: 768/1.5
-//    width: 1280
-//    height: 768
+    width: 0.8*Screen.desktopAvailableWidth
+    height: 0.8*Screen.desktopAvailableHeight
+    minimumWidth: 0.5*Screen.desktopAvailableWidth
+    minimumHeight: 0.5*Screen.desktopAvailableHeight
     title: qsTr("")
 
     Item {
@@ -84,7 +84,7 @@ Window {
     SelectedCommodityWin {
         id: selectedCommodityWin
         displayListModel: commodityQueryListModel
-        visible: false
+//        visible: false
     }
 
     SettleMentWin {
@@ -101,7 +101,7 @@ Window {
 
     LoginWin {
         id: loginWin
-
+        visible: false
     }
 
 }
