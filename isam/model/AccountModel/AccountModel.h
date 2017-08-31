@@ -1,7 +1,9 @@
 #ifndef ACCOUNTMODEL_H
 #define ACCOUNTMODEL_H
 #include "BaseItemModel.h"
-
+/*
+ * note: The reserved interface is temporarily useless!
+ */
 class AccountModel : public BaseItemModel
 {
     Q_OBJECT
