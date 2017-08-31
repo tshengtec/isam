@@ -33,5 +33,10 @@
         <file>qml/LoginWin/content/AdminLoginWin.qml</file>
         <file>qml/LoginWin/content/GeneralLoginWin.qml</file>
         <file>qml/LoginWin/content/LogoutBar.qml</file>
+        <file>qml/CommodityQueryWin/CommodityQueryWin.qml</file>
+        <file>qml/CommodityQueryWin/content/TopTitleBar.qml</file>
+        <file>qml/CommodityQueryWin/content/LeftPart/LeftPart.qml</file>
+        <file>qml/CommodityQueryWin/content/RightPart/RightPart.qml</file>
+        <file>qml/CommodityQueryWin/content/LeftPart/AllClassListView.qml</file>
     </qresource>
 </RCC>

@@ -3,6 +3,7 @@ import "../../../Common/Button"
 
 Rectangle {
     signal salseSearch()
+    signal commoditySearch();
     id: rootId
     width: parent.width; height: parent.height
     color: "#337cc9"//themesModel.backgroundColor
@@ -26,7 +27,7 @@ Rectangle {
             width: 2*rootId.width/15; height: rootId.height/1.2
             btnText: "商品查询"
             onIsClicked: {
-                salseSearch()
+                commoditySearch()
             }
         }
         MenuButton {
