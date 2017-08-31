@@ -32,7 +32,6 @@ SOURCES += main.cpp \
     model/SalesQuery/SalesDocumentsModel.cpp \
     service/AccountService/AccountService.cpp \
     model/AccountModel/AccountModel.cpp \
-    model/AccountModel/AccountListModel.cpp \
     domain/AccountItem.cpp
 
 RESOURCES += qml.qrc \
@@ -97,8 +96,8 @@ HEADERS += \
     model/SalesQuery/SalesDocumentsModel.h \
     service/AccountService/AccountService.h \
     model/AccountModel/AccountModel.h \
-    model/AccountModel/AccountListModel.h \
-    domain/AccountItem.h
+    domain/AccountItem.h \
+    qml/LoginWin/content/AdminLoginWin.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml

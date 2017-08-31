@@ -30,5 +30,7 @@
         <file>qml/LoginWin/LoginWin.qml</file>
         <file>qml/LoginWin/content/LoginTextInput.qml</file>
         <file>qml/LoginWin/content/ForgetPassword.qml</file>
+        <file>qml/LoginWin/content/AdminLoginWin.qml</file>
+        <file>qml/LoginWin/content/GeneralLoginWin.qml</file>
     </qresource>
 </RCC>

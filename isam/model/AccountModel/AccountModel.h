@@ -1,6 +1,7 @@
 #ifndef ACCOUNTMODEL_H
 #define ACCOUNTMODEL_H
 #include "BaseItemModel.h"
+#include "AccountService.h"
 /*
  * note: The reserved interface is temporarily useless!
  */
@@ -9,6 +10,8 @@ class AccountModel : public BaseItemModel
     Q_OBJECT
 public:
     AccountModel(QObject* parent = NULL);
+
+    Q_INVOKABLE bool verifyAccount(QString type, QString name, QString password);
     Q_PROPERTY(QString id READ getId NOTIFY statusChanged)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY statusChanged)
     Q_PROPERTY(QString password READ getPassword WRITE setPassword NOTIFY statusChanged)

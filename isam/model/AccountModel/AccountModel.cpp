@@ -9,6 +9,11 @@ AccountModel::AccountModel(QObject *parent) :
     m_type = "general";
 }
 
+bool AccountModel::verifyAccount(QString type, QString name, QString password)
+{
+    return AccountService::instance()->verifyAccount(type, name, password);
+}
+
 QString AccountModel::getId()
 {
     return m_id;

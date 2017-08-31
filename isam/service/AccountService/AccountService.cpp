@@ -1,9 +1,5 @@
 #include "AccountService.h"
 
-const QString accountTypeList[] = {
-    "admin", "geneal"
-};
-
 AccountService * AccountService::_instance = NULL;
 
 

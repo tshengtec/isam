@@ -3,21 +3,21 @@
 #include "AccountItem.h"
 #include <QList>
 #include <QObject>
+const QString accountTypeList[] = {
+    "admin", "geneal"
+};
 
 class AccountService : public QObject
 {
     Q_OBJECT
 public:
     static AccountService* instance();
+    bool verifyAccount(QString type, QString name, QString password);
 
 private:
     AccountService();
-
-    bool verifyAccount(QString type, QString name, QString password);
     bool add(QString type, QString name, QString password);
     bool removeAll();
-
-private:
     void reload();
     bool verifyAccountIsValid(QString type, QString name, QString password);
 

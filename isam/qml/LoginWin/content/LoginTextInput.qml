@@ -1,7 +1,8 @@
 import QtQuick 2.0
 
 Item {
-    property alias text: defaultTextId.text
+    property alias defaultText: defaultTextId.text
+    property alias text: textInputId.text
     id: itemId
     width: parent.width; height: parent.height
 
@@ -17,6 +18,7 @@ Item {
         }
 
         TextInput {
+            id: textInputId
             width: 7*itemId.width/10; height: parent.height
             verticalAlignment: Text.AlignVCenter
             text: ""
