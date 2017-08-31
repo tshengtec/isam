@@ -6,6 +6,7 @@ import "./content"
 Rectangle {
     id: windowsId
     width: parent.width; height: parent.height
+    visible: !accountModel.isGeneralLogged
 
     gradient: Gradient {
         GradientStop { position: 0.0; color: "lightsteelblue" }
@@ -14,13 +15,16 @@ Rectangle {
 
     AdminLoginWin {
         id: adminLoginWin
+        z: 1.5
         width: parent.width; height: parent.height
         adminAccountModel: accountModel
+        visible: !accountModel.isAdminLogged
     }
 
     GeneralLoginWin {
-        id: generalLoginWin
-        visible: generalLoginWin.isLoginSuccess
+        id: generalLoginWinS
+        generalAccountModel: accountModel
+        visible: !accountModel.isGeneralLogged
     }
 
     AccountModel {

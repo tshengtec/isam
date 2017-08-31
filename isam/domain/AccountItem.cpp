@@ -2,9 +2,9 @@
 
 AccountItem::AccountItem()
 {
-    m_type = "general";
-    m_name = "1001";
-    m_password = "123456";
+    m_type = "";
+    m_name = "";
+    m_password = "";
 }
 
 QString AccountItem::getType()

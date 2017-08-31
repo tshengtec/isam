@@ -3,6 +3,7 @@ import QtQuick 2.0
 Item {
     property alias defaultText: defaultTextId.text
     property alias text: textInputId.text
+    property alias echoMode: textInputId.echoMode
     id: itemId
     width: parent.width; height: parent.height
 

@@ -12,13 +12,17 @@ public:
     AccountModel(QObject* parent = NULL);
 
     Q_INVOKABLE bool verifyAccount(QString type, QString name, QString password);
-    Q_PROPERTY(QString id READ getId NOTIFY statusChanged)
+    Q_PROPERTY(bool isAdminLogged READ getIsAdminLogged WRITE setIsAdminLogged NOTIFY statusChanged)
+    Q_PROPERTY(bool isGeneralLogged READ getIsGeneralLogged WRITE setIsGeneralLogged NOTIFY statusChanged)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY statusChanged)
     Q_PROPERTY(QString password READ getPassword WRITE setPassword NOTIFY statusChanged)
     Q_PROPERTY(QString type READ getType WRITE setType NOTIFY statusChanged)
 
-    QString getId();
-    void setId(QString id);
+    bool getIsAdminLogged();
+    void setIsAdminLogged(bool status);
+
+    bool getIsGeneralLogged();
+    void setIsGeneralLogged(bool status);
 
     QString getName();
     void setName(QString name);
@@ -35,7 +39,8 @@ signals:
     void statusChanged();
 
 private:
-    QString m_id;
+    bool m_isAdminLogged;
+    bool m_isGeneralLoged;
     QString m_name;
     QString m_password;
     QString m_type;

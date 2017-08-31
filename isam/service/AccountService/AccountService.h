@@ -4,7 +4,7 @@
 #include <QList>
 #include <QObject>
 const QString accountTypeList[] = {
-    "admin", "geneal"
+    "admin", "general"
 };
 
 class AccountService : public QObject
@@ -13,6 +13,8 @@ class AccountService : public QObject
 public:
     static AccountService* instance();
     bool verifyAccount(QString type, QString name, QString password);
+    AccountItem* getLoggedinAdminAccount();
+    AccountItem* getLoggedinGeneralAccount();
 
 private:
     AccountService();
@@ -23,7 +25,10 @@ private:
 
 private:
     static AccountService* _instance;
+    /*Full account information*/
     QList <AccountItem* > m_accountList;
+    AccountItem* m_loggedinAdminAccount;
+    AccountItem* m_loggedinGeneralAccount;
 };
 
 #endif // ACCOUNTSERVICE_H

@@ -3,7 +3,8 @@
 AccountModel::AccountModel(QObject *parent) :
     BaseItemModel(parent)
 {
-    m_id = "";
+    m_isAdminLogged = false;
+    m_isGeneralLoged = false;
     m_name = "";
     m_password = "";
     m_type = "general";
@@ -14,14 +15,25 @@ bool AccountModel::verifyAccount(QString type, QString name, QString password)
     return AccountService::instance()->verifyAccount(type, name, password);
 }
 
-QString AccountModel::getId()
+bool AccountModel::getIsAdminLogged()
 {
-    return m_id;
+    return m_isAdminLogged;
 }
 
-void AccountModel::setId(QString id)
+void AccountModel::setIsAdminLogged(bool status)
 {
-    m_id = id;
+    m_isAdminLogged = status;
+    emit statusChanged();
+}
+
+bool AccountModel::getIsGeneralLogged()
+{
+    return m_isGeneralLoged;
+}
+
+void AccountModel::setIsGeneralLogged(bool status)
+{
+    m_isGeneralLoged = status;
     emit statusChanged();
 }
 
@@ -60,7 +72,8 @@ void AccountModel::setType(QString type)
 
 void AccountModel::operator =(const AccountModel& model)
 {
-    this->m_id = model.m_id;
+    this->m_isAdminLogged = model.m_isAdminLogged;
+    this->m_isGeneralLoged = model.m_isGeneralLoged;
     this->m_name = model.m_name;
     this->m_password = model.m_password;
     this->m_type = model.m_type;

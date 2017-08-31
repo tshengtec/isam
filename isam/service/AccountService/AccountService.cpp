@@ -6,6 +6,8 @@ AccountService * AccountService::_instance = NULL;
 AccountService::AccountService()
 {
     reload();
+    m_loggedinAdminAccount = new AccountItem();
+    m_loggedinGeneralAccount = new AccountItem();
 }
 
 bool AccountService::verifyAccount(QString type, QString name, QString password)
@@ -15,10 +17,41 @@ bool AccountService::verifyAccount(QString type, QString name, QString password)
         if (accountItem->getType() == type &&
             accountItem->getName() == name &&
             accountItem->getPassword() == password) {
+            if (type == accountTypeList[0]) {
+                m_loggedinAdminAccount->setType(type);
+                m_loggedinAdminAccount->setName(name);
+                m_loggedinAdminAccount->setPassword(password);
+            }
+            else if (type == accountTypeList[1]) {
+                m_loggedinGeneralAccount->setType(type);
+                m_loggedinGeneralAccount->setName(name);
+                m_loggedinGeneralAccount->setPassword(password);
+            }
+
             return true;
         }
     }
     return false;
+}
+
+AccountItem* AccountService::getLoggedinAdminAccount()
+{
+    if (verifyAccountIsValid(m_loggedinAdminAccount->getType(),
+                             m_loggedinAdminAccount->getName(),
+                             m_loggedinAdminAccount->getPassword()))
+        return NULL;
+    else
+        return m_loggedinAdminAccount;
+}
+
+AccountItem* AccountService::getLoggedinGeneralAccount()
+{
+    if (verifyAccountIsValid(m_loggedinGeneralAccount->getType(),
+                             m_loggedinGeneralAccount->getName(),
+                             m_loggedinGeneralAccount->getPassword()))
+        return NULL;
+    else
+        return m_loggedinGeneralAccount;
 }
 
 bool AccountService::add(QString type, QString name, QString password)
@@ -28,6 +61,7 @@ bool AccountService::add(QString type, QString name, QString password)
         accountItem->setType(type);
         accountItem->setName(name);
         accountItem->setPassword(password);
+        m_accountList.append(accountItem);
         return true;
     }
     else {
