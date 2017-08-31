@@ -31,7 +31,8 @@ SOURCES += main.cpp \
     model/SalesQuery/SalesDocumentsListModel.cpp \
     model/SalesQuery/SalesDocumentsModel.cpp \
     service/AccountService/AccountService.cpp \
-    model/AccountModel/AccountModel.cpp
+    model/AccountModel/AccountModel.cpp \
+    model/AccountModel/AccountListModel.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -94,4 +95,8 @@ HEADERS += \
     model/SalesQuery/SalesDocumentsListModel.h \
     model/SalesQuery/SalesDocumentsModel.h \
     service/AccountService/AccountService.h \
-    model/AccountModel/AccountModel.h
+    model/AccountModel/AccountModel.h \
+    model/AccountModel/AccountListModel.h
+
+DISTFILES += \
+    model/AccountModel/AccountListModel.qml

@@ -6,6 +6,7 @@ Rectangle {
     signal isReleased()
     property string btnText: ""
     property variant textObj: textId
+    property alias fontPixelSize: textId.font.pixelSize
     width: parent.width; height: parent.height
     color: "#00000000"
 

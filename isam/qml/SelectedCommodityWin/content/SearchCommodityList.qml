@@ -37,7 +37,6 @@ Item {
             delegate:
 
                 Item {
-                //            visible: index !== 0
                 x: xCount()
                 width: listViewMoreId.spacingWidth[listViewMoreId.spacingWidth.length-1];
                 height: listViewBackGroundId.height/listViewMoreId.displayLine
@@ -46,6 +45,7 @@ Item {
                     anchors.centerIn: parent
                     width: parent.width/1.5; height: parent.height/1.5
                     btnText: "增加"
+                    fontPixelSize: 0.7*height
                     onIsClicked: addCommodity(index) //note
                 }
             }
