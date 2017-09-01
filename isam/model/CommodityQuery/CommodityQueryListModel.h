@@ -11,12 +11,20 @@ public:
     CommodityQueryListModel();
     Q_PROPERTY(QString commodityType READ getCommodityType WRITE setCommodityType NOTIFY statusChanged)
     Q_PROPERTY(QString searchText READ getSearchText WRITE setSearchText NOTIFY statusChanged)
+    Q_PROPERTY(bool isNotStrSearchAll READ getIsNotStrSearchAll WRITE setIsNotStrSearchAll NOTIFY statusChanged)
+    Q_PROPERTY(QStringList commodityTypeList READ getCommodityTypeList NOTIFY statusChanged)
 
     QString getCommodityType();
     void setCommodityType(QString typeStr);
 
     QString getSearchText();
     void setSearchText(QString text);
+
+    bool getIsNotStrSearchAll();
+    void setIsNotStrSearchAll(bool status);
+
+    QStringList getCommodityTypeList();
+    void setCommodityTypeList();
 
 signals:
     void statusChanged();
@@ -27,6 +35,8 @@ private slots:
 private:
     QString m_commodityType;
     QString m_searchText;
+    bool m_isNotStrSearchAll;
+    QStringList m_commodityTypeList;
 };
 
 #endif // COMMODITYQUERYLISTMODEL_H

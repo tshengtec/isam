@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import MyModels 1.0
 import "./content"
 import "./content/LeftPart"
 import "./content/RightPart"
@@ -13,8 +14,10 @@ Rectangle {
         anchors.fill: parent
 
         TopTitleBar {
+            id: topTitleBar
             width: parent.width; height: 2*parent.height/20
             onBacked: rootId.visible = false
+            onSearched: commodityQueryListModel.searchText = searchText
         }
 
         Row {
@@ -22,12 +25,17 @@ Rectangle {
 
             LeftPart {
                 width: 5*parent.width/20; height: parent.height
-//                allCommodityClassModel: allSalseListModelToLeftPart
+                allCommodityClassModel: commodityQueryListModel.commodityTypeList
+                onSelectedCommodityType: {
+                    topTitleBar.searchTextInputIdText = ""
+                    commodityQueryListModel.searchText = ""
+                    commodityQueryListModel.commodityType = type
+                }
             }
 
             RightPart {
                 width: 15*parent.width/20; height: parent.height
-//                commoditySalseListModel: commoditySalseListModelToRightPart
+                commodityListModel: commodityQueryListModel
             }
         }
 
@@ -37,5 +45,12 @@ Rectangle {
         if (visible) {
             commodityQueryModel.reload()
         }
+    }
+
+    CommodityQueryListModel {
+        id: commodityQueryListModel
+        commodityType: "all"
+        searchText: ""
+        isNotStrSearchAll: true
     }
 }

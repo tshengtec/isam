@@ -5,6 +5,9 @@ CommodityQueryListModel::CommodityQueryListModel()
 {
     m_searchText = "";
     m_commodityType = "all";
+    m_isNotStrSearchAll = false;
+    this->setCommodityTypeList();
+
     reload();
     connect(this, SIGNAL(statusChanged()), this, SLOT(reload()));
 
@@ -21,6 +24,30 @@ void CommodityQueryListModel::setSearchText(QString text)
     emit statusChanged();
 }
 
+bool CommodityQueryListModel::getIsNotStrSearchAll()
+{
+    return m_isNotStrSearchAll;
+}
+
+void CommodityQueryListModel::setIsNotStrSearchAll(bool status)
+{
+    m_isNotStrSearchAll = status;
+    emit statusChanged();
+}
+
+QStringList CommodityQueryListModel::getCommodityTypeList()
+{
+    return m_commodityTypeList;
+}
+
+void CommodityQueryListModel::setCommodityTypeList()
+{
+    int count = sizeof(commodityTypeListTr)/sizeof(QString);
+    for (int i = 0; i < count; i++) {
+        m_commodityTypeList.append(commodityTypeListTr[i]);
+    }
+}
+
 QString CommodityQueryListModel::getCommodityType()
 {
     return m_commodityType;
@@ -28,6 +55,13 @@ QString CommodityQueryListModel::getCommodityType()
 
 void CommodityQueryListModel::setCommodityType(QString typeStr)
 {
+    int count = sizeof(commodityTypeListTr)/sizeof(QString);
+    for (int i = 0; i < count; i++) {
+        if (commodityTypeListTr[i] == typeStr) {
+            typeStr = commodityTypeList[i];
+            break;
+        }
+    }
     m_commodityType = typeStr;
     emit statusChanged();
 }
@@ -35,14 +69,11 @@ void CommodityQueryListModel::setCommodityType(QString typeStr)
 void CommodityQueryListModel::reload()
 {
     QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
-    if (this->getSearchText() == "") {
-        notifyResetList(modelList);
-        return;
-    }
 
     CommodityQueryCondition condition;
     condition.setCommodityType(this->getCommodityType());
     condition.setFuzzyStr(this->getSearchText());
+    condition.setIsNotStrSearchAll(this->getIsNotStrSearchAll());
 
     QList<Commodity *> commodityList = CommodityQueryService::instance()->getList(condition);
     Commodity* commodity = NULL;

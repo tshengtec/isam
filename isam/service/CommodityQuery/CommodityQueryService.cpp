@@ -33,7 +33,10 @@ QList<Commodity *> CommodityQueryService::getList(CommodityQueryCondition condit
     for (int i = 0; i < list.count(); i++) {
         Commodity* commodity = list.at(i);
 
-        if (condition.getCommodityType() == commodity->getCommodityType()) {
+        if (condition.getCommodityType() == "all" || condition.getCommodityType() == commodity->getCommodityType()) {
+            if (condition.getFuzzyStr() == "" && !condition.getIsNotStrSearchAll())
+                break;
+
             if (m_fuzzySearchTool.indexIn(commodity->getId())   != -1 ||
                 m_fuzzySearchTool.indexIn(commodity->getName()) != -1) {
                 newlist.append(commodity);

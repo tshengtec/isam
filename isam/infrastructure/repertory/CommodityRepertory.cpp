@@ -92,6 +92,12 @@ CommodityRepertory::CommodityRepertory()
     commdity3->setName("笔记本");
     commdity3->setCommodityType("all");
     add(commdity3);
+
+    Commodity* commdity4 = new Commodity();
+    commdity4->setId("3214678867432");
+    commdity4->setName("笔记本");
+    commdity4->setCommodityType("default");
+    add(commdity4);
 }
 
 void CommodityRepertory::save()

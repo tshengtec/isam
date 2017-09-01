@@ -4,6 +4,8 @@ import "../../Common/Text"
 
 Rectangle {
     signal backed()
+    signal searched(string searchText)
+    property alias searchTextInputIdText: searchTextInputId.text
     width: parent.width; height: parent.height
     color: "#337cc9"
 
@@ -22,11 +24,13 @@ Rectangle {
     }
 
     ISAMTextInput {
+        id: searchTextInputId
         anchors.right: parent.right
         anchors.rightMargin: 30
         anchors.verticalCenter: parent.verticalCenter
         width: 3*parent.width/20; height: 5*parent.height/10
         radius: height/2
         defaultText: "  搜索条形码或名称"
+        onIsReturnPressed: searched(barCodeText)
     }
 }

@@ -2,7 +2,9 @@
 
 CommodityQueryCondition::CommodityQueryCondition()
 {
-    m_commodityType = EC::ALL;
+    m_commodityType = commodityTypeList[0];
+    m_fuzzyStr = "";
+    m_isNotStrSearchAll = false;
 }
 
 QString CommodityQueryCondition::getCommodityType()
@@ -23,4 +25,14 @@ QString CommodityQueryCondition::getFuzzyStr()
 void CommodityQueryCondition::setFuzzyStr(QString fuzzyStr)
 {
     m_fuzzyStr = fuzzyStr;
+}
+
+bool CommodityQueryCondition::getIsNotStrSearchAll()
+{
+    return m_isNotStrSearchAll;
+}
+
+void CommodityQueryCondition::setIsNotStrSearchAll(bool status)
+{
+    m_isNotStrSearchAll = status;
 }
