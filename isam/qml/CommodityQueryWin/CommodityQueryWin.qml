@@ -43,7 +43,7 @@ Rectangle {
 
     onVisibleChanged: {
         if (visible) {
-            commodityQueryModel.reload()
+            commodityQueryListModel.reload()
         }
     }
 
