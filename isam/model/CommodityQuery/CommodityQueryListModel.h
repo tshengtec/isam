@@ -29,7 +29,7 @@ public:
 signals:
     void statusChanged();
 
-private slots:
+public slots:
     Q_INVOKABLE void reload();
 
 private:

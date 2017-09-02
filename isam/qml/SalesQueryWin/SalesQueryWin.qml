@@ -1,11 +1,10 @@
 import QtQuick 2.0
+import MyModels 1.0
 import "../ProjectCommon/Bar"
 import "./content/LeftPart"
 import "./content/RightPart"
 
 Rectangle {
-    property variant allSalseListModelToLeftPart: []
-    property variant commoditySalseListModelToRightPart: [] //
     id: rootId
     width: parent.width; height: parent.height
 
@@ -22,12 +21,12 @@ Rectangle {
 
             LeftPart {
                 width: 6*parent.width/20; height: parent.height
-                allSalseListModel: allSalseListModelToLeftPart
+                allSalseListModel: salesDocumentsListModel
             }
 
             RightPart {
                 width: 14*parent.width/20; height: parent.height
-                commoditySalseListModel: commoditySalseListModelToRightPart
+                commoditySalseListModel: salesQueryListModel
             }
         }
 
@@ -35,7 +34,15 @@ Rectangle {
 
     onVisibleChanged: {
         if (visible) {
-            allSalseListModelToLeftPart.reload()
+            salesDocumentsListModel.reload()
         }
+    }
+
+    SalesQueryListModel {
+        id: salesQueryListModel
+    }
+
+    SalesDocumentsListModel {
+        id: salesDocumentsListModel
     }
 }

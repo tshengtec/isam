@@ -22,19 +22,17 @@ Window {
     minimumWidth: 0.5*Screen.desktopAvailableWidth
     minimumHeight: 0.5*Screen.desktopAvailableHeight
     title: qsTr("")
+
     onClosing: {
         close.accepted = false
         salesShiftWin.visible = true
     }
 
-    Item {
-        width: parent.width; height: parent.height
-        MouseArea {
-            anchors.fill: parent
-            propagateComposedEvents: true
-            onClicked: {
-                focus = true
-            }
+    MouseArea {
+        anchors.fill: parent
+        propagateComposedEvents: true
+        onClicked: {
+            focus = true
         }
     }
 
@@ -81,13 +79,7 @@ Window {
         commodityType: "all"
     }
 
-    SalesQueryListModel {
-        id: salesQueryListModel
-    }
 
-    SalesDocumentsListModel {
-        id: salesDocumentsListModel
-    }
 
     //win-----------------------------
 
@@ -105,8 +97,6 @@ Window {
     SalesQueryWin {
         id: salesQueryWin
         visible: false
-        allSalseListModelToLeftPart: salesDocumentsListModel
-        commoditySalseListModelToRightPart: salesQueryListModel
     }
 
     CommodityQueryWin {

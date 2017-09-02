@@ -5,7 +5,6 @@ import "./content/LeftPart"
 import "./content/RightPart"
 
 Rectangle {
-    property variant commodityQueryModel: []
 
     id: rootId
     width: parent.width; height: parent.height

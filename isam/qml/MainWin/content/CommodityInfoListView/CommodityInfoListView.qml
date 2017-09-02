@@ -49,7 +49,6 @@ Item {
         }
     }
 
-
     function xCount() {
         var xValue = 0
         for (var i = 0; i < listViewMoreId.spacingWidth.length - 1; i++) {

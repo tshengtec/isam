@@ -83,7 +83,6 @@ Rectangle {
     }
 
     function getCashiersInfo() {
-        console.log(accountListModel.size())
         for (var i = 0; i < accountListModel.size(); i++) {
             if (accountListModel.at(i).type === "general")
                 return accountListModel.at(i).name
