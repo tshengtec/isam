@@ -14,7 +14,8 @@ import "../SalesShiftWin"
 
 Window {
     id: windowsId
-    x: 100
+    x: (Screen.desktopAvailableWidth - width)/2;
+    y: (Screen.desktopAvailableHeight - height)/2
     visible: true
     width: 0.7*Screen.desktopAvailableWidth
     height: 0.7*Screen.desktopAvailableHeight
