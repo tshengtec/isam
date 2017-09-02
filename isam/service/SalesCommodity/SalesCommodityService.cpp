@@ -32,6 +32,21 @@ QList<SalesNote *> SalesCommodityService::getSalesList()
     return m_SalesList;
 }
 
+float SalesCommodityService::getSales()
+{
+    float sales = 0;
+    for (int i = 0; i < m_SalesList.count(); i++) {
+        SalesNote* salesNote = m_SalesList.at(i);
+        for (int j = 0; salesNote != NULL && j < salesNote->getList().count(); j++) {
+            Commodity* commodity = salesNote->getList().at(j);
+            if (commodity != NULL) {
+                sales += commodity->getRetailPrice()*commodity->getCount();
+            }
+        }
+    }
+    return sales;
+}
+
 QList<Commodity *> SalesCommodityService::copyList(QList<Commodity *> list)
 {
     QList<Commodity *> newList = QList<Commodity *>();

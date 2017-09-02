@@ -78,24 +78,32 @@ CommodityRepertory::CommodityRepertory()
     Commodity* commdity1 = new Commodity();
     commdity1->setId("2893849123333");
     commdity1->setName("铅笔");
+    commdity1->setCount(2);
+    commdity1->setRetailPrice(1.5);
     commdity1->setCommodityType("all");
     add(commdity1);
 
     Commodity* commdity2 = new Commodity();
     commdity2->setId("8928123728123");
     commdity2->setName("钢笔");
+    commdity2->setCount(2);
+    commdity2->setRetailPrice(5.5);
     commdity2->setCommodityType("all");
     add(commdity2);
 
     Commodity* commdity3 = new Commodity();
     commdity3->setId("1234678867432");
     commdity3->setName("笔记本");
+    commdity3->setCount(2);
+    commdity3->setRetailPrice(2);
     commdity3->setCommodityType("all");
     add(commdity3);
 
     Commodity* commdity4 = new Commodity();
     commdity4->setId("3214678867432");
-    commdity4->setName("笔记本");
+    commdity4->setName("笔记本2");
+    commdity4->setCount(4);
+    commdity4->setRetailPrice(3);
     commdity4->setCommodityType("default");
     add(commdity4);
 }

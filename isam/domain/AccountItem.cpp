@@ -5,6 +5,7 @@ AccountItem::AccountItem()
     m_type = "";
     m_name = "";
     m_password = "";
+    m_loginDateTime = QDateTime::currentDateTime();
 }
 
 AccountItem::AccountItem(AccountItem *accountItem)
@@ -12,6 +13,7 @@ AccountItem::AccountItem(AccountItem *accountItem)
     m_type = accountItem->getType();
     m_name = accountItem->getName();
     m_password = accountItem->getPassword();
+    m_loginDateTime = accountItem->getLoginDateTime();
 }
 
 QString AccountItem::getType()
@@ -42,4 +44,14 @@ QString AccountItem::getPassword()
 void AccountItem::setPassword(QString password)
 {
     m_password = password;
+}
+
+QDateTime AccountItem::getLoginDateTime()
+{
+    return m_loginDateTime;
+}
+
+void AccountItem::setLoginDateTime(QDateTime dateTime)
+{
+    m_loginDateTime = dateTime;
 }

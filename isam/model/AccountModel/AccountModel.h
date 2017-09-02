@@ -15,6 +15,7 @@ public:
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY statusChanged)
     Q_PROPERTY(QString password READ getPassword WRITE setPassword NOTIFY statusChanged)
     Q_PROPERTY(QString type READ getType WRITE setType NOTIFY statusChanged)
+    Q_PROPERTY(QDateTime loginDateTime READ getLoginDateTime NOTIFY statusChanged)
 
     QString getName();
     void setName(QString name);
@@ -25,6 +26,9 @@ public:
     QString getType();
     void setType(QString type);
 
+    QDateTime getLoginDateTime();
+    void setLoginDateTime(QDateTime dateTime);
+
     void operator=(const AccountModel& model);
 
 signals:
@@ -34,6 +38,7 @@ private:
     QString m_name;
     QString m_password;
     QString m_type;
+    QDateTime m_loginDateTime;
 };
 
 #endif // ACCOUNTMODEL_H

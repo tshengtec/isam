@@ -4,7 +4,6 @@
 
 SalesQueryListModel::SalesQueryListModel()
 {
-
 }
 
 void SalesQueryListModel::reload(QString id)

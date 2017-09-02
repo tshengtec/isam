@@ -3,7 +3,30 @@
 
 SalesDocumentsListModel::SalesDocumentsListModel()
 {
+    m_sales = 0;
+    m_salesNumber = 0;
+}
 
+float SalesDocumentsListModel::getSales()
+{
+    return m_sales;
+}
+
+void SalesDocumentsListModel::setSales(float sales)
+{
+    m_sales = sales;
+    emit statusChanged();
+}
+
+int SalesDocumentsListModel::getSalesNumber()
+{
+    return m_salesNumber;
+}
+
+void SalesDocumentsListModel::setSalesNumber(int num)
+{
+    m_salesNumber = num;
+    emit statusChanged();
 }
 
 void SalesDocumentsListModel::reload()
@@ -25,4 +48,9 @@ void SalesDocumentsListModel::reload()
     }
 
     notifyResetList(salesDocListModel);
+
+    float sales = SalesCommodityService::instance()->getSales();
+    this->setSales(sales);
+    int salesNumber = SalesCommodityService::instance()->getSalesList().count();
+    this->setSalesNumber(salesNumber);
 }

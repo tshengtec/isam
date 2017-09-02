@@ -26,8 +26,8 @@ public:
     int getCount();
     void setCount(int count);
 
-    int getRetailPrice();
-    void setRetailPrice(int retailprice);
+    float getRetailPrice();
+    void setRetailPrice(float retailprice);
 
     QString getCommodityType();
     void setCommodityType(QString typeStr);
@@ -36,7 +36,7 @@ private:
     QString m_id; /*条形码ID*/
     QString m_name; /**/
     int m_count;
-    int m_retailPrice;
+    float m_retailPrice;
     QString m_commodityType;
 };
 

@@ -19,6 +19,8 @@ public:
     QList<Commodity *> getPendingList();
     QList<SalesNote *> getSalesList();
 
+    float getSales(); //获取销售金额;
+
     Commodity *get(QString id);
     bool add(QString id);
     bool remove(QString id);

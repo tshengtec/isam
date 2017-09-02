@@ -14,12 +14,17 @@ import "../SalesShiftWin"
 
 Window {
     id: windowsId
+    x: 100
     visible: true
     width: 0.7*Screen.desktopAvailableWidth
     height: 0.7*Screen.desktopAvailableHeight
     minimumWidth: 0.5*Screen.desktopAvailableWidth
     minimumHeight: 0.5*Screen.desktopAvailableHeight
     title: qsTr("")
+    onClosing: {
+        close.accepted = false
+        salesShiftWin.visible = true
+    }
 
     Item {
         width: parent.width; height: parent.height

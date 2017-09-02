@@ -68,12 +68,12 @@ void Commodity::setName(QString name)
     m_name = name;
 }
 
-int Commodity::getRetailPrice()
+float Commodity::getRetailPrice()
 {
     return m_retailPrice;
 }
 
-void Commodity::setRetailPrice(int retaliPrice)
+void Commodity::setRetailPrice(float retaliPrice)
 {
     m_retailPrice = retaliPrice;
 }

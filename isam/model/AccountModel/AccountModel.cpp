@@ -6,6 +6,7 @@ AccountModel::AccountModel(QObject *parent) :
     m_name = "";
     m_password = "";
     m_type = "general";
+    m_loginDateTime = QDateTime::currentDateTime();
 }
 
 AccountModel::AccountModel(AccountItem *accountItem, QObject *parent) :
@@ -49,11 +50,23 @@ void AccountModel::setType(QString type)
     emit statusChanged();
 }
 
+QDateTime AccountModel::getLoginDateTime()
+{
+    return m_loginDateTime;
+}
+
+void AccountModel::setLoginDateTime(QDateTime dateTime)
+{
+    m_loginDateTime = dateTime;
+    emit statusChanged();
+}
+
 void AccountModel::operator =(const AccountModel& model)
 {
     this->m_name = model.m_name;
     this->m_password = model.m_password;
     this->m_type = model.m_type;
+    this->m_loginDateTime = model.m_loginDateTime;
 
     emit statusChanged();
 }

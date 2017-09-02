@@ -33,10 +33,14 @@ SOURCES += main.cpp \
     service/AccountService/AccountService.cpp \
     model/AccountModel/AccountModel.cpp \
     domain/AccountItem.cpp \
-    model/AccountModel/AccountListModel.cpp
+    model/AccountModel/AccountListModel.cpp \
+    windows/QmlWin.cpp \
+    windows/MyGuiApplication.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
+
+INCLUDEPATH += windows
 
 INCLUDEPATH += infrastructure/domain \
                infrastructure/utils \
@@ -98,7 +102,9 @@ HEADERS += \
     service/AccountService/AccountService.h \
     model/AccountModel/AccountModel.h \
     domain/AccountItem.h \
-    model/AccountModel/AccountListModel.h
+    model/AccountModel/AccountListModel.h \
+    windows/QmlWin.h \
+    windows/MyGuiApplication.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml
