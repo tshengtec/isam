@@ -58,33 +58,13 @@ Rectangle {
 
 
 
-    Rectangle {
+    AccountInfoDisplay {
         anchors.right: parent.right
-        width: 2*parent.width/20; height: rootId.height/1.2
-        color: "lightblue"
-
-        ListView {
-            anchors.right: parent.right
-            width: 100
-            delegate:
-                Text {
-                    id: textId
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: parent.bottom
-                    color: "white"
-                    text: "ddd"
-                    font.pixelSize: parent.height/2.5
-                }
-        }
-
+        anchors.verticalCenter: parent.verticalCenter
+        width: 4*parent.width/20; height: 0.5*rootId.height
     }
 
     ErrorTips {
         width: 4*parent.width/20; height: 9*parent.height/20
-    }
-
-    //-----------------data
-    AccountListModel {
-        id: accountListModel
     }
 }
