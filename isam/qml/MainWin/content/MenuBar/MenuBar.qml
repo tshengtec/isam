@@ -4,8 +4,9 @@ import "./content"
 import "../../../Common/Button"
 
 Rectangle {
-    signal salseSearch()
+    signal salesSearch()
     signal commoditySearch();
+    signal salesShift()
     id: rootId
     width: parent.width; height: parent.height
     color: "#337cc9"//themesModel.backgroundColor
@@ -21,7 +22,7 @@ Rectangle {
             width: 2*rootId.width/15; height: rootId.height/1.2
             btnText: "销售查询"
             onIsClicked: {
-                salseSearch()
+                salesSearch()
             }
         }
         MenuButton {
@@ -53,6 +54,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: rootId.width/15; height: rootId.height/1.2
             btnText: "交班"
+            onIsClicked: salesShift()
         }
     }
 

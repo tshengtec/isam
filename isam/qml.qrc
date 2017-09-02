@@ -40,5 +40,6 @@
         <file>qml/CommodityQueryWin/content/LeftPart/AllClassListView.qml</file>
         <file>qml/MainWin/content/MenuBar/content/ErrorTips.qml</file>
         <file>qml/MainWin/content/MenuBar/content/AccountInfoDisplay.qml</file>
+        <file>qml/SalesShiftWin/SalesShiftWin.qml</file>
     </qresource>
 </RCC>
