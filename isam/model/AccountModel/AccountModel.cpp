@@ -15,6 +15,7 @@ AccountModel::AccountModel(AccountItem *accountItem, QObject *parent) :
     m_name = accountItem->getName();
     m_password = accountItem->getPassword();
     m_type = accountItem->getType();
+    m_loginDateTime = accountItem->getLoginDateTime();
 }
 
 QString AccountModel::getName()
