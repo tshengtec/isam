@@ -6,52 +6,41 @@ AccountService * AccountService::_instance = NULL;
 AccountService::AccountService()
 {
     reload();
-    m_loggedinAdminAccount = new AccountItem();
-    m_loggedinGeneralAccount = new AccountItem();
 }
 
-bool AccountService::verifyAccount(QString type, QString name, QString password)
+bool AccountService::loginAccount(QString type, QString name, QString password)
 {
     for (int i = 0; i < m_accountList.count(); i++) {
         AccountItem* accountItem = m_accountList.at(i);
         if (accountItem->getType() == type &&
             accountItem->getName() == name &&
             accountItem->getPassword() == password) {
-            if (type == accountTypeList[0]) {
-                m_loggedinAdminAccount->setType(type);
-                m_loggedinAdminAccount->setName(name);
-                m_loggedinAdminAccount->setPassword(password);
-            }
-            else if (type == accountTypeList[1]) {
-                m_loggedinGeneralAccount->setType(type);
-                m_loggedinGeneralAccount->setName(name);
-                m_loggedinGeneralAccount->setPassword(password);
-            }
-
+            AccountItem* loggedInaccountItem = new AccountItem(accountItem);
+            m_loggedInAccountList.append(loggedInaccountItem);
+            emit loggedInAccountListChanged();
             return true;
         }
     }
     return false;
 }
 
-AccountItem* AccountService::getLoggedinAdminAccount()
+QList<AccountItem *> AccountService::getLoggedInAccountList()
 {
-    if (verifyAccountIsValid(m_loggedinAdminAccount->getType(),
-                             m_loggedinAdminAccount->getName(),
-                             m_loggedinAdminAccount->getPassword()))
-        return NULL;
-    else
-        return m_loggedinAdminAccount;
+    return m_loggedInAccountList;
 }
 
-AccountItem* AccountService::getLoggedinGeneralAccount()
+bool AccountService::logoutAccount(QString type, QString name)
 {
-    if (verifyAccountIsValid(m_loggedinGeneralAccount->getType(),
-                             m_loggedinGeneralAccount->getName(),
-                             m_loggedinGeneralAccount->getPassword()))
-        return NULL;
-    else
-        return m_loggedinGeneralAccount;
+    for (int i = 0; i < this->m_loggedInAccountList.count(); i++) {
+        AccountItem* item = m_loggedInAccountList.at(i);
+        if (item != NULL && item->getType() == type && item->getName() == name) {
+            m_loggedInAccountList.removeAt(i);
+            delete item;
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool AccountService::add(QString type, QString name, QString password)

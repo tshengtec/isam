@@ -1,4 +1,6 @@
 import QtQuick 2.0
+import MyModels 1.0
+import "./content"
 import "../../../Common/Button"
 
 Rectangle {
@@ -54,35 +56,35 @@ Rectangle {
         }
     }
 
-    Item {
+
+
+    Rectangle {
         anchors.right: parent.right
-        width: textId.text.length*height/2.5; height: rootId.height/1.2
+        width: 2*parent.width/20; height: rootId.height/1.2
+        color: "lightblue"
 
-        Text {
-            id: textId
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            color: "white"
-            text: "xxx公司"
-            font.pixelSize: parent.height/2.5
+        ListView {
+            anchors.right: parent.right
+            width: 100
+            delegate:
+                Text {
+                    id: textId
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    color: "white"
+                    text: "ddd"
+                    font.pixelSize: parent.height/2.5
+                }
         }
+
     }
 
-    BaseButton {
-        id: tipsLabelId
-        visible: salesCommodityEditModel.errorStr !== ""
-        anchors.centerIn: parent
+    ErrorTips {
         width: 4*parent.width/20; height: 9*parent.height/20
-        radius: 5
-        color: "#ff8400"
-        btnText: salesCommodityEditModel.errorStr
     }
 
-    Timer {
-        interval: 2000; running: salesCommodityEditModel.errorStr !== ""; repeat: true
-        onTriggered: {
-            salesCommodityEditModel.errorStr = ""
-            stop()
-        }
+    //-----------------data
+    AccountListModel {
+        id: accountListModel
     }
 }

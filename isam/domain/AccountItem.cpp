@@ -7,6 +7,13 @@ AccountItem::AccountItem()
     m_password = "";
 }
 
+AccountItem::AccountItem(AccountItem *accountItem)
+{
+    m_type = accountItem->getType();
+    m_name = accountItem->getName();
+    m_password = accountItem->getPassword();
+}
+
 QString AccountItem::getType()
 {
     return m_type;

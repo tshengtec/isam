@@ -6,6 +6,7 @@ class AccountItem
 {
 public:
     AccountItem();
+    AccountItem(AccountItem* accountItem);
 
     /*type ==> "admin", "general"*/
     QString getType();

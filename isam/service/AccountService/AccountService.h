@@ -12,9 +12,12 @@ class AccountService : public QObject
     Q_OBJECT
 public:
     static AccountService* instance();
-    bool verifyAccount(QString type, QString name, QString password);
-    AccountItem* getLoggedinAdminAccount();
-    AccountItem* getLoggedinGeneralAccount();
+    bool loginAccount(QString type, QString name, QString password);
+    bool logoutAccount(QString type, QString name);
+    QList<AccountItem *> getLoggedInAccountList();
+
+signals:
+    void loggedInAccountListChanged();
 
 private:
     AccountService();
@@ -27,8 +30,8 @@ private:
     static AccountService* _instance;
     /*Full account information*/
     QList <AccountItem* > m_accountList;
-    AccountItem* m_loggedinAdminAccount;
-    AccountItem* m_loggedinGeneralAccount;
+    /*Here are the accounts that have been logged in*/
+    QList <AccountItem* > m_loggedInAccountList;
 };
 
 #endif // ACCOUNTSERVICE_H

@@ -38,5 +38,6 @@
         <file>qml/CommodityQueryWin/content/LeftPart/LeftPart.qml</file>
         <file>qml/CommodityQueryWin/content/RightPart/RightPart.qml</file>
         <file>qml/CommodityQueryWin/content/LeftPart/AllClassListView.qml</file>
+        <file>qml/MainWin/content/MenuBar/content/ErrorTips.qml</file>
     </qresource>
 </RCC>

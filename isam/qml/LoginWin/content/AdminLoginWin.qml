@@ -83,7 +83,7 @@ Item {
             width: 7*itemId.width/20; height: 1*itemId.height/10
             btnText: "登录"
             onIsClicked: {
-                adminAccountModel.isAdminLogged = adminAccountModel.verifyAccount("admin", accountId.text, passwordId.text)
+                adminAccountModel.isAdminLogged = adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
                 errorId.visible = !adminAccountModel.isAdminLogged
             }
         }

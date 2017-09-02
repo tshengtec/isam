@@ -27,7 +27,7 @@ Rectangle {
         visible: !accountModel.isGeneralLogged
     }
 
-    AccountModel {
+    AccountListModel {
         id: accountModel
     }
 }
