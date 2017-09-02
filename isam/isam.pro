@@ -98,7 +98,6 @@ HEADERS += \
     service/AccountService/AccountService.h \
     model/AccountModel/AccountModel.h \
     domain/AccountItem.h \
-    qml/LoginWin/content/AdminLoginWin.h \
     model/AccountModel/AccountListModel.h
 
 DISTFILES += \
