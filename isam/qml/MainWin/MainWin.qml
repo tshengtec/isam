@@ -24,8 +24,10 @@ Window {
     title: qsTr("")
 
     onClosing: {
-        close.accepted = false
-        salesShiftWin.visible = true
+        if (!loginWin.visible) {
+            close.accepted = false
+            salesShiftWin.visible = true
+        }
     }
 
     MouseArea {
@@ -61,7 +63,7 @@ Window {
                 commodityQueryListModel.searchText = barCodeText
                 selectedCommodityWin.visible = true
             }
-            onSettleMented: salesCommodityEditModel.settleMent()
+            onSettleMented: settleMentWin.visible = true//salesCommodityEditModel.settleMent()
         }
     }
 
@@ -78,8 +80,6 @@ Window {
         id: commodityQueryListModel
         commodityType: "all"
     }
-
-
 
     //win-----------------------------
 
