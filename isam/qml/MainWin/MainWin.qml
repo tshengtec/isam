@@ -106,7 +106,7 @@ Window {
 
     SettleMentWin {
         id: settleMentWin
-        visible: false
+//        visible: false
     }
 
     SalesShiftWin {

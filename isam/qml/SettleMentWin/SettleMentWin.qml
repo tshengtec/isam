@@ -11,6 +11,7 @@ Rectangle {
 
         TopTitleBar {
             width: parent.width; height: 2*parent.height/20
+            title: "结算"
             onBacked: rootId.visible = false
         }
 
