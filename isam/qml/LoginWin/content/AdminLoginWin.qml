@@ -79,6 +79,7 @@ Item {
 
                 ForgetPassword {
                     width: parent.width; height: 2*parent.height/10
+                    onForgetPassworded: adminAccountModel.forgetPassword()
                 }
 
                 MenuButton {

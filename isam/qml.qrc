@@ -44,5 +44,6 @@
         <file>qml/Common/TipsWin/YesOrNoTipsWin.qml</file>
         <file>qml/Common/Button/NormalButton.qml</file>
         <file>qml/Common/Text/MText.qml</file>
+        <file>qml/Common/Button/ImageButton.qml</file>
     </qresource>
 </RCC>

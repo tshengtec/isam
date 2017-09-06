@@ -9,7 +9,7 @@ Rectangle {
     signal salesShift()
     id: rootId
     width: parent.width; height: parent.height
-    color: "#337cc9"//themesModel.backgroundColor
+    color: "#38394e"//themesModel.backgroundColor
 
     Row {
         anchors.fill: parent

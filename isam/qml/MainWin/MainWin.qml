@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import MyModels 1.0
+import "./content/TopBar"
 import "./content/MenuBar"
 import "./content/CommodityInfoListView"
 import "./content/CommodityInfoOperation"
@@ -22,6 +23,7 @@ Window {
     minimumWidth: 0.5*Screen.desktopAvailableWidth
     minimumHeight: 0.5*Screen.desktopAvailableHeight
     title: qsTr("")
+    flags: Qt.FramelessWindowHint
 
     onClosing: {
         if (!loginWin.visible) {
@@ -39,15 +41,25 @@ Window {
     }
 
     Column {
+        TopBar {
+            width: windowsId.width; height: 1*windowsId.height/20
+            onDropDownList: {}
+            onMinimize: windowsId.showMinimized()
+            onMaximize: windowsId.visibility === Window.FullScreen ?
+                        windowsId.showNormal() :
+                        windowsId.showFullScreen()
+            onClose: windowsId.close()
+        }
+
         MenuBar {
-            width: windowsId.width; height: 2.5*windowsId.height/20
+            width: windowsId.width; height: 2*windowsId.height/20
             onSalesSearch: salesQueryWin.visible = true
             onCommoditySearch: commodityQueryWin.visible = true
             onSalesShift: salesShiftWin.visible = true
         }
 
         CommodityInfoListView {
-            width: windowsId.width; height: 12.5*windowsId.height/20
+            width: windowsId.width; height: 12*windowsId.height/20
             model: salesCommodityListModel
             onDelCommodity: salesCommodityEditModel.remove(salesCommodityListModel.at(index).id)
         }
@@ -85,7 +97,7 @@ Window {
 
     LoginWin {
         id: loginWin
-//        visible: false
+        visible: false
     }
 
     SelectedCommodityWin {

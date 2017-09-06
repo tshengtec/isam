@@ -8,5 +8,19 @@
         <file>image/loginWin/selectedclose.png</file>
         <file>image/loginWin/tips.png</file>
         <file>image/loginWin/note.png</file>
+        <file>image/mainWin/addMember.png</file>
+        <file>image/mainWin/close.png</file>
+        <file>image/mainWin/commodityQuery.png</file>
+        <file>image/mainWin/dropDownList.png</file>
+        <file>image/mainWin/help.png</file>
+        <file>image/mainWin/logisticsInform.png</file>
+        <file>image/mainWin/maximize.png</file>
+        <file>image/mainWin/minimize.png</file>
+        <file>image/mainWin/returnCommodity.png</file>
+        <file>image/mainWin/salesQuery.png</file>
+        <file>image/mainWin/salesShift.png</file>
+        <file>image/mainWin/search.png</file>
+        <file>image/mainWin/selfGetting.png</file>
+        <file>image/mainWin/selfPending.png</file>
     </qresource>
 </RCC>
