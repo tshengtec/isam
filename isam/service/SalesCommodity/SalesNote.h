@@ -20,7 +20,7 @@ public:
     void setDateTime(QDateTime dateTime);
 
 private:
-    void removeList(QList<Commodity* >& removeList); // removeAll List
+    void removeList(QList<Commodity* >& removeList); // remove List
 
 private:
     QList<Commodity* > m_salesBaseNote;
