@@ -1,8 +1,6 @@
 #ifndef MYGUIAPPLICATION_H
 #define MYGUIAPPLICATION_H
 #include <QGuiApplication>
-#include <QDebug>
-#include <QCloseEvent>
 
 class MyGuiApplication : public QGuiApplication
 {

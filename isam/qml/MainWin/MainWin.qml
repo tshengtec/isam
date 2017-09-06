@@ -85,7 +85,7 @@ Window {
 
     LoginWin {
         id: loginWin
-        visible: false
+//        visible: false
     }
 
     SelectedCommodityWin {
@@ -106,7 +106,7 @@ Window {
 
     SettleMentWin {
         id: settleMentWin
-//        visible: false
+        visible: false
     }
 
     SalesShiftWin {

@@ -18,7 +18,6 @@
 int main(int argc, char *argv[])
 {
     MyGuiApplication app(argc, argv);
-    app.setQuitOnLastWindowClosed(false);
     qmlRegisterType<SalesCommodityEditModel>("MyModels", 1, 0, "SalesCommodityEditModel");
     qmlRegisterType<SalesCommodityListModel>("MyModels", 1, 0, "SalesCommodityListModel");
     qmlRegisterType<CommodityQueryListModel>("MyModels", 1, 0, "CommodityQueryListModel");

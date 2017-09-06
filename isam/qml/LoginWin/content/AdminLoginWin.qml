@@ -61,7 +61,7 @@ Item {
                 LoginTextInput {
                     id: accountId
                     width: parent.width; height: 2*parent.height/10
-                    defaultText: "帐号登录"
+                    defaultText: "请输入帐号"
                 }
 
                 Item { width: 1; height: 0.5*parent.width/10 }

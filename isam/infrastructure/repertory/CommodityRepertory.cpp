@@ -37,7 +37,7 @@ void CommodityRepertory::add(Commodity *commodity)
 
 //    commodity->setId(generateRandomId());
     m_commodityList.append(commodity);
-    this->save();
+//    this->save();
 }
 
 void CommodityRepertory::remove(QString id)

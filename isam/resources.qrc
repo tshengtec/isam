@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>image/ico/App.ico</file>
+        <file>image/loginWin/account.png</file>
+        <file>image/loginWin/background.png</file>
+        <file>image/loginWin/close.png</file>
+        <file>image/loginWin/password.png</file>
+        <file>image/loginWin/selectedclose.png</file>
+        <file>image/loginWin/tips.png</file>
     </qresource>
 </RCC>
