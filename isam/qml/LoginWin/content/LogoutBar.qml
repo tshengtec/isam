@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../Common/Text"
 
 Item {
     id: itemId
@@ -19,7 +20,7 @@ Item {
             source: icon
         }
 
-        Text {
+        MText {
             id: textId
             visible: true
             width: 5.5*itemId.width/10; height: itemId.height
@@ -37,7 +38,7 @@ Item {
             radius: 5
             border.color: "blue"
 
-            Text {
+            MText {
                 anchors.centerIn: parent
                 text: "注销"
                 color: "blue"

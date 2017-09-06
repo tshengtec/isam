@@ -85,6 +85,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 0.8*parent.width; height: 2*parent.height/10
                     btnText: "登录"
+                    btnColor: "#ff8400"
                     onIsClicked: {
                         errorId.visible = !adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
                     }

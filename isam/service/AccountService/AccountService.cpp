@@ -36,6 +36,7 @@ bool AccountService::logoutAccount(QString type, QString name)
         if (item != NULL && item->getType() == type && item->getName() == name) {
             m_loggedInAccountList.removeAt(i);
             delete item;
+            emit loggedInAccountListChanged();
             return true;
         }
     }

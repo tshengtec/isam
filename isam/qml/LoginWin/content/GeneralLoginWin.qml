@@ -79,7 +79,7 @@ Item {
 
                 LogoutBar {
                     width: parent.width; height: 2*parent.height/10
-                    text: "dasfashdfjhaskdfhasjkdfhajksdhfk"+generalAccountModel.adminAccount
+                    text: generalAccountModel.adminAccount
                     icon: "qrc:/image/loginWin/account.png"
                     onLogout: itemId.logout()
                 }
@@ -88,6 +88,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 0.8*parent.width; height: 2*parent.height/10
                     btnText: "登录"
+                    btnColor: "#ff8400"
                     onIsClicked: {
                         errorId.visible = !generalAccountModel.loginAccount("general", accountId.text, passwordId.text)
                     }

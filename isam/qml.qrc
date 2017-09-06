@@ -43,5 +43,6 @@
         <file>qml/SalesShiftWin/SalesShiftWin.qml</file>
         <file>qml/Common/TipsWin/YesOrNoTipsWin.qml</file>
         <file>qml/Common/Button/NormalButton.qml</file>
+        <file>qml/Common/Text/MText.qml</file>
     </qresource>
 </RCC>

@@ -13,6 +13,12 @@ bool AccountListModel::loginAccount(QString type, QString name, QString password
     return AccountService::instance()->loginAccount(type, name, password);
 }
 
+bool AccountListModel::logoutAdminAccount()
+{
+    QString adminAccount = getAdminAccount();
+    return AccountService::instance()->logoutAccount("admin", adminAccount);
+}
+
 void AccountListModel::forgetPassword()
 {
     QDesktopServices::openUrl(QUrl("http://www.baidu.com"));
