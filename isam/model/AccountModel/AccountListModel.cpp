@@ -30,6 +30,17 @@ bool AccountListModel::getIsGeneralLogged()
     return isAdminLogged;
 }
 
+QString AccountListModel::getAdminAccount()
+{
+    for (int i = 0; i < this->size(); i++) {
+        if (this->getItemList().at(i)->getType() == "admin") {
+            return this->getItemList().at(i)->getName();
+        }
+    }
+
+    return "";
+}
+
 void AccountListModel::reload()
 {
     QList<AccountItem *> loggedinAccountList = AccountService::instance()->getLoggedInAccountList();

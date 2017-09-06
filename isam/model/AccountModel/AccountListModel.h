@@ -13,9 +13,11 @@ public:
     Q_INVOKABLE void forgetPassword();
     Q_PROPERTY(bool isAdminLogged READ getIsAdminLogged  NOTIFY statusChanged)
     Q_PROPERTY(bool isGeneralLogged READ getIsGeneralLogged NOTIFY statusChanged)
+    Q_PROPERTY(QString adminAccount READ getAdminAccount NOTIFY statusChanged)
 
     bool getIsAdminLogged();
     bool getIsGeneralLogged();
+    QString getAdminAccount();
 
 signals:
     void statusChanged();

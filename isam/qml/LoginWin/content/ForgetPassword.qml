@@ -22,7 +22,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 text: "忘记密码?"
                 color: "#337cc9"
-                font.pixelSize: parent.height/2.5
+                font.pixelSize: parent.height/3
 
                 MouseArea {
                     anchors.fill: parent

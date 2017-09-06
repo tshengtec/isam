@@ -7,5 +7,6 @@
         <file>image/loginWin/password.png</file>
         <file>image/loginWin/selectedclose.png</file>
         <file>image/loginWin/tips.png</file>
+        <file>image/loginWin/note.png</file>
     </qresource>
 </RCC>

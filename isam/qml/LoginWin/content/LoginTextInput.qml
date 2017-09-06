@@ -4,6 +4,7 @@ Item {
     property alias defaultText: defaultTextId.text
     property alias text: textInputId.text
     property alias echoMode: textInputId.echoMode
+    property string icon: ""
     id: itemId
     width: parent.width; height: parent.height
 
@@ -12,10 +13,10 @@ Item {
         height: parent.height
         spacing: 10
 
-        Rectangle {
+        Image {
             anchors.verticalCenter: parent.verticalCenter
-            width: itemId.width/10; height: 0.7*parent.height
-            color: "lightblue"
+            width: 0.8*itemId.width/10; height: width
+            source: icon
         }
 
         TextInput {
@@ -23,7 +24,8 @@ Item {
             width: 7*itemId.width/10; height: parent.height
             verticalAlignment: Text.AlignVCenter
             text: ""
-            font.pixelSize: height/2.5
+            font.pixelSize: height/2
+            clip: true
 
             Text {
                 id: defaultTextId

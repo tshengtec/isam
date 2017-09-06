@@ -41,5 +41,7 @@
         <file>qml/MainWin/content/MenuBar/content/ErrorTips.qml</file>
         <file>qml/MainWin/content/MenuBar/content/AccountInfoDisplay.qml</file>
         <file>qml/SalesShiftWin/SalesShiftWin.qml</file>
+        <file>qml/Common/TipsWin/YesOrNoTipsWin.qml</file>
+        <file>qml/Common/Button/NormalButton.qml</file>
     </qresource>
 </RCC>

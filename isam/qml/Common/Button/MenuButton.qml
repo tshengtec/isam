@@ -4,6 +4,7 @@ BaseButton {
     property bool statusModel: false
     property string btnColor: "#6ef2a0"
     property string btnPressColor: "white"
+    property string borderColor: "#c0c0c0"
     id: baseButton
     radius: 8
     color: btnColor
@@ -11,10 +12,12 @@ BaseButton {
     onIsPressed: {
         baseButton.color = btnPressColor
         textObj.color = "black"
+        border.color = borderColor
     }
     onIsReleased: {
         baseButton.color = btnColor
         textObj.color = "white"
+        border.color = "#00000000"
     }
 
     Rectangle {

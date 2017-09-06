@@ -12,13 +12,14 @@ Item {
 
     Column {
         anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
         spacing: 20
 
         Rectangle {
             id: rectId
             anchors.horizontalCenter: parent.horizontalCenter
-            width: 7*itemId.width/20; height: 4*itemId.height/10
-            border.color: "#e5e5e5"
+            width: 6*itemId.width/20; height: 4*itemId.height/10
+            border.color: "#c0c0c0"
             border.width: 1
             radius: 5
 
@@ -26,9 +27,10 @@ Item {
                 width: parent.width; height: parent.height
 
                 BaseButton {
-                    width: parent.width; height: 2.5*parent.height/10
+                    width: parent.width; height: 2*parent.height/10
                     btnColor: "black"
                     btnText: "帐号登录"
+                    fontPixelSize: height/3
 
                     BaseButton {
                         id: errorId
@@ -56,19 +58,21 @@ Item {
                     }
                 }
 
-                Item { width: 1; height: 0.5*parent.width/10 }
+                Item { width: 1; height: 0.25*parent.width/10 }
 
                 LoginTextInput {
                     id: accountId
-                    width: parent.width; height: 2*parent.height/10
+                    width: parent.width; height: 1.5*parent.height/10
+                    icon: "qrc:/image/loginWin/account.png"
                     defaultText: "请输入帐号"
                 }
 
-                Item { width: 1; height: 0.5*parent.width/10 }
+                Item { width: 1; height: 0.25*parent.width/10 }
 
                 LoginTextInput {
                     id: passwordId
-                    width: parent.width; height: 2*parent.height/10
+                    width: parent.width; height: 1.5*parent.height/10
+                    icon: "qrc:/image/loginWin/password.png"
                     defaultText: "请输入密码"
                     echoMode: TextInput.Password
                 }
@@ -76,14 +80,16 @@ Item {
                 ForgetPassword {
                     width: parent.width; height: 2*parent.height/10
                 }
-            }
-        }
 
-        MenuButton {
-            width: 7*itemId.width/20; height: 1*itemId.height/10
-            btnText: "登录"
-            onIsClicked: {
-                errorId.visible = !adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
+                MenuButton {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: 0.8*parent.width; height: 2*parent.height/10
+                    btnText: "登录"
+                    onIsClicked: {
+                        errorId.visible = !adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
+                    }
+                }
+
             }
         }
     }
