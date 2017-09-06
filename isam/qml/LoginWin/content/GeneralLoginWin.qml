@@ -73,9 +73,9 @@ Item {
                     defaultText: "填写密码"
                 }
 
-//                LogoutBar {
-//                    width: parent.width; height: 2*parent.height/10
-//                }
+                LogoutBar {
+                    width: parent.width; height: 2*parent.height/10
+                }
             }
         }
 
@@ -83,8 +83,7 @@ Item {
             width: 7*itemId.width/20; height: 1*itemId.height/10
             btnText: "登录"
             onIsClicked: {
-                generalAccountModel.isGeneralLogged = generalAccountModel.loginAccount("general", accountId.text, passwordId.text)
-                errorId.visible = !generalAccountModel.isGeneralLogged
+                errorId.visible = !generalAccountModel.loginAccount("general", accountId.text, passwordId.text)
             }
         }
     }

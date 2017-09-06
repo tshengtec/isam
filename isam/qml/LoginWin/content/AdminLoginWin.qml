@@ -69,13 +69,13 @@ Item {
                 LoginTextInput {
                     id: passwordId
                     width: parent.width; height: 2*parent.height/10
-                    defaultText: "填写密码"
+                    defaultText: "请输入密码"
                     echoMode: TextInput.Password
                 }
 
-//                ForgetPassword {
-//                    width: parent.width; height: 2*parent.height/10
-//                }
+                ForgetPassword {
+                    width: parent.width; height: 2*parent.height/10
+                }
             }
         }
 
@@ -83,8 +83,7 @@ Item {
             width: 7*itemId.width/20; height: 1*itemId.height/10
             btnText: "登录"
             onIsClicked: {
-                adminAccountModel.isAdminLogged = adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
-                errorId.visible = !adminAccountModel.isAdminLogged
+                errorId.visible = !adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
             }
         }
     }

@@ -1,11 +1,10 @@
 #include "AccountListModel.h"
 #include "AccountService.h"
 #include <QDesktopServices>
+#include <QUrl>
 
 AccountListModel::AccountListModel()
 {
-    m_isAdminLogged = false;
-    m_isGeneralLoged = false;
     connect(AccountService::instance(), SIGNAL(loggedInAccountListChanged()), this, SLOT(reload()));
 }
 
@@ -14,31 +13,21 @@ bool AccountListModel::loginAccount(QString type, QString name, QString password
     return AccountService::instance()->loginAccount(type, name, password);
 }
 
-bool AccountListModel::forgetPassword()
+void AccountListModel::forgetPassword()
 {
     QDesktopServices::openUrl(QUrl("http://www.baidu.com"));
 }
 
 bool AccountListModel::getIsAdminLogged()
 {
-    return m_isAdminLogged;
-}
-
-void AccountListModel::setIsAdminLogged(bool status)
-{
-    m_isAdminLogged = status;
-    emit statusChanged();
+    bool isAdminLogged = this->size() == 1;
+    return isAdminLogged;
 }
 
 bool AccountListModel::getIsGeneralLogged()
 {
-    return m_isGeneralLoged;
-}
-
-void AccountListModel::setIsGeneralLogged(bool status)
-{
-    m_isGeneralLoged = status;
-    emit statusChanged();
+    bool isAdminLogged = this->size() == 2;
+    return isAdminLogged;
 }
 
 void AccountListModel::reload()
@@ -56,4 +45,5 @@ void AccountListModel::reload()
     }
 
     notifyResetList(modelList);
+    emit statusChanged();
 }
