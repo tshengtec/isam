@@ -12,7 +12,6 @@ SOURCES += main.cpp \
     infrastructure/utils/Themes.cpp \
     infrastructure/repertory/CommodityRepertory.cpp \
     domain/Commodity.cpp \
-    service/CommodityService.cpp \
     model/SalesCommodity/SalesCommodityListModel.cpp \
     service/SalesCommodity/SalesCommodityService.cpp \
     model/SalesCommodity/SalesCommodityEditModel.cpp \
@@ -78,7 +77,6 @@ HEADERS += \
     infrastructure/utils/Themes.h \
     infrastructure/repertory/CommodityRepertory.h \
     domain/Commodity.h \
-    service/CommodityService.h \
     model/SalesCommodity/SalesCommodityListModel.h \
     service/SalesCommodity/SalesCommodityService.h \
     model/SalesCommodity/SalesCommodityEditModel.h \
