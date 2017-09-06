@@ -10,6 +10,7 @@ public:
     AccountListModel();
 
     Q_INVOKABLE bool loginAccount(QString type, QString name, QString password);
+    Q_INVOKABLE bool forgetPassword();
     Q_PROPERTY(bool isAdminLogged READ getIsAdminLogged WRITE setIsAdminLogged NOTIFY statusChanged)
     Q_PROPERTY(bool isGeneralLogged READ getIsGeneralLogged WRITE setIsGeneralLogged NOTIFY statusChanged)
 

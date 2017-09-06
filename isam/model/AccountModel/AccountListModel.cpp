@@ -1,5 +1,6 @@
 #include "AccountListModel.h"
 #include "AccountService.h"
+#include <QDesktopServices>
 
 AccountListModel::AccountListModel()
 {
@@ -11,6 +12,11 @@ AccountListModel::AccountListModel()
 bool AccountListModel::loginAccount(QString type, QString name, QString password)
 {
     return AccountService::instance()->loginAccount(type, name, password);
+}
+
+bool AccountListModel::forgetPassword()
+{
+    QDesktopServices::openUrl(QUrl("http://www.baidu.com"));
 }
 
 bool AccountListModel::getIsAdminLogged()

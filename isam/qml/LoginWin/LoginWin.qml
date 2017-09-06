@@ -8,10 +8,6 @@ Rectangle {
     width: parent.width; height: parent.height
     visible: !accountModel.isGeneralLogged
 
-//    gradient: Gradient {
-//        GradientStop { position: 0.0; color: "lightsteelblue" }
-//        GradientStop { position: 1.0; color: "blue" }
-//    }
     Image { source: "qrc:/image/loginWin/background.png" }
 
     AdminLoginWin {
@@ -23,7 +19,7 @@ Rectangle {
     }
 
     GeneralLoginWin {
-        id: generalLoginWinS
+        id: generalLoginWin
         generalAccountModel: accountModel
         visible: !accountModel.isGeneralLogged
     }
