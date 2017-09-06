@@ -2,6 +2,7 @@
 #define ACCOUNTMODEL_H
 #include "BaseItemModel.h"
 #include "AccountService.h"
+#include "EnumComplete.h"
 /*
  * note: The reserved interface is temporarily useless!
  */

@@ -2,18 +2,14 @@
 #define ENUMCOMPLETE_H
 
 #include <QObject>
+enum Priority { High, Low, VeryHigh, VeryLow };
 
 class EnumComplete : public QObject
 {
     Q_OBJECT
-
 public:
     EnumComplete() { }
-
-    enum Priority { High, Low, VeryHigh, VeryLow };
     Q_ENUM(Priority)
-//    void setPriority(Priority priority);
-//    Priority priority() const;
 };
 
 #endif // ENUMCOMPLETE_H
