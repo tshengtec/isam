@@ -15,21 +15,32 @@ public:
 
     static SalesCommodityService* instance();
 
+    /*A list of goods for which a sales document is obtained.(获取某一销售单据的商品列表)*/
     QList<Commodity *> getList();
+
+    /*Get the list of commodity to be registered.*/
     QList<Commodity *> getPendingList();
+
+    /*Get sales Documents.(获取销售单据列表)*/
     QList<SalesNote *> getSalesList();
 
-    float getSales(); //获取销售金额;
+    /*Get sales amount.*/
+    float getSales();
 
     Commodity *get(QString id);
     bool add(QString id);
     bool remove(QString id);
     bool update(Commodity *commodity);
     bool removeAll(); //removeAll m_commodityList
+
+    /*settlement operation*/
     bool settleMent();
 
-    QString onPendingOperation(); //Press the functionality, return Pending operating state.
-    QString onGettingOperation(); //Press the functionality, return Getting operating state.
+    /*Press the functionality, return Pending operating state.*/
+    QString onPendingOperation();
+
+    /*Press the functionality, return Getting operating state.*/
+    QString onGettingOperation();
 
 private:
     QList<Commodity* > copyList(QList<Commodity* > list);
