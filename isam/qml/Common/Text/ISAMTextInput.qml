@@ -5,6 +5,7 @@ Rectangle {
     property alias text: textInputId.text
     property string defaultText: ""
     property string rightIcon: ""
+    property int textInputXOffset: 0
 
     width: parent.width; height: parent.height
     radius: 3
@@ -15,16 +16,16 @@ Rectangle {
     TextInput {
         id: textInputId
         anchors.verticalCenter: parent.verticalCenter
-        x: 2
+        x: 2 + textInputXOffset
         clip: true
-        width: parent.width - 2*x - (rightIcon === "" ? 0 : rightIconItem.width);
+        width: parent.width - 2*2 - (rightIcon === "" ? 0 : rightIconItem.width) - textInputXOffset;
         height: parent.height/1.5
         font.pixelSize: height
         Keys.onReturnPressed: isReturnPressed(text)
     }
 
     Text {
-        x: 2
+        x: 2 + textInputXOffset
         visible: parent.text === "" //&& textInputId.focus === false
         font.pixelSize: parent.height/2
         color: "#555555"

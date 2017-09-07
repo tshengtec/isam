@@ -1,17 +1,17 @@
 import QtQuick 2.1
 
 Rectangle {
-    property bool onOff: false
-    property bool useAnimation: true
+    property bool onOff: true
+    property string contentText: ""
 
-    width: 194
-    height: 46
+//    width: parent.width
+//    height: parent.height
     radius: height/2
     color: "#5b79f5"
 
     onOnOffChanged: {
             sliderBtAnimation.stop()
-            if (onOff)
+            if (!onOff)
                 sliderBtAnimation.to = width - sliderBt.width
             else
                 sliderBtAnimation.to = 0
@@ -25,6 +25,7 @@ Rectangle {
         to:0;
         duration: 200 ;
         easing.type: Easing.InOutQuad
+        Component.onCompleted: { onOff = !onOff; onOff = !onOff }
     }
 
     Item {
@@ -45,5 +46,12 @@ Rectangle {
         }
     }
 
-
+    Text {
+        x: onOff ? parent.height + 5 : 5
+//        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        font.pixelSize: 0.5*parent.height
+        color: "white"
+        text: contentText
+    }
 }

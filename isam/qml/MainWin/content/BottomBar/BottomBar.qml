@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../../../Common/Text"
 import "../../../Common/Button"
 import "../../../Common/SliderButton"
+import "./content"
 
 Rectangle {
     id: rootRectId
@@ -37,26 +38,9 @@ Rectangle {
                 rightIcon: "qrc:/image/mainWin/board/board.png"
             }
 
-            ISAMTextInput {
+            SpecialOffersBar {
                 width: 6*rootRectId.width/20; height: 2.5*rootRectId.height/10
-                defaultText: "整单优惠(未完成)"
-                border.color: "#c2c2c2"
-                rightIcon: "qrc:/image/mainWin/board/board.png"
 
-                Item {
-                    id: leftIconItem
-                    anchors.left: parent.left
-                    width: 2.5*parent.height; height: parent.height
-
-                    SliderButton {
-
-                    }
-//                    Image {
-//                        anchors.centerIn: parent
-//                        width: parent.width; height: 0.6*parent.height
-//                        source: "qrc:/image/mainWin/board/on.png"
-//                    }
-                }
             }
         }
 

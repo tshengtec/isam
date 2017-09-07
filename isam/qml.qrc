@@ -47,7 +47,7 @@
         <file>qml/Common/Button/ImageButton.qml</file>
         <file>qml/Common/Button/ImageTextButton.qml</file>
         <file>qml/MainWin/content/MenuBar/content/IconButton.qml</file>
-        <file>qml/Common/SliderButton/OnOffButton.qml</file>
         <file>qml/Common/SliderButton/SliderButton.qml</file>
+        <file>qml/MainWin/content/BottomBar/content/SpecialOffersBar.qml</file>
     </qresource>
 </RCC>
