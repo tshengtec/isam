@@ -22,5 +22,6 @@
         <file>image/mainWin/search.png</file>
         <file>image/mainWin/selfGetting.png</file>
         <file>image/mainWin/selfPending.png</file>
+        <file>image/ico/logo.png</file>
     </qresource>
 </RCC>

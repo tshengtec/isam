@@ -9,7 +9,17 @@ Rectangle {
     width: parent.width; height: parent.height
     visible: !accountModel.isGeneralLogged
 
-    Image { width: parent.width; height: 0.5*parent.height; source: "qrc:/image/loginWin/background.png" }
+    Image {
+        width: parent.width; height: 0.5*parent.height;
+        source: "qrc:/image/loginWin/background.png"
+
+        Image {
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 0.2*parent.height
+            width: 0.1*parent.width; height: width
+            source: "qrc:/image/ico/logo.png"
+        }
+    }
 
     AdminLoginWin {
         id: adminLoginWin

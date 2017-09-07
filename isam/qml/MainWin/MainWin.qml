@@ -97,7 +97,7 @@ Window {
 
     LoginWin {
         id: loginWin
-        visible: false
+//        visible: false
     }
 
     SelectedCommodityWin {

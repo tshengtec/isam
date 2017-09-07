@@ -16,10 +16,13 @@ Rectangle {
         anchors.fill: parent
         onDoubleClicked: maximize()
         property point clickPos: "0, 0"
+        property int total: 0
         onPressed: clickPos = Qt.point(mouse.x, mouse.y)
         onPositionChanged: {
             var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
-//            windowsId
+            if (total++ != 2)
+                return;
+            total = 0;
             windowsId.setX(windowsId.x + delta.x)
             windowsId.setY(windowsId.y + delta.y)
         }

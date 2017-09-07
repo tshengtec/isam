@@ -80,7 +80,7 @@ Item {
                 LogoutBar {
                     width: parent.width; height: 2*parent.height/10
                     text: generalAccountModel.adminAccount
-                    icon: "qrc:/image/loginWin/account.png"
+                    icon: "qrc:/image/ico/logo.png"
                     onLogout: itemId.logout()
                 }
 

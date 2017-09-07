@@ -12,58 +12,57 @@ Rectangle {
     color: "#38394e"//themesModel.backgroundColor
 
     Row {
-        anchors.fill: parent
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        anchors.rightMargin: 0.04*parent.width
         spacing: 20
 
         Item { width: 30; height: 1 }
 
-        MenuButton {
-            anchors.verticalCenter: parent.verticalCenter
-            width: 2*rootId.width/15; height: rootId.height/1.2
-            btnText: "销售查询"
-            onIsClicked: {
-                salesSearch()
-            }
-        }
-        MenuButton {
-            anchors.verticalCenter: parent.verticalCenter
-            width: 2*rootId.width/15; height: rootId.height/1.2
-            btnText: "商品查询"
-            onIsClicked: {
-                commoditySearch()
-            }
-        }
-        MenuButton {
-            anchors.verticalCenter: parent.verticalCenter
-            width: rootId.width/15; height: rootId.height/1.2
-            btnText: "挂单"
-            onIsClicked: {
-                salesCommodityEditModel.onPendingOperation()
-            }
+        IconButton {
+            width: 0.65*rootId.width/15; height: rootId.height/1.3
+            title: "商品查询"
+            icon: "qrc:/image/mainWin/search.png"
+            onClicked: commoditySearch()
         }
 
-        MenuButton {
-            anchors.verticalCenter: parent.verticalCenter
-            width: rootId.width/15; height: rootId.height/1.2
-            btnText: "取单"
-            onIsClicked: salesCommodityEditModel.onGettingOperation()
-            statusModel: salesCommodityEditModel.isPendingStatus
+        IconButton {
+            width: 0.65*rootId.width/15; height: rootId.height/1.3
+            title: "销售查询"
+            icon: "qrc:/image/mainWin/salesQuery.png"
+            onClicked: salesSearch()
         }
 
-        MenuButton {
-            anchors.verticalCenter: parent.verticalCenter
-            width: rootId.width/15; height: rootId.height/1.2
-            btnText: "交班"
-            onIsClicked: salesShift()
+        IconButton {
+            width: 0.65*rootId.width/15; height: rootId.height/1.3
+            title: "挂单"
+            icon: "qrc:/image/mainWin/selfPending.png"
+            onClicked: salesCommodityEditModel.onPendingOperation()
+        }
+
+        IconButton {
+            width: 0.65*rootId.width/15; height: rootId.height/1.3
+            title: "取单"
+            icon: "qrc:/image/mainWin/selfGetting.png"
+            onClicked: salesCommodityEditModel.onGettingOperation()
+            noteStatus: salesCommodityEditModel.isPendingStatus
+
+        }
+
+        IconButton {
+            width: 0.65*rootId.width/15; height: rootId.height/1.3
+            title: "交班"
+            icon: "qrc:/image/mainWin/salesShift.png"
+            onClicked: salesShift()
         }
     }
 
 
 
     AccountInfoDisplay {
-        anchors.right: parent.right
+        anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        width: 4*parent.width/20; height: 0.5*rootId.height
+        width: 6*parent.width/20; height: 1*rootId.height
     }
 
     ErrorTips {

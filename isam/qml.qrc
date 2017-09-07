@@ -46,5 +46,6 @@
         <file>qml/Common/Text/MText.qml</file>
         <file>qml/Common/Button/ImageButton.qml</file>
         <file>qml/Common/Button/ImageTextButton.qml</file>
+        <file>qml/MainWin/content/MenuBar/content/IconButton.qml</file>
     </qresource>
 </RCC>

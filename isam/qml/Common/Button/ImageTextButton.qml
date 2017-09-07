@@ -1,20 +1,34 @@
 import QtQuick 2.0
 import "../Text"
 
-BaseButton {
+Rectangle {
+    signal isClicked()
+    signal isPressed()
+    signal isReleased()
+    signal isEntered()
+    signal isExited()
+    property string btnText: ""
+    property alias btnColor: textId.color
+    property variant textObj: textId
+    property alias fontPixelSize: textId.font.pixelSize
     width: parent.width; height: parent.height
-    onIsEntered: color = "#300000000"
-    onIsExited: color = "#00000000"
+    color: "#00000000"
 
-    Row {
-        Image {
-            anchors.centerIn: parent
-            width: 0.5*parent.height; height: scaleHeight*width
-            source: root.source
-        }
+    Text {
+        id: textId
+        anchors.centerIn: parent
+        text: btnText
+        color: "white"
+        font.pixelSize: parent.height/2.5
+    }
 
-        MText {
-
-        }
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        onEntered: isEntered()
+        onExited: isExited()
+        onClicked: isClicked()
+        onPressed: isPressed()
+        onReleased: isReleased()
     }
 }
