@@ -4,6 +4,8 @@ Rectangle {
     signal isReturnPressed(string barCodeText)
     property alias text: textInputId.text
     property string defaultText: ""
+    property string rightIcon: ""
+
     width: parent.width; height: parent.height
     radius: 3
     color: "white"
@@ -15,18 +17,31 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         x: 2
         clip: true
-        width: parent.width - 2*x; height: parent.height/1.5
+        width: parent.width - 2*x - (rightIcon === "" ? 0 : rightIconItem.width);
+        height: parent.height/1.5
         font.pixelSize: height
         Keys.onReturnPressed: isReturnPressed(text)
     }
 
     Text {
         x: 2
-        visible: parent.text === "" && textInputId.focus === false
+        visible: parent.text === "" //&& textInputId.focus === false
         font.pixelSize: parent.height/2
         color: "#555555"
         text: defaultText
         anchors.verticalCenter: parent.verticalCenter
+    }
+
+    Item {
+        id: rightIconItem
+        anchors.right: parent.right
+        width: parent.height; height: parent.height
+
+        Image {
+            anchors.centerIn: parent
+            width: 0.8*parent.height; height: 0.7*parent.height
+            source: rightIcon
+        }
     }
 }
 
