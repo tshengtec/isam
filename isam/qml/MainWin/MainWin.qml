@@ -23,7 +23,7 @@ Window {
     minimumWidth: 0.5*Screen.desktopAvailableWidth
     minimumHeight: 0.5*Screen.desktopAvailableHeight
     title: qsTr("")
-    flags: Qt.FramelessWindowHint
+    flags: Qt.Window|Qt.FramelessWindowHint
 
     onClosing: {
         if (!loginWin.visible) {

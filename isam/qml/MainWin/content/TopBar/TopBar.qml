@@ -10,7 +10,18 @@ Rectangle {
 
     width: parent.width; height: parent.height
     color: "#38384e"
-    //    color: "lightblue"
+
+    MouseArea {
+        anchors.fill: parent
+        onDoubleClicked: maximize()
+        property point clickPos: "0, 0"
+        onPressed: clickPos = Qt.point(mouse.x, mouse.y)
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
+            windowsId.setX(windowsId.x + delta.x)
+            windowsId.setY(windowsId.y + delta.y)
+        }
+    }
 
     Row {
         anchors.right: parent.right
