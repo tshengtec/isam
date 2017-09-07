@@ -4,6 +4,8 @@ Rectangle {
     signal isClicked()
     signal isPressed()
     signal isReleased()
+    signal isEntered()
+    signal isExited()
     property string btnText: ""
     property alias btnColor: textId.color
     property variant textObj: textId
@@ -21,6 +23,9 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
+        hoverEnabled: true
+        onEntered: isEntered()
+        onExited: isExited()
         onClicked: isClicked()
         onPressed: isPressed()
         onReleased: isReleased()
