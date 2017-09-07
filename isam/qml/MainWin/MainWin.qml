@@ -97,7 +97,9 @@ Window {
 
     LoginWin {
         id: loginWin
-//        visible: false
+        onClose: windowsId.close()
+        visible: false
+
     }
 
     SelectedCommodityWin {

@@ -6,12 +6,22 @@ import "./content"
 
 Rectangle {
     id: windowsId
+
+    signal close()
+
     width: parent.width; height: parent.height
     visible: !accountModel.isGeneralLogged
 
     Image {
         width: parent.width; height: 0.5*parent.height;
         source: "qrc:/image/loginWin/background.png"
+
+        ImageButton {
+            anchors.right: parent.right
+            width: 0.05*windowsId.height; height: width
+            source: "qrc:/image/mainWin/close.png"
+            onIsClicked: close()
+        }
 
         Image {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -20,6 +30,8 @@ Rectangle {
             source: "qrc:/image/ico/logo.png"
         }
     }
+
+    //-------------------------------------------------------
 
     AdminLoginWin {
         id: adminLoginWin
