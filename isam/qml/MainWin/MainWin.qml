@@ -99,12 +99,12 @@ Window {
     SelectedCommodityWin {
         id: selectedCommodityWin
         displayListModel: commodityQueryListModel
-        visible: false
+//        visible: false
     }
 
     SalesQueryWin {
         id: salesQueryWin
-//        visible: false
+        visible: false
     }
 
     CommodityQueryWin {
