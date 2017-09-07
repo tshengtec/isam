@@ -3,6 +3,7 @@ import "../../../Common/Button"
 
 Rectangle {
     id: root
+
     signal dropDownList()
     signal minimize()
     signal maximize()
@@ -18,15 +19,14 @@ Rectangle {
         onPressed: clickPos = Qt.point(mouse.x, mouse.y)
         onPositionChanged: {
             var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
+//            windowsId
             windowsId.setX(windowsId.x + delta.x)
             windowsId.setY(windowsId.y + delta.y)
         }
     }
 
     Row {
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        anchors.verticalCenter: parent.verticalCenter
+        anchors {right: parent.right; rightMargin: 10; verticalCenter: parent.verticalCenter }
         spacing: 15
 
         ImageButton {
