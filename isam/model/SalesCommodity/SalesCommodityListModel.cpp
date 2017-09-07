@@ -22,5 +22,4 @@ void SalesCommodityListModel::reload()
     }
 
     notifyResetList(modelList);
-
 }

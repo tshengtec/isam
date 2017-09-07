@@ -21,7 +21,7 @@ Rectangle {
     Rectangle {
         id: backGroundId
         anchors.centerIn: parent
-        width: parent.width/1.3; height: parent.height/1.5
+        width: 0.5*parent.width; height: parent.height/1.5
         radius: 10
         color: "white"
 
@@ -48,6 +48,30 @@ Rectangle {
                 width: parent.width; height: 13*parent.height/20
                 model: displayListModel
                 onAddCommodity: salesCommodityEditModel.add(getCommodityId(index))
+            }
+
+            Row {
+                x: 10
+                width: parent.width; height: 2*parent.height/20
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: "匹配到"
+                    color: "#b8b8b8"
+                    font.pixelSize: parent.height/3
+                }
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: "red"
+                    text: String(displayListModel.total)
+                    font.pixelSize: parent.height/3
+                }
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: "个商品"
+                    color: "#b8b8b8"
+                    font.pixelSize: parent.height/3
+                }
             }
         }
     }

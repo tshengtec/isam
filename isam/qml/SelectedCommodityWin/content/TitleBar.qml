@@ -18,7 +18,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: parent.height/2
         color: "white"
-        text: "选择商品"
+        text: "搜索商品"
     }
 
     ImageButton {

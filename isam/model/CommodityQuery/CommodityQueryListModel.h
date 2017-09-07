@@ -13,6 +13,7 @@ public:
     Q_PROPERTY(QString searchText READ getSearchText WRITE setSearchText NOTIFY statusChanged)
     Q_PROPERTY(bool isNotStrSearchAll READ getIsNotStrSearchAll WRITE setIsNotStrSearchAll NOTIFY statusChanged)
     Q_PROPERTY(QStringList commodityTypeList READ getCommodityTypeList NOTIFY statusChanged)
+    Q_PROPERTY(int total READ getTotal NOTIFY totalChanged)
 
     QString getCommodityType();
     void setCommodityType(QString typeStr);
@@ -26,8 +27,11 @@ public:
     QStringList getCommodityTypeList();
     void setCommodityTypeList();
 
+    int getTotal();
+
 signals:
     void statusChanged();
+    void totalChanged();
 
 public slots:
     Q_INVOKABLE void reload();

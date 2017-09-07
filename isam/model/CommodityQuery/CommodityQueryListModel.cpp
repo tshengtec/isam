@@ -66,6 +66,12 @@ void CommodityQueryListModel::setCommodityType(QString typeStr)
     emit statusChanged();
 }
 
+int CommodityQueryListModel::getTotal()
+{
+    int total = this->size();
+    return total;
+}
+
 void CommodityQueryListModel::reload()
 {
     QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
@@ -87,4 +93,5 @@ void CommodityQueryListModel::reload()
     }
 
     notifyResetList(modelList);
+    emit totalChanged();
 }

@@ -32,7 +32,7 @@ Item {
         }
 
         Rectangle {
-            width: 0.058*parent.width; height: width
+            width: parent.height; height: width
             anchors.verticalCenter: parent.verticalCenter
             radius: 5
             color: "#5b79f5"
