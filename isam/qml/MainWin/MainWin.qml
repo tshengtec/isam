@@ -24,7 +24,7 @@ Window {
     minimumHeight: 0.5*Screen.desktopAvailableHeight
     title: qsTr("")
     flags: Qt.Window|Qt.FramelessWindowHint
-
+    Component.onCompleted: globalModel.window = windowsId
     onClosing: {
         if (!loginWin.visible) {
             close.accepted = false
@@ -43,12 +43,6 @@ Window {
     Column {
         TopBar {
             width: windowsId.width; height: 1*windowsId.height/20
-            onDropDownList: {}
-            onMinimize: windowsId.showMinimized()
-            onMaximize: windowsId.visibility === Window.FullScreen ?
-                        windowsId.showNormal() :
-                        windowsId.showFullScreen()
-            onClose: windowsId.close()
         }
 
         MenuBar {
@@ -110,7 +104,7 @@ Window {
 
     SalesQueryWin {
         id: salesQueryWin
-        visible: false
+//        visible: false
     }
 
     CommodityQueryWin {

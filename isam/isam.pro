@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     domain/AccountItem.cpp \
     model/AccountModel/AccountListModel.cpp \
     windows/QmlWin.cpp \
-    windows/MyGuiApplication.cpp
+    windows/MyGuiApplication.cpp \
+    windows/GlobalModel.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -98,7 +99,8 @@ HEADERS += \
     domain/AccountItem.h \
     model/AccountModel/AccountListModel.h \
     windows/QmlWin.h \
-    windows/MyGuiApplication.h
+    windows/MyGuiApplication.h \
+    windows/GlobalModel.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml

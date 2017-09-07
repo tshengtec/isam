@@ -29,13 +29,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<SalesDocumentsListModel>("MyModels", 1, 0, "SalesDocumentsListModel");
     qmlRegisterType<AccountListModel>("MyModels", 1, 0, "AccountListModel");
 
-    //    QQmlApplicationEngine engine;
-
-//    Themes* themes = new Themes();
-//    themes->setBackgroundColor(BACKGROUNDCOLOR);
-//    engine.rootContext()->setContextProperty("themesModel", themes);
-
-//    engine.load(QUrl(QStringLiteral("qrc:/qml/MainWin/MainWin.qml")));
     QmlWin* win = new QmlWin();
     return app.exec();
 }

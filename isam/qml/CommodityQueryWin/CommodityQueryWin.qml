@@ -3,6 +3,7 @@ import MyModels 1.0
 import "./content"
 import "./content/LeftPart"
 import "./content/RightPart"
+import "../MainWin/content/TopBar"
 
 Rectangle {
 
@@ -12,6 +13,10 @@ Rectangle {
     Column {
         anchors.fill: parent
 
+        TopBar {
+            width: parent.width; height: 1*parent.height/20
+        }
+
         TopTitleBar {
             id: topTitleBar
             width: parent.width; height: 2*parent.height/20
@@ -20,7 +25,7 @@ Rectangle {
         }
 
         Row {
-            width: parent.width; height: 18*parent.height/20
+            width: parent.width; height: 17*parent.height/20
 
             LeftPart {
                 width: 5*parent.width/20; height: parent.height

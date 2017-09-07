@@ -2,6 +2,7 @@ import QtQuick 2.0
 import MyModels 1.0
 import "../Common/Button"
 import "../ProjectCommon/Bar"
+import "../MainWin/content/TopBar"
 
 Rectangle {
     property variant allSalseListModelToLeftPart: []
@@ -11,6 +12,10 @@ Rectangle {
 
     Column {
         anchors.fill: parent
+
+        TopBar {
+            width: parent.width; height: 1*parent.height/20
+        }
 
         TopTitleBar {
             title: "交班"
@@ -22,7 +27,7 @@ Rectangle {
 
         Item {
             id: bottomItemId
-            width: parent.width; height: 16*parent.height/20
+            width: parent.width; height: 15*parent.height/20
 
             Column {
                 anchors.centerIn: parent

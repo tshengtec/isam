@@ -49,5 +49,6 @@
         <file>qml/MainWin/content/MenuBar/content/IconButton.qml</file>
         <file>qml/Common/SliderButton/SliderButton.qml</file>
         <file>qml/MainWin/content/BottomBar/content/SpecialOffersBar.qml</file>
+        <file>qml/MainWin/content/BottomBar/content/SettleMentButton.qml</file>
     </qresource>
 </RCC>

@@ -20,7 +20,7 @@ Rectangle {
             anchors.right: parent.right
             width: 0.05*windowsId.height; height: width
             source: "qrc:/image/mainWin/close.png"
-            onIsClicked: close()
+            onClicked: close()
         }
 
         Image {

@@ -22,7 +22,7 @@ Rectangle {
         clip: true
 
         Image {
-            width: height; height: 0.7*iconButton.height
+            width: height; height: 0.65*iconButton.height
             anchors.horizontalCenter: parent.horizontalCenter
             source: icon
         }

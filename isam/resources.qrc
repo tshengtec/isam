@@ -33,5 +33,6 @@
         <file>image/mainWin/board/btn_slider_no.png</file>
         <file>image/mainWin/board/btn_slider_off.png</file>
         <file>image/mainWin/board/btn_slider.png</file>
+        <file>image/commodityQuery/back.png</file>
     </qresource>
 </RCC>

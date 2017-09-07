@@ -9,7 +9,7 @@ Rectangle {
     signal salesShift()
     id: rootId
     width: parent.width; height: parent.height
-    color: "#38394e"//themesModel.backgroundColor
+    color: "#38394e"
 
     Row {
         anchors.verticalCenter: parent.verticalCenter
@@ -61,7 +61,8 @@ Rectangle {
 
     AccountInfoDisplay {
         anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
+        y: -(1.5*rootId.height - rootId.height)/2
+//        anchors.verticalCenter: parent.verticalCenter
         width: 6*parent.width/20; height: 1*rootId.height
     }
 

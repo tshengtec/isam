@@ -1,8 +1,11 @@
 import QtQuick 2.0
+import QtQuick.Window 2.2
 import "../../../Common/Button"
 
 Rectangle {
     id: root
+
+    property variant window: globalModel.window
 
     signal dropDownList()
     signal minimize()
@@ -23,8 +26,8 @@ Rectangle {
             if (total++ != 2)
                 return;
             total = 0;
-            windowsId.setX(windowsId.x + delta.x)
-            windowsId.setY(windowsId.y + delta.y)
+            window.setX(window.x + delta.x)
+            window.setY(window.y + delta.y)
         }
     }
 
@@ -35,26 +38,33 @@ Rectangle {
         ImageButton {
             width: root.height; height: width
             source: "qrc:/image/mainWin/dropDownList.png"
-            onIsClicked: dropDownList()
+            onClicked: dropDownList()
         }
 
         ImageButton {
             width: root.height; height: width
             scaleHeight: 0.2
             source: "qrc:/image/mainWin/minimize.png"
-            onIsClicked: minimize()
+            onClicked: minimize()
         }
 
         ImageButton {
             width: root.height; height: width
             source: "qrc:/image/mainWin/maximize.png"
-            onIsClicked: maximize()
+            onClicked: maximize()
         }
 
         ImageButton {
             width: root.height; height: width
             source: "qrc:/image/mainWin/close.png"
-            onIsClicked: close()
+            onClicked: close()
         }
     }
+
+    onDropDownList: {}
+    onMinimize: window.showMinimized()
+    onMaximize: window.visibility === Window.FullScreen ?
+                window.showNormal() :
+                window.showFullScreen()
+    onClose: window.close()
 }
