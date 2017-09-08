@@ -10,14 +10,22 @@ TopTitleBar {
     color: "#38394e"
     title: "商品查询"
 
-    ISAMTextInput {
-        id: searchTextInputId
+    Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 30
         anchors.verticalCenter: parent.verticalCenter
-        width: 3*parent.width/20; height: 5*parent.height/10
+        width: 4*parent.width/20; height: 5*parent.height/10
         radius: height/2
-        defaultText: "  搜索条形码或名称"
-        onIsReturnPressed: searched(barCodeText)
+
+        ISAMTextInput {
+            id: searchTextInputId
+            anchors.centerIn: parent
+            width: parent.width - 20; height: parent.height
+            border.color: "#00000000"
+            rightIcon: "qrc:/image/mainWin/board/board.png"
+            radius: height/2
+            defaultText: " 搜索条形码或名称"
+            onIsReturnPressed: searched(barCodeText)
+        }
     }
 }

@@ -22,6 +22,13 @@ Rectangle {
         height: parent.height/1.5
         font.pixelSize: height
         Keys.onReturnPressed: isReturnPressed(text)
+//        onTextChanged: {
+//            for (var index = 0; index < text.length; index++) {
+//                if (text.charCodeAt(index) > 255)
+//                    return font.pixelSize = parent.height/2
+//            }
+//            return font.pixelSize = height
+//        }
     }
 
     Text {
