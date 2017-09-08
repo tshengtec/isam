@@ -30,15 +30,4 @@ Rectangle {
         radius: width/2
         onClicked: exited()
     }
-
-//    MenuButton {
-//        anchors.verticalCenter: parent.verticalCenter
-//        anchors.right: parent.right
-//        anchors.rightMargin: 15
-//        width: parent.height/1.2; height: width
-//        btnText: "X"
-//        onIsClicked: {
-//            exited();
-//        }
-//    }
 }
