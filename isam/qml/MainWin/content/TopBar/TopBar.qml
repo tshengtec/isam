@@ -22,10 +22,10 @@ Rectangle {
         property int total: 0
         onPressed: clickPos = Qt.point(mouse.x, mouse.y)
         onPositionChanged: {
-            var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
             if (total++ != 2)
                 return;
             total = 0;
+            var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
             window.setX(window.x + delta.x)
             window.setY(window.y + delta.y)
         }
