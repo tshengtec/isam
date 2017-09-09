@@ -25,6 +25,7 @@ Item {
             width: 7*itemId.width/10; height: parent.height
             verticalAlignment: Text.AlignVCenter
             text: ""
+            font.family: "微软雅黑"
             font.pixelSize: height/2
             clip: true
 

@@ -29,10 +29,10 @@ Rectangle {
 
         MText {
             anchors.horizontalCenter: parent.horizontalCenter
-            width: title.length*font.pixelSize;
+            width: title.length*font.pixelSize; height: 0.35*iconButton.height
             text: title
             color: "white"
-            font.pixelSize: 0.2*iconButton.height
+            font.pixelSize: 0.7*height/*0.25*iconButton.width*/
         }
     }
 

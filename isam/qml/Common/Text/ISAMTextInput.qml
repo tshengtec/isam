@@ -19,6 +19,7 @@ Rectangle {
         x: 2 + textInputXOffset
         clip: true
         width: parent.width - 2*2 - (rightIcon === "" ? 0 : rightIconItem.width) - textInputXOffset;
+        font.family: "微软雅黑"
         height: parent.height/1.5
         font.pixelSize: height
         Keys.onReturnPressed: isReturnPressed(text)
