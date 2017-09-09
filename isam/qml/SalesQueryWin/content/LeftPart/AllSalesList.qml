@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../../../Common/Button"
+import "../../../Common/Text"
 
 Item {
     property variant salseListModel: []
@@ -12,7 +13,7 @@ Item {
             width: parent.width; height: 2*parent.height/20
             color: "#eeeeee"
 
-            Text {
+            MText {
                 x: 5
                 text: "销售单据列表"
                 anchors.verticalCenter: parent.verticalCenter
@@ -54,7 +55,7 @@ Item {
                 Column {
                     width: 12*parent.width/20; height: parent.height
 
-                    Text {
+                    MText {
                         x: 5
                         width: parent.width; height: parent.height/2
                         verticalAlignment: Text.AlignVCenter
@@ -63,7 +64,7 @@ Item {
                         color: "#434350"
                     }
 
-                    Text {
+                    MText {
                         x: 5
                         width: parent.width; height: parent.height/2
                         verticalAlignment: Text.AlignVCenter
@@ -74,7 +75,7 @@ Item {
                 }
 
 
-                Text {
+                MText {
                     anchors.right: parent.right
                     anchors.rightMargin: 10
                     text: Qt.formatTime(modelData.time, "hh:mm AP")

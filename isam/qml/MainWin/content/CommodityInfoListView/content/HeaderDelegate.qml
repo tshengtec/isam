@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../../../Common/Text"
 
 Rectangle {
     id: headerItemId
@@ -10,7 +11,7 @@ Rectangle {
             Item {
                 width: spacingWidth[index]; height: headerItemId.height
 
-                Text {
+                MText {
                     anchors.centerIn: parent
                     text: modelData
                     font.pixelSize: parent.height/2.5

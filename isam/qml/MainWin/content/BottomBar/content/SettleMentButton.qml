@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../../../Common/Text"
 
 Rectangle {
     id: settleMentButton
@@ -20,13 +21,13 @@ Rectangle {
                 anchors.centerIn: parent
                 width: parent.width
 
-                Text {
+                MText {
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.pixelSize: parent.fontSize
                     color: "white"
                     text: "结算"
                 }
-                Text {
+                MText {
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.pixelSize: parent.fontSize
                     color: "white"
@@ -45,13 +46,13 @@ Rectangle {
                 x: 20
                 width: parent.width
 
-                Text {
+                MText {
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.pixelSize: parent.fontSize
                     color: "white"
                     text: "总金额"
                 }
-                Text {
+                MText {
                     anchors.horizontalCenter: parent.horizontalCenter
                     font.pixelSize: 1.5*parent.fontSize
                     color: "white"

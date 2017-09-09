@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../../Common/Button"
+import "../../Common/Text"
 
 Rectangle {
     signal exited()
@@ -13,7 +14,7 @@ Rectangle {
         anchors.bottom: parent.bottom
     }
 
-    Text {
+    MText {
         x: 15
         anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: parent.height/2

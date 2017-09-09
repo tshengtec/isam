@@ -14,7 +14,7 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "#00000000"
 
-    Text {
+    MText {
         id: textId
         anchors.centerIn: parent
         text: btnText

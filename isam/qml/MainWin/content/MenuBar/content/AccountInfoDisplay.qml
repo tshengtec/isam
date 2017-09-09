@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import MyModels 1.0
+import "../../../../Common/Text"
 
 Rectangle {
     id: accountInfoDisplay
@@ -29,7 +30,7 @@ Rectangle {
             Item {
                 width: listViewAccountInfoId.width; height: listViewAccountInfoId.height/2
 
-                Text {
+                MText {
                     anchors.verticalCenter: parent.verticalCenter
                     width: listViewAccountInfoId.width;
                     elide: Text.ElideMiddle

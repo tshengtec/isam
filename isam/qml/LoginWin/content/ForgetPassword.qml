@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../Common/Text"
 
 Item {
     signal forgetPassworded()
@@ -18,7 +19,7 @@ Item {
         Item {
             width: 7*itemId.width/10; height: parent.height
 
-            Text {
+            MText {
                 anchors.verticalCenter: parent.verticalCenter
                 text: "忘记密码?"
                 color: "#337cc9"

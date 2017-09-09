@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../../Common/Text"
 
 Rectangle {
     signal todaySales();
@@ -15,7 +16,7 @@ Rectangle {
 
     Row {
         anchors.fill: parent
-        Text {
+        MText {
             width: parent.width/2; height: parent.height
             font.pixelSize: height/3
             color: selectedStatus ? "#33a4e2" : "#434350"
@@ -38,7 +39,7 @@ Rectangle {
             }
         }
 
-        Text {
+        MText {
             width: parent.width/2; height: parent.height
             font.pixelSize:  height/3
             color: !selectedStatus ? "#33a4e2" : "#434350"

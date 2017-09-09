@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../../../Common/Button"
+import "../../../Common/Text"
 
 Rectangle {
     signal removeAll()
@@ -17,7 +18,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: rootRectId.width/10; height: parent.height
             color: "#00000000"
-            Text {
+            MText {
                 anchors.centerIn: parent
                 color: "#858585"
                 text: "数量(件): 0"
@@ -29,7 +30,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: rootRectId.width/10; height: parent.height
             color: "#00000000"
-            Text {
+            MText {
                 anchors.centerIn: parent
                 color: "#858585"
                 text: "合计(元): 0"

@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import "../Text"
 
 Rectangle {
     property bool onOff: true
@@ -46,7 +47,7 @@ Rectangle {
         }
     }
 
-    Text {
+    MText {
         x: onOff ? parent.height + 5 : 5
 //        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter

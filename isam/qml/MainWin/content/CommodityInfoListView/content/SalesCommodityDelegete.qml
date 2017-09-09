@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../../../Common/Text"
 
 Item {
     property variant indexValue: index
@@ -11,7 +12,7 @@ Item {
             Item {
                 width: spacingWidth[index]; height: delegeRectId.height
                 clip: true
-                Text {
+                MText {
                     text: String(getCommodityInfo(index))
                     color: "black"
                     anchors.centerIn: parent

@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../../../Common/Button"
+import "../../../Common/Text"
 
 Item {
     signal selectedCommodityType(string type)
@@ -32,7 +33,7 @@ Item {
                 color: listViewId.currentIndex === index ? "#ff8400" : "#00000000"
             }
 
-            Text {
+            MText {
                 anchors.verticalCenter: parent.verticalCenter
                 x: parent.width/10
                 text: modelData

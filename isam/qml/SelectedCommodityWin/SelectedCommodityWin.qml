@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import "./content"
 import "../Common/ListView"
+import "../Common/Text"
 
 Rectangle {
     property variant displayListModel: []
@@ -54,19 +55,19 @@ Rectangle {
                 x: 10
                 width: parent.width; height: 2*parent.height/20
 
-                Text {
+                MText {
                     anchors.verticalCenter: parent.verticalCenter
                     text: "匹配到"
                     color: "#b8b8b8"
                     font.pixelSize: parent.height/3
                 }
-                Text {
+                MText {
                     anchors.verticalCenter: parent.verticalCenter
                     color: "red"
                     text: String(displayListModel.total)
                     font.pixelSize: parent.height/3
                 }
-                Text {
+                MText {
                     anchors.verticalCenter: parent.verticalCenter
                     text: "个商品"
                     color: "#b8b8b8"

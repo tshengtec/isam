@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import MyModels 1.0
 import "../Common/Button"
+import "../Common/Text"
 import "../ProjectCommon/Bar"
 import "../MainWin/content/TopBar"
 
@@ -32,24 +33,24 @@ Rectangle {
             Column {
                 anchors.centerIn: parent
 
-                Text {
+                MText {
                     id: cashiersInfoId
                     text: "收银员: " + getCashiersInfo()
                     color: "#337cc9"
                     font.pixelSize: bottomItemId.height/20
                 }
-                Text {
+                MText {
                     id: loginAndLogoutDateTimeId
                     text: "本次登录时段: " + getLoginDateTime() + "~" + getLogoutDateTime()
                     color: "#337cc9"
                     font.pixelSize: bottomItemId.height/20
                 }
-                Text {
+                MText {
                     text: "销售额: " + salesDocumentsListModel.sales
                     color: "#337cc9"
                     font.pixelSize: bottomItemId.height/20
                 }
-                Text {
+                MText {
                     text: "销售笔数: " + salesDocumentsListModel.salesNumber
                     color: "#337cc9"
                     font.pixelSize: bottomItemId.height/20

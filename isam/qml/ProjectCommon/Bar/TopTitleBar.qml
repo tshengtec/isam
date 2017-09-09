@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../../Common/Button"
+import "../../Common/Text"
 
 Rectangle {
     signal backed()
@@ -22,7 +23,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: 200; height: parent.height
 
-        Text {
+        MText {
             id: textId
             anchors.centerIn: parent
             text: "销售查询"
