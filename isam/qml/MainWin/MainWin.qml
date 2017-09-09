@@ -18,8 +18,8 @@ Window {
     x: (Screen.desktopAvailableWidth - width)/2;
     y: (Screen.desktopAvailableHeight - height)/2
     visible: true
-    width: 0.7*Screen.desktopAvailableWidth
-    height: 0.7*Screen.desktopAvailableHeight
+    width: 0.8*Screen.desktopAvailableWidth
+    height: 0.8*Screen.desktopAvailableHeight
     minimumWidth: 0.5*Screen.desktopAvailableWidth
     minimumHeight: 0.5*Screen.desktopAvailableHeight
     flags: Qt.Window|Qt.FramelessWindowHint
