@@ -15,13 +15,13 @@ import "../SalesShiftWin"
 
 Window {
     id: windowsId
-    x: (Screen.desktopAvailableWidth - width)/2;
-    y: (Screen.desktopAvailableHeight - height)/2
+    x: (Screen.width - width)/2;
+    y: (Screen.width - height)/2
     visible: true
-    width: 0.8*Screen.desktopAvailableWidth
-    height: 0.8*Screen.desktopAvailableHeight
-    minimumWidth: 0.5*Screen.desktopAvailableWidth
-    minimumHeight: 0.5*Screen.desktopAvailableHeight
+    width: 0.8*Screen.width
+    height: 0.8*Screen.height
+    minimumWidth: 0.5*Screen.width
+    minimumHeight: 0.5*Screen.height
     flags: Qt.Window|Qt.FramelessWindowHint
     Component.onCompleted: globalModel.window = windowsId
     onClosing: {
