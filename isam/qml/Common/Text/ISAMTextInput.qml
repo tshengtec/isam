@@ -31,7 +31,7 @@ Rectangle {
 //        }
     }
 
-    Text {
+    MText {
         x: 2 + textInputXOffset
         visible: parent.text === "" //&& textInputId.focus === false
         font.pixelSize: parent.height/2

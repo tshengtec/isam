@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../Text"
 
 Rectangle {
     signal isClicked()
@@ -13,7 +14,7 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "#00000000"
 
-    Text {
+    MText {
         id: textId
         anchors.centerIn: parent
         text: btnText

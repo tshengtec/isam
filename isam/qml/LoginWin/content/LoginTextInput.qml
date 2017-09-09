@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "../../Common/Text"
 
 Item {
     property alias defaultText: defaultTextId.text
@@ -27,7 +28,7 @@ Item {
             font.pixelSize: height/2
             clip: true
 
-            Text {
+            MText {
                 id: defaultTextId
                 visible: (parent.text.length == 0)
                 width: parent.width; height: parent.height
