@@ -22,7 +22,6 @@ Window {
     height: 0.7*Screen.desktopAvailableHeight
     minimumWidth: 0.5*Screen.desktopAvailableWidth
     minimumHeight: 0.5*Screen.desktopAvailableHeight
-    title: qsTr("")
     flags: Qt.Window|Qt.FramelessWindowHint
     Component.onCompleted: globalModel.window = windowsId
     onClosing: {
@@ -69,7 +68,7 @@ Window {
                 commodityQueryListModel.searchText = barCodeText
                 selectedCommodityWin.visible = true
             }
-            onSettleMented: settleMentWin.visible = true//salesCommodityEditModel.settleMent()
+            onSettleMented: /*settleMentWin.visible = true//*/salesCommodityEditModel.settleMent()
         }
     }
 
@@ -99,7 +98,7 @@ Window {
     SelectedCommodityWin {
         id: selectedCommodityWin
         displayListModel: commodityQueryListModel
-//        visible: false
+        visible: false
     }
 
     SalesQueryWin {

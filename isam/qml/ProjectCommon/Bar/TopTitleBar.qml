@@ -7,6 +7,8 @@ Rectangle {
     width: parent.width; height: parent.height
     color: "#38394e"
 
+    MouseArea { anchors.fill: parent }
+
     ImageButton {
         y: -(1.5*parent.height - parent.height)/2
         width: parent.height; height: parent.height
