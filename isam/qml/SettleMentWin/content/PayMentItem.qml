@@ -27,12 +27,15 @@ Rectangle {
 
         Row {
             width: parent.width; height: 0.55*parent.height
+            spacing: 10
 
             QuickSelectMoney {
                 width: 0.5*parent.width; height: parent.height
             }
+
+            PaymentOperation {
+                width: 0.5*parent.width - 10; height: parent.height
+            }
         }
-//        PaymentOperation {
-//        }
     }
 }

@@ -1,11 +1,12 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: quickSelectMoney
 
     signal clicked(string money)
 
     width: parent.width; height: parent.height
+    color: "#00000000"
 
     Row {
         anchors.fill: parent
@@ -49,7 +50,7 @@ Item {
         }
 
         Column {
-            width: (parent.width - 0.25*parent.width-10)/3; height: parent.height
+            width: (parent.width - 0.25*parent.width-30)/3; height: parent.height
             spacing: 10
 
             ShadowButton {
@@ -82,7 +83,7 @@ Item {
         }
 
         Column {
-            width: (parent.width - 0.25*parent.width - 10)/3; height: parent.height
+            width: (parent.width - 0.25*parent.width - 30)/3; height: parent.height
             spacing: 10
 
             ShadowButton {
@@ -115,7 +116,7 @@ Item {
         }
 
         Column {
-            width: (parent.width - 0.25*parent.width-10)/3; height: parent.height
+            width: (parent.width - 0.25*parent.width-30)/3; height: parent.height
             spacing: 10
 
             ShadowButton {
