@@ -56,5 +56,8 @@
         <file>qml/ProjectCommon/Button/LeftIconRightTextBtn.qml</file>
         <file>qml/SettleMentWin/content/PayTypeSelection.qml</file>
         <file>qml/Common/Button/IconButton.qml</file>
+        <file>qml/SettleMentWin/content/ShadowButton.qml</file>
+        <file>qml/SettleMentWin/content/PaymentOperation.qml</file>
+        <file>qml/SettleMentWin/content/QuickSelectMoney.qml</file>
     </qresource>
 </RCC>

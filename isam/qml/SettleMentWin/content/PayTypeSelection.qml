@@ -17,25 +17,28 @@ Rectangle {
 
             Column {
                 anchors.centerIn: parent
-                width: parent.width - 10; height: parent.height - 10
+                width: parent.width - 15; height: parent.height - 15
                 spacing: 5
 
                 LeftIconRightTextBtn {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/money.png"
                     text: "现金"
+                    onClicked: select = !select
                 }
 
                 LeftIconRightTextBtn {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/weChatPay.png"
                     text: "微信"
+                    onClicked: select = !select
                 }
 
                 LeftIconRightTextBtn {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/alipay.png"
                     text: "支付宝"
+                    onClicked: select = !select
                 }
             }
         }

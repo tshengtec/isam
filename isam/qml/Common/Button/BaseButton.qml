@@ -7,6 +7,8 @@ Rectangle {
     signal isReleased()
     signal isEntered()
     signal isExited()
+
+    id: button
     property string btnText: ""
     property alias btnColor: textId.color
     property variant textObj: textId

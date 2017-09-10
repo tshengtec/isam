@@ -9,10 +9,11 @@ Rectangle {
 
     property string icon: ""
     property string text: ""
+    property bool select: false
 
     width: parent.width; height: parent.height
     radius: 5
-    color: "white"
+    color: select ? "#baceef" : "white"
 
     Row {
         anchors.fill: parent
