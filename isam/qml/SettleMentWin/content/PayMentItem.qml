@@ -1,6 +1,9 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: paymentItem
+    signal paymented()
+
     width: parent.width; height: parent.height
     color: "#00000000"
 
@@ -35,6 +38,7 @@ Rectangle {
 
             PaymentOperation {
                 width: 0.5*parent.width - 10; height: parent.height
+                onPaymented: paymentItem.paymented()
             }
         }
     }

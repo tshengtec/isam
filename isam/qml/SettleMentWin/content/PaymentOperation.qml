@@ -6,6 +6,8 @@ Rectangle {
     id: paymentOperation
 
     signal deleted()
+    signal printed(bool status)
+    signal paymented()
 
     width: parent.width; height: parent.height
     color: "#00000000"
@@ -78,10 +80,46 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         payCom.select = !payCom.select
+                        printed(payCom.select)
                     }
                 }
             }
 
+        }
+
+        Rectangle {
+            id: pay
+            width: 0.74*parent.width + 10; height: 0.75*parent.height
+            color: "#4284f4"
+            radius: 8
+
+            MouseArea {
+                anchors.fill: parent
+                onPressed: parent.color = "#90000000"
+                onReleased: parent.color = "#4284f4"
+                onClicked: {
+                    paymented()
+                }
+            }
+
+            Column {
+                property int fontSize: 0.2*parent.height
+                anchors.centerIn: parent
+                width: parent.width
+
+                MText {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.pixelSize: parent.fontSize
+                    color: "white"
+                    text: "结算"
+                }
+                MText {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.pixelSize: parent.fontSize
+                    color: "white"
+                    text: "(空格键)"
+                }
+            }
         }
     }
 }

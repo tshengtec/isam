@@ -68,7 +68,7 @@ Window {
                 commodityQueryListModel.searchText = barCodeText
                 selectedCommodityWin.visible = true
             }
-            onSettleMented: /*settleMentWin.visible = true//*/salesCommodityEditModel.settleMent()
+            onSettleMented: settleMentWin.show() //salesCommodityEditModel.settleMent()
         }
     }
 
@@ -113,7 +113,8 @@ Window {
 
     SettleMentWin {
         id: settleMentWin
-//        visible: false
+        visible: false
+        paymentModel: salesCommodityEditModel
     }
 
     SalesShiftWin {

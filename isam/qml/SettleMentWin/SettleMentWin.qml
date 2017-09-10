@@ -7,6 +7,8 @@ import "./content"
 
 Rectangle {
     id: rootId
+    property variant paymentModel
+
     width: parent.width; height: parent.height
     color: "#eeeeee"
 
@@ -25,6 +27,18 @@ Rectangle {
 
         PayMentItem {
             width: parent.width; height: 17*parent.height/20
+            onPaymented: {
+                paymentModel.settleMent()
+                hide()
+            }
         }
+    }
+
+    function show() {
+        rootId.visible = true;
+    }
+
+    function hide() {
+        rootId.visible = false;
     }
 }
