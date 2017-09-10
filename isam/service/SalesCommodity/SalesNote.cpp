@@ -11,6 +11,11 @@ SalesNote::SalesNote()
     m_dateTime = QDateTime::currentDateTime();
 }
 
+SalesNote::~SalesNote()
+{
+    removeList(this->m_salesBaseNote);
+}
+
 QList<Commodity *> SalesNote::getList()
 {
     return m_salesBaseNote;

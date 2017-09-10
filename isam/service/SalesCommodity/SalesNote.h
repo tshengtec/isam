@@ -7,6 +7,8 @@ class SalesNote
 {
 public:
     SalesNote();
+    virtual ~SalesNote();
+
     QList<Commodity *> getList();
     void setList(QList<Commodity *> list);
 
