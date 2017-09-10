@@ -33,5 +33,11 @@
         <file>image/mainWin/board/btn_slider_off.png</file>
         <file>image/mainWin/board/btn_slider.png</file>
         <file>image/commodityQuery/back.png</file>
+        <file>image/settleMentWin/alipay.png</file>
+        <file>image/settleMentWin/delete.png</file>
+        <file>image/settleMentWin/money.png</file>
+        <file>image/settleMentWin/select.png</file>
+        <file>image/settleMentWin/selected.png</file>
+        <file>image/settleMentWin/weChatPay.png</file>
     </qresource>
 </RCC>

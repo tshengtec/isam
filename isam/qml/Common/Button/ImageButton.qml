@@ -6,6 +6,7 @@ Rectangle {
     property string source: ""
     property var scaleHeight: 1 //0.1 - 1.0
     property var scaleWidth: 1 //0.1 - 1.0
+    property string backGroundColor: "#30000000"
     width: parent.height; height: width
     color: "#00000000"
 
@@ -19,7 +20,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: imageButton.clicked()
         hoverEnabled: true
-        onEntered: parent.color = "#30000000"
+        onEntered: parent.color = backGroundColor
         onExited: parent.color = "#00000000"
     }
 }

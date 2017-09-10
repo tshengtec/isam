@@ -50,5 +50,11 @@
         <file>qml/Common/SliderButton/SliderButton.qml</file>
         <file>qml/MainWin/content/BottomBar/content/SpecialOffersBar.qml</file>
         <file>qml/MainWin/content/BottomBar/content/SettleMentButton.qml</file>
+        <file>qml/ProjectCommon/Text/TextInputNumber.qml</file>
+        <file>qml/SettleMentWin/content/EditPayNumber.qml</file>
+        <file>qml/SettleMentWin/content/PayMentItem.qml</file>
+        <file>qml/ProjectCommon/Button/LeftIconRightTextBtn.qml</file>
+        <file>qml/SettleMentWin/content/PayTypeSelection.qml</file>
+        <file>qml/Common/Button/IconButton.qml</file>
     </qresource>
 </RCC>
