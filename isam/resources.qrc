@@ -39,5 +39,12 @@
         <file>image/settleMentWin/select.png</file>
         <file>image/settleMentWin/selected.png</file>
         <file>image/settleMentWin/weChatPay.png</file>
+        <file>image/salesShift/alipay.png</file>
+        <file>image/salesShift/close.png</file>
+        <file>image/salesShift/closed.png</file>
+        <file>image/salesShift/money.png</file>
+        <file>image/salesShift/select.png</file>
+        <file>image/salesShift/selected.png</file>
+        <file>image/salesShift/weChatPay.png</file>
     </qresource>
 </RCC>

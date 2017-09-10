@@ -119,7 +119,7 @@ Window {
 
     SalesShiftWin {
         id: salesShiftWin
-        visible: false
+//        visible: false
     }
 
 }

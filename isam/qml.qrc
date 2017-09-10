@@ -59,5 +59,6 @@
         <file>qml/SettleMentWin/content/ShadowButton.qml</file>
         <file>qml/SettleMentWin/content/PaymentOperation.qml</file>
         <file>qml/SettleMentWin/content/QuickSelectMoney.qml</file>
+        <file>qml/SalesShiftWin/content/SalesInfoView.qml</file>
     </qresource>
 </RCC>
