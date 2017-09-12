@@ -49,7 +49,7 @@ Rectangle {
                 width: height; height: 0.7*parent.height
             }
 
-            Item { width: 1; height: 0.05*parent.height }
+            Item { width: 1; height: 0.1*parent.height }
 
             PayTypeBar {
                 width: parent.width; height: 0.06*parent.height

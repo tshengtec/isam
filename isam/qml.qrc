@@ -65,5 +65,7 @@
         <file>qml/SalesShiftWin/content/SalesDataView/content/PayTypeLabel.qml</file>
         <file>qml/SalesShiftWin/content/SalesDataView/content/PayTypeBar.qml</file>
         <file>qml/SalesShiftWin/content/SalesDataView/content/CircularStatistics.qml</file>
+        <file>qml/SalesShiftWin/content/BottomBar/BottomBar.qml</file>
+        <file>qml/SalesShiftWin/content/BottomBar/content/PrintSelection.qml</file>
     </qresource>
 </RCC>

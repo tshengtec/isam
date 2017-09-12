@@ -2,6 +2,7 @@ import QtQuick 2.0
 import MyModels 1.0
 import "./content/SalesInfoView"
 import "./content/SalesDataView"
+import "./content/BottomBar"
 import "../Common/Button"
 import "../Common/Text"
 import "../ProjectCommon/Bar"
@@ -47,57 +48,18 @@ Rectangle {
                 width: parent.width; height: 0.2*parent.height
             }
 
-            Item { width: 1; height: 0.08*parent.height }
+            Item { width: 1; height: 0.05*parent.height }
 
             SalesDataView {
                 width: parent.width; height: 0.5*parent.height
             }
 
+            Item { width: 1; height: 0.05*parent.height }
+
+            BottomBar {
+                width: parent.width; height: 0.05*parent.height
+            }
         }
-
-//        Item {
-//            id: bottomItemId
-//            width: parent.width; height: 15*parent.height/20
-
-//            Column {
-//                anchors.centerIn: parent
-
-//                MText {
-//                    id: cashiersInfoId
-//                    text: "收银员: " + getCashiersInfo()
-//                    color: "#337cc9"
-//                    font.pixelSize: bottomItemId.height/20
-//                }
-//                MText {
-//                    id: loginAndLogoutDateTimeId
-//                    text: "本次登录时段: " + getLoginDateTime() + "~" + getLogoutDateTime()
-//                    color: "#337cc9"
-//                    font.pixelSize: bottomItemId.height/20
-//                }
-//                MText {
-//                    text: "销售额: " + salesDocumentsListModel.sales
-//                    color: "#337cc9"
-//                    font.pixelSize: bottomItemId.height/20
-//                }
-//                MText {
-//                    text: "销售笔数: " + salesDocumentsListModel.salesNumber
-//                    color: "#337cc9"
-//                    font.pixelSize: bottomItemId.height/20
-//                }
-//            }
-//        }
-
-//        Item {
-//            width: parent.width; height: 2*parent.height/20
-//            MenuButton {
-//                anchors.right: parent.right
-//                anchors.rightMargin: 30
-//                anchors.verticalCenter: parent.verticalCenter
-//                width: parent.width/10; height: parent.height/1.2
-//                btnText: "交班退出"
-//                onIsClicked: Qt.quit()
-//            }
-//        }
     }
 
     onVisibleChanged: {
