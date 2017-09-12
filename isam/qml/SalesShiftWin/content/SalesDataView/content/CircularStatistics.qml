@@ -7,7 +7,9 @@ Rectangle {
     property var totalPay: moneyPay + weChatPay + aliPay
     width: parent.width; height: parent.height
     radius: width/2
+    color: "#00000000"
 
+    onTotalPayChanged: canvas.painted()
 
     Canvas {
         id:canvas
