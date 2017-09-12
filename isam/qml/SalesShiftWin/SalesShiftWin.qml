@@ -58,6 +58,7 @@ Rectangle {
 
             BottomBar {
                 width: parent.width; height: 0.05*parent.height
+
             }
         }
     }

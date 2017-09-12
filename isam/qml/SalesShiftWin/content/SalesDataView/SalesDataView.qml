@@ -47,6 +47,9 @@ Rectangle {
             CircularStatistics {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: height; height: 0.7*parent.height
+                moneyPay: 40
+                weChatPay: 30
+                aliPay: 20
             }
 
             Item { width: 1; height: 0.1*parent.height }
