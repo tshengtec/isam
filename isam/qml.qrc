@@ -59,6 +59,11 @@
         <file>qml/SettleMentWin/content/ShadowButton.qml</file>
         <file>qml/SettleMentWin/content/PaymentOperation.qml</file>
         <file>qml/SettleMentWin/content/QuickSelectMoney.qml</file>
-        <file>qml/SalesShiftWin/content/SalesInfoView.qml</file>
+        <file>qml/SalesShiftWin/content/SalesInfoView/SalesInfoView.qml</file>
+        <file>qml/SalesShiftWin/content/SalesInfoView/content/SalesInfoLabel.qml</file>
+        <file>qml/SalesShiftWin/content/SalesDataView/SalesDataView.qml</file>
+        <file>qml/SalesShiftWin/content/SalesDataView/content/PayTypeLabel.qml</file>
+        <file>qml/SalesShiftWin/content/SalesDataView/content/PayTypeBar.qml</file>
+        <file>qml/SalesShiftWin/content/SalesDataView/content/CircularStatistics.qml</file>
     </qresource>
 </RCC>

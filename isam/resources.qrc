@@ -46,5 +46,11 @@
         <file>image/salesShift/select.png</file>
         <file>image/salesShift/selected.png</file>
         <file>image/salesShift/weChatPay.png</file>
+        <file>image/common/account.png</file>
+        <file>image/common/alipay.png</file>
+        <file>image/common/close.png</file>
+        <file>image/common/money.png</file>
+        <file>image/common/password.png</file>
+        <file>image/common/weChatPay.png</file>
     </qresource>
 </RCC>

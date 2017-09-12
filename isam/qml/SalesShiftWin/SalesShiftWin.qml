@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import MyModels 1.0
-import "./content"
+import "./content/SalesInfoView"
+import "./content/SalesDataView"
 import "../Common/Button"
 import "../Common/Text"
 import "../ProjectCommon/Bar"
@@ -40,9 +41,18 @@ Rectangle {
                 text: "本次登录时段: " + getLoginDateTime() + "~" + getLogoutDateTime()
             }
 
+            Item { width: 1; height: 0.01*parent.height }
+
             SalesInfoView {
-                width: parent.width; height: 0.3*parent.height
+                width: parent.width; height: 0.2*parent.height
             }
+
+            Item { width: 1; height: 0.08*parent.height }
+
+            SalesDataView {
+                width: parent.width; height: 0.5*parent.height
+            }
+
         }
 
 //        Item {
