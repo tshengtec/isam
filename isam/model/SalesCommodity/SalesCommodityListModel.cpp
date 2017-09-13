@@ -9,7 +9,7 @@ SalesCommodityListModel::SalesCommodityListModel()
 
 void SalesCommodityListModel::reload()
 {
-    QList<Commodity *> commodityList = SalesCommodityService::instance()->getSalesNote()->getList();
+    QList<Commodity *> commodityList = SalesCommodityService::instance()->getSalesNote().getList();
     QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
     Commodity* commodity = NULL;
 

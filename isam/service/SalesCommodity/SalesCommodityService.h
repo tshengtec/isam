@@ -16,10 +16,10 @@ public:
     static SalesCommodityService* instance();
 
     /*A list of goods for which a sales document is obtained.(获取某一销售单据的商品列表)*/
-    SalesNote* getSalesNote();
+    SalesNote getSalesNote();
 
     /*Get the list of commodity to be registered.*/
-    SalesNote* getPendingSalesNote();
+    SalesNote getPendingSalesNote();
 
     /*Get sales Documents.(获取销售单据列表)*/
     QList<SalesNote *> getSalesList();
@@ -53,9 +53,9 @@ signals:
 private:
     static SalesCommodityService* _instance;
     /*Current sales items list documents.*/
-    SalesNote* m_salesNote;
+    SalesNote m_salesNote;
     /*Pending sales items list documents.*/
-    SalesNote* m_pendingSalesNote;
+    SalesNote m_pendingSalesNote;
     /*All sales list.*/
     QList<SalesNote *> m_SalesList;
 };

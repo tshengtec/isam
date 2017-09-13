@@ -142,6 +142,11 @@ void SalesNote::setPayMap(QVariantMap map)
     m_payMap = map;
 }
 
+QList<Commodity *> SalesNote::copyMyselfList()
+{
+    return copyList(this->getList());
+}
+
 QList<Commodity *> SalesNote::copyList(QList<Commodity *> list)
 {
     QList<Commodity *> newList = QList<Commodity *>();

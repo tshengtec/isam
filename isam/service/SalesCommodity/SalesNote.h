@@ -23,6 +23,7 @@ public:
     bool remove(QString id); /*Commodity id*/
     bool update(Commodity *commodity); /*TODO*/
     bool removeAll(); /*removeAll m_commodityList*/
+    QList<Commodity *> copyMyselfList();
 
     QString getId();
     void setId(QString id);
@@ -41,7 +42,7 @@ private:
     void removeList(QList<Commodity* >& removeList); // remove List
 
 private:
-    QList<Commodity* > m_commodityList;
+    QList<Commodity* > *m_commodityList;
     QString m_id;    /*ID*/
     QString m_owner; /*Sales staff.*/
     QDateTime m_dateTime; /*Time for selling.*/
