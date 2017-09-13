@@ -28,7 +28,7 @@ bool SalesCommodityEditModel::update(Commodity *commodity)
 
 bool SalesCommodityEditModel::settleMent()
 {
-    if (SalesCommodityService::instance()->getList().count() > 0)
+    if (SalesCommodityService::instance()->getSalesNote()->getList().count() > 0)
         return SalesCommodityService::instance()->settleMent();
     else
         return false;
@@ -61,7 +61,9 @@ void SalesCommodityEditModel::setErrorStr(QString errorStr)
 
 bool SalesCommodityEditModel::getIsPendingStatus()
 {
-    return (SalesCommodityService::instance()->getPendingList().count() == 0 ? false : true);
+    int pendingSalesCommodityCount = SalesCommodityService::instance()->getPendingSalesNote()->getList().count();
+    bool pendingStatus = (pendingSalesCommodityCount == 0 ? false : true);
+    return pendingStatus;
 }
 
 

@@ -17,14 +17,14 @@ SalesCommodityService *SalesCommodityService::instance()
     return _instance;
 }
 
-QList<Commodity *> SalesCommodityService::getList()
+SalesNote *SalesCommodityService::getSalesNote()
 {
-    return m_commodityList;
+    return m_salesNote;
 }
 
-QList<Commodity *> SalesCommodityService::getPendingList()
+SalesNote *SalesCommodityService::getPendingSalesNote()
 {
-    return m_CommodityPendingList;
+    return m_pendingSalesNote;
 }
 
 QList<SalesNote *> SalesCommodityService::getSalesList()
@@ -47,98 +47,59 @@ float SalesCommodityService::getSales()
     return sales;
 }
 
-QList<Commodity *> SalesCommodityService::copyList(QList<Commodity *> list)
+SalesNote *SalesCommodityService::copySalesNote(SalesNote *salesNote)
 {
-    QList<Commodity *> newList = QList<Commodity *>();
-    for (int i = 0; i < list.count(); i++) {
-        Commodity *newCommodity = new Commodity(list.at(i));
-        newList.append(newCommodity);
-    }
-
-    return newList;
+    SalesNote *newSalesNote = new SalesNote(salesNote);
+    return newSalesNote;
 }
 
-void SalesCommodityService::removeList(QList<Commodity *>& removeList)
+void SalesCommodityService::removeSalesNote(SalesNote *salesNote)
 {
-    while (removeList.count()) {
-        Commodity * oldCommodity = removeList.last();
-        removeList.removeLast();
-        delete oldCommodity;
-    }
+    delete salesNote;
 }
 
 Commodity *SalesCommodityService::get(QString id)
 {
-    for (int i = 0; i < m_commodityList.count(); i++) {
-        if (m_commodityList.at(i)->getId() == id) {
-            return m_commodityList.at(i);
-        }
-    }
-
-    return NULL;
+    Commodity* commodity = m_salesNote->get(id);
+    return commodity;
 }
 
 bool SalesCommodityService::add(QString id)
 {
-    Commodity *commodity = CommodityRepertory::instance()->get(id);
-    if (commodity == NULL)
-        return false;
-
-    Commodity *newCommodity = new Commodity(commodity);
-    m_commodityList.append(newCommodity);
-    emit listChanged();
-    return true;
+    bool isSuccess = m_salesNote->add(id);
+    if (isSuccess)
+        emit listChanged();
+    return isSuccess;
 }
 
 bool SalesCommodityService::remove(QString id)
 {
-    for (int i = 0; i < m_commodityList.count(); i++) {
-        Commodity* commodity = m_commodityList.at(i);
-        if (commodity == NULL)
-            return false;
-
-        if (commodity->getId() == id) {
-            m_commodityList.removeAt(i);
-            delete commodity;
-            emit listChanged();
-            return true;
-        }
-
-    }
-    return false;
+    bool isSuccess = m_salesNote->remove(id);
+    if (isSuccess)
+        emit listChanged();
+    return isSuccess;
 }
 
 bool SalesCommodityService::update(Commodity *commodity)
 {
-    if (commodity == NULL)
-        return false;
-
-    for (int i = 0; i < m_commodityList.count(); i++) {
-        Commodity * oldCommodity = m_commodityList.at(i);
-        if (oldCommodity->getId() == commodity->getId()) {
-            delete oldCommodity;
-            m_commodityList.replace(i, commodity);
-            emit listChanged();
-            return true;
-        }
-    }
-
-    return false;
+    bool isSuccess = m_salesNote->update(commodity);
+    if (isSuccess)
+        emit listChanged();
+    return isSuccess;
 }
 
 bool SalesCommodityService::removeAll()
 {
-    this->removeList(this->m_commodityList);
-    emit listChanged();
-    return true;
+    bool isSuccess = m_salesNote->removeAll();
+    if (isSuccess)
+        emit listChanged();
+    return isSuccess;
 }
 
 bool SalesCommodityService::settleMent()
 {
-    SalesNote* salesNote = new SalesNote();
-    salesNote->setOwner("admin");
+    SalesNote* salesNote = new SalesNote(m_salesNote);
     salesNote->setDateTime(QDateTime::currentDateTime());
-    salesNote->setList(this->copyList(m_commodityList));
     m_SalesList.append(salesNote);
     this->removeAll();
     return true;
@@ -146,26 +107,26 @@ bool SalesCommodityService::settleMent()
 
 QString SalesCommodityService::onPendingOperation()
 {
-    if (m_commodityList.count() == 0)
+    if (m_salesNote->getList().count() == 0)
         return "挂单失败，没有商品！";
-    if (m_CommodityPendingList.count() != 0)
+    if (m_pendingSalesNote->getList().count() != 0)
         return "挂单失败，<取单>未取走";
 
-    m_CommodityPendingList = copyList(m_commodityList);
-    this->removeList(m_commodityList);
+    m_pendingSalesNote = copySalesNote(m_salesNote);
+    this->removeSalesNote(m_salesNote);
     emit listChanged();
     return "挂单成功";
 }
 
 QString SalesCommodityService::onGettingOperation()
 {
-    if (m_CommodityPendingList.count() == 0)
+    if (m_pendingSalesNote->getList().count() == 0)
         return "取单失败，<取单>没有商品！";
-    if (m_commodityList.count() != 0)
+    if (m_salesNote->getList().count() != 0)
         return "取单失败，请先结算当前商品！";
 
-    m_commodityList = copyList(m_CommodityPendingList);
-    this->removeList(m_CommodityPendingList);
+    m_salesNote = copySalesNote(m_pendingSalesNote);
+    this->removeSalesNote(m_pendingSalesNote);
     emit listChanged();
     return "取单成功";
 }

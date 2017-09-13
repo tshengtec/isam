@@ -16,10 +16,10 @@ public:
     static SalesCommodityService* instance();
 
     /*A list of goods for which a sales document is obtained.(获取某一销售单据的商品列表)*/
-    QList<Commodity *> getList();
+    SalesNote* getSalesNote();
 
     /*Get the list of commodity to be registered.*/
-    QList<Commodity *> getPendingList();
+    SalesNote* getPendingSalesNote();
 
     /*Get sales Documents.(获取销售单据列表)*/
     QList<SalesNote *> getSalesList();
@@ -27,10 +27,11 @@ public:
     /*Get sales amount.*/
     float getSales();
 
-    Commodity *get(QString id); /*Commodity id*/
+    /*Commodity id*/
+    Commodity *get(QString id);
     bool add(QString id); /*Commodity id*/
     bool remove(QString id); /*Commodity id*/
-    bool update(Commodity *commodity); /*TODO*/
+    bool update(Commodity *commodity);
     bool removeAll(); /*removeAll m_commodityList*/
 
     /*settlement operation*/
@@ -43,16 +44,14 @@ public:
     QString onGettingOperation();
 
 private:
-    QList<Commodity* > copyList(QList<Commodity* > list);
-    void removeList(QList<Commodity* >& removeList); // removeAll List
+    SalesNote* copySalesNote(SalesNote* salesNote);
+    void removeSalesNote(SalesNote* salesNote);
 
 signals:
     void listChanged();
 
 private:
     static SalesCommodityService* _instance;
-    QList<Commodity* > m_commodityList;
-    QList<Commodity* > m_CommodityPendingList;
     /*Current sales items list documents.*/
     SalesNote* m_salesNote;
     /*Pending sales items list documents.*/

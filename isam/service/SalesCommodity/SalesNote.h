@@ -12,10 +12,17 @@ class SalesNote
 {
 public:
     SalesNote();
+    SalesNote(SalesNote* salesNote);
     virtual ~SalesNote();
 
     QList<Commodity *> getList();
     void setList(QList<Commodity *> list);
+
+    Commodity *get(QString id);
+    bool add(QString id); /*Commodity id*/
+    bool remove(QString id); /*Commodity id*/
+    bool update(Commodity *commodity); /*TODO*/
+    bool removeAll(); /*removeAll m_commodityList*/
 
     QString getId();
     void setId(QString id);
@@ -30,10 +37,11 @@ public:
     void setPayMap(QVariantMap map);
 
 private:
+    QList<Commodity *> copyList(QList<Commodity* > list);
     void removeList(QList<Commodity* >& removeList); // remove List
 
 private:
-    QList<Commodity* > m_salesBaseNote;
+    QList<Commodity* > m_commodityList;
     QString m_id;    /*ID*/
     QString m_owner; /*Sales staff.*/
     QDateTime m_dateTime; /*Time for selling.*/
