@@ -4,6 +4,8 @@ import "../../../../Common/Text"
 Rectangle {
     id: settleMentButton
 
+    property string amountMoney: "0.00"
+
     signal clicked()
 
     width: parent.width; height: parent.height
@@ -54,9 +56,9 @@ Rectangle {
                 }
                 MText {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    font.pixelSize: 1.5*parent.fontSize
+                    font.pixelSize: 1*parent.fontSize
                     color: "white"
-                    text: "0.00"
+                    text: String(amountMoney)
                 }
             }
         }

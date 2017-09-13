@@ -3,13 +3,26 @@
 
 SalesCommodityListModel::SalesCommodityListModel()
 {
+    m_amountMoney = "0.00";
     reload();
     connect(SalesCommodityService::instance(), SIGNAL(listChanged()), this, SLOT(reload()));
 }
 
+QString SalesCommodityListModel::getAmountMoney()
+{
+    return m_amountMoney;
+}
+
+void SalesCommodityListModel::setAmountMoney(QString money)
+{
+    m_amountMoney = money;
+    emit statusChanged();
+}
+
 void SalesCommodityListModel::reload()
 {
-    QList<Commodity *> commodityList = SalesCommodityService::instance()->getSalesNote().getList();
+    SalesNote salesNote = SalesCommodityService::instance()->getSalesNote();
+    QList<Commodity *> commodityList = salesNote.getList();
     QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
     Commodity* commodity = NULL;
 
@@ -22,4 +35,6 @@ void SalesCommodityListModel::reload()
     }
 
     notifyResetList(modelList);
+
+    this->setAmountMoney(QString::number(salesNote.getRealIncome(), 'f', 2));
 }

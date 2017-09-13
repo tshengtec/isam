@@ -9,7 +9,7 @@ Rectangle {
     radius: width/2
     color: "#00000000"
 
-    onTotalPayChanged: canvas.painted()
+    onTotalPayChanged: canvas.requestPaint()
 
     Canvas {
         id:canvas

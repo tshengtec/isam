@@ -24,7 +24,6 @@ SalesNote::SalesNote(SalesNote *salesNote)
 
 SalesNote::~SalesNote()
 {
-    removeList(this->m_commodityList);
 }
 
 QList<Commodity *> SalesNote::getList()
@@ -140,6 +139,17 @@ void SalesNote::setPayMap(QVariantMap map)
 {
     m_payMap.clear();
     m_payMap = map;
+}
+
+float SalesNote::getRealIncome()
+{
+    float count = 0;
+    for (int i = 0; i < this->m_commodityList.count(); i++) {
+        Commodity* commodity = this->m_commodityList.at(i);
+        count += (commodity->getRetailPrice()*commodity->getCount());
+    }
+
+    return count;
 }
 
 QList<Commodity *> SalesNote::copyMyselfList()

@@ -3,6 +3,7 @@ import "../../ProjectCommon/Text"
 
 Column {
     property var payNumberItemHeight: (height - 2*spacing)/3 //private data
+    property string amountMoney: "0.00"
 
     width: parent.width; height: parent.height
     spacing: 5
@@ -10,7 +11,8 @@ Column {
     TextInputNumber {
         width: parent.width; height: payNumberItemHeight
         leftTitle: "总额"
-        rightNumnber: "0.00"
+        enable: false
+        rightNumnber: amountMoney
     }
 
     Row {

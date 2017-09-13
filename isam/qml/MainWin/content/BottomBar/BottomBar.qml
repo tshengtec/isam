@@ -6,6 +6,9 @@ import "./content"
 
 Rectangle {
     id: rootRectId
+
+    property string amountMoney: "0.00"
+
     signal searched(string barCodeText)
     signal settleMented()
     width: parent.width; height: parent.height
@@ -49,6 +52,7 @@ Rectangle {
         SettleMentButton {
             anchors.verticalCenter: parent.verticalCenter
             width: 10*rootRectId.width/20; height: 8.5*rootRectId.height/10
+            amountMoney: rootRectId.amountMoney
             onClicked: settleMented()
         }
     }

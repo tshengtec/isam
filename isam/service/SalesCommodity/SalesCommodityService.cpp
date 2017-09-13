@@ -98,8 +98,9 @@ bool SalesCommodityService::removeAll()
 
 bool SalesCommodityService::settleMent()
 {
-    SalesNote* salesNote = new SalesNote(&m_salesNote);
+    SalesNote* salesNote = new SalesNote();
     salesNote->setDateTime(QDateTime::currentDateTime());
+    salesNote->setList(this->m_salesNote.copyMyselfList());
     m_SalesList.append(salesNote);
     this->removeAll();
     return true;

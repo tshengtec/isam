@@ -26,7 +26,7 @@ Rectangle {
         MText {
             id: textId
             anchors.centerIn: parent
-            text: "销售查询"
+            text: ""
             font.pixelSize: parent.height/2.5
             color: "white"
         }

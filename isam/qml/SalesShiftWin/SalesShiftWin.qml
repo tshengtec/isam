@@ -46,12 +46,15 @@ Rectangle {
 
             SalesInfoView {
                 width: parent.width; height: 0.2*parent.height
+                totalAmountMoney: salesDocumentsListModel.sales
+                totalNumber: salesDocumentsListModel.salesNumber
             }
 
             Item { width: 1; height: 0.05*parent.height }
 
             SalesDataView {
                 width: parent.width; height: 0.5*parent.height
+                moneyPay: salesDocumentsListModel.sales
             }
 
             Item { width: 1; height: 0.05*parent.height }
@@ -65,6 +68,8 @@ Rectangle {
 
     onVisibleChanged: {
         if (visible) {
+            loginAndLogoutDateTimeId.text = "本次登录时段: " + getLoginDateTime() + "~" + getLogoutDateTime()
+            salesDocumentsListModel.reload()
         }
     }
 

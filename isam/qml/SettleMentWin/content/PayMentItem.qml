@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import MyModels 1.0
 
 Rectangle {
     id: paymentItem
@@ -16,6 +17,7 @@ Rectangle {
 
             EditPayNumber {
                 width: 0.65*parent.width; height: parent.height
+                amountMoney: salesCommodityListModel.amountMoney
             }
 
             Item { width: 0.01*parent.width; height: parent.height }
@@ -41,5 +43,9 @@ Rectangle {
                 onPaymented: paymentItem.paymented()
             }
         }
+    }
+
+    SalesCommodityListModel {
+        id: salesCommodityListModel
     }
 }

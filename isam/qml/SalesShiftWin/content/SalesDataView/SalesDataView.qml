@@ -2,6 +2,9 @@ import QtQuick 2.0
 import "./content"
 
 Rectangle {
+    id: salesDataView
+    property string moneyPay: "0.00"
+
     width: parent.width; height: parent.height
     color: "#e7eded"
 
@@ -19,7 +22,7 @@ Rectangle {
                 width: parent.width; height: (parent.height - 2*20)/3;
                 icon: "qrc:/image/common/money.png"
                 title: "现金"
-                money: "0.00"
+                money: salesDataView.moneyPay
             }
 
             PayTypeLabel {
@@ -47,9 +50,9 @@ Rectangle {
             CircularStatistics {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: height; height: 0.7*parent.height
-                moneyPay: 40
-                weChatPay: 30
-                aliPay: 20
+                moneyPay: Number(salesDataView.moneyPay)
+                weChatPay: 0
+                aliPay: 0
             }
 
             Item { width: 1; height: 0.1*parent.height }

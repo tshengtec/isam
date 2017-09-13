@@ -37,12 +37,15 @@ public:
     QVariantMap getPayMap();
     void setPayMap(QVariantMap map);
 
+    /*Realized income.*/
+    float getRealIncome();
+
 private:
     QList<Commodity *> copyList(QList<Commodity* > list);
     void removeList(QList<Commodity* >& removeList); // remove List
 
 private:
-    QList<Commodity* > *m_commodityList;
+    QList<Commodity* > m_commodityList;
     QString m_id;    /*ID*/
     QString m_owner; /*Sales staff.*/
     QDateTime m_dateTime; /*Time for selling.*/

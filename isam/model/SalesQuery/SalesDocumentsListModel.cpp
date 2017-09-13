@@ -3,16 +3,16 @@
 
 SalesDocumentsListModel::SalesDocumentsListModel()
 {
-    m_sales = 0;
+    m_sales = "0.00";
     m_salesNumber = 0;
 }
 
-float SalesDocumentsListModel::getSales()
+QString SalesDocumentsListModel::getSales()
 {
     return m_sales;
 }
 
-void SalesDocumentsListModel::setSales(float sales)
+void SalesDocumentsListModel::setSales(QString sales)
 {
     m_sales = sales;
     emit statusChanged();
@@ -43,13 +43,14 @@ void SalesDocumentsListModel::reload()
         SalesDocumentsModel* salesDocModel = new SalesDocumentsModel(this);
         salesDocModel->setTime(salesItemModel->getDateTime().time());
         salesDocModel->setId(salesItemModel->getId());
-        salesDocModel->setAmountMoney(0);
+        QString amountMoney = QString::number(salesItemModel->getRealIncome(), 'f', 2);
+        salesDocModel->setAmountMoney(amountMoney);
         salesDocListModel.append(salesDocModel);
     }
 
     notifyResetList(salesDocListModel);
 
-    float sales = SalesCommodityService::instance()->getSales();
+    QString sales = QString::number(SalesCommodityService::instance()->getSales(), 'f', 2);
     this->setSales(sales);
     int salesNumber = SalesCommodityService::instance()->getSalesList().count();
     this->setSalesNumber(salesNumber);

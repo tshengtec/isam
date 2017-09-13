@@ -5,7 +5,7 @@ SalesDocumentsModel::SalesDocumentsModel(QObject *parent) :
 {
     m_id = "";
     m_time = QTime::currentTime();
-    m_amountMoney = 0;
+    m_amountMoney = "0.00";
 }
 
 QString SalesDocumentsModel::getId()
@@ -30,12 +30,12 @@ void SalesDocumentsModel::setTime(QTime time)
     emit statusChanged();
 }
 
-float SalesDocumentsModel::getAmountMoney()
+QString SalesDocumentsModel::getAmountMoney()
 {
     return m_amountMoney;
 }
 
-void SalesDocumentsModel::setAmountMoney(float money)
+void SalesDocumentsModel::setAmountMoney(QString money)
 {
     m_amountMoney = money;
     emit statusChanged();

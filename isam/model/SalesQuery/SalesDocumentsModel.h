@@ -18,8 +18,8 @@ public:
     QTime getTime();
     void setTime(QTime time);
 
-    float getAmountMoney();
-    void setAmountMoney(float money);
+    QString getAmountMoney();
+    void setAmountMoney(QString money);
 
     void operator=(const SalesDocumentsModel& model);
 
@@ -29,7 +29,7 @@ signals:
 private:
     QString m_id; //SalesDocumentsModel id
     QTime m_time;
-    float m_amountMoney;
+    QString m_amountMoney;
 };
 
 #endif // SALESDOCUMENTSMODEL_H

@@ -9,11 +9,11 @@ class SalesDocumentsListModel : public ObjectListModel<SalesDocumentsModel>
 public:
     SalesDocumentsListModel();
     Q_INVOKABLE void reload();
-    Q_PROPERTY(float sales READ getSales NOTIFY statusChanged)
+    Q_PROPERTY(QString sales READ getSales NOTIFY statusChanged)
     Q_PROPERTY(int salesNumber READ getSalesNumber NOTIFY statusChanged)
 
-    float getSales();
-    void setSales(float sales);
+    QString getSales();
+    void setSales(QString sales);
 
     int getSalesNumber();
     void setSalesNumber(int num);
@@ -22,7 +22,7 @@ signals:
     void statusChanged();
 
 private:
-    float m_sales;
+    QString m_sales;
     int m_salesNumber;
 };
 
