@@ -2,6 +2,11 @@
 #define SALESNOTE_H
 #include "Commodity.h"
 #include <QDateTime>
+#include <QVariantMap>
+
+const QString paymentType[] = {
+              "moneyPay", "weChatPay", "aliPay"
+};
 
 class SalesNote
 {
@@ -26,9 +31,14 @@ private:
 
 private:
     QList<Commodity* > m_salesBaseNote;
-    QString m_id;
-    QString m_owner;
-    QDateTime m_dateTime; //Time for selling
+    QString m_id;    /*ID*/
+    QString m_owner; /*Sales staff.*/
+    QDateTime m_dateTime; /*Time for selling.*/
+    /*
+     * Payment method and amount of payment.
+     * Such as: {moneyPay: 10.0}, {weChatPay: 20.0}, {aliPay: 30.00}
+     */
+    QVariantMap m_payMap;
 };
 
 #endif // SALESNOTE_H

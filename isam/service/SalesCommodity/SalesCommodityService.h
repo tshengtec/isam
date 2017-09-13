@@ -53,6 +53,11 @@ private:
     static SalesCommodityService* _instance;
     QList<Commodity* > m_commodityList;
     QList<Commodity* > m_CommodityPendingList;
+    /*Current sales items list documents.*/
+    SalesNote* m_salesNote;
+    /*Pending sales items list documents.*/
+    SalesNote* m_pendingSalesNote;
+    /*All sales list.*/
     QList<SalesNote *> m_SalesList;
 };
 

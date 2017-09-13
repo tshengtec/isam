@@ -63,7 +63,7 @@ Item {
                 LoginTextInput {
                     id: accountId
                     width: parent.width; height: 1.5*parent.height/10
-                    icon: "qrc:/image/loginWin/account.png"
+                    icon: "qrc:/image/common/account.png"
                     defaultText: "员工帐号"
                 }
 
@@ -72,7 +72,7 @@ Item {
                 LoginTextInput {
                     id: passwordId
                     width: parent.width; height: 1.5*parent.height/10
-                    icon: "qrc:/image/loginWin/password.png"
+                    icon: "qrc:/image/common/password.png"
                     echoMode: TextInput.Password
                     defaultText: "填写密码"
                 }

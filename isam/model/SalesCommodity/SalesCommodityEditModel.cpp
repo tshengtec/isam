@@ -3,6 +3,7 @@
 SalesCommodityEditModel::SalesCommodityEditModel()
 {
     m_errorStr = "";
+    emit statusChanged(); /*Init update date.*/
 }
 
 bool SalesCommodityEditModel::add(QString id)
