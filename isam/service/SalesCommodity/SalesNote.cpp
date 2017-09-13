@@ -9,6 +9,7 @@ SalesNote::SalesNote()
            QString::number(time.msec());
     m_owner = "";
     m_dateTime = QDateTime::currentDateTime();
+    m_payMap.clear();
 }
 
 SalesNote::~SalesNote()
@@ -55,6 +56,17 @@ QDateTime SalesNote::getDateTime()
 void SalesNote::setDateTime(QDateTime dateTime)
 {
     m_dateTime = dateTime;
+}
+
+QVariantMap SalesNote::getPayMap()
+{
+    return m_payMap;
+}
+
+void SalesNote::setPayMap(QVariantMap map)
+{
+    m_payMap.clear();
+    m_payMap = map;
 }
 
 void SalesNote::removeList(QList<Commodity *> &removeList)

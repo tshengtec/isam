@@ -27,11 +27,11 @@ public:
     /*Get sales amount.*/
     float getSales();
 
-    Commodity *get(QString id);
-    bool add(QString id);
-    bool remove(QString id);
-    bool update(Commodity *commodity);
-    bool removeAll(); //removeAll m_commodityList
+    Commodity *get(QString id); /*Commodity id*/
+    bool add(QString id); /*Commodity id*/
+    bool remove(QString id); /*Commodity id*/
+    bool update(Commodity *commodity); /*TODO*/
+    bool removeAll(); /*removeAll m_commodityList*/
 
     /*settlement operation*/
     bool settleMent();

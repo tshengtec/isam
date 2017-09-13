@@ -15,7 +15,6 @@ SOURCES += main.cpp \
     model/SalesCommodity/SalesCommodityListModel.cpp \
     service/SalesCommodity/SalesCommodityService.cpp \
     model/SalesCommodity/SalesCommodityEditModel.cpp \
-    model/GettingCommodity/GettingCommodityListModel.cpp \
     model/BaseCommodity/BaseCommodityModel.cpp \
     service/SalesQuery/SalesQueryService.cpp \
     infrastructure/utils/FuzzySearchTool.cpp \
@@ -81,7 +80,6 @@ HEADERS += \
     model/SalesCommodity/SalesCommodityListModel.h \
     service/SalesCommodity/SalesCommodityService.h \
     model/SalesCommodity/SalesCommodityEditModel.h \
-    model/GettingCommodity/GettingCommodityListModel.h \
     model/BaseCommodity/BaseCommodityModel.h \
     service/SalesQuery/SalesQueryService.h \
     infrastructure/utils/FuzzySearchTool.h \

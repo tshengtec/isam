@@ -26,6 +26,9 @@ public:
     QDateTime getDateTime();
     void setDateTime(QDateTime dateTime);
 
+    QVariantMap getPayMap();
+    void setPayMap(QVariantMap map);
+
 private:
     void removeList(QList<Commodity* >& removeList); // remove List
 
@@ -36,7 +39,7 @@ private:
     QDateTime m_dateTime; /*Time for selling.*/
     /*
      * Payment method and amount of payment.
-     * Such as: {moneyPay: 10.0}, {weChatPay: 20.0}, {aliPay: 30.00}
+     * Such as: {"moneyPay": 10.0}, {"weChatPay": 20.0}, {"aliPay": 30.00}
      */
     QVariantMap m_payMap;
 };
