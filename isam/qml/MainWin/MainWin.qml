@@ -14,7 +14,6 @@ import "../CommodityQueryWin"
 import "../SalesShiftWin"
 
 Window {
-<<<<<<< HEAD
     id: window
     x: (Screen.width - width)/2
     y: (Screen.height - height)/2
@@ -25,18 +24,7 @@ Window {
     minimumHeight: 0.5*Screen.height
     flags: Qt.Window | Qt.FramelessWindowHint
     Component.onCompleted: globalModel.window = window
-=======
-    id: windowsId
-    x: (Screen.width - width)/2;
-    y: (Screen.width - height)/2
-    visible: true
-    width: 0.8*Screen.width
-    height: 0.8*Screen.height
-    minimumWidth: 0.5*Screen.width
-    minimumHeight: 0.5*Screen.height
-    flags: Qt.Window|Qt.FramelessWindowHint
-    Component.onCompleted: globalModel.window = windowsId
->>>>>>> 6a9a68c8ee9f65ff4009af05f7a02aee2482c81e
+
     onClosing: {
         if (!loginWin.visible) {
             close.accepted = false

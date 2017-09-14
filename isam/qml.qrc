@@ -67,5 +67,6 @@
         <file>qml/SalesShiftWin/content/SalesDataView/content/CircularStatistics.qml</file>
         <file>qml/SalesShiftWin/content/BottomBar/BottomBar.qml</file>
         <file>qml/SalesShiftWin/content/BottomBar/content/PrintSelection.qml</file>
+        <file>qml/Common/Window/MyWindow.qml</file>
     </qresource>
 </RCC>
