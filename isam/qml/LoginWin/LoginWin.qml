@@ -3,8 +3,9 @@ import MyModels 1.0
 import "../Common/TipsWin"
 import "../Common/Button"
 import "./content"
+import "../Common/Window"
 
-Rectangle {
+MyWindow {
     id: windowsId
 
     signal close()
