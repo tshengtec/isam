@@ -7,8 +7,9 @@ import "../Common/Button"
 import "../Common/Text"
 import "../ProjectCommon/Bar"
 import "../MainWin/content/TopBar"
+import "../Common/Window"
 
-Rectangle {
+MyWindow {
     property variant allSalseListModelToLeftPart: []
     property variant commoditySalseListModelToRightPart: [] //
     id: rootId

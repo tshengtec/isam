@@ -17,7 +17,7 @@ Rectangle {
     MText {
         x: 15
         anchors.verticalCenter: parent.verticalCenter
-        font.pixelSize: parent.height/2
+        font.pixelSize: parent.height/2.5
         color: "white"
         text: "搜索商品"
     }

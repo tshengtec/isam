@@ -14,16 +14,16 @@ import "../CommodityQueryWin"
 import "../SalesShiftWin"
 
 Window {
-    id: windowsId
+    id: window
     x: (Screen.width - width)/2
     y: (Screen.height - height)/2
     visible: true
-    width: 0.8*Screen.width
-    height: 0.8*Screen.heigh
+    width: 0.7*Screen.width
+    height: 0.8*Screen.height
     minimumWidth: 0.5*Screen.width
     minimumHeight: 0.5*Screen.height
     flags: Qt.Window | Qt.FramelessWindowHint
-    Component.onCompleted: globalModel.window = windowsId
+    Component.onCompleted: globalModel.window = window
     onClosing: {
         if (!loginWin.visible) {
             close.accepted = false
@@ -41,29 +41,29 @@ Window {
 
     Column {
         TopBar {
-            width: windowsId.width; height: 1*windowsId.height/20
+            width: window.width; height: 1*window.height/20
         }
 
         MenuBar {
-            width: windowsId.width; height: 2*windowsId.height/20
+            width: window.width; height: 2*window.height/20
             onSalesSearch: salesQueryWin.visible = true
             onCommoditySearch: commodityQueryWin.visible = true
             onSalesShift: salesShiftWin.visible = true
         }
 
         CommodityInfoListView {
-            width: windowsId.width; height: 12*windowsId.height/20
+            width: window.width; height: 12*window.height/20
             model: salesCommodityListModel
             onDelCommodity: salesCommodityEditModel.remove(salesCommodityListModel.at(index).id)
         }
 
         CommodityInfoOperation {
-            width: windowsId.width; height: 1*windowsId.height/20
+            width: window.width; height: 1*window.height/20
             onRemoveAll: salesCommodityEditModel.removeAll()
         }
 
         BottomBar {
-            width: windowsId.width; height: 4*windowsId.height/20
+            width: window.width; height: 4*window.height/20
             amountMoney: salesCommodityListModel.amountMoney
             onSearched: {
                 commodityQueryListModel.searchText = barCodeText
@@ -91,9 +91,8 @@ Window {
 
     LoginWin {
         id: loginWin
-        onClose: windowsId.close()
+        onClose: window.close()
 //        visible: false
-
     }
 
     SelectedCommodityWin {

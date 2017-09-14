@@ -43,20 +43,21 @@ Rectangle {
             color: "#f34b53"
 
             Column {
-                property int fontSize: 0.3*parent.height
+                property int fontSize: 0.25*parent.height
                 anchors.verticalCenter: parent.verticalCenter
                 x: 20
                 width: parent.width
 
                 MText {
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    id: total
+//                    anchors.horizontalCenter: parent.horizontalCenter
                     font.pixelSize: parent.fontSize
                     color: "white"
                     text: "总金额"
                 }
                 MText {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    font.pixelSize: 1*parent.fontSize
+                    anchors.horizontalCenter: total.horizontalCenter
+                    font.pixelSize: 1.2*parent.fontSize
                     color: "white"
                     text: String(amountMoney)
                 }

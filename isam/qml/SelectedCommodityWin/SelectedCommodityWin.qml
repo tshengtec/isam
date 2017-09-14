@@ -2,8 +2,9 @@ import QtQuick 2.0
 import "./content"
 import "../Common/ListView"
 import "../Common/Text"
+import "../Common/Window"
 
-Rectangle {
+MyWindow {
     property variant displayListModel: []
     id: rootId
     width: parent.width; height: parent.height

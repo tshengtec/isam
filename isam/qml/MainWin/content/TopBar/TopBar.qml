@@ -36,26 +36,26 @@ Rectangle {
         spacing: 15
 
         ImageButton {
-            width: root.height; height: width
+            width: 0.8*root.height; height: width
             source: "qrc:/image/mainWin/dropDownList.png"
             onClicked: dropDownList()
         }
 
         ImageButton {
-            width: root.height; height: width
+            width: 0.8*root.height; height: width
             scaleHeight: 0.2
             source: "qrc:/image/mainWin/minimize.png"
             onClicked: minimize()
         }
 
         ImageButton {
-            width: root.height; height: width
+            width: 0.8*root.height; height: width
             source: "qrc:/image/mainWin/maximize.png"
             onClicked: maximize()
         }
 
         ImageButton {
-            width: root.height; height: width
+            width: 0.8*root.height; height: width
             source: "qrc:/image/mainWin/close.png"
             onClicked: close()
         }

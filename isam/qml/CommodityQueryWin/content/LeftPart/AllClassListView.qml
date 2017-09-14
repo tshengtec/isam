@@ -38,7 +38,7 @@ Item {
                 x: parent.width/10
                 text: modelData
                 color: "black"
-                font.pixelSize: parent.height/2.5
+                font.pixelSize: parent.height/3
             }
             Rectangle { width: parent.width; height: 1; color: "#d5d5d5"; anchors.bottom: parent.bottom }
 

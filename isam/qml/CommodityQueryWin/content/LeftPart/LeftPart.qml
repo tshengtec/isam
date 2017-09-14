@@ -13,6 +13,7 @@ Rectangle {
 
         BaseButton {
             width: parent.width; height: 1.5*parent.height/20
+            fontPixelSize: height/3
             btnText: "选择分类"
             color: "#5acaa4"
         }

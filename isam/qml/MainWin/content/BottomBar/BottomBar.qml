@@ -46,7 +46,7 @@ Rectangle {
             }
         }
 
-        Item { width: 3*rootRectId.width/20; height: 1 }
+        Item { width: 3.55*rootRectId.width/20; height: 1 }
 
 
         SettleMentButton {

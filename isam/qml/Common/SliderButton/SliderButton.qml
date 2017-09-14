@@ -51,7 +51,7 @@ Rectangle {
         x: onOff ? parent.height + 5 : 5
 //        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        font.pixelSize: 0.5*parent.height
+        font.pixelSize: 0.45*parent.height
         color: "white"
         text: contentText
     }

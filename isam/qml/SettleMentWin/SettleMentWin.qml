@@ -4,8 +4,9 @@ import "../ProjectCommon/Bar"
 import "../ProjectCommon/Text"
 import "../MainWin/content/TopBar"
 import "./content"
+import "../Common/Window"
 
-Rectangle {
+MyWindow {
     id: rootId
     property variant paymentModel
 

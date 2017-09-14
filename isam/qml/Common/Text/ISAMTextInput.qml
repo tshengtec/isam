@@ -3,6 +3,7 @@ import QtQuick 2.5
 Rectangle {
     signal isReturnPressed(string barCodeText)
     property alias text: textInputId.text
+    property alias textColor: textInputId.color
     property string defaultText: ""
     property string rightIcon: ""
     property int textInputXOffset: 0
@@ -19,23 +20,17 @@ Rectangle {
         x: 2 + textInputXOffset
         clip: true
         width: parent.width - 2*2 - (rightIcon === "" ? 0 : rightIconItem.width) - textInputXOffset;
-        font.family: "微软雅黑"
+//        font.family: "微软雅黑"
+        color: "#555555"
         height: parent.height/1.5
         font.pixelSize: height
         Keys.onReturnPressed: isReturnPressed(text)
-//        onTextChanged: {
-//            for (var index = 0; index < text.length; index++) {
-//                if (text.charCodeAt(index) > 255)
-//                    return font.pixelSize = parent.height/2
-//            }
-//            return font.pixelSize = height
-//        }
     }
 
     MText {
         x: 2 + textInputXOffset
         visible: parent.text === "" //&& textInputId.focus === false
-        font.pixelSize: parent.height/2
+        font.pixelSize: parent.height/2.5
         color: "#555555"
         text: defaultText
         anchors.verticalCenter: parent.verticalCenter
