@@ -21,7 +21,7 @@ Rectangle {
         clip: true
         width: parent.width - 2*2 - (rightIcon === "" ? 0 : rightIconItem.width) - textInputXOffset;
 //        font.family: "微软雅黑"
-        color: "#555555"
+        color: "#858585"
         height: parent.height/1.5
         font.pixelSize: height
         Keys.onReturnPressed: isReturnPressed(text)
@@ -31,7 +31,7 @@ Rectangle {
         x: 2 + textInputXOffset
         visible: parent.text === "" //&& textInputId.focus === false
         font.pixelSize: parent.height/2.5
-        color: "#555555"
+        color: "#858585"
         text: defaultText
         anchors.verticalCenter: parent.verticalCenter
     }
