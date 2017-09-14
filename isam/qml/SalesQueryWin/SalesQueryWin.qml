@@ -4,9 +4,8 @@ import "../ProjectCommon/Bar"
 import "./content/LeftPart"
 import "./content/RightPart"
 import "../MainWin/content/TopBar"
-import "../Common/Window"
 
-MyWindow {
+Rectangle {
     id: rootId
     width: parent.width; height: parent.height
 
