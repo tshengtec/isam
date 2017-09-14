@@ -34,7 +34,7 @@ Rectangle {
                     btnText: "交班并退出"
                     btnColor: "#4284f4"
                     radius: 5
-                    onIsClicked: Qt.quit()
+                    onIsClicked: globalModel.window.close()
                 }
             }
         }
