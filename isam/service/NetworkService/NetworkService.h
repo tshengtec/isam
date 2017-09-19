@@ -22,7 +22,7 @@ public slots:
 private:
     QNetworkAccessManager m_manager;
     QJsonObject m_jsonObj;
-    QString m_errorCode;
+    int m_errorCode;
     QString m_error;
 };
 

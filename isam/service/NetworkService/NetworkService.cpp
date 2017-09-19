@@ -28,18 +28,18 @@ void NetworkService::getAccountInfo(QString account, QString password, QString t
 
 void NetworkService::finishedSlot(QNetworkReply *reply)
 {
+    QByteArray bytes = reply->readAll();  // bytes
+    QString jsonString = QString::fromUtf8(bytes);
+    m_jsonObj = this->getJsonObjectFromString(jsonString);
+
     if (reply->error() == QNetworkReply::NoError)
     {
-        QByteArray bytes = reply->readAll();  // bytes
-        QString jsonString = QString::fromUtf8(bytes);
-        QJsonObject jsonObje = this->getJsonObjectFromString(jsonString);
-        qDebug()<<jsonObje;
+        m_errorCode = 0;
+        m_error = "";
     }
     else {
-        QByteArray bytes = reply->readAll();  // bytes
-        QString jsonString = QString::fromUtf8(bytes);
-        QJsonObject jsonObje = this->getJsonObjectFromString(jsonString);
-        qDebug()<<jsonObje;
+        m_errorCode = m_jsonObj.value("code").toInt();
+        m_error = m_jsonObj.value("error").toString();
     }
 
     reply->deleteLater();
@@ -47,9 +47,9 @@ void NetworkService::finishedSlot(QNetworkReply *reply)
 
 /*QString -> QJsonObject*/
 QJsonObject NetworkService::getJsonObjectFromString(const QString jsonString){
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toLocal8Bit().data());
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toUtf8().data());
     if( jsonDocument.isNull() ){
-        qDebug()<< "Format error!"<< jsonString.toLocal8Bit().data();
+        qDebug()<< "Format error!"<< jsonString.toUtf8().data();
     }
     QJsonObject jsonObject = jsonDocument.object();
     return jsonObject;

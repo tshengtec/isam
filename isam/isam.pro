@@ -1,5 +1,4 @@
 TEMPLATE = app
-
 QT += qml quick
 CONFIG += c++11
 
