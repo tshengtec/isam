@@ -1,25 +1,36 @@
 #include "AccountService.h"
+#include "JsonListConvertor.h"
+#include <QCryptographicHash>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QDebug>
 
 AccountService * AccountService::_instance = NULL;
 
 
 AccountService::AccountService()
 {
-    reload();
+
 }
 
 bool AccountService::loginAccount(QString type, QString name, QString password)
 {
-    for (int i = 0; i < m_accountList.count(); i++) {
-        AccountItem* accountItem = m_accountList.at(i);
-        if (accountItem->getType() == type &&
-            accountItem->getName() == name &&
-            accountItem->getPassword() == password) {
-            AccountItem* loggedInaccountItem = new AccountItem(accountItem);
-            m_loggedInAccountList.append(loggedInaccountItem);
-            emit loggedInAccountListChanged();
-            return true;
+    if (m_accountList.count() > 0) {
+        for (int i = 0; i < m_accountList.count(); i++) {
+            AccountItem* accountItem = m_accountList.at(i);
+            if (accountItem->getType() == type &&
+                accountItem->getName() == name &&
+                accountItem->getPassword() == password) {
+                AccountItem* loggedInaccountItem = new AccountItem(accountItem);
+                m_loggedInAccountList.append(loggedInaccountItem);
+                emit loggedInAccountListChanged();
+                return true;
+            }
         }
+    }
+    else {
+
     }
     return false;
 }
@@ -71,8 +82,17 @@ bool AccountService::removeAll()
 
 void AccountService::reload()
 {
-    this->add(accountTypeList[0], "123456789@qq.com", "123456");
-    this->add(accountTypeList[1], "1001", "123456");
+    QFile saveFile("save.json");
+    saveFile.open(QIODevice::ReadOnly);
+    QByteArray saveData = saveFile.readAll();
+
+    QJsonDocument saveDoc(QJsonDocument::fromJson(saveData));
+
+    QJsonArray jsonList = saveDoc.object().value("accountInfoList").toArray();
+    JsonListConvertor<AccountItem> convertor;
+    m_accountList = convertor.toList(jsonList);
+//    this->add(accountTypeList[0], "123456789@qq.com", "123456");
+//    this->add(accountTypeList[1], "1001", "123456");
 }
 
 bool AccountService::verifyAccountIsValid(QString type, QString name, QString password)

@@ -19,6 +19,11 @@
 
 int main(int argc, char *argv[])
 {
+    QString password("123456");
+    QByteArray bb;
+    bb = QCryptographicHash::hash( password.toLatin1(), QCryptographicHash::Md5 );
+    qDebug()<<bb.toHex()<<">>>>>>";
+
     MyGuiApplication app(argc, argv);
 
     qmlRegisterType<EnumComplete>("MyModels", 1, 0, "EnumComplete");

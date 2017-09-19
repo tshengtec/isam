@@ -2,12 +2,18 @@
 #define ACCOUNTITEM_H
 #include <QString>
 #include <QDateTime>
+#include <QObject>
+#include "DomainObject.h"
 
-class AccountItem
+class AccountItem : public QObject, public DomainObject
 {
+    Q_OBJECT
 public:
     AccountItem();
     AccountItem(AccountItem* accountItem);
+
+    void fromJson(const QJsonObject data);
+    QJsonObject toJson();
 
     /*type ==> "admin", "general"*/
     QString getType();

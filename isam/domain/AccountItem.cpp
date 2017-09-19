@@ -16,6 +16,25 @@ AccountItem::AccountItem(AccountItem *accountItem)
     m_loginDateTime = accountItem->getLoginDateTime();
 }
 
+void AccountItem::fromJson(const QJsonObject data)
+{
+    m_type = data.value("type").toString();
+    m_name = data.value("name").toString();
+    m_password = data.value("password").toString();
+//    m_loginDateTime = data.value("loginDateTime").toString();
+}
+
+QJsonObject AccountItem::toJson()
+{
+    QJsonObject data;
+    data.insert("type", getType());
+    data.insert("name", getName());
+    data.insert("password", getPassword());
+//    data.insert("loginDateTime", getLoginDateTime());
+
+    return data;
+}
+
 QString AccountItem::getType()
 {
     return m_type;
