@@ -16,6 +16,8 @@ public:
     QJsonObject getJsonObjectFromString(const QString jsonString);
     QString getStringFromJsonObject(const QJsonObject& jsonObject);
 
+    QJsonObject getJsonObj();
+
 public slots:
    void finishedSlot(QNetworkReply*);
 

@@ -59,3 +59,8 @@ QJsonObject NetworkService::getJsonObjectFromString(const QString jsonString){
 QString NetworkService::getStringFromJsonObject(const QJsonObject& jsonObject){
     return QString(QJsonDocument(jsonObject).toJson());
 }
+
+QJsonObject NetworkService::getJsonObj()
+{
+    return m_jsonObj;
+}

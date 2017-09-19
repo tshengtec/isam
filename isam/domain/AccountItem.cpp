@@ -5,6 +5,7 @@ AccountItem::AccountItem()
     m_type = "";
     m_name = "";
     m_password = "";
+    m_passwordMD5 = "";
     m_loginDateTime = QDateTime::currentDateTime();
 }
 
@@ -13,6 +14,7 @@ AccountItem::AccountItem(AccountItem *accountItem)
     m_type = accountItem->getType();
     m_name = accountItem->getName();
     m_password = accountItem->getPassword();
+    m_passwordMD5 = accountItem->getPasswordMD5();
     m_loginDateTime = accountItem->getLoginDateTime();
 }
 
@@ -20,7 +22,7 @@ void AccountItem::fromJson(const QJsonObject data)
 {
     m_type = data.value("type").toString();
     m_name = data.value("name").toString();
-    m_password = data.value("password").toString();
+    m_passwordMD5 = data.value("passwordMD5").toString();
 //    m_loginDateTime = data.value("loginDateTime").toString();
 }
 
@@ -29,7 +31,7 @@ QJsonObject AccountItem::toJson()
     QJsonObject data;
     data.insert("type", getType());
     data.insert("name", getName());
-    data.insert("password", getPassword());
+    data.insert("passwordMD5", getPasswordMD5());
 //    data.insert("loginDateTime", getLoginDateTime());
 
     return data;
@@ -63,6 +65,16 @@ QString AccountItem::getPassword()
 void AccountItem::setPassword(QString password)
 {
     m_password = password;
+}
+
+QString AccountItem::getPasswordMD5()
+{
+    return m_passwordMD5;
+}
+
+void AccountItem::setPasswordMD5(QString password)
+{
+    m_passwordMD5 = password;
 }
 
 QDateTime AccountItem::getLoginDateTime()

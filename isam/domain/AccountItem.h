@@ -25,6 +25,9 @@ public:
     QString getPassword();
     void setPassword(QString password);
 
+    QString getPasswordMD5();
+    void setPasswordMD5(QString password);
+
     QDateTime getLoginDateTime();
     void setLoginDateTime(QDateTime dateTime);
 
@@ -32,6 +35,7 @@ private:
     QString m_type;
     QString m_name;
     QString m_password;
+    QString m_passwordMD5;
     QDateTime m_loginDateTime;
 };
 
