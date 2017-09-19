@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     model/AccountModel/AccountListModel.cpp \
     windows/QmlWin.cpp \
     windows/MyGuiApplication.cpp \
-    windows/GlobalModel.cpp
+    windows/GlobalModel.cpp \
+    service/NetworkService/NetworkService.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -56,7 +57,8 @@ INCLUDEPATH += service \
                service/SalesCommodity \
                service/SalesQuery \
                service/CommodityQuery \
-               service/AccountService
+               service/AccountService \
+               service/NetworkService
 
 INCLUDEPATH += domain
 
@@ -98,7 +100,8 @@ HEADERS += \
     model/AccountModel/AccountListModel.h \
     windows/QmlWin.h \
     windows/MyGuiApplication.h \
-    windows/GlobalModel.h
+    windows/GlobalModel.h \
+    service/NetworkService/NetworkService.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml

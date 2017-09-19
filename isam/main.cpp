@@ -14,16 +14,14 @@
 #include "SalesDocumentsListModel.h"
 #include "AccountListModel.h"
 #include "EnumComplete.h"
+#include "NetworkService.h"
 
 #define BACKGROUNDCOLOR "#1f29f9"
 
 int main(int argc, char *argv[])
 {
-    QString password("123456");
-    QByteArray bb;
-    bb = QCryptographicHash::hash( password.toLatin1(), QCryptographicHash::Md5 );
-    qDebug()<<bb.toHex()<<">>>>>>";
-
+    NetworkService* netService = new NetworkService();
+    netService->getAccountInfo("jinhai", "j", accountTypeList[0]);
     MyGuiApplication app(argc, argv);
 
     qmlRegisterType<EnumComplete>("MyModels", 1, 0, "EnumComplete");
@@ -37,3 +35,5 @@ int main(int argc, char *argv[])
     QmlWin* win = new QmlWin();
     return app.exec();
 }
+
+//http://api.erp.slktea.com/isam-web-merchant/auth?account=jinhai&password=e10adc3949ba59abbe56e057f20f883e
