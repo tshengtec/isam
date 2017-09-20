@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     windows/QmlWin.cpp \
     windows/MyGuiApplication.cpp \
     windows/GlobalModel.cpp \
-    service/NetworkService/NetworkService.cpp
+    service/NetworkService/NetworkService.cpp \
+    service/NetworkService/AccountNetworkService.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -100,7 +101,8 @@ HEADERS += \
     windows/QmlWin.h \
     windows/MyGuiApplication.h \
     windows/GlobalModel.h \
-    service/NetworkService/NetworkService.h
+    service/NetworkService/NetworkService.h \
+    service/NetworkService/AccountNetworkService.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml

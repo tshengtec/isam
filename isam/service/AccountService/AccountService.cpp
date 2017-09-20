@@ -11,28 +11,72 @@ AccountService * AccountService::_instance = NULL;
 
 AccountService::AccountService()
 {
+    connect(this, SIGNAL(listChanged()), this, SLOT(save()));
+    connect(&m_networkService, SIGNAL(returnLoginStatus(bool)), this, SLOT(getLoginStatus(bool)) );
+}
 
+void AccountService::getLoginStatus(bool status)
+{
+    bool isSuccess = status;
+    if (isSuccess) {
+        for (int index = 0; index < sizeof(accountTypeList)/sizeof(accountTypeList[0]); index++) {
+            QString accountType = m_networkService.getJsonObj().value("accountType").toString();
+            if (accountTypeList[index] == accountType) {
+                AccountItem* loggedInaccountItem = new AccountItem(m_networkService.getJsonObj());
+                m_loggedInAccountList.append(loggedInaccountItem);
+
+                if (m_accountList.count() == 0) {
+                    m_accountList.append(new AccountItem(m_networkService.getJsonObj()));
+                    emit listChanged();
+                }
+
+                emit loggedInAccountListChanged();
+            }
+        }
+    }
+}
+
+void AccountService::save()
+{
+    JsonListConvertor<AccountItem> convertor;
+    QJsonValue jsonValue = convertor.toJson(m_accountList);
+
+    QFile configFile(QStringLiteral("config.json"));
+    configFile.open(QIODevice::ReadWrite);
+
+//    qDebug()<<configFile.readAll();
+    QJsonParseError error;
+    QJsonDocument saveDoc = QJsonDocument::fromJson(configFile.readAll(), &error);
+
+    qDebug()<<saveDoc.object()<<error.errorString();
+    QJsonObject newJsonObj = saveDoc.object();
+    newJsonObj.insert("accountInfoArray", jsonValue.toArray());
+
+    configFile.resize(0);
+    configFile.write(QJsonDocument(newJsonObj).toJson());
+    configFile.close();
 }
 
 bool AccountService::loginAccount(QString type, QString name, QString password)
 {
-    if (m_accountList.count() = 1) {
-        for (int i = 0; i < m_accountList.count(); i++) {
-            AccountItem* accountItem = m_accountList.at(i);
-            if (accountItem->getType() == type &&
-                accountItem->getName() == name &&
-                accountItem->getPassword() == password) {
-                AccountItem* loggedInaccountItem = new AccountItem(accountItem);
-                m_loggedInAccountList.append(loggedInaccountItem);
-                emit loggedInAccountListChanged();
-                return true;
-            }
-        }
-    }
-    else {
+    m_networkService.getAccountInfo(name, password, type);
+//    if (m_accountList.count() > 0) {
+//        for (int i = 0; i < m_accountList.count(); i++) {
+//            AccountItem* accountItem = m_accountList.at(i);
+//            if (accountItem->getType() == type &&
+//                accountItem->getName() == name &&
+//                accountItem->getPassword() == password) {
+//                AccountItem* loggedInaccountItem = new AccountItem(accountItem);
+//                m_loggedInAccountList.append(loggedInaccountItem);
+//                emit loggedInAccountListChanged();
+//                return true;
+//            }
+//        }
+//    }
+//    else {
 
-    }
-    return false;
+//    }
+//    return false;
 }
 
 QList<AccountItem *> AccountService::getLoggedInAccountList()
@@ -82,13 +126,13 @@ bool AccountService::removeAll()
 
 void AccountService::reload()
 {
-    QFile saveFile("save.json");
-    saveFile.open(QIODevice::ReadOnly);
-    QByteArray saveData = saveFile.readAll();
+    QFile configFile("config.json");
+    configFile.open(QIODevice::ReadOnly);
+    QByteArray saveData = configFile.readAll();
 
     QJsonDocument saveDoc(QJsonDocument::fromJson(saveData));
 
-    QJsonArray jsonList = saveDoc.object().value("accountInfoList").toArray();
+    QJsonArray jsonList = saveDoc.object().value("accountInfoArray").toArray();
     JsonListConvertor<AccountItem> convertor;
     m_accountList = convertor.toList(jsonList);
 //    this->add(accountTypeList[0], "123456789@qq.com", "123456");

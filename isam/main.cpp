@@ -20,8 +20,6 @@
 
 int main(int argc, char *argv[])
 {
-    NetworkService* netService = new NetworkService();
-    netService->getAccountInfo("jinhai", "j", accountTypeList[0]);
     MyGuiApplication app(argc, argv);
 
     qmlRegisterType<EnumComplete>("MyModels", 1, 0, "EnumComplete");

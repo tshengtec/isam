@@ -3,6 +3,8 @@
 #include <QString>
 #include <QDateTime>
 #include <QObject>
+#include <QJsonObject>
+#include <QJsonArray>
 #include "DomainObject.h"
 
 class AccountItem : public QObject, public DomainObject
@@ -10,6 +12,7 @@ class AccountItem : public QObject, public DomainObject
     Q_OBJECT
 public:
     AccountItem();
+    AccountItem(const QJsonObject jsonObj);
     AccountItem(AccountItem* accountItem);
 
     void fromJson(const QJsonObject data);
@@ -30,6 +33,9 @@ public:
 
     QDateTime getLoginDateTime();
     void setLoginDateTime(QDateTime dateTime);
+
+private:
+    QDateTime getDateTimefromJsonArray(QJsonArray jsonArray);
 
 private:
     QString m_type;

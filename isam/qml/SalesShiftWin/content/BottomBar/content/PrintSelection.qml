@@ -24,7 +24,7 @@ Rectangle {
         MText {
             anchors.verticalCenter: parent.verticalCenter
             text: "交班后打印"
-            color: "black"
+            color: "black";
             font.pixelSize: 0.6*parent.height
         }
     }

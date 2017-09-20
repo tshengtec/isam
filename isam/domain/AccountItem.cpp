@@ -9,6 +9,11 @@ AccountItem::AccountItem()
     m_loginDateTime = QDateTime::currentDateTime();
 }
 
+AccountItem::AccountItem(const QJsonObject jsonObj)
+{
+    fromJson(jsonObj);
+}
+
 AccountItem::AccountItem(AccountItem *accountItem)
 {
     m_type = accountItem->getType();
@@ -20,10 +25,10 @@ AccountItem::AccountItem(AccountItem *accountItem)
 
 void AccountItem::fromJson(const QJsonObject data)
 {
-    m_type = data.value("type").toString();
-    m_name = data.value("name").toString();
+    m_type = data.value("accountType").toString();
+    m_name = data.value("account").toString();
     m_passwordMD5 = data.value("passwordMD5").toString();
-//    m_loginDateTime = data.value("loginDateTime").toString();
+    m_loginDateTime = getDateTimefromJsonArray(data.value("shops").toArray());
 }
 
 QJsonObject AccountItem::toJson()
@@ -85,4 +90,9 @@ QDateTime AccountItem::getLoginDateTime()
 void AccountItem::setLoginDateTime(QDateTime dateTime)
 {
     m_loginDateTime = dateTime;
+}
+
+QDateTime AccountItem::getDateTimefromJsonArray(QJsonArray jsonArray)
+{
+
 }

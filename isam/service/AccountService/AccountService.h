@@ -1,8 +1,10 @@
 #ifndef ACCOUNTSERVICE_H
 #define ACCOUNTSERVICE_H
 #include "AccountItem.h"
+#include "AccountNetworkService.h"
 #include <QList>
 #include <QObject>
+
 const QString accountTypeList[] = {
     "admin", "general"
 };
@@ -18,6 +20,11 @@ public:
 
 signals:
     void loggedInAccountListChanged();
+    void listChanged();
+
+private slots:
+    void getLoginStatus(bool status);
+    void save();
 
 private:
     AccountService();
@@ -32,6 +39,7 @@ private:
     QList <AccountItem* > m_accountList;
     /*Here are the accounts that have been logged in*/
     QList <AccountItem* > m_loggedInAccountList;
+    AccountNetworkService m_networkService;
 };
 
 #endif // ACCOUNTSERVICE_H
