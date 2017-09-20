@@ -30,6 +30,7 @@ private slots:
 
 private:
     AccountService();
+    AccountItem* getAdminAccount() const;
     bool add(QString type, QString name, QString password);
     bool remove(QString account); //remove m_accountList Item
     bool removeAll();

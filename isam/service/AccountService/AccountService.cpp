@@ -19,6 +19,16 @@ AccountService::AccountService()
     connect(&m_delayInit, SIGNAL(timeout()), this, SLOT(reload()));
 }
 
+AccountItem* AccountService::getAdminAccount() const
+{
+    for (int i = 0; i < this->m_accountList.count(); i++) {
+        if (accountTypeList[0] == this->m_accountList.at(i)->getType()) {
+            return this->m_accountList.at(i);
+        }
+    }
+    return NULL;
+}
+
 void AccountService::getLoginStatus(bool status)
 {
     bool isSuccess = status;
@@ -64,7 +74,17 @@ void AccountService::save()
 
 bool AccountService::loginAccount(QString type, QString name, QString password)
 {
-    m_networkService.getAccountInfo(name, password, type);
+    if (type == accountTypeList[1]) {
+        AccountItem* adminAccount = this->getAdminAccount();
+        if (adminAccount != NULL) {
+            QString adminName = this->getAdminAccount()->getName();
+            m_networkService.getAccountInfo(adminName + ":" + name, password, type);
+        }
+    }
+    else {
+        m_networkService.getAccountInfo(name, password, type);
+    }
+
 
 //    return false;
 }
