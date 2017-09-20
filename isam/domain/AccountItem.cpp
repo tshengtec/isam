@@ -25,17 +25,17 @@ AccountItem::AccountItem(AccountItem *accountItem)
 
 void AccountItem::fromJson(const QJsonObject data)
 {
-    m_type = data.value("accountType").toString();
+    m_type = data.value("type").toString();
     m_name = data.value("account").toString();
     m_passwordMD5 = data.value("passwordMD5").toString();
-    m_loginDateTime = getDateTimefromJsonArray(data.value("shops").toArray());
+//    m_loginDateTime = getDateTimefromJsonArray(data.value("shops").toArray());
 }
 
 QJsonObject AccountItem::toJson()
 {
     QJsonObject data;
     data.insert("type", getType());
-    data.insert("name", getName());
+    data.insert("account", getName());
     data.insert("passwordMD5", getPasswordMD5());
 //    data.insert("loginDateTime", getLoginDateTime());
 

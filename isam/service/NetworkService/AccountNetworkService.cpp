@@ -37,7 +37,7 @@ void AccountNetworkService::finishedSlot(QNetworkReply *reply)
     if (reply->error() == QNetworkReply::NoError)
     {
         m_jsonObj.insert("passwordMD5", QString(m_passwordMD5.toHex()));
-        m_jsonObj.insert("accountType", m_type);
+        m_jsonObj.insert("type", m_type);
         emit returnLoginStatus(true);
     }
     else {

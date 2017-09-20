@@ -4,6 +4,7 @@
 #include "AccountNetworkService.h"
 #include <QList>
 #include <QObject>
+#include <QTimer>
 
 const QString accountTypeList[] = {
     "admin", "general"
@@ -25,13 +26,16 @@ signals:
 private slots:
     void getLoginStatus(bool status);
     void save();
+    void reload();
 
 private:
     AccountService();
     bool add(QString type, QString name, QString password);
+    bool remove(QString account); //remove m_accountList Item
     bool removeAll();
-    void reload();
     bool verifyAccountIsValid(QString type, QString name, QString password);
+    QList<AccountItem *> verifyAccountListIsValid(QList <AccountItem* > list);
+    void modifyConfigFile();
 
 private:
     static AccountService* _instance;
@@ -40,6 +44,7 @@ private:
     /*Here are the accounts that have been logged in*/
     QList <AccountItem* > m_loggedInAccountList;
     AccountNetworkService m_networkService;
+    QTimer m_delayInit;
 };
 
 #endif // ACCOUNTSERVICE_H
