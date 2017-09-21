@@ -12,13 +12,16 @@ public:
     Q_INVOKABLE bool loginAccount(QString type, QString name, QString password);
     Q_INVOKABLE bool logoutAdminAccount();
     Q_INVOKABLE void forgetPassword();
+
     Q_PROPERTY(bool isAdminLogged READ getIsAdminLogged  NOTIFY statusChanged)
     Q_PROPERTY(bool isGeneralLogged READ getIsGeneralLogged NOTIFY statusChanged)
     Q_PROPERTY(QString adminAccount READ getAdminAccount NOTIFY statusChanged)
+    Q_PROPERTY(QString error READ getError NOTIFY statusChanged)
 
     bool getIsAdminLogged();
     bool getIsGeneralLogged();
     QString getAdminAccount();
+    QString getError();
 
 signals:
     void statusChanged();

@@ -18,6 +18,7 @@ public:
     bool loginAccount(QString type, QString name, QString password);
     bool logoutAccount(QString type, QString name);
     QList<AccountItem *> getLoggedInAccountList();
+    QString getError();
 
 signals:
     void loggedInAccountListChanged();
@@ -46,6 +47,7 @@ private:
     QList <AccountItem* > m_loggedInAccountList;
     AccountNetworkService m_networkService;
     QTimer m_delayInit;
+    QString m_error;
 };
 
 #endif // ACCOUNTSERVICE_H

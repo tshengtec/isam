@@ -47,6 +47,11 @@ QString AccountListModel::getAdminAccount()
     return "";
 }
 
+QString AccountListModel::getError()
+{
+
+}
+
 void AccountListModel::reload()
 {
     QList<AccountItem *> loggedinAccountList = AccountService::instance()->getLoggedInAccountList();

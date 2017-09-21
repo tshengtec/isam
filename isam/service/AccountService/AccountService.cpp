@@ -38,7 +38,6 @@ void AccountService::getLoginStatus(bool status)
             if (accountTypeList[index] == accountType) {
                 AccountItem* loggedInaccountItem = new AccountItem(m_networkService.getJsonObj());
                 m_loggedInAccountList.append(loggedInaccountItem);
-                emit loggedInAccountListChanged();
             }
 
             if (m_accountList.count() == 0 && accountTypeList[0] == accountType) { //admin user
@@ -50,7 +49,12 @@ void AccountService::getLoginStatus(bool status)
                 modifyConfigFile();
             }
         }
+        m_error = "";
     }
+    else {
+        m_error = m_networkService.getJsonObj().value("error").toString();
+    }
+    emit loggedInAccountListChanged();
 }
 
 void AccountService::save()
@@ -84,14 +88,16 @@ bool AccountService::loginAccount(QString type, QString name, QString password)
     else {
         m_networkService.getAccountInfo(name, password, type);
     }
-
-
-//    return false;
 }
 
 QList<AccountItem *> AccountService::getLoggedInAccountList()
 {
     return m_loggedInAccountList;
+}
+
+QString AccountService::getError()
+{
+    return m_error;
 }
 
 bool AccountService::logoutAccount(QString type, QString name)
