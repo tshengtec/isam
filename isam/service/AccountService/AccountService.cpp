@@ -94,6 +94,7 @@ bool AccountService::loginAccount(QString type, QString name, QString password)
     else {
         m_networkService.getAccountInfo(name, password, type);
     }
+    return true;
 }
 
 QList<AccountItem *> AccountService::getLoggedInAccountList()
