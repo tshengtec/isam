@@ -7,6 +7,21 @@ NetworkService::NetworkService()
 {
 }
 
+QHostInfo NetworkService::networkConnection()
+{
+    QHostInfo info = QHostInfo::fromName("www.baidu.com");
+    return info;
+}
+
+bool NetworkService::isNetworkConnection()
+{
+    QHostInfo info = QHostInfo::fromName("www.baidu.com");
+    if (info.error() == QHostInfo::NoError)
+        return true;
+    else
+        return false;
+}
+
 /*QString -> QJsonObject*/
 QJsonObject NetworkService::getJsonObjectFromString(const QString jsonString){
     QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toUtf8().data());

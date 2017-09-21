@@ -78,6 +78,12 @@ void AccountService::save()
 
 bool AccountService::loginAccount(QString type, QString name, QString password)
 {
+    if (!m_networkService.isNetworkConnection()) {
+        m_error = "网络错误";
+        emit loggedInAccountListChanged();
+        return false;
+    }
+
     if (type == accountTypeList[1]) {
         AccountItem* adminAccount = this->getAdminAccount();
         if (adminAccount != NULL) {

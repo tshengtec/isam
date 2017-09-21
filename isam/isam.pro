@@ -1,5 +1,6 @@
 TEMPLATE = app
 QT += qml quick
+QT += network
 CONFIG += c++11
 
 win32: RC_FILE += logo.rc

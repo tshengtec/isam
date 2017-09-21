@@ -16,18 +16,24 @@ public:
     Q_PROPERTY(bool isAdminLogged READ getIsAdminLogged  NOTIFY statusChanged)
     Q_PROPERTY(bool isGeneralLogged READ getIsGeneralLogged NOTIFY statusChanged)
     Q_PROPERTY(QString adminAccount READ getAdminAccount NOTIFY statusChanged)
-    Q_PROPERTY(QString error READ getError NOTIFY statusChanged)
+    Q_PROPERTY(QString generalAccount READ getGeneralAccount NOTIFY statusChanged)
+    Q_PROPERTY(QString error READ getError WRITE setError NOTIFY statusChanged)
 
     bool getIsAdminLogged();
     bool getIsGeneralLogged();
     QString getAdminAccount();
+    QString getGeneralAccount();
     QString getError();
+    void setError(QString error);
 
 signals:
     void statusChanged();
 
 private slots:
     void reload();
+
+private:
+    QString m_error;
 };
 
 #endif // ACCOUNTLISTMODEL_H

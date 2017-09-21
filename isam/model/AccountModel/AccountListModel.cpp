@@ -26,13 +26,13 @@ void AccountListModel::forgetPassword()
 
 bool AccountListModel::getIsAdminLogged()
 {
-    bool isAdminLogged = this->size() == 1;
+    bool isAdminLogged = (getAdminAccount() != "");
     return isAdminLogged;
 }
 
 bool AccountListModel::getIsGeneralLogged()
 {
-    bool isAdminLogged = this->size() == 2;
+    bool isAdminLogged = (getGeneralAccount() != "");
     return isAdminLogged;
 }
 
@@ -47,9 +47,26 @@ QString AccountListModel::getAdminAccount()
     return "";
 }
 
+QString AccountListModel::getGeneralAccount()
+{
+    for (int i = 0; i < this->size(); i++) {
+        if (this->getItemList().at(i)->getType() == "general") {
+            return this->getItemList().at(i)->getName();
+        }
+    }
+
+    return "";
+}
+
 QString AccountListModel::getError()
 {
+    return m_error;
+}
 
+void AccountListModel::setError(QString error)
+{
+    m_error = error;
+    emit statusChanged();
 }
 
 void AccountListModel::reload()
@@ -67,5 +84,7 @@ void AccountListModel::reload()
     }
 
     notifyResetList(modelList);
+
+    m_error = AccountService::instance()->getError();
     emit statusChanged();
 }

@@ -34,19 +34,19 @@ Item {
 
                     BaseButton {
                         id: errorId
-                        visible: false
+                        visible: adminAccountModel.error !== ""
                         onVisibleChanged: if (visible) timerId.start()
                         anchors.horizontalCenter: parent.horizontalCenter
                         width: parent.width - 10; height: parent.height
                         color: "white"
                         btnColor: "#ff8400"
-                        btnText: "帐号或密码错误"
+                        btnText: adminAccountModel.error
                         Timer {
                             id: timerId
                             interval: 1000; repeat: true
                             onTriggered: {
                                 stop()
-                                errorId.visible = false
+                                adminAccountModel.error = ""
                             }
                         }
                     }
@@ -88,7 +88,7 @@ Item {
                     btnText: "登录"
                     btnColor: "#ff8400"
                     onIsClicked: {
-                        errorId.visible = !adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
+                        adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
                     }
                 }
 
