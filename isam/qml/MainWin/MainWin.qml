@@ -16,10 +16,10 @@ import "../SalesShiftWin"
 Window {
     id: window
     x: (Screen.width - width)/2
-    y: (Screen.height - height)/2
+    y: (Screen.height - height - 50)/2
     visible: true
-    width: 0.7*Screen.width
-    height: 0.8*Screen.height
+    width: 1024
+    height: 768
     minimumWidth: 0.5*Screen.width
     minimumHeight: 0.5*Screen.height
     flags: Qt.Window | Qt.FramelessWindowHint

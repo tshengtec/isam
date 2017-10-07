@@ -22,7 +22,7 @@ Rectangle {
         clip: true
 
         Image {
-            width: height; height: 0.65*iconButton.height
+            width: height; height: 0.63*iconButton.height
             anchors.horizontalCenter: parent.horizontalCenter
             source: icon
         }
@@ -32,7 +32,7 @@ Rectangle {
             width: title.length*font.pixelSize; height: 0.35*iconButton.height
             text: title
             color: "white"
-            font.pixelSize: 0.7*height/*0.25*iconButton.width*/
+            font.pixelSize: 0.6*height/*0.25*iconButton.width*/
         }
     }
 

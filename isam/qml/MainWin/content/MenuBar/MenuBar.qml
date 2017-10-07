@@ -20,28 +20,28 @@ Rectangle {
         Item { width: 30; height: 1 }
 
         IconButton {
-            width: 0.75*rootId.width/15; height: rootId.height/1.3
+            width: 0.8*rootId.width/15; height: rootId.height/1.3
             title: "商品查询"
             icon: "qrc:/image/mainWin/commodityQuery.png"
             onClicked: commoditySearch()
         }
 
         IconButton {
-            width: 0.75*rootId.width/15; height: rootId.height/1.3
+            width: 0.8*rootId.width/15; height: rootId.height/1.3
             title: "销售查询"
             icon: "qrc:/image/mainWin/salesQuery.png"
             onClicked: salesSearch()
         }
 
         IconButton {
-            width: 0.75*rootId.width/15; height: rootId.height/1.3
+            width: 0.8*rootId.width/15; height: rootId.height/1.3
             title: "挂单"
             icon: "qrc:/image/mainWin/selfPending.png"
             onClicked: salesCommodityEditModel.onPendingOperation()
         }
 
         IconButton {
-            width: 0.75*rootId.width/15; height: rootId.height/1.3
+            width: 0.8*rootId.width/15; height: rootId.height/1.3
             title: "取单"
             icon: "qrc:/image/mainWin/selfGetting.png"
             onClicked: salesCommodityEditModel.onGettingOperation()
@@ -50,7 +50,7 @@ Rectangle {
         }
 
         IconButton {
-            width: 0.75*rootId.width/15; height: rootId.height/1.3
+            width: 0.8*rootId.width/15; height: rootId.height/1.3
             title: "交班"
             icon: "qrc:/image/mainWin/salesShift.png"
             onClicked: salesShift()
