@@ -24,6 +24,10 @@ signals:
     void loggedInAccountListChanged();
     void listChanged();
 
+public slots:
+   void finishedSlot(QNetworkReply*);
+
+
 private slots:
     void getLoginStatus(bool status);
     void save();

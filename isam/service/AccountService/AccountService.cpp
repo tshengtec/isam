@@ -1,10 +1,15 @@
 #include "AccountService.h"
 #include "JsonListConvertor.h"
+#include "CommodityCategoryNetworkService.h"
+
 #include <QCryptographicHash>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QDebug>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
 
 AccountService * AccountService::_instance = NULL;
 
@@ -89,6 +94,7 @@ bool AccountService::loginAccount(QString type, QString name, QString password)
         if (adminAccount != NULL) {
             QString adminName = this->getAdminAccount()->getName();
             m_networkService.getAccountInfo(adminName + ":" + name, password, type);
+            /*Login success!*/
         }
     }
     else {
@@ -105,6 +111,13 @@ QList<AccountItem *> AccountService::getLoggedInAccountList()
 QString AccountService::getError()
 {
     return m_error;
+}
+
+void AccountService::finishedSlot(QNetworkReply *reply)
+{
+    QByteArray bytes = reply->readAll();  // bytes
+    QString jsonString = QString::fromUtf8(bytes);
+    qDebug()<<jsonString<<"jsonString>>>>>";
 }
 
 bool AccountService::logoutAccount(QString type, QString name)
@@ -216,6 +229,17 @@ QList<AccountItem *> AccountService::verifyAccountListIsValid(QList<AccountItem 
 
 void AccountService::modifyConfigFile()
 {
+//    QNetworkRequest* req = new QNetworkRequest();
+//    req->setRawHeader(QByteArray("Token"),
+//                      QByteArray(m_networkService.getJsonObj().value("accessToken").toString().toStdString().c_str()));
+//    QNetworkAccessManager* man = new QNetworkAccessManager();
+//    req->setUrl(QUrl("http://api.cashier.slktea.com/isam-web-cashier/v1/shop_goods?shopNo=111111&pageNum=1&numPerPage=2"));
+//    man->get(*req);
+
+//    connect(man, SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedSlot(QNetworkReply*)));
+
+    CommodityCategoryNetworkService* commodityCategoryNetworkService = new CommodityCategoryNetworkService();
+
     QFile configFile("config.json");
     configFile.open(QIODevice::ReadWrite);
 

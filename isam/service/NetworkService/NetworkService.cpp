@@ -7,6 +7,11 @@ NetworkService::NetworkService()
 {
 }
 
+QNetworkAccessManager &NetworkService::networkAccessManager()
+{
+    return m_manager;
+}
+
 QHostInfo NetworkService::networkConnection()
 {
     QHostInfo info = QHostInfo::fromName("www.baidu.com");
