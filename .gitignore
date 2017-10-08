@@ -42,3 +42,5 @@ build-isam-Desktop_Qt_5_6_0_MinGW_32bit-Release
 isam/service/AccountService/AccountService.cpp.autosave
 isam/service/AccountService/AccountService.cpp.autosave
 *.autosave
+
+isam/documents/~$银端接口说明.docx
