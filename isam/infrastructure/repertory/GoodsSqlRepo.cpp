@@ -47,7 +47,11 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
         if (goodsJsonObj.isEmpty())
             return;
 
-        if (goodsJsonObj.value("currentPage").toInt() == 1) {
+        int pageCount = goodsJsonObj.value("pageCount").toInt();
+        int currentPage = goodsJsonObj.value("currentPage").toInt();
+
+
+        if (currentPage == 1) {
             QString clear_sql = "delete from person";
             m_sqlQuery.prepare(clear_sql);
             if(!m_sqlQuery.exec()) {
@@ -57,8 +61,14 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 
         QJsonArray recordList = goodsJsonObj.value("recordList").toArray();
         for (int i = 0; i < recordList.count(); i++) {
-            qDebug()<<recordList.at(i)<<">>>>";
             this->insert(recordList.at(i).toObject());
+        }
+
+
+        if (pageCount >= currentPage) {
+            currentPage++;
+            m_req.setUrl(QUrl(getUrlStr() + "&pageNum="+ QString::number(currentPage) +"&numPerPage=10"));
+            networkAccessManager().get(m_req);
         }
 
     }
