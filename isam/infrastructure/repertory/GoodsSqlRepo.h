@@ -15,6 +15,7 @@ public:
     void init();
 
     bool insert(QJsonObject jsonObj);
+    QList<QVariantMap> getList();
 
 private slots:
     void getGoodsList(QNetworkReply* reply);

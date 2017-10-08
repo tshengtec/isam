@@ -3,6 +3,7 @@
 
 #define CONFIG_JSON_FILE_NAME "config.json"
 #define GOODS_JSON_FILE_NAME "goods.json"
+#define GOODS_DB_FILE_NAME "goods.db"
 
 /*获取商品类别*/
 #define GET_CATEGORY "/v1/category"

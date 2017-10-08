@@ -37,6 +37,11 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
     return true;
 }
 
+QList<QVariantMap> GoodsSqlRepo::getList()
+{
+    m_sqlQuery.exec("SELECT goodsName FROM Person WHERE goodsName LIKE A%");
+}
+
 void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 {
     if (reply->error() == QNetworkReply::NoError) {
@@ -70,6 +75,15 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
             m_req.setUrl(QUrl(getUrlStr() + "&pageNum="+ QString::number(currentPage) +"&numPerPage=10"));
             networkAccessManager().get(m_req);
         }
+        else {
+            bool status = m_sqlQuery.exec("SELECT goodsName FROM person WHERE goodsName LIKE 'A%'");
+            qDebug()<<status<<">>>>>>>";
+            while(m_sqlQuery.next())
+            {
+
+                qDebug() << m_sqlQuery.value("goodsName").toString()<<">>>>";
+            }
+        }
 
     }
     else {
@@ -87,7 +101,7 @@ GoodsSqlRepo::GoodsSqlRepo()
     }
     else {
         db = QSqlDatabase::addDatabase("QSQLITE");//添加数据库驱动
-        db.setDatabaseName("goods.db"); //数据库连接命名
+        db.setDatabaseName(GOODS_DB_FILE_NAME); //数据库连接命名
     }
 
     if(!db.open()) //打开数据库
