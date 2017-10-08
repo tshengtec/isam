@@ -1,6 +1,7 @@
 #include "AccountService.h"
 #include "JsonListConvertor.h"
 #include "CommodityCategoryNetworkService.h"
+#include "GoodsSqlRepo.h"
 
 #include <QCryptographicHash>
 #include <QFile>
@@ -228,18 +229,8 @@ QList<AccountItem *> AccountService::verifyAccountListIsValid(QList<AccountItem 
 }
 
 void AccountService::modifyConfigFile()
-{
-//    QNetworkRequest* req = new QNetworkRequest();
-//    req->setRawHeader(QByteArray("Token"),
-//                      QByteArray(m_networkService.getJsonObj().value("accessToken").toString().toStdString().c_str()));
-//    QNetworkAccessManager* man = new QNetworkAccessManager();
-//    req->setUrl(QUrl("http://api.cashier.slktea.com/isam-web-cashier/v1/shop_goods?shopNo=111111&pageNum=1&numPerPage=2"));
-//    man->get(*req);
-
-//    connect(man, SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedSlot(QNetworkReply*)));
-
-    CommodityCategoryNetworkService* commodityCategoryNetworkService = new CommodityCategoryNetworkService();
-
+{    
+    GoodsSqlRepo::instance()->init();
     QFile configFile("config.json");
     configFile.open(QIODevice::ReadWrite);
 

@@ -1,6 +1,7 @@
 TEMPLATE = app
 QT += qml quick
 QT += network
+QT += sql
 CONFIG += c++11
 
 win32: RC_FILE += logo.rc
@@ -36,7 +37,8 @@ SOURCES += main.cpp \
     service/NetworkService/NetworkService.cpp \
     service/NetworkService/AccountNetworkService.cpp \
     service/NetworkService/CommodityCategoryNetworkService.cpp \
-    service/ConfigService/ConfigService.cpp
+    service/ConfigService/ConfigService.cpp \
+    infrastructure/repertory/GoodsSqlRepo.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -109,7 +111,8 @@ HEADERS += \
     service/NetworkService/AccountNetworkService.h \
     service/NetworkService/CommodityCategoryNetworkService.h \
     service/ConfigService/ConfigService.h \
-    infrastructure/utils/GlobalDefinition.h
+    infrastructure/utils/GlobalDefinition.h \
+    infrastructure/repertory/GoodsSqlRepo.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml

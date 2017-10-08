@@ -56,7 +56,7 @@ QString CommodityCategoryNetworkService::getShopNo()
 
     //Default
     QString shopNo = shops.at(0).toObject().value("shopNo").toString();
-    qDebug()<<"shopNo"<<shopNo;
+
     return shopNo;
 }
 
