@@ -12,7 +12,7 @@ class GoodsSqlRepo : public NetworkService
     Q_OBJECT
 public:
     static GoodsSqlRepo* instance();
-    void init();
+    void update();
 
     bool insert(QJsonObject jsonObj);
     QList<QVariantMap> getList();
@@ -27,12 +27,12 @@ private:
     /*所属店铺编号*/
     QString getShopNo();
     QString getUrlStr();
+    void createGoodsFields();
 
 private:
     static GoodsSqlRepo* _instance;
     QSqlQuery m_sqlQuery;
     QNetworkRequest m_req;
-
 };
 
 #endif // GOODSSQLREPO_H

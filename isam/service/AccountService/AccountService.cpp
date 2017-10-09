@@ -230,7 +230,7 @@ QList<AccountItem *> AccountService::verifyAccountListIsValid(QList<AccountItem 
 
 void AccountService::modifyConfigFile()
 {    
-    GoodsSqlRepo::instance()->init();
+    GoodsSqlRepo::instance()->update();
     QFile configFile("config.json");
     configFile.open(QIODevice::ReadWrite);
 

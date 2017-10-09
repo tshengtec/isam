@@ -6,6 +6,14 @@
 #include <QtSql/QSqlQuery>
 #include <QDebug>
 
+const QString goodsFields[] = {
+    "id",        "categoryName",        "goodsName"
+};
+
+const QString goodsFieldsType[] = {
+    "int",       "varchar",                 "varchar"
+};
+
 GoodsSqlRepo * GoodsSqlRepo::_instance = NULL;
 
 GoodsSqlRepo *GoodsSqlRepo::instance()
@@ -93,7 +101,7 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 }
 
 GoodsSqlRepo::GoodsSqlRepo()
-{
+{        
     QSqlDatabase db;
     if (QSqlDatabase::contains("qt_sql_default_connection"))
     {
@@ -111,15 +119,15 @@ GoodsSqlRepo::GoodsSqlRepo()
 
      m_sqlQuery = QSqlQuery(db); //以下执行相关QSL语句
 
-     if(!db.tables().contains("person"))
+     if(!db.tables().contains("person")) {
          m_sqlQuery.exec("create table person (id int primary key, categoryName varchar(20), goodsName varchar(20))");
-
+     }
      connect(&networkAccessManager(), SIGNAL(finished(QNetworkReply*)), this, SLOT(getGoodsList(QNetworkReply*)));
 
-     init();
+     this->update();
 }
 
-void GoodsSqlRepo::init()
+void GoodsSqlRepo::update()
 {
     ConfigService configService = ConfigService(QString(CONFIG_JSON_FILE_NAME));
     QString token = configService.getToken();
