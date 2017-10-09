@@ -76,12 +76,12 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
             networkAccessManager().get(m_req);
         }
         else {
-            bool status = m_sqlQuery.exec("SELECT goodsName FROM person WHERE goodsName LIKE 'A%'");
-            qDebug()<<status<<">>>>>>>";
+            m_sqlQuery.exec("SELECT goodsName FROM person WHERE goodsName LIKE 'A%'");
+
             while(m_sqlQuery.next())
             {
 
-                qDebug() << m_sqlQuery.value("goodsName").toString()<<">>>>";
+                qDebug() << m_sqlQuery.boundValues().value("goodsName")<<"goodsName";
             }
         }
 
