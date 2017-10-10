@@ -34,6 +34,7 @@ private:
 private:
     static GoodsSqlRepo* _instance;
     QSqlQuery m_sqlQuery;
+    QSqlDatabase m_db;
     QNetworkRequest m_req;
 };
 

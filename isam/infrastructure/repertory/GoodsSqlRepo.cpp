@@ -30,6 +30,7 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         return false;
     }
 
+    qDebug()<<jsonObj.value("createdTime")<<">>>>>";
     QString insert_sql = "insert into person values (?, ?, ?, ?, ?)";
     m_sqlQuery.prepare(insert_sql);
 
@@ -37,7 +38,7 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         if (goodsFieldsType[i] == "int")
             m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]).toInt());
         else
-            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]).toString());
+            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]));
     }
 
     if (!m_sqlQuery.exec()) {
@@ -55,14 +56,17 @@ QList<QVariantMap> GoodsSqlRepo::getList()
 
 QList<QVariantMap> GoodsSqlRepo::getList(QString target, int page, int pageNum)
 {
-    m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
+    int success =true;
+
+    success = m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
     m_sqlQuery.seek(page-1);
+    if (!success)
+        qDebug()<<m_sqlQuery.lastError()<<"Select";
 
     QList<QVariantMap> newList;
     while(m_sqlQuery.next() && (--pageNum)) {
         QVariantMap map;
         for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
-            qDebug()<<m_sqlQuery.value(goodsFields[i])<<"]]]";
             map.insert(goodsFields[i], m_sqlQuery.value(goodsFields[i]));
         }
         newList.append(map);
@@ -105,14 +109,6 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
             networkAccessManager().get(m_req);
         }
         else {
-//            QString target = "23";
-//            m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
-
-
-//            while(m_sqlQuery.next())
-//            {
-//                qDebug() << m_sqlQuery.value("goodsName")<<"goodsName";
-//            }
         }
 
     }
@@ -124,24 +120,23 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 
 GoodsSqlRepo::GoodsSqlRepo()
 {        
-    QSqlDatabase db;
-    if (QSqlDatabase::contains("qt_sql_default_connection"))
+    if (QSqlDatabase::contains(GOODS_DB_FILE_NAME))
     {
-        db = QSqlDatabase::database("qt_sql_default_connection");
+        m_db = QSqlDatabase::database(GOODS_DB_FILE_NAME);
     }
     else {
-        db = QSqlDatabase::addDatabase("QSQLITE");//添加数据库驱动
-        db.setDatabaseName(GOODS_DB_FILE_NAME); //数据库连接命名
+        m_db = QSqlDatabase::addDatabase("QSQLITE", GOODS_DB_FILE_NAME);//添加数据库驱动
+        m_db.setDatabaseName(GOODS_DB_FILE_NAME); //数据库连接命名
     }
 
-    if(!db.open()) //打开数据库
+    if(!m_db.open()) //打开数据库
          qDebug("open failed!");
      else
          qDebug("open success!");
 
-     m_sqlQuery = QSqlQuery(db); //以下执行相关QSL语句
+     m_sqlQuery = QSqlQuery(m_db); //以下执行相关QSL语句
 
-     if(!db.tables().contains("person")) {
+     if(!m_db.tables().contains("person")) {
          if (!m_sqlQuery.exec(QString(CREATE_DB_TABLE)) )
              qDebug()<<m_sqlQuery.lastError()<<CREATE_DB_TABLE;
      }
