@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QObject>
+#include <QVariantMap>
 #include "DomainObject.h"
 
 class Commodity : public QObject, public DomainObject
@@ -31,6 +32,8 @@ public:
 
     QString getCommodityType();
     void setCommodityType(QString typeStr);
+
+    void fromMap(QVariantMap map);
 
 private:
     QString m_id; /*条形码ID*/

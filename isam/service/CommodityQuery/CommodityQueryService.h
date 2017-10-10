@@ -16,6 +16,8 @@ public:
 
     QList<Commodity *> getList();
     QList<Commodity *> getList(CommodityQueryCondition condition);
+    QList<QVariantMap> getList(QString target, int page =1, int pageNum = 10);
+
 
     Commodity *get(QString id);
     Commodity *getFuzzy(QString target); //Fuzzy Search

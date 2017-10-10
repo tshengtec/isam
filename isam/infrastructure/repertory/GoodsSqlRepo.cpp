@@ -13,14 +13,6 @@
                                                                     goodsName varchar(20),     \
                                                                     barCode varchar(20))"
 
-const QString goodsFields[] = {
-    "id",        "categoryName",       "createdTime",        "goodsName",        "barCode"
-};
-
-const QString goodsFieldsType[] = {
-    "int",       "varchar",                 "int",                     "varchar",              "varchar"
-};
-
 GoodsSqlRepo * GoodsSqlRepo::_instance = NULL;
 
 GoodsSqlRepo *GoodsSqlRepo::instance()
@@ -61,9 +53,22 @@ QList<QVariantMap> GoodsSqlRepo::getList()
     m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName, barCode LIKE %%");
 }
 
-QList<QVariantMap> GoodsSqlRepo::getList(QString target)
+QList<QVariantMap> GoodsSqlRepo::getList(QString target, int page, int pageNum)
 {
     m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
+    m_sqlQuery.seek(page-1);
+
+    QList<QVariantMap> newList;
+    while(m_sqlQuery.next() && (--pageNum)) {
+        QVariantMap map;
+        for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
+            qDebug()<<m_sqlQuery.value(goodsFields[i])<<"]]]";
+            map.insert(goodsFields[i], m_sqlQuery.value(goodsFields[i]));
+        }
+        newList.append(map);
+    }
+
+    return newList;
 }
 
 void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
@@ -84,7 +89,7 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
             QString clear_sql = "delete from person";
             m_sqlQuery.prepare(clear_sql);
             if(!m_sqlQuery.exec()) {
-                qDebug()<<m_sqlQuery.lastError();
+                qDebug()<<m_sqlQuery.lastError()<<"delete from person";
             }
         }
 
@@ -106,7 +111,6 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 
 //            while(m_sqlQuery.next())
 //            {
-
 //                qDebug() << m_sqlQuery.value("goodsName")<<"goodsName";
 //            }
         }

@@ -1,4 +1,5 @@
 #include "Commodity.h"
+#include "GlobalDefinition.h"
 #include <QJsonObject>
 
 Commodity::Commodity()
@@ -86,6 +87,12 @@ QString Commodity::getCommodityType()
 void Commodity::setCommodityType(QString typeStr)
 {
     m_commodityType = typeStr;
+}
+
+void Commodity::fromMap(QVariantMap map)
+{
+    m_id = map["barCode"].toString();
+    m_name = map["goodsName"].toString();
 }
 
 int Commodity::getCount()

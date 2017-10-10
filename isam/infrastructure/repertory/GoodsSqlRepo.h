@@ -16,7 +16,7 @@ public:
 
     bool insert(QJsonObject jsonObj);
     QList<QVariantMap> getList();
-    QList<QVariantMap> getList(QString target, int page =1);
+    QList<QVariantMap> getList(QString target, int page =1, int pageNum = 10);
 
 private slots:
     void getGoodsList(QNetworkReply* reply);

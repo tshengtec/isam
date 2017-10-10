@@ -1,4 +1,6 @@
 #include "CommodityQueryService.h"
+#include "GoodsSqlRepo.h"
+
 #include <QRegExp>
 #include <QDebug>
 #include <QString>
@@ -45,6 +47,11 @@ QList<Commodity *> CommodityQueryService::getList(CommodityQueryCondition condit
     }
 
     return newlist;
+}
+
+QList<QVariantMap> CommodityQueryService::getList(QString target, int page, int pageNum)
+{
+    return GoodsSqlRepo::instance()->getList(target, page, pageNum);
 }
 
 Commodity *CommodityQueryService::get(QString id)
