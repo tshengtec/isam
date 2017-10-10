@@ -91,7 +91,6 @@ void CommodityQueryListModel::reload()
         commodityList.append(commodity);
     }
 
-//    CommodityQueryService::instance()->getList(condition);
     Commodity* commodity = NULL;
 
     for (int i = 0; i < commodityList.count(); i++) {
