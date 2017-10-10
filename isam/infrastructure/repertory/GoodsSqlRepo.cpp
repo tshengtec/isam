@@ -4,14 +4,21 @@
 
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+#include <QSqlError>
 #include <QDebug>
 
+#define CREATE_DB_TABLE "create table person (id int primary key, \
+                                                                    categoryName varchar(20), \
+                                                                    createdTime int,    \
+                                                                    goodsName varchar(20),     \
+                                                                    barCode varchar(20))"
+
 const QString goodsFields[] = {
-    "id",        "categoryName",        "goodsName"
+    "id",        "categoryName",       "createdTime",        "goodsName",        "barCode"
 };
 
 const QString goodsFieldsType[] = {
-    "int",       "varchar",                 "varchar"
+    "int",       "varchar",                 "int",                     "varchar",              "varchar"
 };
 
 GoodsSqlRepo * GoodsSqlRepo::_instance = NULL;
@@ -31,14 +38,18 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         return false;
     }
 
-    QString insert_sql = "insert into person values (?, ?, ?)";
+    QString insert_sql = "insert into person values (?, ?, ?, ?, ?)";
     m_sqlQuery.prepare(insert_sql);
-    m_sqlQuery.addBindValue(jsonObj.value("id").toInt());
-    m_sqlQuery.addBindValue(jsonObj.value("categoryName").toString());
-    m_sqlQuery.addBindValue(jsonObj.value("goodsName").toString());
+
+    for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
+        if (goodsFieldsType[i] == "int")
+            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]).toInt());
+        else
+            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]).toString());
+    }
 
     if (!m_sqlQuery.exec()) {
-        qDebug()<<"Insert failed!!!(m_sqlQuery.exec())";
+        qDebug()<<m_sqlQuery.lastError()<<"Insert failed!!!(m_sqlQuery.exec())";
         return false;
     }
 
@@ -47,7 +58,12 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
 
 QList<QVariantMap> GoodsSqlRepo::getList()
 {
-    m_sqlQuery.exec("SELECT goodsName FROM Person WHERE goodsName LIKE A%");
+    m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName, barCode LIKE %%");
+}
+
+QList<QVariantMap> GoodsSqlRepo::getList(QString target)
+{
+    m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
 }
 
 void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
@@ -68,13 +84,13 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
             QString clear_sql = "delete from person";
             m_sqlQuery.prepare(clear_sql);
             if(!m_sqlQuery.exec()) {
-                qDebug()<<"Clear failed!!";
+                qDebug()<<m_sqlQuery.lastError();
             }
         }
 
         QJsonArray recordList = goodsJsonObj.value("recordList").toArray();
         for (int i = 0; i < recordList.count(); i++) {
-            this->insert(recordList.at(i).toObject());
+            this->insert( this->filterJsonObj(recordList.at(i).toObject()) );
         }
 
 
@@ -84,13 +100,15 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
             networkAccessManager().get(m_req);
         }
         else {
-            m_sqlQuery.exec("SELECT goodsName FROM person WHERE goodsName LIKE 'A%'");
+//            QString target = "23";
+//            m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
 
-            while(m_sqlQuery.next())
-            {
 
-                qDebug() << m_sqlQuery.boundValues().value("goodsName")<<"goodsName";
-            }
+//            while(m_sqlQuery.next())
+//            {
+
+//                qDebug() << m_sqlQuery.value("goodsName")<<"goodsName";
+//            }
         }
 
     }
@@ -120,7 +138,8 @@ GoodsSqlRepo::GoodsSqlRepo()
      m_sqlQuery = QSqlQuery(db); //以下执行相关QSL语句
 
      if(!db.tables().contains("person")) {
-         m_sqlQuery.exec("create table person (id int primary key, categoryName varchar(20), goodsName varchar(20))");
+         if (!m_sqlQuery.exec(QString(CREATE_DB_TABLE)) )
+             qDebug()<<m_sqlQuery.lastError()<<CREATE_DB_TABLE;
      }
      connect(&networkAccessManager(), SIGNAL(finished(QNetworkReply*)), this, SLOT(getGoodsList(QNetworkReply*)));
 
@@ -163,4 +182,25 @@ QString GoodsSqlRepo::getUrlStr()
     QString urlStr = "http://api.cashier.slktea.com/isam-web-cashier" +
             QString(GET_SHOP_GOODS) + "?shopNo" + "=" + this->getShopNo();
     return urlStr;
+}
+
+QJsonObject GoodsSqlRepo::filterJsonObj(QJsonObject target)
+{
+    QJsonObject newJsonObj;
+
+    QJsonObject::Iterator it;
+    for (it = target.begin(); it != target.end(); it++) {
+        if ( !it.value().isObject() ) {
+            newJsonObj.insert(it.key(), it.value());
+        }
+        else {
+            QJsonObject tempObj = it.value().toObject();
+            QJsonObject::Iterator subIt;
+            for (subIt = tempObj.begin(); subIt != tempObj.end(); subIt++) {
+                newJsonObj.insert(subIt.key(), subIt.value());
+            }
+        }
+    }
+
+    return newJsonObj;
 }

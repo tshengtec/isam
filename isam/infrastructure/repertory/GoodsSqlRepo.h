@@ -16,6 +16,7 @@ public:
 
     bool insert(QJsonObject jsonObj);
     QList<QVariantMap> getList();
+    QList<QVariantMap> getList(QString target, int page =1);
 
 private slots:
     void getGoodsList(QNetworkReply* reply);
@@ -28,6 +29,7 @@ private:
     QString getShopNo();
     QString getUrlStr();
     void createGoodsFields();
+    QJsonObject filterJsonObj(QJsonObject target);
 
 private:
     static GoodsSqlRepo* _instance;
