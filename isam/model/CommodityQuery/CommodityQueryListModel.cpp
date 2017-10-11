@@ -83,7 +83,7 @@ void CommodityQueryListModel::reload()
 
     QList<Commodity *> commodityList;
 
-    QList<QVariantMap> newList =  CommodityQueryService::instance()->getList(this->getSearchText());
+    QList<QVariantMap> newList =  CommodityQueryService::instance()->getList(this->getSearchText(), 1, 20);
 
     for (int i = 0; i < newList.count(); i++) {
         Commodity* commodity = new Commodity();

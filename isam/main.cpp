@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
+//#include <QtMsgHandler>
 
 #include "Themes.h"
 #include "CommodityRepertory.h"
@@ -18,6 +19,21 @@
 
 #define BACKGROUNDCOLOR "#1f29f9"
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+void customMessageHandler(QtMsgType type, const QMessageLogContext &, const QString & str)
+{
+    QString txt=str;
+#else
+void customMessageHandler(QtMsgType type, const char *msg)
+{
+    QString txt(msg);
+#endif
+    QFile outFile("debug.log");
+    outFile.open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream ts(&outFile);
+    ts << txt << endl;
+}
+
 int main(int argc, char *argv[])
 {
     MyGuiApplication app(argc, argv);
@@ -29,6 +45,12 @@ int main(int argc, char *argv[])
     qmlRegisterType<SalesQueryListModel>("MyModels", 1, 0, "SalesQueryListModel");
     qmlRegisterType<SalesDocumentsListModel>("MyModels", 1, 0, "SalesDocumentsListModel");
     qmlRegisterType<AccountListModel>("MyModels", 1, 0, "AccountListModel");
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+    qInstallMessageHandler(customMessageHandler);
+#else
+    qInstallMsgHandler(customMessageHandler);
+#endif
 
     QmlWin* win = new QmlWin();
     return app.exec();

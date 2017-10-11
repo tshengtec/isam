@@ -6,6 +6,7 @@
 #include <QtSql/QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QFile>
 
 #define CREATE_DB_TABLE "create table person (id int primary key, \
                                                                     categoryName varchar(20), \
@@ -41,7 +42,7 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
             m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]));
     }
 
-    if (!m_sqlQuery.exec()) {
+    if (!m_sqlQuery.execBatch()) {
         qDebug()<<m_sqlQuery.lastError()<<"Insert failed!!!(m_sqlQuery.exec())";
         return false;
     }
@@ -123,22 +124,31 @@ GoodsSqlRepo::GoodsSqlRepo()
     if (QSqlDatabase::contains(GOODS_DB_FILE_NAME))
     {
         m_db = QSqlDatabase::database(GOODS_DB_FILE_NAME);
+        qDebug()<<"Exist GOODS_DB_FILE_NAME!";
     }
     else {
         m_db = QSqlDatabase::addDatabase("QSQLITE", GOODS_DB_FILE_NAME);//添加数据库驱动
         m_db.setDatabaseName(GOODS_DB_FILE_NAME); //数据库连接命名
+        qDebug()<<"UnExist GOODS_DB_FILE_NAME!";
     }
 
-    if(!m_db.open()) //打开数据库
-         qDebug("open failed!");
-     else
-         qDebug("open success!");
+    if(!m_db.open()) { //打开数据库
+         qDebug()<<"open failed!"<<m_db.lastError();
+    }
+    else {
+         qDebug()<<"open success!"<<m_db.lastError();
+         QFile file(GOODS_DB_FILE_NAME);
+         qDebug()<<GOODS_DB_FILE_NAME<<"<Status>:"<<file.exists();
+    }
 
      m_sqlQuery = QSqlQuery(m_db); //以下执行相关QSL语句
 
      if(!m_db.tables().contains("person")) {
          if (!m_sqlQuery.exec(QString(CREATE_DB_TABLE)) )
              qDebug()<<m_sqlQuery.lastError()<<CREATE_DB_TABLE;
+     }
+     else {
+         qDebug()<<"Exist table <person>!";
      }
      connect(&networkAccessManager(), SIGNAL(finished(QNetworkReply*)), this, SLOT(getGoodsList(QNetworkReply*)));
 
