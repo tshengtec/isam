@@ -1,5 +1,11 @@
 #include "SalesNote.h"
 #include "CommodityRepertory.h"
+#include "GlobalDefinition.h"
+
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
 
 SalesNote::SalesNote()
 {
@@ -50,11 +56,34 @@ Commodity *SalesNote::get(QString id)
 
 bool SalesNote::add(QString id)
 {
-    Commodity *commodity = CommodityRepertory::instance()->get(id);
-    if (commodity == NULL)
+    QSqlDatabase db;
+    if (QSqlDatabase::contains(GOODS_DB_FILE_NAME))
+    {
+        db = QSqlDatabase::database(GOODS_DB_FILE_NAME);
+        qDebug()<<"Exist GOODS_DB_FILE_NAME!";
+    }
+    else {
+        db = QSqlDatabase::addDatabase("QSQLITE", GOODS_DB_FILE_NAME);//添加数据库驱动
+        db.setDatabaseName(GOODS_DB_FILE_NAME); //数据库连接命名
+        qDebug()<<"UnExist GOODS_DB_FILE_NAME!";
+    }
+    QSqlQuery sqlQuery = QSqlQuery(db);
+
+    if (!sqlQuery.exec("SELECT * FROM person WHERE barCode LIKE '%"+ id +"%'")) {
+        qDebug()<<sqlQuery.lastError()<<"bool SalesNote::add(QString id)";
+    }
+
+    QVariantMap map;
+    sqlQuery.next();
+    for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
+        map.insert(goodsFields[i], sqlQuery.value(goodsFields[i]));
+    }
+
+    if (map.isEmpty())
         return false;
 
-    Commodity *newCommodity = new Commodity(commodity);
+    Commodity *newCommodity = new Commodity();
+    newCommodity->fromMap(map);
     m_commodityList.append(newCommodity);
     return true;
 }

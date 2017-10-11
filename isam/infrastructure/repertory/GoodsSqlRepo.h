@@ -27,7 +27,7 @@ private:
 private:
     /*所属店铺编号*/
     QString getShopNo();
-    QString getUrlStr();
+    QString getUrlStr(QString str);
     void createGoodsFields();
     QJsonObject filterJsonObj(QJsonObject target);
 

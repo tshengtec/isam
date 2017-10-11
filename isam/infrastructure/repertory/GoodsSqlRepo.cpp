@@ -44,20 +44,20 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
 
 QList<QVariantMap> GoodsSqlRepo::getList()
 {
-    m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName, barCode LIKE %%");
+    m_sqlQuery.exec("SELECT * FROM person WHERE goodsName, barCode LIKE %%");
 }
 
 QList<QVariantMap> GoodsSqlRepo::getList(QString target, int page, int pageNum)
 {
     int success =true;
 
-    success = m_sqlQuery.exec("SELECT goodsName, barCode FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
+    success = m_sqlQuery.exec("SELECT * FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
     m_sqlQuery.seek(page-1);
     if (!success)
         qDebug()<<m_sqlQuery.lastError()<<"Select";
 
     QList<QVariantMap> newList;
-    while(m_sqlQuery.next() && (--pageNum)) {
+    while(m_sqlQuery.next() && (pageNum--)) {
         QVariantMap map;
         for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
             map.insert(goodsFields[i], m_sqlQuery.value(goodsFields[i]));
@@ -75,6 +75,8 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
         QString jsonString = QString::fromUtf8(bytes);
 
         QJsonObject goodsJsonObj=  this->getJsonObjectFromString(jsonString);
+
+        qDebug()<<goodsJsonObj<<"goodsJsonObj";
         if (goodsJsonObj.isEmpty())
             return;
 
@@ -98,7 +100,7 @@ void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 
         if (pageCount >= currentPage) {
             currentPage++;
-            m_req.setUrl(QUrl(getUrlStr() + "&pageNum="+ QString::number(currentPage) +"&numPerPage=10"));
+            m_req.setUrl(QUrl(getUrlStr(GET_SHOP_GOODS) + "&pageNum="+ QString::number(currentPage) +"&numPerPage=10"));
             networkAccessManager().get(m_req);
         }
         else {
@@ -144,6 +146,15 @@ GoodsSqlRepo::GoodsSqlRepo()
      }
      connect(&networkAccessManager(), SIGNAL(finished(QNetworkReply*)), this, SLOT(getGoodsList(QNetworkReply*)));
 
+     ConfigService configService = ConfigService(QString(CONFIG_JSON_FILE_NAME));
+     QString token = configService.getToken();
+
+     QNetworkRequest req;
+     req.setRawHeader(QByteArray("Token"), QByteArray(token.toStdString().c_str()));
+     req.setUrl(QUrl(getUrlStr(PUSH_SALES_RECORD) + "&pageNum=1&numPerPage=10"));
+
+     networkAccessManager().post(req, "");
+
      this->update();
 }
 
@@ -153,7 +164,7 @@ void GoodsSqlRepo::update()
     QString token = configService.getToken();
 
     m_req.setRawHeader(QByteArray("Token"), QByteArray(token.toStdString().c_str()));
-    m_req.setUrl(QUrl(getUrlStr() + "&pageNum=1&numPerPage=10"));
+    m_req.setUrl(QUrl(getUrlStr(GET_SHOP_GOODS) + "&pageNum=1&numPerPage=10"));
 
     networkAccessManager().get(m_req);
 }
@@ -178,10 +189,10 @@ QString GoodsSqlRepo::getShopNo()
     return shopNo;
 }
 
-QString GoodsSqlRepo::getUrlStr()
+QString GoodsSqlRepo::getUrlStr(QString str)
 {
     QString urlStr = "http://api.cashier.slktea.com/isam-web-cashier" +
-            QString(GET_SHOP_GOODS) + "?shopNo" + "=" + this->getShopNo();
+            QString(str) + "?shopNo" + "=" + this->getShopNo();
     return urlStr;
 }
 

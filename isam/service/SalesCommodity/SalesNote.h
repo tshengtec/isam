@@ -40,6 +40,8 @@ public:
     /*Realized income.*/
     float getRealIncome();
 
+
+
 private:
     QList<Commodity *> copyList(QList<Commodity* > list);
     void removeList(QList<Commodity* >& removeList); // remove List

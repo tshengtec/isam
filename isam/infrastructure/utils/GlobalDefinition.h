@@ -12,6 +12,7 @@
 /*商品查询*/
 #define GET_SHOP_GOODS "/v1/shop_goods"
 
+#define PUSH_SALES_RECORD "/v1/sales_record"
 static const QString goodsFields[] = {
     "id",        "categoryName",       "createdTime",        "goodsName",        "barCode"
 };
