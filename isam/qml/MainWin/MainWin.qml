@@ -16,7 +16,7 @@ import "../SalesShiftWin"
 Window {
     id: window
     x: (Screen.width - width)/2
-    y: (Screen.height - height - 50)/2
+    y: 600//(Screen.height - height - 50)/2
     visible: true
     width: 1024
     height: 768

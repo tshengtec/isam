@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<AccountListModel>("MyModels", 1, 0, "AccountListModel");
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
-    qInstallMessageHandler(customMessageHandler);
+//    qInstallMessageHandler(customMessageHandler);
 #else
     qInstallMsgHandler(customMessageHandler);
 #endif

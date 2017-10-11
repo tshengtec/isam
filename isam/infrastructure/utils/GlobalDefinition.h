@@ -17,7 +17,7 @@ static const QString goodsFields[] = {
 };
 
 static const QString goodsFieldsType[] = {
-    "int",       "varchar",                 "int",                     "varchar",              "varchar"
+    "int",       "varchar",            "int",                     "varchar",              "varchar"
 };
 
 #define CREATE_DB_TABLE "create table person (id integer primary key, " \

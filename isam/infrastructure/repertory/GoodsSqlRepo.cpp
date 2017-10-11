@@ -25,21 +25,21 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         return false;
     }
 
+    qDebug()<<jsonObj<<">>>>>>";
     QString insert_sql = "insert into person values (?, ?, ?, ?, ?)";
     m_sqlQuery.prepare(insert_sql);
 
     for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
-//        if (goodsFieldsType[i] == "int")
-//            m_sqlQuery.addBindValue(QString::number(jsonObj.value(goodsFields[i]), 20);
-//        else
-        m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]));
+        if (goodsFieldsType[i] == "int")
+            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]).toVariant().toLongLong());
+        else
+            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]));
     }
 
-    if (!m_sqlQuery.execBatch()) {
+    if (!m_sqlQuery.exec()) {
         qDebug()<<m_sqlQuery.lastError()<<"Insert failed!!!(m_sqlQuery.exec())";
         return false;
     }
-
     return true;
 }
 
