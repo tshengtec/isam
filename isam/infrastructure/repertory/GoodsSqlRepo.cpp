@@ -8,12 +8,6 @@
 #include <QDebug>
 #include <QFile>
 
-#define CREATE_DB_TABLE "create table person (id integer primary key, " \
-                                            "categoryName varchar(20), " \
-                                            "createdTime integer, " \
-                                            "goodsName varchar(20), " \
-                                            "barCode varchar(20))"
-
 GoodsSqlRepo * GoodsSqlRepo::_instance = NULL;
 
 GoodsSqlRepo *GoodsSqlRepo::instance()
@@ -31,15 +25,14 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         return false;
     }
 
-    qDebug()<<jsonObj.value("createdTime")<<">>>>>";
     QString insert_sql = "insert into person values (?, ?, ?, ?, ?)";
     m_sqlQuery.prepare(insert_sql);
 
     for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
-        if (goodsFieldsType[i] == "int")
-            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]).toInt());
-        else
-            m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]));
+//        if (goodsFieldsType[i] == "int")
+//            m_sqlQuery.addBindValue(QString::number(jsonObj.value(goodsFields[i]), 20);
+//        else
+        m_sqlQuery.addBindValue(jsonObj.value(goodsFields[i]));
     }
 
     if (!m_sqlQuery.execBatch()) {

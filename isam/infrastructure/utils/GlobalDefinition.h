@@ -19,4 +19,10 @@ static const QString goodsFields[] = {
 static const QString goodsFieldsType[] = {
     "int",       "varchar",                 "int",                     "varchar",              "varchar"
 };
+
+#define CREATE_DB_TABLE "create table person (id integer primary key, " \
+                                            "categoryName varchar(20), " \
+                                            "createdTime integer, " \
+                                            "goodsName varchar(20), " \
+                                            "barCode varchar(20))"
 #endif // GLOBALDEFINITION_H
