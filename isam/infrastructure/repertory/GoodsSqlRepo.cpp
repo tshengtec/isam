@@ -8,11 +8,11 @@
 #include <QDebug>
 #include <QFile>
 
-#define CREATE_DB_TABLE "create table person (id int primary key, \
-                                                                    categoryName varchar(20), \
-                                                                    createdTime int,    \
-                                                                    goodsName varchar(20),     \
-                                                                    barCode varchar(20))"
+#define CREATE_DB_TABLE "create table person (id integer primary key, " \
+                                            "categoryName varchar(20), " \
+                                            "createdTime integer, " \
+                                            "goodsName varchar(20), " \
+                                            "barCode varchar(20))"
 
 GoodsSqlRepo * GoodsSqlRepo::_instance = NULL;
 
