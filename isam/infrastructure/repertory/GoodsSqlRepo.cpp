@@ -25,7 +25,6 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         return false;
     }
 
-    qDebug()<<jsonObj<<">>>>>>";
     QString insert_sql = "insert into person values (?, ?, ?, ?, ?)";
     m_sqlQuery.prepare(insert_sql);
 
