@@ -1,0 +1,31 @@
+{
+    "accountInfoArray": [
+        {
+            "account": "jinhai",
+            "passwordMD5": "e10adc3949ba59abbe56e057f20f883e",
+            "type": "admin"
+        }
+    ],
+    "loginInfo": {
+        "accessToken": "6DA75E22129241B8AE0D8F27E6363089",
+        "account": "jinhai:1001",
+        "auths": [
+        ],
+        "merchantNo": "111",
+        "passwordMD5": "e10adc3949ba59abbe56e057f20f883e",
+        "shopNos": [
+            "111111"
+        ],
+        "shops": [
+            {
+                "createdTime": 1507768609458,
+                "id": 1,
+                "shopName": "我的店铺",
+                "shopNo": "111111",
+                "version": 0
+            }
+        ],
+        "type": "general",
+        "userNo": "10001598"
+    }
+}
