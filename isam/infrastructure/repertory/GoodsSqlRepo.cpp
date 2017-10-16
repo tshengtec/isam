@@ -25,8 +25,12 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         qDebug()<<"Insert failed!!!(jsonObj is empty.)";
         return false;
     }
-
-    QString insert_sql = "insert into person values (?, ?, ?, ?, ?)";
+    qDebug()<<jsonObj<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+    QString insert_sql = "insert into person values (?, ?, ?, ?, ?," \
+                                                                      "?, ?, ?, ?, ?," \
+                                                                      "?, ?, ?, ?, ?," \
+                                                                      "?, ?, ?, ?" \
+                                 ")";
     m_sqlQuery.prepare(insert_sql);
 
     for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
@@ -71,8 +75,6 @@ QList<QVariantMap> GoodsSqlRepo::getList(QString target, int page, int pageNum)
 
 void GoodsSqlRepo::getGoodsList(QNetworkReply *reply)
 {
-    qDebug()<<QString::fromUtf8(reply->readAll())<<">>>>>>>";
-
     ConfigService configService = ConfigService(QString(CONFIG_JSON_FILE_NAME));
     QString token = configService.getToken();
 

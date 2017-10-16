@@ -14,16 +14,23 @@
 
 #define PUSH_SALES_RECORD "/v1/sales_record"
 static const QString goodsFields[] = {
-    "id",        "categoryName",       "createdTime",        "goodsName",        "barCode"
+    "id",                  "categoryName",       "createdTime",         "deleted",               "discount",
+    "enable",           "goodsId",                "barCode",               "goodsName",         "categoryId",
+    "shopNo",          "specifications",        "unit",                     "version",               "minStock",
+    "pyCode",          "sellingPrice",           "stock",                   "unitName"
 };
 
 static const QString goodsFieldsType[] = {
-    "int",       "varchar",            "int",                     "varchar",              "varchar"
+    "int",                "varchar",                 "int",                     "int",                        "int",
+    "int",                "int",                       "varchar",               "varchar",                  "int",
+    "varchar",          "varchar",                "int",                      "int",                        "int",
+    "varchar",          "int",                      "int",                      "varchar"
 };
 
-#define CREATE_DB_TABLE "create table person (id integer primary key, " \
-                                            "categoryName varchar(20), " \
-                                            "createdTime integer, " \
-                                            "goodsName varchar(20), " \
-                                            "barCode varchar(20))"
+#define CREATE_DB_TABLE "create table person (" \
+    "id integer primary key,       categoryName varchar(20), createdTime integer, deleted integer,             discount integer, " \
+    "enable integer,                 goodsId integer,                barCode varchar(20), goodsName varchar(20), categoryId integer, " \
+    "shopNo varchar(20),          specifications varchar(20),  unit integer,             version integer,             minStock integer, " \
+    "pyCode varchar(20),          sellingPrice integer,            stock integer,           unitName varchar(20)" \
+    ")"
 #endif // GLOBALDEFINITION_H
