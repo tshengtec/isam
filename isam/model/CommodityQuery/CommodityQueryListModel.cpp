@@ -81,27 +81,13 @@ void CommodityQueryListModel::reload()
     condition.setFuzzyStr(this->getSearchText());
     condition.setIsNotStrSearchAll(this->getIsNotStrSearchAll());
 
-    QList<Commodity *> commodityList;
-
-    QList<QVariantMap> newList =  CommodityQueryService::instance()->getList(this->getSearchText(), 1, 20);
+    QList<QVariantMap> newList = CommodityQueryService::instance()->getList(this->getSearchText(), 1, 20);
 
     for (int i = 0; i < newList.count(); i++) {
-        Commodity* commodity = new Commodity();
-        commodity->fromMap(newList.at(i));
-        commodityList.append(commodity);
+        BaseCommodityModel* model = new BaseCommodityModel(this);
+        model->fromMap(newList.at(i));
+        modelList.append(model);
     }
-
-    Commodity* commodity = NULL;
-
-    for (int i = 0; i < commodityList.count(); i++) {
-        commodity = commodityList.at(i);
-        if (commodity != NULL) {
-            BaseCommodityModel* newModel = new BaseCommodityModel(commodity, this);
-            modelList.append(newModel);
-        }
-    }
-
-
 
     notifyResetList(modelList);
     emit totalChanged();

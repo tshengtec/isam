@@ -8,13 +8,6 @@ Item {
     id: delegeRectId
     width: parent.width; height: parent.height
 
-    MText {
-        text: (modelData.map)["barCode"] + ">>>>>>>>>"
-        color: "black"
-        anchors.centerIn: parent
-        font.pixelSize: parent.height/3
-    }
-
     Row {
         Repeater {
             model: contentSpacingWidth.length
