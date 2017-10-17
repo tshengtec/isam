@@ -20,8 +20,8 @@ Item {
                             "单价(元)", "折扣(%)", "折后单价(元)", "小计",  "备注",
                             "删除"]
         displayLine: 10
-        modelStrList: ["",            "barCode",  "goodsName",       "unitName", "count",
-                       "retailprice", "discount", "discountedPrice", "subtotal"]
+        modelStrList: ["",            "barCode",  "goodsName",       "unitName", "quantity",
+                       "sellingPrice", "discount", "discountedPrice", "subtotal"]
         modelList: model
     }
 

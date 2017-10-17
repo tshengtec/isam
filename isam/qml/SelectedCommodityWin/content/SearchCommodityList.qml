@@ -14,7 +14,7 @@ Item {
         width: parent.width - 10; height: parent.height
         spacingWidth: [1.5*width/20, 4*width/20, 5*width/20, 1.5*width/20, 3*width/20, 3*width/20, 2*width/20]
         headerContentList: ["序号", "条形码", "商品名称", "单位", "库存数量", "零售价(元)", ""]
-        modelStrList: ["", "id", "name", "count", "", "retailprice"]
+        modelStrList: ["", "barCode", "goodsName", "unitName", "stock", "sellingPrice"]
         displayLine: 8
         modelList: model
     }

@@ -55,7 +55,7 @@ Window {
         CommodityInfoListView {
             width: window.width; height: 12*window.height/20
             model: salesCommodityListModel
-            onDelCommodity: salesCommodityEditModel.remove(salesCommodityListModel.at(index).id)
+            onDelCommodity: salesCommodityEditModel.remove(salesCommodityListModel.at(index).map["id"])
         }
 
         CommodityInfoOperation {

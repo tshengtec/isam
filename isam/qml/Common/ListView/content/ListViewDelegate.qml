@@ -35,7 +35,7 @@ Item {
         if (index === 0)
             return indexValue + 1;
         return String((modelData.map)[contentStrList[index]] !== undefined ?
-               (modelData.map)[contentStrList[index]] : contentStrList[index])
+               (modelData.map)[contentStrList[index]] : "--")
 //        return String(modelData[contentStrList[index]] !== undefined ?
 //               modelData[contentStrList[index]] : "")
     }

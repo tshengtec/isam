@@ -71,7 +71,7 @@ bool SalesNote::add(QString id)
     }
     QSqlQuery sqlQuery = QSqlQuery(db);
 
-    if (!sqlQuery.exec("SELECT * FROM person WHERE barCode LIKE '%"+ id +"%'")) {
+    if (!sqlQuery.exec("SELECT * FROM person WHERE id LIKE '%"+ id +"%'")) {
         qDebug()<<sqlQuery.lastError()<<"bool SalesNote::add(QString id)";
     }
 
@@ -95,7 +95,7 @@ bool SalesNote::remove(QString id)
         QVariantMap commodity = m_commodityList.at(i);
         if (commodity.isEmpty())
             return false;
-        _id = commodity.value("barCode").toString();
+        _id = commodity.value("id").toString();
         if (_id == id) {
             m_commodityList.removeAt(i);
             return true;
