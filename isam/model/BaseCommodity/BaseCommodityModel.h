@@ -23,6 +23,7 @@ public:
     /*Discounted unit price*/
     Q_PROPERTY(float discountedPrice READ getDiscountedPrice NOTIFY statusChanged)
     Q_PROPERTY(float subtotal READ getSubtotal NOTIFY statusChanged)
+    Q_PROPERTY(QVariantMap map READ getMap NOTIFY statusChanged)
 
     QString getId();
     void setId(QString id);
@@ -49,6 +50,8 @@ public:
 
     float getSubtotal();
 
+    QVariantMap getMap();
+
     void fromMap(QVariantMap map);
 
     void operator=(const BaseCommodityModel& model);
@@ -64,6 +67,7 @@ private:
     float m_retailPrice;
     int m_discount;
     int m_count;
+    QVariant m_map;
 };
 
 #endif // BASEBaseCommodityModel_H

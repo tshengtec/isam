@@ -105,11 +105,20 @@ float BaseCommodityModel::getSubtotal()
     return subtotal;
 }
 
+QVariantMap BaseCommodityModel::getMap()
+{
+    QVariantMap map;
+    map["barCode"] = "strong";
+    map["unitName"]="88888888";
+    return map;
+}
+
 void BaseCommodityModel::fromMap(QVariantMap map)
 {
     m_name = map["goodsName"].toString();
     m_barCode = map["barCode"].toString();
     m_unitName = map["unitName"].toString();
+//    m_map = map;
 //    m_count = map[""]
 }
 
