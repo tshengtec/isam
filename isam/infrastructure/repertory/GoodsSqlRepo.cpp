@@ -57,7 +57,7 @@ QList<QVariantMap> GoodsSqlRepo::getList(QString target, int page, int pageNum)
     int success =true;
 
     success = m_sqlQuery.exec("SELECT * FROM person WHERE goodsName LIKE '%"+ target +"%' OR barCode LIKE '%"+ target +"%'");
-    m_sqlQuery.seek(page-1);
+    m_sqlQuery.seek(page-2);
     if (!success)
         qDebug()<<m_sqlQuery.lastError()<<"Select";
 

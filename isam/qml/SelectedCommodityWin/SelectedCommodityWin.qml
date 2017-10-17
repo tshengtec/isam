@@ -80,7 +80,7 @@ MyWindow {
 
     function getCommodityId(index) {
         if (displayListModel !== undefined && index < (displayListModel.size()) && index >= 0)
-            return displayListModel.at(index).id
+            return displayListModel.at(index).map["barCode"]
         else
             return "";
     }

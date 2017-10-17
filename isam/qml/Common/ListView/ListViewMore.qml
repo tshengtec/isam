@@ -7,8 +7,8 @@ Rectangle {
     property variant headerContentList: ["序号",     "条形码",  "商品名称",    "单位",  "数量",
                                          "单价(元)", "折扣(%)", "折后单价(元)", "小计",  "备注"]
     /*obj.name =>str obj.name <=> obj["name"]*/
-    property variant modelStrList: ["",            "barCode",  "goodsName",       "unitName", "count",
-                                    "retailprice", "discount", "discountedPrice", "subtotal"]
+    property variant modelStrList: ["",             "barCode",  "goodsName",       "unitName", "count",
+                                    "sellingPrice", "discount", "discountedPrice", "subtotal"]
     property variant modelList: []
     property int displayLine: 5
     width: parent.width; height: parent.height
