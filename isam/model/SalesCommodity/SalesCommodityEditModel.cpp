@@ -21,7 +21,7 @@ bool SalesCommodityEditModel::removeAll()
     return SalesCommodityService::instance()->removeAll();
 }
 
-bool SalesCommodityEditModel::update(Commodity *commodity)
+bool SalesCommodityEditModel::update(QVariantMap commodity)
 {
     return SalesCommodityService::instance()->update(commodity);
 }

@@ -37,10 +37,9 @@ float SalesCommodityService::getSales()
     for (int i = 0; i < m_SalesList.count(); i++) {
         SalesNote* salesNote = m_SalesList.at(i);
         for (int j = 0; salesNote != NULL && j < salesNote->getList().count(); j++) {
-            Commodity* commodity = salesNote->getList().at(j);
-            if (commodity != NULL) {
-                sales += commodity->getRetailPrice()*commodity->getCount();
-            }
+            QVariantMap commodity = salesNote->getList().at(j);
+            sales = 0;
+            //sales += commodity->getRetailPrice()*commodity->getCount();
         }
     }
     return sales;
@@ -58,9 +57,9 @@ void SalesCommodityService::removeSalesNote(SalesNote *salesNote)
     salesNote = NULL;
 }
 
-Commodity *SalesCommodityService::get(QString id)
+QVariantMap SalesCommodityService::get(QString id)
 {
-    Commodity* commodity = m_salesNote.get(id);
+    QVariantMap commodity = m_salesNote.get(id);
     return commodity;
 }
 
@@ -80,7 +79,7 @@ bool SalesCommodityService::remove(QString id)
     return isSuccess;
 }
 
-bool SalesCommodityService::update(Commodity *commodity)
+bool SalesCommodityService::update(QVariantMap commodity)
 {
     bool isSuccess = m_salesNote.update(commodity);
     if (isSuccess)

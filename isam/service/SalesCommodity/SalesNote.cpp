@@ -32,26 +32,28 @@ SalesNote::~SalesNote()
 {
 }
 
-QList<Commodity *> SalesNote::getList()
+QList<QVariantMap> SalesNote::getList()
 {
     return m_commodityList;
 }
 
-void SalesNote::setList(QList<Commodity *> list)
+void SalesNote::setList(QList<QVariantMap> list)
 {
     this->removeList(m_commodityList);
     m_commodityList = list;
 }
 
-Commodity *SalesNote::get(QString id)
+QVariantMap SalesNote::get(QString id)
 {
+    QString _id;
     for (int i = 0; i < m_commodityList.count(); i++) {
-        if (m_commodityList.at(i)->getId() == id) {
+        _id = m_commodityList.at(i).value("barCode").toString();
+        if (_id == id) {
             return m_commodityList.at(i);
         }
     }
 
-    return NULL;
+    return QVariantMap();
 }
 
 bool SalesNote::add(QString id)
@@ -82,22 +84,20 @@ bool SalesNote::add(QString id)
     if (map.isEmpty())
         return false;
 
-    Commodity *newCommodity = new Commodity();
-    newCommodity->fromMap(map);
-    m_commodityList.append(newCommodity);
+    m_commodityList.append(map);
     return true;
 }
 
 bool SalesNote::remove(QString id)
 {
+    QString _id;
     for (int i = 0; i < m_commodityList.count(); i++) {
-        Commodity* commodity = m_commodityList.at(i);
-        if (commodity == NULL)
+        QVariantMap commodity = m_commodityList.at(i);
+        if (commodity.isEmpty())
             return false;
-
-        if (commodity->getId() == id) {
+        _id = commodity.value("barCode").toString();
+        if (_id == id) {
             m_commodityList.removeAt(i);
-            delete commodity;
             return true;
         }
 
@@ -105,16 +105,19 @@ bool SalesNote::remove(QString id)
     return false;
 }
 
-bool SalesNote::update(Commodity *commodity)
+bool SalesNote::update(QVariantMap commodity)
 {
-    if (commodity == NULL)
+    if (commodity.isEmpty())
         return false;
 
+    QString oldId, newId;
     for (int i = 0; i < m_commodityList.count(); i++) {
-        Commodity * oldCommodity = m_commodityList.at(i);
-        if (oldCommodity->getId() == commodity->getId()) {
-            delete oldCommodity;
-            m_commodityList.replace(i, commodity);
+        QVariantMap oldCommodity = m_commodityList.at(i);
+
+        oldId = oldCommodity.value("barCode").toString();
+        newId = commodity.value("barCode").toString();
+        if (oldId == newId) {
+            m_commodityList.replace(i, QVariantMap(commodity));
             return true;
         }
     }
@@ -174,35 +177,35 @@ float SalesNote::getRealIncome()
 {
     float count = 0;
     for (int i = 0; i < this->m_commodityList.count(); i++) {
-        Commodity* commodity = this->m_commodityList.at(i);
-        count += (commodity->getRetailPrice()*commodity->getCount());
+        QVariantMap commodity = this->m_commodityList.at(i);
+        float sellingPrice = commodity.value("sellingPrice").toDouble();
+        int quantity = commodity.value("quantity").toInt();
+        count += sellingPrice * quantity;
     }
 
     return count;
 }
 
-QList<Commodity *> SalesNote::copyMyselfList()
+QList<QVariantMap> SalesNote::copyMyselfList()
 {
     return copyList(this->getList());
 }
 
-QList<Commodity *> SalesNote::copyList(QList<Commodity *> list)
+QList<QVariantMap> SalesNote::copyList(QList<QVariantMap> list)
 {
-    QList<Commodity *> newList = QList<Commodity *>();
+    QList<QVariantMap> newList = QList<QVariantMap>();
     for (int i = 0; i < list.count(); i++) {
-        Commodity *newCommodity = new Commodity(list.at(i));
+        QVariantMap newCommodity = list.at(i);
         newList.append(newCommodity);
     }
 
     return newList;
 }
 
-void SalesNote::removeList(QList<Commodity *> &removeList)
+void SalesNote::removeList(QList<QVariantMap> &removeList)
 {
     while (removeList.count()) {
-        Commodity * oldCommodity = removeList.last();
         removeList.removeLast();
-        delete oldCommodity;
     }
 }
 

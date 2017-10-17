@@ -28,10 +28,10 @@ public:
     float getSales();
 
     /*Commodity id*/
-    Commodity *get(QString id);
+    QVariantMap get(QString id);
     bool add(QString id); /*Commodity id*/
     bool remove(QString id); /*Commodity id*/
-    bool update(Commodity *commodity);
+    bool update(QVariantMap commodity);
     bool removeAll(); /*removeAll m_commodityList*/
 
     /*settlement operation*/

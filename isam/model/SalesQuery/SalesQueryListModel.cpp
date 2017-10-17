@@ -11,8 +11,7 @@ void SalesQueryListModel::reload(QString id)
     QList<BaseCommodityModel *> modelList = QList<BaseCommodityModel *>();
 
     QList<SalesNote *> salesList = SalesCommodityService::instance()->getSalesList();
-    QList<Commodity *> commodityList;
-    Commodity* commodity = NULL;
+    QList<QVariantMap> commodityList;
 
     for (int i = 0; i < salesList.count(); i++) {
         SalesNote* salesNote = salesList.at(i);
@@ -23,11 +22,9 @@ void SalesQueryListModel::reload(QString id)
     }
 
     for (int i = 0; i < commodityList.count(); i++) {
-        commodity = commodityList.at(i);
-        if (commodity != NULL) {
-            BaseCommodityModel* newModel = new BaseCommodityModel(commodity, this);
-            modelList.append(newModel);
-        }
+        BaseCommodityModel* newModel = new BaseCommodityModel(this);
+        newModel->fromMap(commodityList.at(i));
+        modelList.append(newModel);
     }
 
     notifyResetList(modelList);
