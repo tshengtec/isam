@@ -14,17 +14,17 @@
 
 #define PUSH_SALES_RECORD "/v1/sales_record"
 static const QString goodsFields[] = {
-    "id",                  "categoryName",       "createdTime",         "deleted",               "discount",
-    "enable",           "goodsId",                "barCode",               "goodsName",         "categoryId",
-    "shopNo",          "specifications",        "unit",                     "version",               "minStock",
-    "pyCode",          "sellingPrice",           "stock",                   "unitName"
+    "id",                  "categoryName",           "createdTime",         "deleted",               "discount",
+    "enable",              "goodsId",                "barCode",               "goodsName",         "categoryId",
+    "shopNo",              "specifications",         "unit",                     "version",               "minStock",
+    "pyCode",              "sellingPrice",           "stock",                   "unitName"
 };
 
 static const QString goodsFieldsType[] = {
     "int",                "varchar",                 "int",                     "int",                        "int",
-    "int",                "int",                       "varchar",               "varchar",                  "int",
-    "varchar",          "varchar",                "int",                      "int",                        "int",
-    "varchar",          "int",                      "int",                      "varchar"
+    "int",                "int",                     "varchar",               "varchar",                  "int",
+    "varchar",            "varchar",                 "int",                      "int",                        "int",
+    "varchar",            "int",                     "int",                      "varchar"
 };
 
 #define CREATE_DB_TABLE "create table person (" \

@@ -13,10 +13,15 @@ Item {
         id: listViewMoreId
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width; height: parent.height
-        spacingWidth: [1*width/20, 3*width/20, 4*width/20, 1*width/20, 1.5*width/20,
-                       1.5*width/20, 2*width/20, 1.5*width/20, 3*width/20, 1.5*width/20]
-        headerContentList: ["序号", "条形码", "商品名称", "数量", "单价(元)", "折扣(%)", "折后单价(元)", "小计", "备注", "删除"];
+        spacingWidth: [1*width/20,   3*width/20,   4*width/20, 1.5*width/20, 1*width/20,
+                       1.5*width/20, 1.5*width/20, 2*width/20, 1.5*width/20, 1.5*width/20,
+                       1.5*width/20]
+        headerContentList: ["序号",     "条形码",  "商品名称",    "单位",  "数量",
+                            "单价(元)", "折扣(%)", "折后单价(元)", "小计",  "备注",
+                            "删除"]
         displayLine: 10
+        modelStrList: ["",            "barCode",  "name",            "unitName", "count",
+                       "retailprice", "discount", "discountedPrice", "subtotal"]
         modelList: model
     }
 

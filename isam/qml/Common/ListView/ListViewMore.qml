@@ -2,10 +2,13 @@ import QtQuick 2.5
 import "./content"
 
 Rectangle {
-    property variant spacingWidth: [1*width/20, 3*width/20, 4*width/20, 1*width/20, 1.5*width/20,
-                                    1.5*width/20, 2*width/20, 1.5*width/20, 4.5*width/20]
-    property variant headerContentList: ["序号", "条形码", "商品名称", "数量", "单价(元)", "折扣(%)", "折后单价(元)", "小计", "备注"]
-    property variant modelStrList: ["", "id", "name", "count", "retailprice"] //obj.name =>str obj.name <=> obj["name"]
+    property variant spacingWidth: [1*width/20,   3*width/20,   4*width/20,   1.5*width/20, 1*width/20,
+                                    1.5*width/20, 1.5*width/20, 2*width/20,   1.5*width/20, 3*width/20]
+    property variant headerContentList: ["序号",     "条形码",  "商品名称",    "单位",  "数量",
+                                         "单价(元)", "折扣(%)", "折后单价(元)", "小计",  "备注"]
+    /*obj.name =>str obj.name <=> obj["name"]*/
+    property variant modelStrList: ["",            "barCode",  "name",            "unitName", "count",
+                                    "retailprice", "discount", "discountedPrice", "subtotal"]
     property variant modelList: []
     property int displayLine: 5
     width: parent.width; height: parent.height
