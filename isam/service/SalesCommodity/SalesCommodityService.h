@@ -43,6 +43,8 @@ public:
     /*Press the functionality, return Getting operating state.*/
     QString onGettingOperation();
 
+    bool postSellingDoc();
+
 private:
     SalesNote* copySalesNote(SalesNote* salesNote);
     void removeSalesNote(SalesNote* salesNote);
