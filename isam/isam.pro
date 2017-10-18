@@ -116,3 +116,5 @@ HEADERS += \
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml
+
+DEFINES += 0.7.9
