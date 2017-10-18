@@ -40,6 +40,9 @@ public:
     /*Realized income.*/
     float getRealIncome();
 
+    /*Total goods quantity.*/
+    int getTotalQuantity();
+
 private:
     QList<QVariantMap> copyList(QList<QVariantMap > list);
     void removeList(QList<QVariantMap >& removeList); // remove List

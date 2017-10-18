@@ -33,4 +33,5 @@ static const QString goodsFieldsType[] = {
     "shopNo varchar(20),          specifications varchar(20),  unit integer,             version integer,             minStock integer, " \
     "pyCode varchar(20),          sellingPrice integer,            stock integer,           unitName varchar(20)" \
     ")"
+/* quantity int, discountedPrice float, subtotal float*/
 #endif // GLOBALDEFINITION_H

@@ -60,6 +60,8 @@ Window {
 
         CommodityInfoOperation {
             width: window.width; height: 1*window.height/20
+            totalIncome: salesCommodityListModel.amountMoney
+            totalQuantity: salesCommodityListModel.totalQuantity
             onRemoveAll: salesCommodityEditModel.removeAll()
         }
 

@@ -9,9 +9,13 @@ class SalesCommodityListModel : public ObjectListModel<BaseCommodityModel>
 public:
     SalesCommodityListModel();
     Q_PROPERTY(QString amountMoney READ getAmountMoney NOTIFY statusChanged)
+    Q_PROPERTY(int totalQuantity READ getTotalQuantity NOTIFY statusChanged)
 
     QString getAmountMoney();
     void setAmountMoney(QString money);
+
+    int getTotalQuantity();
+    void setTotalQuantity(int totalQuantity);
 
 signals:
     void statusChanged();
@@ -21,6 +25,7 @@ private slots:
 
 private:
     QString m_amountMoney;
+    int m_totalQuantity;
 };
 
 #endif // SALESCOMMODITYLISTMODEL_H

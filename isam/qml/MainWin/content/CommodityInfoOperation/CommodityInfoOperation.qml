@@ -3,7 +3,11 @@ import "../../../Common/Button"
 import "../../../Common/Text"
 
 Rectangle {
+    property int totalQuantity: 0
+    property double totalIncome: 0
+
     signal removeAll()
+
     id: rootRectId
     width: parent.width; height: parent.height
     color: "#00000000"
@@ -21,7 +25,7 @@ Rectangle {
             MText {
                 anchors.centerIn: parent
                 color: "#858585"
-                text: "数量(件): 0"
+                text: "数量(件): " + totalQuantity
                 font.pixelSize: parent.height/2.5
             }
         }
@@ -33,7 +37,7 @@ Rectangle {
             MText {
                 anchors.centerIn: parent
                 color: "#858585"
-                text: "合计(元): 0"
+                text: "合计(元): " + totalIncome
                 font.pixelSize: parent.height/2.5
             }
         }

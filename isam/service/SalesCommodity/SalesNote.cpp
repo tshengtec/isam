@@ -76,13 +76,20 @@ bool SalesNote::add(QString id)
     }
 
     QVariantMap map;
-    sqlQuery.next();
+
+    if (!sqlQuery.first())
+        return false;
+
     for (int i = 0; i < (sizeof(goodsFields)/sizeof(goodsFields[0])); i++) {
         map.insert(goodsFields[i], sqlQuery.value(goodsFields[i]));
     }
 
-    if (map.isEmpty())
-        return false;
+    map.insert("quantity", 1);
+    float discountedPrice = map.value("sellingPrice").toDouble() * map.value("discount").toInt() / 100;
+    map.insert("discountedPrice", discountedPrice);
+
+    float subtotal = map.value("quantity").toInt() * discountedPrice;
+    map.insert("subtotal", subtotal);
 
     m_commodityList.append(map);
     return true;
@@ -178,12 +185,26 @@ float SalesNote::getRealIncome()
     float count = 0;
     for (int i = 0; i < this->m_commodityList.count(); i++) {
         QVariantMap commodity = this->m_commodityList.at(i);
-        float sellingPrice = commodity.value("sellingPrice").toDouble();
+        float sellingPrice = commodity.value("discountedPrice").toDouble();
         int quantity = commodity.value("quantity").toInt();
+
         count += sellingPrice * quantity;
     }
 
     return count;
+}
+
+int SalesNote::getTotalQuantity()
+{
+    float quantity = 0;
+    for (int i = 0; i < this->m_commodityList.count(); i++) {
+        QVariantMap commodity = this->m_commodityList.at(i);
+        int _quantity = commodity.value("quantity").toInt();
+
+        quantity += _quantity;
+    }
+
+    return quantity;
 }
 
 QList<QVariantMap> SalesNote::copyMyselfList()
