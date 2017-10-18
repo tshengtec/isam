@@ -48,4 +48,9 @@ Rectangle {
     SalesCommodityListModel {
         id: salesCommodityListModel
     }
+
+    //data
+    SalesCommodityEditModel {
+        id: salesCommodityEditModel
+    }
 }

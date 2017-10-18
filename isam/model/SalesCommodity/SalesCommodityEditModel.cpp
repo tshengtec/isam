@@ -3,6 +3,13 @@
 SalesCommodityEditModel::SalesCommodityEditModel()
 {
     m_errorStr = "";
+    /* payway type -> 1.cash 2.alipay 3.wxpay */
+    m_payway = "cash";
+    m_authCode = "0";
+    m_paywayTotal = 0;
+
+    connect(this, SIGNAL(statusChanged()), this, SLOT(setPayInfo()));
+
     emit statusChanged(); /*Init update date.*/
 }
 
@@ -59,11 +66,53 @@ void SalesCommodityEditModel::setErrorStr(QString errorStr)
     emit statusChanged();
 }
 
+QString SalesCommodityEditModel::getPayway()
+{
+    return m_payway;
+}
+
+void SalesCommodityEditModel::setPayway(QString payway)
+{
+    m_payway = payway;
+    emit statusChanged();
+}
+
+QString SalesCommodityEditModel::getAuthCode()
+{
+    return m_authCode;
+}
+
+void SalesCommodityEditModel::setAuthCode(QString authCode)
+{
+    m_authCode = authCode;
+    emit statusChanged();
+}
+
+float SalesCommodityEditModel::getPaywayTotal()
+{
+    return m_paywayTotal;
+}
+
+void SalesCommodityEditModel::setPaywayTotal(float paywayTotal)
+{
+    m_paywayTotal = paywayTotal;
+    emit statusChanged();
+}
+
 bool SalesCommodityEditModel::getIsPendingStatus()
 {
     int pendingSalesCommodityCount = SalesCommodityService::instance()->getPendingSalesNote().getList().count();
     bool pendingStatus = (pendingSalesCommodityCount == 0 ? false : true);
     return pendingStatus;
+}
+
+void SalesCommodityEditModel::setPayInfo()
+{
+    QVariantMap map;
+    map["payway"] = this->getPayway();
+    map["authCode"] = this->getAuthCode();
+    map["paywayTotal"] = this->getPaywayTotal();
+    SalesCommodityService::instance()->setPayInfo(map);
 }
 
 

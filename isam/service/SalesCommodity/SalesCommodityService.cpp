@@ -7,6 +7,7 @@
 #include <QtSql/QSqlQuery>
 #include <QNetworkRequest>
 #include <QNetworkInterface>
+#include <QJsonDocument>
 
 SalesCommodityService * SalesCommodityService::_instance = NULL;
 
@@ -62,6 +63,20 @@ void SalesCommodityService::removeSalesNote(SalesNote *salesNote)
 {
     delete salesNote;
     salesNote = NULL;
+}
+
+QJsonArray SalesCommodityService::goodsInfo()
+{
+    QJsonArray array;
+    QList<QVariantMap> goodsList = m_salesNote.getList();
+
+    for (int i = 0; i < goodsList.count(); i++) {
+        QJsonObject obj;
+        obj.insert("id", goodsList.at(i).value("id").toLongLong());
+        obj.insert("quantity", goodsList.at(i).value("quantity").toInt());
+        array.append(obj);
+    }
+    return array;
 }
 
 void SalesCommodityService::finishedSlot(QNetworkReply *reply)
@@ -124,9 +139,11 @@ bool SalesCommodityService::settleMent()
     SalesNote* salesNote = new SalesNote();
     salesNote->setDateTime(QDateTime::currentDateTime());
     salesNote->setList(this->m_salesNote.copyMyselfList());
+
+    this->postSellingCmd();
+
     m_SalesList.append(salesNote);
     this->removeAll();
-    this->postSellingCmd();
     return true;
 }
 
@@ -168,30 +185,41 @@ bool SalesCommodityService::postSellingCmd()
 
     QByteArray byteArray;
     byteArray.append("goodsInfo=");
-    byteArray.append("[{id: 11, quantity: 1}]");
+    byteArray.append(QString(QJsonDocument(goodsInfo()).toJson()));
 
     byteArray.append("&payway=");
-    byteArray.append("cash");
+    byteArray.append(m_payInfo.value("payway").toString());
 
     byteArray.append("&shopNo=");
     byteArray.append(configService.getShopNo());
 
     byteArray.append("&bizNo=");
-    byteArray.append("1507425496000");
+    byteArray.append(QDateTime::currentDateTime().toTime_t());
 
     byteArray.append("&authCode=");
-    byteArray.append("0");
+    byteArray.append(m_payInfo.value("authCode").toString());
 
     byteArray.append("&totalFee=");
-    byteArray.append("10");
+    byteArray.append(QString("%1").arg(m_salesNote.getRealIncome()));
 
     byteArray.append("&macAddr=");
     byteArray.append(configService.getMacAddr());
 
     byteArray.append("&cash=");
-    byteArray.append("10");
+    QString cash = QString("%1").arg(m_salesNote.getRealIncome() - m_payInfo.value("paywayTotal").toFloat());
+    byteArray.append(cash);
 
     req.setUrl(QUrl("http://api.cashier.slktea.com/isam-web-cashier" +QString(PUSH_SALES_RECORD)));
 
     m_networkService.networkAccessManager().post(req, byteArray);
+}
+
+void SalesCommodityService::setPayInfo(QVariantMap info)
+{
+    m_payInfo = info;
+}
+
+QVariantMap SalesCommodityService::getPayInfo()
+{
+    return m_payInfo;
 }

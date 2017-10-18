@@ -46,9 +46,13 @@ public:
 
     bool postSellingCmd();
 
+    void setPayInfo(QVariantMap info);
+    QVariantMap getPayInfo();
+
 private:
     SalesNote* copySalesNote(SalesNote* salesNote);
     void removeSalesNote(SalesNote* salesNote);
+    QJsonArray goodsInfo();
 
 signals:
     void listChanged();
@@ -65,6 +69,7 @@ private:
     /*All sales list.*/
     QList<SalesNote *> m_SalesList;
     NetworkService m_networkService;
+    QVariantMap m_payInfo;
 };
 
 #endif // SALESCOMMODITYSERVICE_H
