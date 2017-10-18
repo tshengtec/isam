@@ -13,6 +13,8 @@ public:
     void setTargetFilePath(QString filePath);
     QJsonObject &jsonObj();
     QString getToken();
+    QString getShopNo();
+    QString getMacAddr();
 
 public:
     void reload();

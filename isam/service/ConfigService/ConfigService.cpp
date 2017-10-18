@@ -1,6 +1,7 @@
 #include "ConfigService.h"
 #include <QFile>
 #include <QJsonDocument>
+#include <QNetworkInterface.h>
 
 ConfigService::ConfigService()
 {
@@ -37,6 +38,41 @@ QString ConfigService::getToken()
 
     QString token = loginInfoObj.value("accessToken").toString();
     return token;
+}
+
+QString ConfigService::getShopNo()
+{
+    if (m_jsonObj.isEmpty())
+        return "";
+
+    QJsonObject loginInfoObj = m_jsonObj.value("loginInfo").toObject();
+    if (loginInfoObj.isEmpty())
+        return "";
+
+    QJsonArray shops = loginInfoObj.value("shops").toArray();
+    if (shops.isEmpty())
+        return "";
+
+    QString shopNo = shops.at(0).toObject().value("shopNo").toString();
+
+    return shopNo;
+}
+
+QString ConfigService::getMacAddr()
+{
+    QList<QNetworkInterface> nets = QNetworkInterface::allInterfaces();// 获取所有网络接口列表
+    int nCnt = nets.count();
+    QString strMacAddr = "";
+    for(int i = 0; i < nCnt; i ++)
+    {
+        // 如果此网络接口被激活并且正在运行并且不是回环地址，则就是我们需要找的Mac地址
+        if(nets[i].flags().testFlag(QNetworkInterface::IsUp) && nets[i].flags().testFlag(QNetworkInterface::IsRunning) && !nets[i].flags().testFlag(QNetworkInterface::IsLoopBack))
+        {
+            strMacAddr = nets[i].hardwareAddress();
+            break;
+        }
+    }
+    return strMacAddr;
 }
 
 void ConfigService::reload()

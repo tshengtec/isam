@@ -13,6 +13,8 @@ SalesCommodityService * SalesCommodityService::_instance = NULL;
 
 SalesCommodityService::SalesCommodityService()
 {
+    connect(&m_networkService.networkAccessManager(), SIGNAL(finished(QNetworkReply*)),
+                this, SLOT(finishedSlot(QNetworkReply*)));
 }
 
 SalesCommodityService *SalesCommodityService::instance()
@@ -44,9 +46,7 @@ float SalesCommodityService::getSales()
     for (int i = 0; i < m_SalesList.count(); i++) {
         SalesNote* salesNote = m_SalesList.at(i);
         for (int j = 0; salesNote != NULL && j < salesNote->getList().count(); j++) {
-            QVariantMap commodity = salesNote->getList().at(j);
-            sales = 0;
-            //sales += commodity->getRetailPrice()*commodity->getCount();
+            sales += salesNote->getRealIncome();
         }
     }
     return sales;
@@ -62,6 +62,23 @@ void SalesCommodityService::removeSalesNote(SalesNote *salesNote)
 {
     delete salesNote;
     salesNote = NULL;
+}
+
+void SalesCommodityService::finishedSlot(QNetworkReply *reply)
+{
+    QByteArray bytes = reply->readAll();  // bytes
+    QString jsonString = QString::fromUtf8(bytes);
+
+    QJsonObject goodsJsonObj= m_networkService.getJsonObjectFromString(jsonString);
+    qDebug()<<goodsJsonObj<<">>>>>";
+    if (reply->error() == QNetworkReply::NoError) {
+
+    }
+    else {
+        qDebug()<<reply->errorString()<<"reply->errorString";
+    }
+
+    reply->deleteLater();
 }
 
 QVariantMap SalesCommodityService::get(QString id)
@@ -109,6 +126,7 @@ bool SalesCommodityService::settleMent()
     salesNote->setList(this->m_salesNote.copyMyselfList());
     m_SalesList.append(salesNote);
     this->removeAll();
+    this->postSellingCmd();
     return true;
 }
 
@@ -139,7 +157,7 @@ QString SalesCommodityService::onGettingOperation()
     return "取单成功";
 }
 
-bool SalesCommodityService::postSellingDoc()
+bool SalesCommodityService::postSellingCmd()
 {
     ConfigService configService = ConfigService(QString(CONFIG_JSON_FILE_NAME));
     QString token = configService.getToken();
@@ -147,32 +165,33 @@ bool SalesCommodityService::postSellingDoc()
     QNetworkRequest req;
     req.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
     req.setRawHeader(QByteArray("Token"), QByteArray(token.toStdString().c_str()));
-    qDebug()<<"Token??????????????????????"<<token;
-    QByteArray byteArray;
-    byteArray.append("goodsInfo=[{id: 11, quantity: 1}]&payway=cash");
-    byteArray.append("&shopNo=");
-//    byteArray.append(this->getShopNo().toStdString().c_str());
-    byteArray.append("&bizNo=1507425386000");
-    byteArray.append("&authCode=6908512208723");
-    byteArray.append("&totalFee=10");
 
-    QList<QNetworkInterface> nets = QNetworkInterface::allInterfaces();// 获取所有网络接口列表
-    int nCnt = nets.count();
-    QString strMacAddr = "";
-    for(int i = 0; i < nCnt; i ++)
-    {
-        // 如果此网络接口被激活并且正在运行并且不是回环地址，则就是我们需要找的Mac地址
-        if(nets[i].flags().testFlag(QNetworkInterface::IsUp) && nets[i].flags().testFlag(QNetworkInterface::IsRunning) && !nets[i].flags().testFlag(QNetworkInterface::IsLoopBack))
-        {
-            strMacAddr = nets[i].hardwareAddress();
-            break;
-        }
-    }
+    QByteArray byteArray;
+    byteArray.append("goodsInfo=");
+    byteArray.append("[{id: 11, quantity: 1}]");
+
+    byteArray.append("&payway=");
+    byteArray.append("cash");
+
+    byteArray.append("&shopNo=");
+    byteArray.append(configService.getShopNo());
+
+    byteArray.append("&bizNo=");
+    byteArray.append("1507425496000");
+
+    byteArray.append("&authCode=");
+    byteArray.append("0");
+
+    byteArray.append("&totalFee=");
+    byteArray.append("10");
 
     byteArray.append("&macAddr=");
-    byteArray.append(strMacAddr);
-    byteArray.append("&cash=10");
+    byteArray.append(configService.getMacAddr());
+
+    byteArray.append("&cash=");
+    byteArray.append("10");
+
     req.setUrl(QUrl("http://api.cashier.slktea.com/isam-web-cashier" +QString(PUSH_SALES_RECORD)));
 
-//    networkAccessManager().post(req, byteArray);
+    m_networkService.networkAccessManager().post(req, byteArray);
 }

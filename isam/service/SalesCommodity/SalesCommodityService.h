@@ -3,6 +3,7 @@
 
 #include "Commodity.h"
 #include "SalesNote.h"
+#include "NetworkService.h"
 /*
  * This class is used for the current sales of goods,
  * including the services provided by the register and the receipt.
@@ -43,7 +44,7 @@ public:
     /*Press the functionality, return Getting operating state.*/
     QString onGettingOperation();
 
-    bool postSellingDoc();
+    bool postSellingCmd();
 
 private:
     SalesNote* copySalesNote(SalesNote* salesNote);
@@ -51,6 +52,9 @@ private:
 
 signals:
     void listChanged();
+
+private slots:
+    void finishedSlot(QNetworkReply* reply);
 
 private:
     static SalesCommodityService* _instance;
@@ -60,6 +64,7 @@ private:
     SalesNote m_pendingSalesNote;
     /*All sales list.*/
     QList<SalesNote *> m_SalesList;
+    NetworkService m_networkService;
 };
 
 #endif // SALESCOMMODITYSERVICE_H
