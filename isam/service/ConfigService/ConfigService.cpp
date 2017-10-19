@@ -1,7 +1,7 @@
 #include "ConfigService.h"
 #include <QFile>
 #include <QJsonDocument>
-#include <QNetworkInterface.h>
+#include <QNetworkInterface>
 
 ConfigService::ConfigService()
 {
