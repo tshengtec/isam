@@ -117,4 +117,4 @@ HEADERS += \
 DISTFILES += \
     model/AccountModel/AccountListModel.qml
 
-DEFINES += 0.7.9
+DEFINES += VERSION_0.7.9
