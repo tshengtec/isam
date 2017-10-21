@@ -24,21 +24,27 @@ Rectangle {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/money.png"
                     text: "现金"
-                    onClicked: select = !select
+                    select: privateValue.cash
+                    onClicked: privateValue.checkStatus(!privateValue.cash, !privateValue.wxpay, privateValue.alipay) ?
+                                   privateValue.cash = !privateValue.cash : ""
                 }
 
                 LeftIconRightTextBtn {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/weChatPay.png"
                     text: "微信"
-                    onClicked: select = !select
+                    select: privateValue.wxpay
+                    onClicked: privateValue.checkStatus(privateValue.cash, !privateValue.wxpay, privateValue.alipay) ?
+                                   privateValue.wxpay = !privateValue.wxpay : ""
                 }
 
                 LeftIconRightTextBtn {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/alipay.png"
                     text: "支付宝"
-                    onClicked: select = !select
+                    select: privateValue.alipay
+                    onClicked: privateValue.checkStatus(privateValue.cash, privateValue.wxpay, !privateValue.alipay) ?
+                                   privateValue.alipay = !privateValue.alipay : ""
                 }
             }
         }
@@ -48,6 +54,7 @@ Rectangle {
         Rectangle {
             id: payCom
             property bool select: false
+            visible: false
             anchors.verticalCenter: parent.verticalCenter
             width: parent.height/3; height: parent.height/3
             color: select ? "#baceef" : "white"
@@ -82,8 +89,38 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     payCom.select = !payCom.select
+                    privateValue.isGroup = payCom.select
+                    if (!privateValue.isGroup)
+                        privateValue.payIndex = 1
                 }
             }
+        }
+    }
+
+    Item {
+        id: privateValue
+        property bool isGroup: false;
+        property bool cash: true
+        property bool alipay: false
+        property bool wxpay: false
+        property var payStatusMapList:[{"cash": true, "alipay": false, "wxpay": false},
+                                       {"cash": false, "alipay": true, "wxpay": false},
+                                       {"cash": false, "alipay": false, "wxpay": true},
+                                       {"cash": true, "alipay": true, "wxpay": false},
+                                       {"cash": false, "alipay": true, "wxpay": true},
+                                       {"cash": true, "alipay": false, "wxpay": true}
+                                      ]
+
+        function checkStatus(cash, wxpay, alipay) {
+            var _cash, _alipay, _wxpay;
+            for (var i = 0; i < payStatusMapList.length; i++) {
+                _cash = payStatusMapList[i].cash
+                _alipay = payStatusMapList[i].alipay
+                _wxpay = payStatusMapList[i].wxpay
+                if (_cash === cash && _alipay === alipay && _wxpay === wxpay)
+                    return true
+            }
+            return false
         }
     }
 }

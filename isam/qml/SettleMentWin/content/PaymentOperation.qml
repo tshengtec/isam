@@ -56,7 +56,7 @@ Rectangle {
                     clip: true
 
                     Item {
-                        width: 0.5*parent.width; height: parent.height
+                        width: 0.3*parent.width; height: parent.height
                         Image {
                             width: height; height: 0.4*parent.height
                             anchors.centerIn: parent
@@ -66,10 +66,10 @@ Rectangle {
                     }
 
                     Item {
-                        width: 0.5*parent.width; height: parent.height
+                        width: 0.7*parent.width; height: parent.height
                         MText {
                             anchors.verticalCenter: parent.verticalCenter
-                            text: "组合支付"
+                            text: "结算后打印"
                             color: "black"
                             font.pixelSize: 0.3*parent.height
                         }
