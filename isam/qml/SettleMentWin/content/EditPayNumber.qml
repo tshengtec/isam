@@ -4,9 +4,19 @@ import "../../ProjectCommon/Text"
 Column {
     property var payNumberItemHeight: (height - 2*spacing)/3 //private data
     property string amountMoney: "0.00"
+    property string inputKeyBoard: ""
 
     width: parent.width; height: parent.height
     spacing: 5
+
+    onInputKeyBoardChanged: {
+        console.log(cashTextInput.textInputFocus, ">>>>>")
+        if (cashTextInput.textInputFocus) {
+            cashTextInput.addText = inputKeyBoard
+            inputKeyBoard = ""
+            console.log(inputKeyBoard, cashTextInput.rightNumnber)
+        }
+    }
 
     TextInputNumber {
         width: parent.width; height: payNumberItemHeight
@@ -20,8 +30,10 @@ Column {
         spacing: 10
 
         TextInputNumber {
+            id: cashTextInput
             width: parent.width/2 - 5; height: parent.height
             leftTitle: "现金"
+
         }
 
         TextInputNumber {

@@ -5,6 +5,7 @@ import "../../../Common/Text"
 Item {
     signal selectedCommodityType(string type)
     property variant allCommodityTypeModel: []
+
     width: parent.width; height: parent.height
 
     ListView {

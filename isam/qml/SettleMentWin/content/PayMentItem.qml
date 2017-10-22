@@ -16,8 +16,10 @@ Rectangle {
             width: parent.width; height: 0.4*parent.height
 
             EditPayNumber {
+                id: editPayNumber
                 width: 0.65*parent.width; height: parent.height
                 amountMoney: salesCommodityListModel.amountMoney
+
             }
 
             Item { width: 0.01*parent.width; height: parent.height }
@@ -36,6 +38,7 @@ Rectangle {
 
             QuickSelectMoney {
                 width: 0.5*parent.width; height: parent.height
+                onClicked: editPayNumber.inputKeyBoard = money
             }
 
             PaymentOperation {

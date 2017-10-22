@@ -5,13 +5,24 @@ Rectangle {
     id: textInputNumber
 
     property string rightNumberColor: "black"
-    property string rightNumnber: "0.00"
+    property alias rightNumnber: textInput.text
+    property string addText: ""
     property string leftTitle: ""
     property string leftTitleColor: "black"
     property bool enable: true
+    property alias textInputFocus: textInput.focus
 
     width: parent.width; height: parent.height
     radius: 8
+
+    onAddTextChanged: {
+        var text = textInput.text
+        var cursorPosition = textInput.cursorPosition
+        var startText = text.slice(0, textInput.cursorPosition)
+        var endText = text.slice(textInput.cursorPosition, text.length)
+        textInput.text = startText + addText + endText
+        textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
+    }
 
     Row {
         z: 2
@@ -34,6 +45,7 @@ Rectangle {
             width: 0.8*parent.width - 15; height: parent.height
 
             TextInput {
+                id: textInput
                 anchors.right: parent.right
                 anchors.rightMargin: 10
                 anchors.verticalCenter: parent.verticalCenter
@@ -43,15 +55,15 @@ Rectangle {
                 enabled: enable
                 font.family: "微软雅黑"
                 color: enable ? rightNumberColor : "#d5d5d5"
-                text: rightNumnber
+//                text: rightNumnber
+                text: "0.00"
                 font.pixelSize: 0.5*parent.height
                 width: parent.width;
-
-                onFocusChanged: {
-                    if (focus) {
-                        cursorPosition = text.length
-                    }
-                }
+//                onFocusChanged: {
+//                    if (focus) {
+//                        cursorPosition = text.length
+//                    }
+//                }
             }
         }
     }

@@ -4,6 +4,10 @@ import "../../Common/Button"
 import "../../Common/Text"
 
 Rectangle {
+    property bool cash: true
+    property bool alipay: false
+    property bool wxpay: false
+
     width: parent.width; height: parent.height
     color: "#00000000"
 
@@ -24,9 +28,9 @@ Rectangle {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/money.png"
                     text: "现金"
-                    select: privateValue.cash
-                    onClicked: privateValue.checkStatus(!privateValue.cash, !privateValue.wxpay, privateValue.alipay) ?
-                                   privateValue.cash = !privateValue.cash : ""
+                    select: cash
+                    onClicked: privateValue.checkStatus(!cash, wxpay, alipay) ?
+                                   cash = !cash : ""
                 }
 
                 LeftIconRightTextBtn {
@@ -34,8 +38,8 @@ Rectangle {
                     icon: "qrc:/image/settleMentWin/weChatPay.png"
                     text: "微信"
                     select: privateValue.wxpay
-                    onClicked: privateValue.checkStatus(privateValue.cash, !privateValue.wxpay, privateValue.alipay) ?
-                                   privateValue.wxpay = !privateValue.wxpay : ""
+                    onClicked: privateValue.checkStatus(cash, !wxpay, alipay) ?
+                                   wxpay = !wxpay : ""
                 }
 
                 LeftIconRightTextBtn {
@@ -43,8 +47,8 @@ Rectangle {
                     icon: "qrc:/image/settleMentWin/alipay.png"
                     text: "支付宝"
                     select: privateValue.alipay
-                    onClicked: privateValue.checkStatus(privateValue.cash, privateValue.wxpay, !privateValue.alipay) ?
-                                   privateValue.alipay = !privateValue.alipay : ""
+                    onClicked: privateValue.checkStatus(cash, wxpay, !alipay) ?
+                                   alipay = !alipay : ""
                 }
             }
         }
@@ -100,9 +104,6 @@ Rectangle {
     Item {
         id: privateValue
         property bool isGroup: false;
-        property bool cash: true
-        property bool alipay: false
-        property bool wxpay: false
         property var payStatusMapList:[{"cash": true, "alipay": false, "wxpay": false},
                                        {"cash": false, "alipay": true, "wxpay": false},
                                        {"cash": false, "alipay": false, "wxpay": true},
@@ -111,7 +112,7 @@ Rectangle {
                                        {"cash": true, "alipay": false, "wxpay": true}
                                       ]
 
-        function checkStatus(cash, wxpay, alipay) {
+        function checkStatus(cash, alipay, wxpay) {
             var _cash, _alipay, _wxpay;
             for (var i = 0; i < payStatusMapList.length; i++) {
                 _cash = payStatusMapList[i].cash
