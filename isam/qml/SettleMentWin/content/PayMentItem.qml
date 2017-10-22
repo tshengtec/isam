@@ -44,6 +44,7 @@ Rectangle {
             PaymentOperation {
                 width: 0.5*parent.width - 10; height: parent.height
                 onPaymented: paymentItem.paymented()
+                onDeleted: editPayNumber.isDeleteOneStr = true
             }
         }
     }

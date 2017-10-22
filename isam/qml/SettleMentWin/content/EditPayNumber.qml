@@ -5,16 +5,24 @@ Column {
     property var payNumberItemHeight: (height - 2*spacing)/3 //private data
     property string amountMoney: "0.00"
     property string inputKeyBoard: ""
+    property bool isDeleteOneStr: false
 
     width: parent.width; height: parent.height
     spacing: 5
 
     onInputKeyBoardChanged: {
-        console.log(cashTextInput.textInputFocus, ">>>>>")
         if (cashTextInput.textInputFocus) {
             cashTextInput.addText = inputKeyBoard
             inputKeyBoard = ""
-            console.log(inputKeyBoard, cashTextInput.rightNumnber)
+        }
+    }
+
+    onIsDeleteOneStrChanged: {
+        if (!isDeleteOneStr)
+            return
+        if (cashTextInput.textInputFocus) {
+            cashTextInput.isSubText = true
+            isDeleteOneStr = false
         }
     }
 

@@ -11,6 +11,7 @@ Rectangle {
     property string leftTitleColor: "black"
     property bool enable: true
     property alias textInputFocus: textInput.focus
+    property bool isSubText: false
 
     width: parent.width; height: parent.height
     radius: 8
@@ -22,6 +23,18 @@ Rectangle {
         var endText = text.slice(textInput.cursorPosition, text.length)
         textInput.text = startText + addText + endText
         textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
+    }
+
+    onIsSubTextChanged: {
+        if (isSubText) {
+            var text = textInput.text
+            var cursorPosition = textInput.cursorPosition
+            var startText = text.slice(0, textInput.cursorPosition - 1)
+            var endText = text.slice(textInput.cursorPosition, text.length)
+            textInput.text = startText + endText
+            textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
+            isSubText = false
+        }
     }
 
     Row {
