@@ -87,7 +87,9 @@ void SalesCommodityService::finishedSlot(QNetworkReply *reply)
     QJsonObject goodsJsonObj= m_networkService.getJsonObjectFromString(jsonString);
     qDebug()<<goodsJsonObj<<">>>>>";
     if (reply->error() == QNetworkReply::NoError) {
-
+        if (goodsJsonObj.value("status").toInt() == 0) {
+            this->postSellingCmd();
+        }
     }
     else {
         qDebug()<<reply->errorString()<<"reply->errorString";
@@ -134,12 +136,14 @@ bool SalesCommodityService::removeAll()
     return isSuccess;
 }
 
-bool SalesCommodityService::settleMent()
+bool SalesCommodityService::settleMent(QVariantMap payMap)
 {
+    m_salesNote.setPaymentMethodsAndAmout(payMap);
+
     SalesNote* salesNote = new SalesNote();
     salesNote->setDateTime(QDateTime::currentDateTime());
     salesNote->setList(this->m_salesNote.copyMyselfList());
-
+    salesNote->setPaymentMethodsAndAmout(payMap);
     this->postSellingCmd();
 
     m_SalesList.append(salesNote);
@@ -188,16 +192,24 @@ bool SalesCommodityService::postSellingCmd()
     byteArray.append(QString(QJsonDocument(goodsInfo()).toJson()));
 
     byteArray.append("&payway=");
-    byteArray.append(m_payInfo.value("payway").toString());
+    if (m_salesNote.getPaymentMethodsAndAmout().value("wxpay").toDouble() != 0) {
+        byteArray.append("wxpay");
+    }
+    else if (m_salesNote.getPaymentMethodsAndAmout().value("alipay").toDouble() != 0) {
+        byteArray.append("alipay");
+    }
+    else {
+        byteArray.append("cash");
+    }
 
     byteArray.append("&shopNo=");
     byteArray.append(configService.getShopNo());
 
     byteArray.append("&bizNo=");
-    byteArray.append(QDateTime::currentDateTime().toTime_t());
+    byteArray.append(QString("%1").arg(QDateTime::currentDateTime().toMSecsSinceEpoch()));
 
     byteArray.append("&authCode=");
-    byteArray.append(m_payInfo.value("authCode").toString());
+    byteArray.append(m_salesNote.getPaymentMethodsAndAmout().value("authCode").toString());
 
     byteArray.append("&totalFee=");
     byteArray.append(QString("%1").arg(m_salesNote.getRealIncome()));
@@ -206,20 +218,11 @@ bool SalesCommodityService::postSellingCmd()
     byteArray.append(configService.getMacAddr());
 
     byteArray.append("&cash=");
-    QString cash = QString("%1").arg(m_salesNote.getRealIncome() - m_payInfo.value("paywayTotal").toFloat());
+    QString cash = m_salesNote.getPaymentMethodsAndAmout().value("cash").toString();//QString("%1").arg(m_salesNote.getRealIncome() - m_payInfo.value("paywayTotal").toFloat());
     byteArray.append(cash);
 
     req.setUrl(QUrl("http://api.cashier.slktea.com/isam-web-cashier" +QString(PUSH_SALES_RECORD)));
 
     m_networkService.networkAccessManager().post(req, byteArray);
-}
-
-void SalesCommodityService::setPayInfo(QVariantMap info)
-{
-    m_payInfo = info;
-}
-
-QVariantMap SalesCommodityService::getPayInfo()
-{
-    return m_payInfo;
+    qDebug()<<"byteArray: "<<QString(byteArray);
 }

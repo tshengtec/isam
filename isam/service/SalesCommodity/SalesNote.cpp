@@ -16,7 +16,10 @@ SalesNote::SalesNote()
            QString::number(time.msec());
     m_owner = "admin";
     m_dateTime = QDateTime::currentDateTime();
-    m_payMap.clear();
+    m_paymentMethodsAndAmout["cash"] = "0";
+    m_paymentMethodsAndAmout["wxpay"] = "0";
+    m_paymentMethodsAndAmout["alipay"] = "0";
+    m_paymentMethodsAndAmout["authCode"] = "0";
 }
 
 SalesNote::SalesNote(SalesNote *salesNote)
@@ -24,7 +27,7 @@ SalesNote::SalesNote(SalesNote *salesNote)
     m_id = salesNote->getId();
     m_owner = salesNote->getOwner();
     m_dateTime = salesNote->getDateTime();
-    m_payMap = salesNote->getPayMap();
+    m_paymentMethodsAndAmout = salesNote->getPaymentMethodsAndAmout();
     m_commodityList = this->copyList(salesNote->getList());
 }
 
@@ -91,7 +94,8 @@ bool SalesNote::add(QString id)
     float subtotal = map.value("quantity").toInt() * discountedPrice;
     map.insert("subtotal", subtotal);
 
-    m_commodityList.append(map);
+    if (!isRepeatedAdd(map))
+        m_commodityList.append(map);
     return true;
 }
 
@@ -169,15 +173,18 @@ void SalesNote::setDateTime(QDateTime dateTime)
     m_dateTime = dateTime;
 }
 
-QVariantMap SalesNote::getPayMap()
+QVariantMap SalesNote::getPaymentMethodsAndAmout()
 {
-    return m_payMap;
+    return m_paymentMethodsAndAmout;
 }
 
-void SalesNote::setPayMap(QVariantMap map)
+void SalesNote::setPaymentMethodsAndAmout(QVariantMap map)
 {
-    m_payMap.clear();
-    m_payMap = map;
+    QMapIterator<QString, QVariant> i(map);
+    while (i.hasNext()) {
+        i.next();
+        m_paymentMethodsAndAmout.insert(i.key(), i.value());
+    }
 }
 
 float SalesNote::getRealIncome()
@@ -228,5 +235,18 @@ void SalesNote::removeList(QList<QVariantMap> &removeList)
     while (removeList.count()) {
         removeList.removeLast();
     }
+}
+
+bool SalesNote::isRepeatedAdd(QVariantMap map)
+{
+    for (int i = 0; i < m_commodityList.count(); i++) {
+        QVariantMap goods = m_commodityList.at(i);
+        if (goods.value("id").toLongLong() == map.value("id").toLongLong()) {
+            goods["quantity"] = goods["quantity"].toLongLong() + 1;
+            m_commodityList.replace(i, goods);
+            return true;
+        }
+    }
+    return false;
 }
 

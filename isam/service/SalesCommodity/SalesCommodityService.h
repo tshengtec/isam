@@ -36,7 +36,7 @@ public:
     bool removeAll(); /*removeAll m_commodityList*/
 
     /*settlement operation*/
-    bool settleMent();
+    bool settleMent(QVariantMap map);
 
     /*Press the functionality, return Pending operating state.*/
     QString onPendingOperation();
@@ -45,9 +45,6 @@ public:
     QString onGettingOperation();
 
     bool postSellingCmd();
-
-    void setPayInfo(QVariantMap info);
-    QVariantMap getPayInfo();
 
 private:
     SalesNote* copySalesNote(SalesNote* salesNote);

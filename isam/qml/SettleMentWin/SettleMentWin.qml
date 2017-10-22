@@ -30,15 +30,15 @@ MyWindow {
             id: payMentItem
             width: parent.width; height: 17*parent.height/20
             onPaymented: {
-                paymentModel.settleMent()
+                paymentModel.settleMent(map)
                 hide()
             }
         }
     }
 
     function show() {
-        rootId.visible = true;
-        payMentItem.init()
+            rootId.visible = true;
+            payMentItem.init()
     }
 
     function hide() {

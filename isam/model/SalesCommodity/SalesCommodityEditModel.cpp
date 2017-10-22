@@ -33,10 +33,10 @@ bool SalesCommodityEditModel::update(QVariantMap commodity)
     return SalesCommodityService::instance()->update(commodity);
 }
 
-bool SalesCommodityEditModel::settleMent()
+bool SalesCommodityEditModel::settleMent(QVariantMap payMap)
 {
     if (SalesCommodityService::instance()->getSalesNote().getList().count() > 0)
-        return SalesCommodityService::instance()->settleMent();
+        return SalesCommodityService::instance()->settleMent(payMap);
     else
         return false;
 }
@@ -112,7 +112,7 @@ void SalesCommodityEditModel::setPayInfo()
     map["payway"] = this->getPayway();
     map["authCode"] = this->getAuthCode();
     map["paywayTotal"] = this->getPaywayTotal();
-    SalesCommodityService::instance()->setPayInfo(map);
+//    SalesCommodityService::instance()->setPayInfo(map);
 }
 
 

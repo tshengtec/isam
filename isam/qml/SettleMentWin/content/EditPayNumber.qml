@@ -127,7 +127,7 @@ Column {
             return false;
         }
 
-        var fvalue = Math.round(value*100)/100;
+        fvalue = Math.round(value*100)/100;
         var fvaluestr = fvalue.toString();
         var resolution = fvaluestr.indexOf('.');
 
@@ -139,5 +139,13 @@ Column {
             fvaluestr += '0';
         }
         return fvaluestr;
+    }
+
+    function getMap() {
+        var map = {"cash": "0", "wxpay": "0", "alipay": "0"};            
+        map["cash"] = cash ? cashTextInput.rightNumnber : "0"
+        map["wxpay"] = wxpay ? wxpayTextInput.rightNumnber : "0"
+        map["alipay"] = alipay ? alipayTextInput.rightNumnber : "0"
+        return map;
     }
 }

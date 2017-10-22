@@ -75,7 +75,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
-        onClicked: settleMentButton.clicked()
+        onClicked: amountMoney > 0 ? settleMentButton.clicked() : ""
         onEntered: backGround.color = "#30000000"
         onExited: backGround.color = "#00000000"
     }

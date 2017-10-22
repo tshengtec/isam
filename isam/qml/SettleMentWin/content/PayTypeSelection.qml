@@ -108,7 +108,7 @@ Rectangle {
                                        {"cash": false, "alipay": true, "wxpay": false},
                                        {"cash": false, "alipay": false, "wxpay": true},
                                        {"cash": true, "alipay": true, "wxpay": false},
-                                       {"cash": false, "alipay": true, "wxpay": true},
+//                                       {"cash": false, "alipay": true, "wxpay": true},
                                        {"cash": true, "alipay": false, "wxpay": true}
                                       ]
 

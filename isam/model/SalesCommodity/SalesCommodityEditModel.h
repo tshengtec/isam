@@ -14,7 +14,7 @@ public:
     Q_INVOKABLE bool remove(QString id);
     Q_INVOKABLE bool removeAll();
     Q_INVOKABLE bool update(QVariantMap commodity);
-    Q_INVOKABLE bool settleMent();
+    Q_INVOKABLE bool settleMent(QVariantMap payMap);
     Q_INVOKABLE void onPendingOperation();
     Q_INVOKABLE void onGettingOperation();
 
@@ -23,6 +23,7 @@ public:
     Q_PROPERTY(QString payway READ getPayway WRITE setPayway NOTIFY statusChanged)
     Q_PROPERTY(QString authCode READ getAuthCode WRITE setAuthCode NOTIFY statusChanged)
     Q_PROPERTY(float paywayTotal READ getPaywayTotal WRITE setPaywayTotal NOTIFY statusChanged)
+
 
     QString getErrorStr();
     void setErrorStr(QString errorStr);

@@ -3,7 +3,7 @@ import MyModels 1.0
 
 Rectangle {
     id: paymentItem
-    signal paymented()
+    signal paymented(var map)
 
     width: parent.width; height: parent.height
     color: "#00000000"
@@ -45,7 +45,7 @@ Rectangle {
 
             PaymentOperation {
                 width: 0.5*parent.width - 10; height: parent.height
-                onPaymented: paymentItem.paymented()
+                onPaymented: paymentItem.paymented(editPayNumber.getMap())
                 onDeleted: editPayNumber.subText()
             }
         }

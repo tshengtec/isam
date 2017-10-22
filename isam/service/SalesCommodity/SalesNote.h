@@ -34,8 +34,9 @@ public:
     QDateTime getDateTime();
     void setDateTime(QDateTime dateTime);
 
-    QVariantMap getPayMap();
-    void setPayMap(QVariantMap map);
+    /*Payment methods and amount*/
+    QVariantMap getPaymentMethodsAndAmout();
+    void setPaymentMethodsAndAmout(QVariantMap map);
 
     /*Realized income.*/
     float getRealIncome();
@@ -46,6 +47,7 @@ public:
 private:
     QList<QVariantMap> copyList(QList<QVariantMap > list);
     void removeList(QList<QVariantMap >& removeList); // remove List
+    bool isRepeatedAdd(QVariantMap map);
 
 private:
     QList<QVariantMap > m_commodityList;
@@ -54,9 +56,9 @@ private:
     QDateTime m_dateTime; /*Time for selling.*/
     /*
      * Payment method and amount of payment.
-     * Such as: {"moneyPay": 10.0}, {"weChatPay": 20.0}, {"aliPay": 30.00}
+     * Such as: {"cash": 20}, {"wxpay": 20}, {"alipay": 0}
      */
-    QVariantMap m_payMap;
+    QVariantMap m_paymentMethodsAndAmout;
 };
 
 #endif // SALESNOTE_H
