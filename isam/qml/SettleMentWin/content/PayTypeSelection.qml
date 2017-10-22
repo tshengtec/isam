@@ -37,7 +37,7 @@ Rectangle {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/weChatPay.png"
                     text: "微信"
-                    select: privateValue.wxpay
+                    select: wxpay
                     onClicked: privateValue.checkStatus(cash, !wxpay, alipay) ?
                                    wxpay = !wxpay : ""
                 }
@@ -46,7 +46,7 @@ Rectangle {
                     width: parent.width; height: (parent.height - 2*parent.spacing)/3
                     icon: "qrc:/image/settleMentWin/alipay.png"
                     text: "支付宝"
-                    select: privateValue.alipay
+                    select: alipay
                     onClicked: privateValue.checkStatus(cash, wxpay, !alipay) ?
                                    alipay = !alipay : ""
                 }
@@ -112,7 +112,7 @@ Rectangle {
                                        {"cash": true, "alipay": false, "wxpay": true}
                                       ]
 
-        function checkStatus(cash, alipay, wxpay) {
+        function checkStatus(cash, wxpay, alipay) {
             var _cash, _alipay, _wxpay;
             for (var i = 0; i < payStatusMapList.length; i++) {
                 _cash = payStatusMapList[i].cash
@@ -123,5 +123,11 @@ Rectangle {
             }
             return false
         }
+    }
+
+    function init() {
+        cash = true
+        alipay = false
+        wxpay = false
     }
 }

@@ -27,6 +27,7 @@ MyWindow {
         }
 
         PayMentItem {
+            id: payMentItem
             width: parent.width; height: 17*parent.height/20
             onPaymented: {
                 paymentModel.settleMent()
@@ -37,6 +38,7 @@ MyWindow {
 
     function show() {
         rootId.visible = true;
+        payMentItem.init()
     }
 
     function hide() {

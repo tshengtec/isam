@@ -19,14 +19,16 @@ Rectangle {
                 id: editPayNumber
                 width: 0.65*parent.width; height: parent.height
                 amountMoney: salesCommodityListModel.amountMoney
-
+                cash: payTypeSelection.cash
+                alipay: payTypeSelection.alipay
+                wxpay: payTypeSelection.wxpay
             }
 
             Item { width: 0.01*parent.width; height: parent.height }
 
             PayTypeSelection {
+                id: payTypeSelection
                 width: 0.45*parent.width; height: parent.height
-
             }
         }
 
@@ -38,13 +40,13 @@ Rectangle {
 
             QuickSelectMoney {
                 width: 0.5*parent.width; height: parent.height
-                onClicked: editPayNumber.inputKeyBoard = money
+                onClicked: editPayNumber.addText(money)
             }
 
             PaymentOperation {
                 width: 0.5*parent.width - 10; height: parent.height
                 onPaymented: paymentItem.paymented()
-                onDeleted: editPayNumber.isDeleteOneStr = true
+                onDeleted: editPayNumber.subText()
             }
         }
     }
@@ -56,5 +58,10 @@ Rectangle {
     //data
     SalesCommodityEditModel {
         id: salesCommodityEditModel
+    }
+
+    function init() {
+        payTypeSelection.init()
+        editPayNumber.init()
     }
 }

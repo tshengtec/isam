@@ -4,27 +4,13 @@ import "../../ProjectCommon/Text"
 Column {
     property var payNumberItemHeight: (height - 2*spacing)/3 //private data
     property string amountMoney: "0.00"
-    property string inputKeyBoard: ""
-    property bool isDeleteOneStr: false
+    property var objList: [cashTextInput, wxpayTextInput, alipayTextInput]
+    property bool cash: true
+    property bool alipay: false
+    property bool wxpay: false
 
     width: parent.width; height: parent.height
     spacing: 5
-
-    onInputKeyBoardChanged: {
-        if (cashTextInput.textInputFocus) {
-            cashTextInput.addText = inputKeyBoard
-            inputKeyBoard = ""
-        }
-    }
-
-    onIsDeleteOneStrChanged: {
-        if (!isDeleteOneStr)
-            return
-        if (cashTextInput.textInputFocus) {
-            cashTextInput.isSubText = true
-            isDeleteOneStr = false
-        }
-    }
 
     TextInputNumber {
         width: parent.width; height: payNumberItemHeight
@@ -39,14 +25,26 @@ Column {
 
         TextInputNumber {
             id: cashTextInput
-            width: parent.width/2 - 5; height: parent.height
+            width: checkLength(cash, wxpay, alipay) ? parent.width : parent.width/2 - 5;
+            height: parent.height
             leftTitle: "现金"
-
+            visible: cash
         }
 
         TextInputNumber {
-            width: parent.width/2 - 5; height: parent.height
+            id: wxpayTextInput
+            width: checkLength(cash, wxpay, alipay) ? parent.width : parent.width/2 - 5;
+            height: parent.height
             leftTitle: "微信"
+            visible: wxpay
+        }
+
+        TextInputNumber {
+            id: alipayTextInput
+            width: checkLength(cash, wxpay, alipay) ? parent.width : parent.width/2 - 5;
+            height: parent.height
+            leftTitle: "支付宝"
+            visible: alipay
         }
     }
 
@@ -58,12 +56,67 @@ Column {
             width: parent.width/2 - 5; height: parent.height
             leftTitle: "合计"
             rightNumberColor: "#ec960b"
+            enable: false
+            rightNumnber: checkTotal(cash, wxpay, alipay)
         }
 
         TextInputNumber {
             width: parent.width/2 - 5; height: parent.height
             leftTitle: "找零"
             rightNumberColor: "#ec960b"
+            enable: false
+            rightNumnber: checkTotal(cash, wxpay, alipay) - Number(amountMoney)
         }
+    }
+
+    function addText(addText) {
+        for (var i = 0; i < objList.length; i++) {
+            if (objList[i].textInputFocus) {
+                objList[i].addText(addText)
+                break
+            }
+        }
+    }
+
+
+    function subText() {
+        for (var i = 0; i < objList.length; i++) {
+            if (objList[i].textInputFocus) {
+                objList[i].subText()
+                break
+            }
+        }
+    }
+
+    function checkLength(cash, wxpay, alipay) {
+        var temp = 0
+        if (cash)
+            temp++
+        if (wxpay)
+            temp++
+        if (alipay)
+            temp++
+
+        if (temp === 2)
+            return false
+        else
+            return true
+    }
+
+    function checkTotal(cash, wxpay, alipay) {
+        var total = 0;
+        if (cash)
+            total += Number(cashTextInput.rightNumnber)
+        if (wxpay)
+            total += Number(wxpayTextInput.rightNumnber)
+        if (alipay)
+            total += Number(alipayTextInput.rightNumnber)
+        return total
+    }
+
+    function init() {
+        cashTextInput.rightNumnber = "0.00"
+        wxpayTextInput.rightNumnber = "0.00"
+        alipayTextInput.rightNumnber = "0.00"
     }
 }

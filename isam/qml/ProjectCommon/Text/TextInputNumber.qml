@@ -6,17 +6,15 @@ Rectangle {
 
     property string rightNumberColor: "black"
     property alias rightNumnber: textInput.text
-    property string addText: ""
     property string leftTitle: ""
     property string leftTitleColor: "black"
     property bool enable: true
     property alias textInputFocus: textInput.focus
-    property bool isSubText: false
 
     width: parent.width; height: parent.height
     radius: 8
 
-    onAddTextChanged: {
+    function addText(addText) {
         var text = textInput.text
         var cursorPosition = textInput.cursorPosition
         var startText = text.slice(0, textInput.cursorPosition)
@@ -25,16 +23,15 @@ Rectangle {
         textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
     }
 
-    onIsSubTextChanged: {
-        if (isSubText) {
-            var text = textInput.text
-            var cursorPosition = textInput.cursorPosition
-            var startText = text.slice(0, textInput.cursorPosition - 1)
-            var endText = text.slice(textInput.cursorPosition, text.length)
-            textInput.text = startText + endText
-            textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
-            isSubText = false
-        }
+    function subText() {
+        if (textInput.cursorPosition === 0)
+            return
+        var text = textInput.text
+        var cursorPosition = textInput.cursorPosition
+        var startText = text.slice(0, textInput.cursorPosition - 1)
+        var endText = text.slice(textInput.cursorPosition, text.length)
+        textInput.text = startText + endText
+        textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
     }
 
     Row {
@@ -68,15 +65,15 @@ Rectangle {
                 enabled: enable
                 font.family: "微软雅黑"
                 color: enable ? rightNumberColor : "#d5d5d5"
-//                text: rightNumnber
+                //                text: rightNumnber
                 text: "0.00"
                 font.pixelSize: 0.5*parent.height
                 width: parent.width;
-//                onFocusChanged: {
-//                    if (focus) {
-//                        cursorPosition = text.length
-//                    }
-//                }
+                //                onFocusChanged: {
+                //                    if (focus) {
+                //                        cursorPosition = text.length
+                //                    }
+                //                }
             }
         }
     }
