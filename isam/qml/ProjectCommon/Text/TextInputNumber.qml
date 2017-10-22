@@ -14,26 +14,6 @@ Rectangle {
     width: parent.width; height: parent.height
     radius: 8
 
-    function addText(addText) {
-        var text = textInput.text
-        var cursorPosition = textInput.cursorPosition
-        var startText = text.slice(0, textInput.cursorPosition)
-        var endText = text.slice(textInput.cursorPosition, text.length)
-        textInput.text = startText + addText + endText
-        textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
-    }
-
-    function subText() {
-        if (textInput.cursorPosition === 0)
-            return
-        var text = textInput.text
-        var cursorPosition = textInput.cursorPosition
-        var startText = text.slice(0, textInput.cursorPosition - 1)
-        var endText = text.slice(textInput.cursorPosition, text.length)
-        textInput.text = startText + endText
-        textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
-    }
-
     Row {
         z: 2
         anchors.fill: parent
@@ -64,16 +44,11 @@ Rectangle {
                 font.bold: true
                 enabled: enable
                 font.family: "微软雅黑"
-                color: enable ? rightNumberColor : "#d5d5d5"
-                //                text: rightNumnber
+//                color: enable ? rightNumberColor : "#d5d5d5"
+                color: rightNumberColor
                 text: "0.00"
                 font.pixelSize: 0.5*parent.height
                 width: parent.width;
-                //                onFocusChanged: {
-                //                    if (focus) {
-                //                        cursorPosition = text.length
-                //                    }
-                //                }
             }
         }
     }
@@ -115,5 +90,25 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width -2; height: 0.5*parent.height
         radius: textInputNumber.radius
+    }
+
+    function addText(addText) {
+        var text = textInput.text
+        var cursorPosition = textInput.cursorPosition
+        var startText = text.slice(0, textInput.cursorPosition)
+        var endText = text.slice(textInput.cursorPosition, text.length)
+        textInput.text = startText + addText + endText
+        textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
+    }
+
+    function subText() {
+        if (textInput.cursorPosition === 0)
+            return
+        var text = textInput.text
+        var cursorPosition = textInput.cursorPosition
+        var startText = text.slice(0, textInput.cursorPosition - 1)
+        var endText = text.slice(textInput.cursorPosition, text.length)
+        textInput.text = startText + endText
+        textInput.cursorPosition = textInput.text.length - (text.length - cursorPosition)
     }
 }

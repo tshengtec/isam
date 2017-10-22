@@ -57,7 +57,7 @@ Column {
             leftTitle: "合计"
             rightNumberColor: "#ec960b"
             enable: false
-            rightNumnber: checkTotal(cash, wxpay, alipay)
+            rightNumnber: toDot2(checkTotal(cash, wxpay, alipay))
         }
 
         TextInputNumber {
@@ -65,7 +65,7 @@ Column {
             leftTitle: "找零"
             rightNumberColor: "#ec960b"
             enable: false
-            rightNumnber: checkTotal(cash, wxpay, alipay) - Number(amountMoney)
+            rightNumnber: toDot2(checkTotal(cash, wxpay, alipay) - Number(amountMoney))
         }
     }
 
@@ -118,5 +118,26 @@ Column {
         cashTextInput.rightNumnber = "0.00"
         wxpayTextInput.rightNumnber = "0.00"
         alipayTextInput.rightNumnber = "0.00"
+    }
+
+    //保留3位小数，如：3, 在3后面补上00.即3.00
+    function toDot2(value) {
+        var fvalue = parseFloat(value);
+        if (isNaN(fvalue)) {
+            return false;
+        }
+
+        var fvalue = Math.round(value*100)/100;
+        var fvaluestr = fvalue.toString();
+        var resolution = fvaluestr.indexOf('.');
+
+        if (resolution < 0) {
+            resolution = fvaluestr.length;
+            fvaluestr += '.';
+        }
+        while (fvaluestr.length <= resolution + 2) {
+            fvaluestr += '0';
+        }
+        return fvaluestr;
     }
 }
