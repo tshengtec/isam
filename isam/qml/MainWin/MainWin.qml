@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import "./content/MenuBar"
+import "./content/CommodityInfoListView"
 
 Window {
     id: windowsId
@@ -12,6 +13,10 @@ Window {
     Column {
         MenuBar {
             width: windowsId.width; height: 2*windowsId.height/20
+        }
+
+        CommodityInfoListView {
+            width: windowsId.width; height: 13*windowsId.height/20
         }
     }
 }
