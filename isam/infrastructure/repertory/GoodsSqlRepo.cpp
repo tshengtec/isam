@@ -24,7 +24,7 @@ bool GoodsSqlRepo::insert(QJsonObject jsonObj)
         qDebug()<<"Insert failed!!!(jsonObj is empty.)";
         return false;
     }
-    qDebug()<<jsonObj<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+//    qDebug()<<jsonObj<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
     QString insert_sql = "insert into person values (?, ?, ?, ?, ?," \
                                                                       "?, ?, ?, ?, ?," \
                                                                       "?, ?, ?, ?, ?," \

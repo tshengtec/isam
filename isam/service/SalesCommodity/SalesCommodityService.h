@@ -53,6 +53,8 @@ private:
 
 signals:
     void listChanged();
+    /* error: "", errorCode: 0 */
+    void errorChanged(QVariantMap errorMap);
 
 private slots:
     void finishedSlot(QNetworkReply* reply);

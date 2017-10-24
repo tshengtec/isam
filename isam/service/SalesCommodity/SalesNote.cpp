@@ -207,7 +207,6 @@ int SalesNote::getTotalQuantity()
     for (int i = 0; i < this->m_commodityList.count(); i++) {
         QVariantMap commodity = this->m_commodityList.at(i);
         int _quantity = commodity.value("quantity").toInt();
-
         quantity += _quantity;
     }
 
@@ -243,6 +242,9 @@ bool SalesNote::isRepeatedAdd(QVariantMap map)
         QVariantMap goods = m_commodityList.at(i);
         if (goods.value("id").toLongLong() == map.value("id").toLongLong()) {
             goods["quantity"] = goods["quantity"].toLongLong() + 1;
+            float discountedPrice = goods.value("sellingPrice").toDouble() * goods.value("discount").toInt() / 100;
+            float subtotal = goods["quantity"].toInt() * discountedPrice;
+            goods["subtotal"] = subtotal;
             m_commodityList.replace(i, goods);
             return true;
         }

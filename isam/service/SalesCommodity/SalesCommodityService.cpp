@@ -88,10 +88,14 @@ void SalesCommodityService::finishedSlot(QNetworkReply *reply)
     qDebug()<<goodsJsonObj<<">>>>>";
     if (reply->error() == QNetworkReply::NoError) {
         if (goodsJsonObj.value("status").toInt() == 0) {
-            this->postSellingCmd();
+            QVariantMap map;
+            map["error"] = goodsJsonObj.value("statusStr").toString();
+            map["status"] = goodsJsonObj.value("status").toInt();
+            emit errorChanged(map);
         }
     }
     else {
+        emit errorChanged(goodsJsonObj.toVariantMap());
         qDebug()<<reply->errorString()<<"reply->errorString";
     }
 
