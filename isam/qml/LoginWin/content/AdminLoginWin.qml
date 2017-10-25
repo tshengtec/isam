@@ -83,11 +83,13 @@ Item {
                 }
 
                 MenuButton {
+                    id: loginBtn
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: 0.8*parent.width; height: 2*parent.height/10
                     btnText: "登录"
                     btnColor: "#ff8400"
                     onIsClicked: {
+                        loginBtn.btnText = "登录..."
                         adminAccountModel.loginAccount("admin", accountId.text, passwordId.text)
                     }
                 }
@@ -99,5 +101,6 @@ Item {
     function init() {
         accountId.text = "";
         passwordId.text = "";
+        loginBtn.btnText = "登录"
     }
 }
