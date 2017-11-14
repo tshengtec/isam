@@ -1,8 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
-//#include <QtMsgHandler>
-
+#if QT_VERSION >= QT_VERSION_CHECK(4, 0, 0)
+#include <QtMsgHandler>
+#endif
 #include "Themes.h"
 #include "CommodityRepertory.h"
 #include "QmlWin.h"
