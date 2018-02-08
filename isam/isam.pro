@@ -2,9 +2,21 @@ TEMPLATE = app
 QT += qml quick
 QT += network
 QT += sql
+QT += widgets
 CONFIG += c++11
 
 win32: RC_FILE += logo.rc
+
+equals( QT_MAJOR_VERSION, 5 ) {
+    QT += qml quick widgets
+    DEFINES += QT5VERSION
+    message(" ================ QT 5 VERSION ================ ")
+}
+else {
+    QT += widgets declarative
+    DEFINES += QT4VERSION
+    message(" ================ QT 4 VERSION================= ")
+}
 
 SOURCES += main.cpp \
     infrastructure/domain/DomainObject.cpp \
@@ -38,7 +50,10 @@ SOURCES += main.cpp \
     service/NetworkService/AccountNetworkService.cpp \
     service/NetworkService/CommodityCategoryNetworkService.cpp \
     service/ConfigService/ConfigService.cpp \
-    infrastructure/repertory/GoodsSqlRepo.cpp
+    infrastructure/repertory/GoodsSqlRepo.cpp \
+    windows/WinManager.cpp \
+    windows/Window.cpp \
+    windows/DeclarativeWindow.cpp
 
 RESOURCES += qml.qrc \
     resources.qrc
@@ -112,7 +127,10 @@ HEADERS += \
     service/NetworkService/CommodityCategoryNetworkService.h \
     service/ConfigService/ConfigService.h \
     infrastructure/utils/GlobalDefinition.h \
-    infrastructure/repertory/GoodsSqlRepo.h
+    infrastructure/repertory/GoodsSqlRepo.h \
+    windows/WinManager.h \
+    windows/Window.h \
+    windows/DeclarativeWindow.h
 
 DISTFILES += \
     model/AccountModel/AccountListModel.qml
